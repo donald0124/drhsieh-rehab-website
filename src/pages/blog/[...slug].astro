@@ -1,0 +1,85 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 1. 產生所有文章的靜態路徑
+export async function getStaticPaths() {
+  const allPosts = await getCollection('blog');
+  
+  // 幫 'post' 加上型別
+  return allPosts.map((post: CollectionEntry<'blog'>) => ({
+    params: { slug: post.slug },
+    props: { post }, 
+  }));
+}
+
+// 2. 幫傳入的 props 定義型別
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+// 3. 取得這篇文章的資料
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+
+    <section id="article-header" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
+        <h1>{post.data.title}</h1>
+        <p style="font-size: 1rem; color: #555;">
+            發布日期: {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+        {post.data.heroImage && (
+            <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; max-width: 700px; margin-top: 2rem; border-radius: 8px;">
+        )}
+    </section>
+
+    <section id="article-content" style="padding: 3rem 1rem;">
+        <article class="prose" style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            
+            <Content />
+
+        </article>
+    </section>
+
+    <div style="text-align: center; padding-bottom: 4rem;">
+        <a href="/blog" class="cta-button">返回衛教資訊列表</a>
+    </div>
+
+    <style is:global>
+        /* is:global 讓這些樣式能套用到 .md 產生的 HTML */
+        .prose h2 {
+            font-size: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+        .prose h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+        .prose p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .prose ul, .prose ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .prose li {
+             margin-bottom: 0.5rem;
+        }
+        .prose img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .prose a {
+            text-decoration: underline;
+        }
+    </style>
+
+</BaseLayout>

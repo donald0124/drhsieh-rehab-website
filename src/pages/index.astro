@@ -1,41 +1,13 @@
 ---
-import '../styles/style.css';
+// 1. 匯入我們剛建立的版型
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// 2. 定義這個頁面的 SEO 資訊
+const pageTitle = "謝明福復健科診所 | 新北三峽 (02)2671-8910";
+const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。專精坐骨神經痛、運動傷害、椎間D突出、五十肩等復健治療。";
 ---
 
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>謝明福復健科診所 | 新北三峽 (02)2671-8910</title>
-    
-    <meta name="description" content="新北市三峽區謝明福復健科診所，(02)2671-8910。專精坐骨神經痛、運動傷害、椎間盤突出、五十肩等復健治療。提供針極肌肉內電刺激(NEIMS)、玻尿酸注射等特別專長。">
-
-    <meta property="og:title" content="謝明福復健科診所 | 新北三峽專業復健 (drhsieh-rehab.com)">
-    <meta property="og:description" content="專精運動傷害、骨科術後復健、坐骨神經痛。提供NEIMS、增生注射等治療。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://drhsieh-rehab.com">
-
-    
-    </head>
-<body>
-
-    <header>
-        <nav>
-            <a href="index.html" class="logo">謝明福復健科診所</a>
-            <ul>
-                <li><a href="#services">主治項目</a></li>
-                <li><a href="#team">醫師團隊</a></li>
-                <li><a href="#facility">環境設備</a></li>
-                <li><a href="#schedule">門診時間</a></li>
-                <li><a href="#info">衛教資訊</a></li>
-                <li><a href="#contact">聯絡我們</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
+<BaseLayout title={pageTitle} description={pageDesc}>
 
         <section id="hero">
             <h1>謝明福復健科診所</h1>
@@ -270,14 +242,3 @@ import '../styles/style.css';
 
             </div>
         </section>
-
-    </main>
-
-    <footer>
-        <p>謝明福復健科診所</p>
-        <p>電話: (02) 2671-8910 | 地址: 新北市三峽區中華路22號2樓</p>
-        <p>© 2025 drhsieh-rehab.com. All Rights Reserved.</p>
-    </footer>
-
-</body>
-</html>
