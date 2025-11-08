@@ -926,3 +926,52 @@ nav ul li a.nav-cta-button:hover {
 details[open] > .accordion-summary .accordion-icon {
     transform: rotate(180deg);
 }
+
+
+/*
+ * ================================
+ * (8) 額外新增樣式 (v3)
+ * ================================
+ */
+
+/* (8.1) 頁尾社群圖示 (新) */
+.footer-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* (圖示之間的間距) */
+    margin-top: 1rem;
+}
+.footer-social-icons a {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+}
+.footer-social-icons a:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+}
+.footer-social-icons svg {
+    width: 28px;  /* (圖示大小) */
+    height: 28px; /* (圖示大小) */
+    fill: #f0f0f0; /* (圖示顏色) */
+}
+
+/* (8.2) 響應式 YouTube 影片 (新) */
+.video-responsive-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* (16:9 比例) */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px; /* (圓角) */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem; /* (和下方卡片拉開距離) */
+}
+.video-responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
