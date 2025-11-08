@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  # 在 'main' 分支被 push 時觸發
+  push:
+    branches:
+      - main
+  # 允許您在 GitHub 網頁上手動觸發
+  workflow_dispatch:
+
+# 允許 Action 建立部署
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 取得您的程式碼
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 設定 Node.js 環境 (我們用 20.x 版)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 3. 安裝套件
+      - name: Install dependencies
+        run: npm install
+
+      # 4. 執行 Astro "建置" (這會產生 dist/ 資料夾)
+      - name: Build
+        run: npm run build 
+
+      # 5. 設定 GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 6. 上傳建置好的 "dist" 資料夾
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+      # 7. 部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
