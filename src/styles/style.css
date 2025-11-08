@@ -804,91 +804,125 @@ nav ul li a.nav-cta-button:hover {
     transform: translateY(-2px);
 }
 
-
+/* ... (保留所有您原來的 CSS，直到最後的 Media Query 區塊結束) ... */
 
 /*
  * ================================
- * (5.2) 主治項目 (Services) - Accordion 內部樣式 (新)
+ * (5.2) 主治項目 (Services) - Accordion 內部樣式 (純 CSS)
  * ================================
  */
 
-/* 1. 治療項目標籤 */
+/* 1. 治療項目標籤 (.treatment-tag) */
 .treatment-tag {
-    background-color: #DBEAFE; /* (Tailwind: bg-blue-100) */
-    color: #1E40AF; /* (Tailwind: text-blue-800) */
-    font-size: 0.875rem; /* (Tailwind: text-sm) */
-    font-weight: 500; /* (Tailwind: font-medium) */
-    padding: 0.25rem 0.75rem; /* (Tailwind: px-3 py-1) */
-    border-radius: 9999px; /* (Tailwind: rounded-full) */
-    display: inline-block; /* 確保標籤正確顯示 */
-    margin-bottom: 0.5rem; /* (Tailwind: mb-2) */
+    /* 轉換自 Tailwind: bg-blue-50 text-blue-700 px-3.5 py-1.5 rounded-full text-sm font-medium */
+    background-color: #eff6ff; /* 淺藍色 */
+    color: #1d4ed8; /* 深藍色 */
+    padding: 6px 14px;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+}
+.treatment-tag:hover {
+    background-color: #dbeafe; /* hover:bg-blue-100 */
+    transform: translateY(-1px);
 }
 
-/* 2. 症狀列表 (打勾) */
+
+/* 2. 症狀列表 (.symptom-list) */
 .symptom-list {
-    list-style: none; /* 移除預設的圓點 */
+    list-style: none;
     padding-left: 0;
 }
 .symptom-list li {
     position: relative;
-    padding-left: 2rem; /* 留出空間給 ✓ */
-    margin-bottom: 0.75rem;
-    color: #4B5563; /* (Tailwind: text-gray-700) */
-    line-height: 1.6;
+    /* 轉換自 Tailwind: pl-7 mb-2 text-gray-600 leading-relaxed */
+    padding-left: 1.75rem; /* 28px */
+    margin-bottom: 0.5rem;
+    color: #4b5563; 
+    line-height: 1.625;
 }
 .symptom-list li::before {
     content: '✓';
     position: absolute;
     left: 0;
     top: 2px;
-    color: #2563EB; /* (Tailwind: text-blue-600) */
-    font-weight: 700; /* (Tailwind: font-bold) */
-    font-size: 1.25rem;
+    /* 轉換自 Tailwind: text-blue-600 font-bold text-lg */
+    color: #2563eb; 
+    font-weight: 700;
+    font-size: 1.125rem;
 }
 
 /* 3. 治療SOP步驟 */
 .content-section h4 {
-    font-size: 1.25rem; /* (Tailwind: text-xl) */
-    font-weight: 600; /* (Tailwind: font-semibold) */
-    color: #1F2937; /* (Tailwind: text-gray-800) */
-    margin-bottom: 1rem; /* (Tailwind: mb-4) */
+    /* 轉換自 Tailwind: text-xl font-semibold text-gray-800 mb-3 pb-1 border-b-2 border-blue-100 inline-block */
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937; 
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem; 
+    border-bottom: 2px solid #e0f2fe; 
+    display: inline-block;
 }
 .sop-step {
+    /* 轉換自 Tailwind: flex items-start gap-3 mb-4 */
     display: flex;
     align-items: flex-start;
-    gap: 1rem; /* (Tailwind: gap-4) */
-    margin-bottom: 1rem; /* (Tailwind: mb-4) */
+    gap: 0.75rem; /* 12px */
+    margin-bottom: 1rem;
 }
-.step-number {
+.sop-step .step-number {
+    /* 轉換自 Tailwind: flex-shrink-0 w-9 h-9 rounded-full bg-blue-700 text-white flex items-center justify-center font-bold text-sm */
     flex-shrink: 0;
-    width: 2rem; /* (Tailwind: w-8) */
-    height: 2rem; /* (Tailwind: h-8) */
-    background-color: #1D4ED8; /* (Tailwind: bg-blue-700) */
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    background-color: #1d4ed8;
     color: white;
-    font-weight: 700; /* (Tailwind: font-bold) */
-    border-radius: 9999px; /* (Tailwind: rounded-full) */
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: 700;
     font-size: 0.875rem;
 }
-.step-content strong {
-    font-size: 1.125rem; /* (Tailwind: text-lg) */
-    font-weight: 600; /* (Tailwind: font-semibold) */
-    color: #111827; /* (Tailwind: text-gray-900) */
-    display: block; /* 讓 strong 獨佔一行 */
+.sop-step .step-content {
+    padding-top: 0.25rem; /* pt-1 */
 }
-.step-content p {
-    color: #4B5563; /* (Tailwind: text-gray-600) */
-    margin-top: 0.25rem;
+.sop-step .step-content strong {
+    /* 轉換自 Tailwind: text-lg font-semibold text-gray-900 block */
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+    display: block;
+}
+.sop-step .step-content p {
+    /* 轉換自 Tailwind: text-gray-600 mt-0.5 */
+    color: #4b5563;
+    margin-top: 0.125rem;
 }
 
-/* 4. 旋轉SVG圖標 (Icon) */
-.accordion-header[aria-expanded="true"] .accordion-icon {
-    transform: rotate(180deg);
-    transition: transform 0.3s ease;
+
+/* 4. 原生 <details> 互動樣式 (純 CSS 實現) */
+/* 隱藏原生瀏覽器的箭頭 (Summary Marker) */
+.accordion-summary {
+    list-style: none;
 }
-.accordion-header[aria-expanded="false"] .accordion-icon {
+.accordion-summary::-webkit-details-marker {
+    display: none;
+}
+/* 箭頭旋轉動畫 */
+.accordion-summary .accordion-icon {
+    /* 確保尺寸是固定的 24x24 像素 (對應 Tailwind 的 w-6 h-6) */
+    width: 1.5rem;   /* 24px */
+    height: 1.5rem;  /* 24px */
+    flex-shrink: 0;  /* 防止被父容器擠壓或拉伸 */
+    
     transform: rotate(0deg);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease-in-out;
+}
+details[open] > .accordion-summary .accordion-icon {
+    transform: rotate(180deg);
 }

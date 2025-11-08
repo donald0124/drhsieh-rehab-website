@@ -3,6 +3,12 @@ import sitemap from '@astrojs/sitemap'; // <--- **需要這一行**
 
 import tailwindcss from '@tailwindcss/vite';
 
+import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
+// 匯入官方 Tailwind 整合套件
+import tailwind from "@astrojs/tailwind"; 
+
+
 // https://astro.build/config
 export default defineConfig({
   // 填入您在 Cloudflare 購買的 "自訂網域"

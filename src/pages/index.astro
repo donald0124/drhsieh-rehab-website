@@ -1,6 +1,7 @@
 ---
 // 1. 匯入我們剛建立的版型
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Services from '../components/Services.astro';
 
 // 2. 定義這個頁面的 SEO 資訊 (來自您的檔案)
 const pageTitle = "謝明福復健科診所 | 新北三峽 (02)2671-8910";
@@ -16,15 +17,17 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
 
     <section id="about-us">
         <h2>關於我們</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
-            本診所於民國100年開幕，醫學中心等級的主治醫師及復健治療設備。歡迎三峽(橫溪、北大特區)、土城(永寧、頂埔)、鶯歌、樹林(柑園、山佳)、桃園八德、大溪等地有復健需求的居民前來就醫。
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            本診所於2011年開幕，擁有<strong>醫學中心等級</strong>的主治醫師及復健治療設備。
+            我們在地深耕多年，竭誠歡迎三峽、土城、鶯歌、樹林、板橋、桃園八德、大溪、中壢以及鄰近新北與桃園等地有復健需求的居民前來就醫。
+        </p>               
+        <h3>我們的理念與承諾：創造光明幸福的生活品質</h3>
             
-        <h3>診所設立目的：<strong>創造光明幸福的生活品質</strong></h3>
-            
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
-            本診所的目標是以高品質的復健治療，讓受治療者能夠花最少的成本費用與承受極少副作用，使新傷、舊傷及更多難治之痛盡快解除，並盡快恢復生活機能而得以正常生活、有效率地工作、安穩入睡、享受高品質的生活。
-            </p>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            本診所秉持<strong>專業、精準</strong>的原則，協助緩解病患的新傷、舊疾，以及各種慢性或難以處理的<strong>疼痛問題</strong>。透過<strong>精準評估</strong>，我們推行<strong>非藥物</strong>為主的治療方式，為每位病患尋求更安全、更適切的處理途徑。
+            <br><br>我們將與您共同努力，協助您恢復身體機能，幫助您邁向<strong>正常的日常生活、更有效率的工作，以及安穩的睡眠</strong>。
         </p>
+        
         
         <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem;">環境設備</h3>
             <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
@@ -121,6 +124,7 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                     <p>觀看院長分享專業復健知識。
                        <br><a href="https://bit.ly/drhsieh_interview" target="_blank">觀看影片</a>
                     </p>
+                    
                 </div>
                 <div class="card">
                     <h3>《良醫健康網》專訪</h3>
@@ -138,54 +142,7 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
         </div>
     </section>
 
-    <section id="services">
-        <h2>主治項目</h2>
-        
-        <div class="service-categories">
-            <div class="category-item">
-                <h3>頭頸</h3>
-                <p>顳顎關節障礙症、顏面神經麻痺、落枕、肩頸痠痛、甩鞭症候群</p>
-            </div>
-            <div class="category-item">
-                <h3>上肢</h3>
-                <p>肩夾擠症候群、五十肩、旋轉肌拉傷/斷裂術後、闊背肌症候群、網球肘、高爾夫球肘、媽媽手、腕垂症、腕/肘隧道症候群、腱鞘囊腫、板機指</p>
-            </div>
-            <div class="category-item">
-                <h3>下肢</h3>
-                <p>梨狀肌症候群、鵝掌足滑囊炎、髂脛束摩擦症候群（跑者膝）、跳躍膝、垂足、扁平足、貝氏囊腫、髕股外翻／軟化症、足底筋膜炎、前後十字韌帶術前／後、莫頓氏神經瘤、人工膝／髖關節術後、腸薦關節韌帶扭傷、拇趾外翻</p>
-            </div>
-            <div class="category-item">
-                <h3>脊椎</h3>
-                <p>僵直性脊椎炎、脊椎側彎、頸椎腰椎椎間盤突出、脊椎壓迫性骨折術後、骨刺、骨質疏鬆症、坐骨神經痛</p>
-            </div>
-            <div class="category-item">
-                <h3>全身性 / 其他</h3>
-                <p>肌筋膜疼痛症候群、關節過動症候群、肌少症、軟組織受傷（肌肉扭拉挫傷、肌腱受傷／斷裂、韌帶損傷等）、運動傷害、退化性關節炎、類風濕性關節炎、關節攣縮、腦中風及神經復健、帕金森氏症、骨外科術後疼痛</p>
-            </div>
-        </div>
-
-        <div class="specialty-section">
-            <h2>特別專長</h2>
-            <div class="service-cards-container">
-                <div class="card">
-                    <h3>針極肌肉內電刺激 (NEIMS)</h3>
-                    <p>精準治療深層痛點。</p>
-                </div>
-                <div class="card">
-                    <h3>直線偏光治療儀 (Superlizer)</h3>
-                    <p>緩解疼痛、促進組織修復。</p>
-                </div>
-                <div class="card">
-                    <h3>關節玻尿酸注射</h3>
-                    <p>潤滑關節，緩解退化性關節炎不適。</p>
-                </div>
-                <div class="card">
-                    <h3>葡萄糖水增生注射</h3>
-                    <p>刺激軟組織修復，強化韌帶與肌腱。</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <Services />
 
     <section id="patient-info"> <h2>就診資訊</h2>
 
