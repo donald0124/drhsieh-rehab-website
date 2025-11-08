@@ -2,206 +2,115 @@
 // 1. 匯入我們剛建立的版型
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// 2. 定義這個頁面的 SEO 資訊
+// 2. 定義這個頁面的 SEO 資訊 (來自您的檔案)
 const pageTitle = "謝明福復健科診所 | 新北三峽 (02)2671-8910";
 const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。專精治療肌筋膜疼痛症候群、運動傷害等復健治療。";
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
 
-        <section id="hero">
-            <h1>謝明福復健科診所</h1>
-            <p>專業、親切的疼痛治療與復健夥伴<br>新北市三峽區中華路22號2樓 (02) 2671-8910</p>
-            <a href="#schedule" class="cta-button">查看門診時間</a>
-            </section>
+    <section id="hero">
+        <h1>謝明福復健科診所</h1>
+        <p>專業、親切的疼痛治療與復健夥伴<br>新北市三峽區中華路22號2樓 (02) 2671-8910</p>
+        <a href="#patient-info" class="cta-button">查看就診資訊</a> </section>
 
-        <section id="services">
-            <h2>主治項目</h2>
-            <div class="service-categories"> <div class="category-item">
-                    <h3>頭頸</h3>
-                    <p>顳顎關節障礙症、顏面神經麻痺、落枕、肩頸痠痛、甩鞭症候群</p>
-                </div>
-                <div class="category-item">
-                    <h3>上肢</h3>
-                    <p>肩夾擠症候群、五十肩、旋轉肌拉傷/斷裂術後、闊背肌症候群、網球肘、高爾夫球肘、媽媽手、腕垂症、腕/肘隧道症候群、腱鞘囊腫、板機指</p>
-                </div>
-                <div class="category-item">
-                    <h3>下肢</h3>
-                    <p>梨狀肌症候群、鵝掌足滑囊炎、髂脛束摩擦症候群（跑者膝）、跳躍膝、垂足、扁平足、貝氏囊腫、髕股外翻／軟化症、足底筋膜炎、前後十字韌帶術前／後、莫頓氏神經瘤、人工膝／髖關節術後、腸薦關節韌帶扭傷、拇趾外翻</p>
-                </div>
-                <div class="category-item">
-                    <h3>脊椎</h3>
-                    <p>僵直性脊椎炎、脊椎側彎、頸椎腰椎椎間盤突出、脊椎壓迫性骨折術後、骨刺、骨質疏鬆症、坐骨神經痛</p>
-                </div>
-                <div class="category-item">
-                    <h3>全身性 / 其他</h3>
-                    <p>肌筋膜疼痛症候群、關節過動症候群、肌少症、軟組織受傷（肌肉扭拉挫傷、肌腱受傷／斷裂、韌帶損傷等）、運動傷害、退化性關節炎、類風濕性關節炎、關節攣縮、腦中風及神經復健、帕金森氏症、骨外科術後疼痛</p>
-                </div>
-            </div>
-
-            <div class="specialty-section"> <h2>特別專長</h2>
-                <div class="service-cards-container">
-                    <div class="card">
-                        <h3>針極肌肉內電刺激 (NEIMS)</h3>
-                        <p>精準治療深層痛點。</p>
-                    </div>
-                    <div class="card">
-                        <h3>直線偏光治療儀 (Superlizer)</h3>
-                        <p>緩解疼痛、促進組織修復。</p>
-                    </div>
-                    <div class="card">
-                        <h3>關節玻尿酸注射</h3>
-                        <p>潤滑關節，緩解退化性關節炎不適。</p>
-                    </div>
-                    <div class="card">
-                        <h3>葡萄糖水增生注射</h3>
-                        <p>刺激軟組織修復，強化韌帶與肌腱。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="team">
-            <h2>醫師團隊</h2>
+    <section id="about-us">
+        <h2>關於我們</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            本診所於民國100年開幕，醫學中心等級的主治醫師及復健治療設備。歡迎三峽(橫溪、北大特區)、土城(永寧、頂埔)、鶯歌、樹林(柑園、山佳)、桃園八德、大溪等地有復健需求的居民前來就醫。
             
-            <div class="doctor-profile">
-                
-                <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片">
-                
-                
-                <div class="doctor-bio-text"> <h3>謝明福 院長</h3>
-                                      
-                    <h4>學歷</h4>
-                    <ul>
-                        <li>國防醫學院醫學士</li>
-                        <li>中國醫藥大學針灸學分班</li>
-                    </ul>
-                    
-                    <h4>核心經歷</h4>
-                    <ul>
-                        <li>台灣復健醫學會 專科醫師</li>
-                        <li>三軍總醫院復健科 住院/總/主治醫師</li>
-                        <li>台大、台北榮總復健醫學部 進修醫師</li>
-                        <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>
-                        <li>國防醫學院復健醫學系 臨床助理教授</li>
-                    </ul>
-                </div> </div> <div class="prose" style="max-width: 900px; margin: 2.5rem auto 0;">
+        <h3>診所設立目的：<strong>創造光明幸福的生活品質</strong></h3>
             
-                <h3 style="text-align: center; margin-bottom: 2rem;">院長詳細資歷</h3>
-
-                <h4>曾任</h4>
-                <ul>
-                    <li>國軍金門基層醫療醫官</li>
-                    <li>國軍金門花崗石(820)醫院外科住院醫師</li>
-                    <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
-                    <li>九二一大地震災區巡回醫療 - 古坑地區</li>
-                    <li>大台北地區各公家機關特約主治醫師 (國防部、健保聯合門診、雨聲、國安局、三總北門)</li>
-                    <li>國軍桃園總醫院兼任復健科主治醫師</li>
-                </ul>
-
-                <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
-                <p>
-                    現任三軍總醫院兼任復健科主治醫師。
-                </p>
-                <p>
-                    擁有十六年豐富臨床主治醫師經驗，專精於「針極肌肉內電刺激治療」軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
-                </p>
-                <ul>
-                    <li>2014 商業週刊網路票選百大良醫前五十名</li>
-                    <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="facility">
-            <h2>環境設備</h2>
-            <p>我們提供明亮、舒適的看診與復健空間</p>
-            
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    
-                    <div class="carousel-slide">
-                        <img src="/images/clinic-outside.jpg" alt="謝明福復健科診所 診所外觀">
-                        <p class="carousel-caption">(1) 診所外觀</p>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <img src="/images/clinic-counter.jpg" alt="謝明福復健科診所 掛號櫃台">
-                        <p class="carousel-caption">(2) 掛號櫃台</p>
-                    </div>
-                    
-                    <div class="carousel-slide">
-                        <img src="/images/clinic-rehab.jpg" alt="謝明福復健科診所 復健治療區">
-                        <p class="carousel-caption">(3) 復健治療區</p>
-                    </div>
-
-                    </div>
-            </div>
-        </section>
-
-        <section id="schedule">
-            <h2>門診與復健時間</h2>
-
-            <h3>門診時段</h3>
-            <div class="schedule-table-wrapper"> <table class="schedule-table schedule-table-complex"> <thead>
-                        <tr>
-                            <th>時段</th> <th>一</th> <th>二</th> <th>三</th> <th>四</th> <th>五</th> <th>六</th> <th>日</th> </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>上午<small>09:00-11:30</small></td> <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td rowspan="3" style="vertical-align: middle;">全日<br>休診</td>
-                        </tr>
-                        <tr>
-                            <td>下午<small>14:30-17:00</small></td> <td><strong>O</strong></td>
-                            <td>
-                                <a href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4" target="_blank" rel="noopener noreferrer">
-                                    三總<br>汀州
-                                </a>
-                            </td>
-                            <td>休診</td>
-                            <td>休診</td>
-                            <td><strong>O</strong></td>
-                            <td rowspan="2" style="vertical-align: middle;">下午<br>晚上<br>休診</td>
-                        </tr>
-                        <tr>
-                            <td>晚上<small>18:30-21:00</small></td> <td><strong>O</strong></td>
-                            <td><strong>O</strong><small>(19:00 開始)</small></td> <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                            <td><strong>O</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <h3 style="margin-top: 2.5rem;">復健治療時間</h3>
-            <div class="schedule-table-simple-wrapper"> <table class="schedule-table"> <thead>
-                        <tr>
-                            <th>時段</th>
-                            <th>週一至週五</th>
-                            <th>週六</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>全日</td> <td>08:30 – 21:30<br>(中午 12:30–14:00 休息)</td>
-                            <td>08:30 – 12:30</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            本診所的目標是以高品質的復健治療，讓受治療者能夠花最少的成本費用與承受極少副作用，使新傷、舊傷及更多難治之痛盡快解除，並盡快恢復生活機能而得以正常生活、有效率地工作、安穩入睡、享受高品質的生活。
+            </p>
+        </p>
         
-        <section id="info">
-            <h2>衛教資訊 & 媒體報導</h2>
-            <p>歡迎加入官方 LINE 諮詢，或閱讀院長專訪</p>
+        <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 2rem;">環境設備</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
+            我們提供明亮、舒適的看診與復健治療空間</p>
+        
+        <div class="carousel-container">
+            <div class="carousel-track">
+                
+                <div class="carousel-slide">
+                    <img src="/images/clinic-outside.jpg" alt="謝明福復健科診所 診所外觀">
+                    <p class="carousel-caption">(1) 診所外觀</p>
+                </div>
+                
+                <div class="carousel-slide">
+                    <img src="/images/clinic-counter.jpg" alt="謝明福復健科診所 掛號櫃台">
+                    <p class="carousel-caption">(2) 掛號櫃台</p>
+                </div>
+                
+                <div class="carousel-slide">
+                    <img src="/images/clinic-rehab.jpg" alt="謝明福復健科診所 復健治療區">
+                    <p class="carousel-caption">(3) 復健治療區</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <h2>醫師介紹</h2>
+        
+        <div class="doctor-profile">
             
-            <div class="service-cards-container"> <div class="card">
+            <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片">
+            
+            <div class="doctor-bio-text">
+                <h3>謝明福 院長</h3>
+                                  
+                <h4>學歷</h4>
+                <ul>
+                    <li>國防醫學院醫學士</li>
+                    <li>中國醫藥大學針灸學分班</li>
+                </ul>
+                
+                <h4>核心經歷</h4>
+                <ul>
+                    <li>台灣復健醫學會 專科醫師</li>
+                    <li>三軍總醫院復健科 住院/總/主治醫師</li>
+                    <li>台大、台北榮總復健醫學部 進修醫師</li>
+                    <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>
+                    <li>國防醫學院復健醫學系 臨床助理教授</li>
+                </ul>
+            </div>
+        </div>
+        <div class="prose" style="max-width: 900px; margin: 2.5rem auto 0;">
+        
+            <h3 style="text-align: center; margin-bottom: 2rem;">院長詳細資歷</h3>
+
+            <h4>曾任</h4>
+            <ul>
+                <li>國軍金門基層醫療醫官</li>
+                <li>國軍金門花崗石(820)醫院外科住院醫師</li>
+                <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
+                <li>九二一大地震災區巡回醫療 - 古坑地區</li>
+                <li>大台北地區各公家機關特約主治醫師 (國防部、健保聯合門診、雨聲、國安局、三總北門)</li>
+                <li>國軍桃園總醫院兼任復健科主治醫師</li>
+            </ul>
+
+            <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
+            <p>
+                現任三軍總醫院兼任復健科主治醫師。
+            </p>
+            <p>
+                擁有十六年豐富臨床主治醫師經驗，專精於「針極肌肉內電刺激治療」軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
+            </p>
+            <ul>
+                <li>2014 商業週刊網路票選百大良醫前五十名</li>
+                <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
+            </ul>
+        </div>
+
+        <div class="specialty-section" style="margin-top: 4rem;">
+            <h3 style="text-align: center; font-size: 1.8rem;">媒體專業採訪</h3>
+            <p style="text-align: center; margin-top: -1rem; margin-bottom: 2rem;">歡迎加入官方 LINE 諮詢，或閱讀院長專訪</p>
+            
+            <div class="service-cards-container">
+                <div class="card">
                     <h3>LINE AI 智能客服</h3>
                     <p>快速了解診所資訊或詢問相關問題。
                        <br><a href="https://reurl.cc/VY92XZ" target="_blank">點此加入</a>
@@ -226,48 +135,171 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                     </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
+    <section id="services">
+        <h2>主治項目</h2>
+        
+        <div class="service-categories">
+            <div class="category-item">
+                <h3>頭頸</h3>
+                <p>顳顎關節障礙症、顏面神經麻痺、落枕、肩頸痠痛、甩鞭症候群</p>
+            </div>
+            <div class="category-item">
+                <h3>上肢</h3>
+                <p>肩夾擠症候群、五十肩、旋轉肌拉傷/斷裂術後、闊背肌症候群、網球肘、高爾夫球肘、媽媽手、腕垂症、腕/肘隧道症候群、腱鞘囊腫、板機指</p>
+            </div>
+            <div class="category-item">
+                <h3>下肢</h3>
+                <p>梨狀肌症候群、鵝掌足滑囊炎、髂脛束摩擦症候群（跑者膝）、跳躍膝、垂足、扁平足、貝氏囊腫、髕股外翻／軟化症、足底筋膜炎、前後十字韌帶術前／後、莫頓氏神經瘤、人工膝／髖關節術後、腸薦關節韌帶扭傷、拇趾外翻</p>
+            </div>
+            <div class="category-item">
+                <h3>脊椎</h3>
+                <p>僵直性脊椎炎、脊椎側彎、頸椎腰椎椎間盤突出、脊椎壓迫性骨折術後、骨刺、骨質疏鬆症、坐骨神經痛</p>
+            </div>
+            <div class="category-item">
+                <h3>全身性 / 其他</h3>
+                <p>肌筋膜疼痛症候群、關節過動症候群、肌少症、軟組織受傷（肌肉扭拉挫傷、肌腱受傷／斷裂、韌帶損傷等）、運動傷害、退化性關節炎、類風濕性關節炎、關節攣縮、腦中風及神經復健、帕金森氏症、骨外科術後疼痛</p>
+            </div>
+        </div>
 
-        <section id="contact">
-            <h2>聯絡我們 & 交通資訊</h2>
-            
-            <div class="contact-grid"> <div class="contact-info">
-                    <h3>預約 & 掛號</h3>
-                    <p><strong>電話：</strong> <a href="tel:0226718910">(02) 2671-8910</a></p>
-                    <p class="note">
-                        <strong>掛號方式：</strong> 僅提供<strong>現場掛號</strong>。
-                        <br>
-                        (初診請於門診結束前 20 分鐘報到)
-                    </p>
-                    <p class="note" style="margin-top:1rem;">
-                        <strong>針極肌肉內電刺激複診治療預約：</strong> 請來電 (02)2671-8910 預約。
-                        <br>
-                        (需提供姓名、民國生日、希望的門診時段)
-                    </p>
-
-                    <h3 style="margin-top: 2rem;">診所位置</h3>
-                    <p>
-                        <strong>地址：</strong> 
-                        <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" rel="noopener noreferrer">
-                            新北市三峽區中華路22號2樓
-                        </a>
-                    </p>
-                    <ul>
-                        <li>三峽黃昏市場附近、小北百貨隔壁</li>
-                        <li>龍門社區大樓附設電梯，可搭至2樓</li>
-                    </ul>
-
-                    <h3 style="margin-top: 2rem;">交通方式</h3>
-                    <ul>
-                        <li><strong>公車 (910)：</strong> 「中華路」站 (可經捷運新埔、板橋、府中站轉乘)</li>
-                        <li><strong>公車 (705、706)：</strong> 「礁溪里」站 (可經捷運頂埔站轉乘)</li>
-                        <li>附近有收費停車場</li>
-                    </ul>
+        <div class="specialty-section">
+            <h2>特別專長</h2>
+            <div class="service-cards-container">
+                <div class="card">
+                    <h3>針極肌肉內電刺激 (NEIMS)</h3>
+                    <p>精準治療深層痛點。</p>
                 </div>
-                
-                <div class="map-container">                   
-                    <iframe 
+                <div class="card">
+                    <h3>直線偏光治療儀 (Superlizer)</h3>
+                    <p>緩解疼痛、促進組織修復。</p>
+                </div>
+                <div class="card">
+                    <h3>關節玻尿酸注射</h3>
+                    <p>潤滑關節，緩解退化性關節炎不適。</p>
+                </div>
+                <div class="card">
+                    <h3>葡萄糖水增生注射</h3>
+                    <p>刺激軟組織修復，強化韌帶與肌腱。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="patient-info"> <h2>就診資訊</h2>
+
+        <div class="info-banner" style="background-color: var(--color-primary-dark); color: white; padding: 1.5rem 2rem; border-radius: 8px; text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <h3 style="color: white; margin: 0; font-size: 1.5rem;">
+                本診所一律採現場掛號，無需預約
+            </h3>
+            <p style="color: white; opacity: 0.9; margin: 0.5rem 0 0; font-size: 1.1rem;">
+                (初診請於門診結束前 20 分鐘報到)
+            </p>
+        </div>
+
+        <h3>門診時段</h3>
+        <div class="schedule-table-wrapper">
+            <table class="schedule-table schedule-table-complex">
+                <thead>
+                    <tr>
+                        <th>時段</th> <th>一</th> <th>二</th> <th>三</th> <th>四</th> <th>五</th> <th>六</th> <th>日</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>上午<small>09:00-11:30</small></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td rowspan="3" style="vertical-align: middle;">全日<br>休診</td>
+                    </tr>
+                    <tr>
+                        <td>下午<small>14:30-17:00</small></td>
+                        <td><strong>O</strong></td>
+                        <td>
+                            <a href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4" target="_blank" rel="noopener noreferrer">
+                                三總<br>汀州
+                            </a>
+                        </td>
+                        <td>休診</td>
+                        <td>休診</td>
+                        <td><strong>O</strong></td>
+                        <td rowspan="2" style="vertical-align: middle;">下午<br>晚上<br>休診</td>
+                    </tr>
+                    <tr>
+                        <td>晚上<small>18:30-21:00</small></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong><small>(19:00 開始)</small></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                        <td><strong>O</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <h3 style="margin-top: 2.5rem;">復健治療時間</h3>
+        <div class="schedule-table-simple-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>時段</th>
+                        <th>週一至週五</th>
+                        <th>週六</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>全日</td>
+                        <td>08:30 – 21:30<br><small>(中午 12:30–14:00 休息)</small></td>
+                        <td>08:30 – 12:30</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="margin-top: 4rem;">交通與聯絡</h3>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>預約 & 掛號</h3>
+                <p><strong>電話：</strong> <a href="tel:0226718910">(02) 2671-8910</a></p>
+                <p class="note">
+                    <strong>掛號方式：</strong> 僅提供<strong>現場掛號</strong>。
+                    <br>
+                    (初診請於門診結束前 20 分鐘報到)
+                </p>
+                <p class="note" style="margin-top:1rem;">
+                    <strong>針極肌肉內電刺激複診治療預約：</strong> 請來電 (02)2671-8910 預約。
+                    <br>
+                    (需提供姓名、民國生日、希望的門診時段)
+                </p>
+
+                <h3 style="margin-top: 2rem;">診所位置</h3>
+                <p>
+                    <strong>地址：</strong> 
+                    <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" rel="noopener noreferrer">
+                        新北市三峽區中華路22號2樓
+                    </a>
+                </p>
+                <ul>
+                    <li>三峽黃昏市場附近、小北百貨隔壁</li>
+                    <li>龍門社區大樓附設電梯，可搭至2樓</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">交通方式</h3>
+                <ul>
+                    <li><strong>公車 (910)：</strong> 「中華路」站 (可經捷運新埔、板橋、府中站轉乘)</li>
+                    <li><strong>公車 (705、706)：</strong> 「礁溪里」站 (可經捷運頂埔站轉乘)</li>
+                    <li>附近有收費停車場</li>
+                </ul>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.9766755253318!2d121.37238134060719!3d24.932864488726022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bed818951bb%3A0xa0fcac84eec260d7!2z6Kyd5piO56aP5b6p5YGl56eR6Ki65omA!5e0!3m2!1szh-TW!2stw!4v1762579348594!5m2!1szh-TW!2stw"
                         width="100%" 
                         height="450" 
@@ -275,8 +307,15 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-
+                </iframe>
             </div>
-        </section>
+        </div>
+        
+        <div class="qna-section" style="margin-top: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            <h3>常見 Q&A</h3>
+            <p>(Q&A 內容預留區...)</p>
+        </div>
+        
+    </section>
+
+</BaseLayout>

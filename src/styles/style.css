@@ -1,5 +1,33 @@
 /*
  * ================================
+ * (新) 載入 Tailwind 基礎樣式
+ * ================================
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * ================================
+ * style.css
+ * 網站: 謝明福復健科診所 (drhsieh-rehab.com)
+ * ================================
+ */
+
+/*
+ * ================================
+ * 1. :root (全站變數) & 全局設定
+ * ================================
+ */
+:root {
+    /* (您所有的變數... --color-primary...) */
+}
+
+/* (您所有的 .card, #hero, .doctor-profile ... 等樣式) */
+
+
+/*
+ * ================================
  * style.css
  * 網站: 謝明福復健科診所 (drhsieh-rehab.com)
  * 原則: Mobile-First, Clean, Professional
@@ -255,7 +283,8 @@ nav ul li a:hover {
 
 .cta-button:hover {
     background-color: var(--color-primary-dark);
-    text-decoration: none;
+    color: var(--color-white);
+    text-decoration: none;    
     transform: translateY(-2px); /* 輕微上浮效果 */
 }
 
@@ -480,7 +509,7 @@ nav ul li a:hover {
 
 .schedule-table {
     width: 100%;
-    min-width: 600px; /* 確保表格內容不會擠壓得太難看 */
+    min-width: 450px; /* 確保表格內容不會擠壓得太難看 */
     border-collapse: collapse;
     margin-bottom: 1.5rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -491,12 +520,13 @@ nav ul li a:hover {
     border: 1px solid var(--color-border);
     padding: 0.8rem;
     text-align: center;
-    white-space: nowrap; /* 確保內容不換行 */
+    
 }
 
 .schedule-table th {
     background-color: var(--color-primary-light);
     color: var(--color-primary-dark);
+    white-space: nowrap; /* 確保內容不換行 */
 }
 
 .schedule-table tbody tr:nth-of-type(even) {
@@ -522,9 +552,29 @@ nav ul li a:hover {
 /* (1. 讓 "門診時段" 複雜表格更緊湊) */
 .schedule-table-complex th,
 .schedule-table-complex td {
-    padding: 0.6rem 0.4rem; /* (縮小左右 padding) */
+    padding: 0.5rem 0.3rem; /* (縮小左右 padding) */
     white-space: nowrap; /* (標題"一""二""三" 保持不換行) */
 }
+
+
+/*
+ * ▼▼▼ (關鍵：新增) ▼▼▼
+ * * 1. 強制表格使用固定寬度演算法
+ * 這會讓「一～日」的 7 欄寬度平均分配
+ */
+.schedule-table-complex {
+    table-layout: fixed;
+}
+/*
+ * 2. 指定第一欄 (時段) 的寬度
+ * 我們給它 30%，剩下 7 欄會自動均分 70%
+ */
+.schedule-table-complex th:first-child,
+.schedule-table-complex td:first-child {
+    width: 20%; /* (您可以調整 25% ~ 35%) */
+}
+
+
 
 /* (2. 讓 "復健時間" 簡單表格 100% 寬) */
 .schedule-table-simple-wrapper .schedule-table {
@@ -544,17 +594,15 @@ nav ul li a:hover {
     white-space: normal; /* (允許 "19:00 開始" 換行) */
 }
 
-/* (4. 讓第一欄 (時段) 的文字靠左，並允許換行) */
-.schedule-table td:first-child {
-    text-align: left;
-    padding-left: 0.8rem;
+/* (4. 讓第一欄 (時段) 的，並允許換行) */
+.schedule-table td:first-child {    
     white-space: normal; /* (允許 "上午" 和 "時間" 換行) */
-    vertical-align: top; /* (讓 "上午" 和 "O" 頂部對齊) */
+    vertical-align: middle; /* (讓 "上午" 和 "O" 對齊) */
 }
 
 /* (5. "O" 儲存格的樣式) */
 .schedule-table td strong {
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--color-primary);
 }
 
@@ -734,4 +782,113 @@ footer p {
     .service-cards-container {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+/*
+ * ================================
+ * (4.1) 導覽列 CTA 按鈕 (Header & Nav) - (新)
+ * ================================
+ */
+nav ul li a.nav-cta-button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav ul li a.nav-cta-button:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+
+
+/*
+ * ================================
+ * (5.2) 主治項目 (Services) - Accordion 內部樣式 (新)
+ * ================================
+ */
+
+/* 1. 治療項目標籤 */
+.treatment-tag {
+    background-color: #DBEAFE; /* (Tailwind: bg-blue-100) */
+    color: #1E40AF; /* (Tailwind: text-blue-800) */
+    font-size: 0.875rem; /* (Tailwind: text-sm) */
+    font-weight: 500; /* (Tailwind: font-medium) */
+    padding: 0.25rem 0.75rem; /* (Tailwind: px-3 py-1) */
+    border-radius: 9999px; /* (Tailwind: rounded-full) */
+    display: inline-block; /* 確保標籤正確顯示 */
+    margin-bottom: 0.5rem; /* (Tailwind: mb-2) */
+}
+
+/* 2. 症狀列表 (打勾) */
+.symptom-list {
+    list-style: none; /* 移除預設的圓點 */
+    padding-left: 0;
+}
+.symptom-list li {
+    position: relative;
+    padding-left: 2rem; /* 留出空間給 ✓ */
+    margin-bottom: 0.75rem;
+    color: #4B5563; /* (Tailwind: text-gray-700) */
+    line-height: 1.6;
+}
+.symptom-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #2563EB; /* (Tailwind: text-blue-600) */
+    font-weight: 700; /* (Tailwind: font-bold) */
+    font-size: 1.25rem;
+}
+
+/* 3. 治療SOP步驟 */
+.content-section h4 {
+    font-size: 1.25rem; /* (Tailwind: text-xl) */
+    font-weight: 600; /* (Tailwind: font-semibold) */
+    color: #1F2937; /* (Tailwind: text-gray-800) */
+    margin-bottom: 1rem; /* (Tailwind: mb-4) */
+}
+.sop-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem; /* (Tailwind: gap-4) */
+    margin-bottom: 1rem; /* (Tailwind: mb-4) */
+}
+.step-number {
+    flex-shrink: 0;
+    width: 2rem; /* (Tailwind: w-8) */
+    height: 2rem; /* (Tailwind: h-8) */
+    background-color: #1D4ED8; /* (Tailwind: bg-blue-700) */
+    color: white;
+    font-weight: 700; /* (Tailwind: font-bold) */
+    border-radius: 9999px; /* (Tailwind: rounded-full) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+}
+.step-content strong {
+    font-size: 1.125rem; /* (Tailwind: text-lg) */
+    font-weight: 600; /* (Tailwind: font-semibold) */
+    color: #111827; /* (Tailwind: text-gray-900) */
+    display: block; /* 讓 strong 獨佔一行 */
+}
+.step-content p {
+    color: #4B5563; /* (Tailwind: text-gray-600) */
+    margin-top: 0.25rem;
+}
+
+/* 4. 旋轉SVG圖標 (Icon) */
+.accordion-header[aria-expanded="true"] .accordion-icon {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+.accordion-header[aria-expanded="false"] .accordion-icon {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
 }

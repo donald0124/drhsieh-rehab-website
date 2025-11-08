@@ -17,8 +17,10 @@ const { title, description } = Astro.props;
 
     <title>{title}</title>
     <meta name="description" content={description}>
-
-    </head>
+    
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    
+</head>
 <body>
 
     <header>
@@ -27,12 +29,12 @@ const { title, description } = Astro.props;
                 <img src="/logo-long.svg" alt="謝明福復健科診所 Logo">
             </a>
             <ul>
+                <li><a href="/#about-us">關於我們</a></li>
+                <li><a href="/#team">醫師介紹</a></li>
                 <li><a href="/#services">主治項目</a></li>
-                <li><a href="/#team">醫師團隊</a></li>
-                <li><a href="/#facility">環境設備</a></li>
-                <li><a href="/#schedule">門診及復健時間</a></li>
-                <li><a href="/blog">專欄文章</a></li> 
-                <li><a href="/#contact">聯絡我們</a></li>
+                <li><a href="/blog">衛教專欄</a></li>
+                
+                <li><a href="/#patient-info" class="nav-cta-button">就診資訊</a></li>
             </ul>
         </nav>
     </header>
