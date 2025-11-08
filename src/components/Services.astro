@@ -1,11 +1,9 @@
 ---
 // 此元件完全使用 HTML 原生 <details>/<summary> 實現互動，無需 JavaScript。
-// 內容已根據您的要求大幅精簡。
 import { getCollection } from 'astro:content';
 
 // 取得衛教專欄文章，用於「延伸閱讀」連結
 const blogPosts = await getCollection('blog');
-
 // 找到特定文章的 slug 以便建立連結
 const getPostSlug = (tag: string) => {
     // 優先找最新的文章 (根據 pubDate 排序)
@@ -34,12 +32,12 @@ const neimsSlug = getPostSlug('NEIMS');
         <div id="accordion-container" class="space-y-4">
 
             <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex justify-between items-center w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none">
+                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
                     <h3 class="text-xl md:text-2xl font-semibold text-blue-800">頭頸</h3>
                     <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </summary>
                 
-                <div class="accordion-content p-6">
+                <div class="accordion-content p-6 bg-white">
                     
                     <div class="content-section mb-6">
                         <div class="flex flex-wrap gap-2">
@@ -60,17 +58,16 @@ const neimsSlug = getPostSlug('NEIMS');
                         </ul>
                     </div>
 
-                    </div>
+                </div>
             </details>
 
             <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex justify-between items-center w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none">
+                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
                     <h3 class="text-xl md:text-2xl font-semibold text-blue-800">上肢</h3>
                     <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </summary>
                 
-                <div class="accordion-content p-6">
-                    
+                <div class="accordion-content p-6 bg-white">
                     <div class="content-section mb-6">
                         <div class="flex flex-wrap gap-2">
                             <span class="treatment-tag">五十肩 (冰凍肩)</span>
@@ -110,13 +107,12 @@ const neimsSlug = getPostSlug('NEIMS');
             </details>
 
             <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex justify-between items-center w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none">
+                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
                     <h3 class="text-xl md:text-2xl font-semibold text-blue-800">下肢</h3>
                     <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </summary>
                 
-                <div class="accordion-content p-6">
-                    
+                <div class="accordion-content p-6 bg-white">
                     <div class="content-section mb-6">
                         <div class="flex flex-wrap gap-2">
                             <span class="treatment-tag">梨狀肌症候群</span>
@@ -152,13 +148,12 @@ const neimsSlug = getPostSlug('NEIMS');
             </details>
 
             <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex justify-between items-center w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none">
+                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
                     <h3 class="text-xl md:text-2xl font-semibold text-blue-800">脊椎</h3>
                     <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </summary>
                 
-                <div class="accordion-content p-6">
-                    
+                <div class="accordion-content p-6 bg-white">
                     <div class="content-section mb-6">
                         <div class="flex flex-wrap gap-2">
                             <span class="treatment-tag">椎間盤突出</span>
@@ -179,17 +174,16 @@ const neimsSlug = getPostSlug('NEIMS');
                         </ul>
                     </div>
 
-                    </div>
+                </div>
             </details>
 
             <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex justify-between items-center w-full p-6 text-left hover:bg-gray-100 transition-colors duration-200 cursor-pointer list-none">
+                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
                     <h3 class="text-xl md:text-2xl font-semibold text-blue-800">全身性 / 其他</h3>
                     <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </summary>
                 
-                <div class="accordion-content p-6">
-                    
+                <div class="accordion-content p-6 bg-white">
                     <div class="content-section mb-6">
                         <div class="flex flex-wrap gap-2">
                             <span class="treatment-tag">肌筋膜疼痛</span>
@@ -224,25 +218,26 @@ const neimsSlug = getPostSlug('NEIMS');
 
         </div> 
         
-        <div class="mt-12 text-center max-w-3xl mx-auto">
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">我們的治療原則：精準與整合</h3>
-            <p class="text-lg text-gray-600 mb-6">
+        <div class="mt-12 md:mt-24 max-w-5xl mx-auto">
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">我們的治療原則：精準與整合</h3>
+            <p class="text-lg text-gray-600 mb-8">
                 無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「**精準診斷、整合治療**」的核心原則，為您制定最有效率的康復方案：
             </p>
-            <ul class="text-left max-w-xl mx-auto space-y-3 text-gray-700">
-                <li class="flex items-start gap-2">
+            
+            <ul class="grid md:grid-cols-3 gap-6 text-left space-y-0 text-gray-700">
+                <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
                     <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
                     <div>
                         <strong class="text-gray-900">精準診斷</strong>: 醫師將透過專業理學檢查，找到疼痛的真正根源 (肌腱、韌帶、神經或關節)。
                     </div>
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
                     <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
                     <div>
                         <strong class="text-gray-900">整合性治療</strong>: 結合徒手治療、儀器治療 (如高能量雷射) 及院長特長 (如增生注射/NEIMS) 進行修復。
                     </div>
                 </li>
-                <li class="flex items-start gap-2">
+                <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
                     <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
                     <div>
                         <strong class="text-gray-900">客製化運動</strong>: 指導正確的伸展與肌力訓練，強化核心穩定度，預防復發。
@@ -250,6 +245,7 @@ const neimsSlug = getPostSlug('NEIMS');
                 </li>
             </ul>
         </div>
+
         <div class="specialty-section mt-16 md:mt-24">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">特別專長</h2>
@@ -291,8 +287,8 @@ const neimsSlug = getPostSlug('NEIMS');
     /* 1. 初始狀態: 箭頭朝下 */
     .accordion-icon {
         /* 新增純 CSS 尺寸限制 */
-        width: 1.5rem;   /* 24px */
-        height: 1.5rem;  /* 24px */
+        width: 1.5rem; /* 24px */
+        height: 1.5rem; /* 24px */
         flex-shrink: 0;  
         
         transform: rotate(0deg);
