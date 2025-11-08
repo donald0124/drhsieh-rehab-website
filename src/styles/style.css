@@ -166,6 +166,13 @@ nav .logo {
     margin-bottom: 0.5rem;
 }
 
+/* ▼▼▼ (請加入這段新的 CSS) ▼▼▼ */
+nav .logo img {
+    max-height: 45px; /* (您可以調整這個數字，例如 40px 或 50px) */
+    width: auto;      /* 寬度會自動等比例縮放 */
+    display: block;   /* 移除圖片底部的謎之空白 */
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -193,24 +200,37 @@ nav ul li a:hover {
  * ================================
  */
 
-/* (1) 英雄區塊 (Hero) */
+/* (1) 英雄區塊 (Hero) 
+  ▼▼▼ (以下為更新後的程式碼) ▼▼▼
+*/
 #hero {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    min-height: 50vh;
+    min-height: 60vh; /* (建議拉高一點) */
     padding: 3rem 1rem;
-    background-color: var(--color-primary-light); /* 淺藍色背景 */
-    /* (進階) 如果要放背景圖：
-      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/images/clinic-hero.jpg') no-repeat center center/cover;
-      color: var(--color-white);
+    
+    /* (關鍵) 
+      1. linear-gradient 是加上 40% 的黑色漸層 (讓白字更易讀)
+      2. url(...) 是您在 public/images/ 的圖片路徑
+      3. center center/cover 讓圖片置中且填滿 (不變形)
     */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('/images/hero-cover.jpg') no-repeat center center/cover;
+    
+    /* (可選) 讓背景圖固定不動，產生視差滾動效果 */
+    background-attachment: fixed; 
+    
+    /* (關鍵) 讓區塊內的 "預設" 文字 (如 P) 變成白色 */
+    color: var(--color-white);
 }
 
 #hero h1 {
     font-size: 2.5rem;
+    /* (關鍵) 覆蓋 h1 的全域深色設定 */
+    color: var(--color-white);
 }
 
 #hero p {
@@ -218,6 +238,8 @@ nav ul li a:hover {
     max-width: 600px;
     opacity: 0.9;
     margin-bottom: 1.5rem;
+    /* (關鍵) 確保 p 文字也是白色的 */
+    color: var(--color-white);
 }
 
 .cta-button {
@@ -371,16 +393,82 @@ nav ul li a:hover {
     padding: 0;
 }
 
-/* (4) 環境設備 (Facility) */
-.carousel-placeholder {
-    background: #f0f0f0;
-    border: 2px dashed #ccc;
-    padding: 5rem 1rem;
-    text-align: center;
-    color: #777;
+/*
+ * ================================
+ * (4) 環境設備 (Facility) - 輪播樣式
+ * ================================
+ */
+
+/* --- NEW --- */
+/* (取代舊的 .carousel-placeholder) */
+.carousel-container {
+    max-width: 900px; /* 限制輪播區的最大寬度 */
+    margin: 2rem auto 0;
+    overflow: hidden; /* 隱藏 track 的滾動條外框 */
     border-radius: 8px;
-    max-width: 900px;
-    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-border);
+}
+
+/* --- NEW --- */
+/* (滾動軌道) */
+.carousel-track {
+    display: flex;
+    overflow-x: auto; /* 關鍵：允許水平滾動 (用手指滑動) */
+    
+    /* 關鍵：CSS 滾動對齊
+      這會讓您滑動時，自動 "吸附" 到下一張照片的中心
+    */
+    scroll-snap-type: x mandatory; 
+    
+    /* (讓 iOS 上的滑動更流暢) */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* (隱藏醜醜的滾動條) */
+    scrollbar-width: none; /* (for Firefox) */
+    -ms-overflow-style: none;  /* (for IE/Edge) */
+}
+
+/* --- NEW --- */
+/* (隱藏醜醜的滾動條 for Chrome/Safari) */
+.carousel-track::-webkit-scrollbar {
+    display: none; 
+}
+
+/* --- NEW --- */
+/* (單張投影片) */
+.carousel-slide {
+    flex: 0 0 100%; /* 關鍵：每張投影片都佔滿 100% 容器寬度 */
+    scroll-snap-align: center; /* 關鍵：將投影片的 "中心" 對齊容器 */
+    position: relative; /* 為了讓下方的文字能疊加上來 */
+}
+
+/* --- NEW --- */
+/* (輪播圖內的圖片) */
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block; /* 移除圖片底部的 4px 謎之空白 */
+    
+    /* ▼▼▼ (關鍵) 這兩行解決了您的「比例」問題 ▼▼▼
+    */
+    aspect-ratio: 16 / 9; /* 強制 16:9 比例 */
+    object-fit: cover; /* 圖片會自動裁切以填滿，不會變形 */
+}
+
+/* --- NEW --- */
+/* (圖片上的文字標題) */
+.carousel-caption {
+    position: absolute; /* 疊在圖片上 */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0)); /* 黑色漸層底圖 */
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem 1rem; /* 文字的留白 */
+    margin: 0;
+    font-weight: 500;
 }
 
 /* (5) 門診時間 (Schedule) */
@@ -423,6 +511,63 @@ nav ul li a:hover {
 .schedule-table td[rowspan] { /* --- NEW --- */
     /* 讓跨欄的儲存格內容垂直置中 */
     vertical-align: middle; 
+}
+
+/*
+ * ================================
+ * (5.1) 門診時間 (Schedule) - 樣式優化
+ * ================================
+ */
+
+/* (1. 讓 "門診時段" 複雜表格更緊湊) */
+.schedule-table-complex th,
+.schedule-table-complex td {
+    padding: 0.6rem 0.4rem; /* (縮小左右 padding) */
+    white-space: nowrap; /* (標題"一""二""三" 保持不換行) */
+}
+
+/* (2. 讓 "復健時間" 簡單表格 100% 寬) */
+.schedule-table-simple-wrapper .schedule-table {
+    min-width: 0; /* (移除 min-width) */
+    width: 100%; /* (設為 100%) */
+}
+.schedule-table-simple-wrapper .schedule-table th {
+    width: 33.33%; /* (讓三欄平分) */
+}
+
+
+/* (3. 處理我們新增的 <small> 標籤) */
+.schedule-table td small {
+    font-size: 0.85em;
+    display: block; /* (關鍵：讓 small 換到下一行) */
+    margin-top: 0.25rem;
+    white-space: normal; /* (允許 "19:00 開始" 換行) */
+}
+
+/* (4. 讓第一欄 (時段) 的文字靠左，並允許換行) */
+.schedule-table td:first-child {
+    text-align: left;
+    padding-left: 0.8rem;
+    white-space: normal; /* (允許 "上午" 和 "時間" 換行) */
+    vertical-align: top; /* (讓 "上午" 和 "O" 頂部對齊) */
+}
+
+/* (5. "O" 儲存格的樣式) */
+.schedule-table td strong {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+}
+
+/* (6. "休診" 儲存格的樣式) */
+.schedule-table td:not(:first-child):not([rowspan]):not(:has(strong)):not(:has(a)) {
+    color: #000000;
+    font-size: 0.9em;
+}
+
+/* (7. 讓三總汀州連結換行) */
+.schedule-table td a {
+    white-space: normal;
+    text-decoration: underline;
 }
 
 

@@ -23,12 +23,16 @@ const { title, description } = Astro.props;
 
     <header>
         <nav>
-            <a href="/" class="logo">謝明福復健科診所</a> <ul>
+            <a href="/" class="logo">
+                <img src="/logo-long.svg" alt="謝明福復健科診所 Logo">
+            </a>
+            <ul>
                 <li><a href="/#services">主治項目</a></li>
                 <li><a href="/#team">醫師團隊</a></li>
                 <li><a href="/#facility">環境設備</a></li>
-                <li><a href="/#schedule">門診時間</a></li>
-                <li><a href="/blog">衛教資訊</a></li> <li><a href="/#contact">聯絡我們</a></li>
+                <li><a href="/#schedule">門診及復健時間</a></li>
+                <li><a href="/blog">專欄文章</a></li> 
+                <li><a href="/#contact">聯絡我們</a></li>
             </ul>
         </nav>
     </header>
@@ -36,12 +40,23 @@ const { title, description } = Astro.props;
     <main>
         <slot />
     </main>
-
+    
     <footer>
+    <div class="footer-container" style="max-width: 900px; margin: 0 auto; padding: 0 1rem; text-align: center;">
+
         <p>謝明福復健科診所</p>
         <p>電話: (02) 2671-8910 | 地址: 新北市三峽區中華路22號2樓</p>
-        <p>© 2025 drhsieh-rehab.com. All Rights Reserved.</p>
+        
+        <p style="margin-top: 1rem; opacity: 0.8;">
+            © 2025 drhsieh-rehab.com. All Rights Reserved. | 
+            <a href="/privacy" style="color: #f0f0f0; text-decoration: underline;">
+                聲明與隱私權政策
+            </a>
+        </p>
+
+    </div>
     </footer>
+
 
 </body>
 </html>

@@ -4,14 +4,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // 2. 定義這個頁面的 SEO 資訊
 const pageTitle = "謝明福復健科診所 | 新北三峽 (02)2671-8910";
-const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。專精坐骨神經痛、運動傷害、椎間D突出、五十肩等復健治療。";
+const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。專精治療肌筋膜疼痛症候群、運動傷害等復健治療。";
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
 
         <section id="hero">
             <h1>謝明福復健科診所</h1>
-            <p>專業、親切的疼痛治療與復健夥伴<br>新北市三峽區 (02) 2671-8910</p>
+            <p>專業、親切的疼痛治療與復健夥伴<br>新北市三峽區中華路22號2樓 (02) 2671-8910</p>
             <a href="#schedule" class="cta-button">查看門診時間</a>
             </section>
 
@@ -43,7 +43,7 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                 <div class="service-cards-container">
                     <div class="card">
                         <h3>針極肌肉內電刺激 (NEIMS)</h3>
-                        <p>暱稱台肌電，精準治療深層痛點。</p>
+                        <p>精準治療深層痛點。</p>
                     </div>
                     <div class="card">
                         <h3>直線偏光治療儀 (Superlizer)</h3>
@@ -63,20 +63,52 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
 
         <section id="team">
             <h2>醫師團隊</h2>
+            
             <div class="doctor-profile">
-                <h3>謝明福 院長</h3>
                 
-                <h4>學歷</h4>
+                <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片">
+                
+                
+                <div class="doctor-bio-text"> <h3>謝明福 院長</h3>
+                                      
+                    <h4>學歷</h4>
+                    <ul>
+                        <li>國防醫學院醫學士</li>
+                        <li>中國醫藥大學針灸學分班</li>
+                    </ul>
+                    
+                    <h4>核心經歷</h4>
+                    <ul>
+                        <li>台灣復健醫學會 專科醫師</li>
+                        <li>三軍總醫院復健科 住院/總/主治醫師</li>
+                        <li>台大、台北榮總復健醫學部 進修醫師</li>
+                        <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>
+                        <li>國防醫學院復健醫學系 臨床助理教授</li>
+                    </ul>
+                </div> </div> <div class="prose" style="max-width: 900px; margin: 2.5rem auto 0;">
+            
+                <h3 style="text-align: center; margin-bottom: 2rem;">院長詳細資歷</h3>
+
+                <h4>曾任</h4>
                 <ul>
-                    <li>國防醫學院醫學士</li>
+                    <li>國軍金門基層醫療醫官</li>
+                    <li>國軍金門花崗石(820)醫院外科住院醫師</li>
+                    <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
+                    <li>九二一大地震災區巡回醫療 - 古坑地區</li>
+                    <li>大台北地區各公家機關特約主治醫師 (國防部、健保聯合門診、雨聲、國安局、三總北門)</li>
+                    <li>國軍桃園總醫院兼任復健科主治醫師</li>
                 </ul>
-                
-                <h4>經歷</h4>
+
+                <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
+                <p>
+                    現任三軍總醫院兼任復健科主治醫師。
+                </p>
+                <p>
+                    擁有十六年豐富臨床主治醫師經驗，專精於「針極肌肉內電刺激治療」軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
+                </p>
                 <ul>
-                    <li>中華民國復健醫學專科醫師</li>
-                    <li>美國費城賓州大學醫院復健醫學部軟組織疼痛中心臨床研究員</li>
-                    <li>三軍總醫院復健部資深主治醫師</li>
-                    <li>國防醫學院醫學系臨床助理教授</li>
+                    <li>2014 商業週刊網路票選百大良醫前五十名</li>
+                    <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
                 </ul>
             </div>
         </section>
@@ -84,8 +116,26 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
         <section id="facility">
             <h2>環境設備</h2>
             <p>我們提供明亮、舒適的看診與復健空間</p>
-            <div class="carousel-placeholder">
-                <p>照片輪播區：(1) 診所外觀 (2) 掛號櫃台 (3) 候診區 (4) 復健治療區</p>
+            
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    
+                    <div class="carousel-slide">
+                        <img src="/images/clinic-outside.jpg" alt="謝明福復健科診所 診所外觀">
+                        <p class="carousel-caption">(1) 診所外觀</p>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="/images/clinic-counter.jpg" alt="謝明福復健科診所 掛號櫃台">
+                        <p class="carousel-caption">(2) 掛號櫃台</p>
+                    </div>
+                    
+                    <div class="carousel-slide">
+                        <img src="/images/clinic-rehab.jpg" alt="謝明福復健科診所 復健治療區">
+                        <p class="carousel-caption">(3) 復健治療區</p>
+                    </div>
+
+                    </div>
             </div>
         </section>
 
@@ -93,55 +143,44 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
             <h2>門診與復健時間</h2>
 
             <h3>門診時段</h3>
-            <div class="schedule-table-wrapper"> <table class="schedule-table">
-                    <thead>
+            <div class="schedule-table-wrapper"> <table class="schedule-table schedule-table-complex"> <thead>
                         <tr>
-                            <th>時段</th>
-                            <th>週一</th>
-                            <th>週二</th>
-                            <th>週三</th>
-                            <th>週四</th>
-                            <th>週五</th>
-                            <th>週六</th>
-                            <th>週日</th>
-                        </tr>
+                            <th>時段</th> <th>一</th> <th>二</th> <th>三</th> <th>四</th> <th>五</th> <th>六</th> <th>日</th> </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>上午 09:00-11:30</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td rowspan="3">全日<br>休診</td>
+                            <td>上午<small>09:00-11:30</small></td> <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td rowspan="3" style="vertical-align: middle;">全日<br>休診</td>
                         </tr>
                         <tr>
-                            <td>下午 14:30-17:00</td>
-                            <td>O</td>
+                            <td>下午<small>14:30-17:00</small></td> <td><strong>O</strong></td>
+                            <td>
+                                <a href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4" target="_blank" rel="noopener noreferrer">
+                                    三總<br>汀州
+                                </a>
+                            </td>
                             <td>休診</td>
                             <td>休診</td>
-                            <td>休診</td>
-                            <td>O</td>
-                            <td rowspan="2">下午<br>晚上<br>休診</td>
+                            <td><strong>O</strong></td>
+                            <td rowspan="2" style="vertical-align: middle;">下午<br>晚上<br>休診</td>
                         </tr>
                         <tr>
-                            <td>晚上 18:30-21:00</td>
-                            <td>O</td>
-                            <td>O (19:00 開始)</td>
-                            <td>O</td>
-                            <td>O</td>
-                            <td>O</td>
+                            <td>晚上<small>18:30-21:00</small></td> <td><strong>O</strong></td>
+                            <td><strong>O</strong><small>(19:00 開始)</small></td> <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
+                            <td><strong>O</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
             <h3 style="margin-top: 2.5rem;">復健治療時間</h3>
-            <div class="schedule-table-wrapper">
-                <table class="schedule-table">
-                    <thead>
+            <div class="schedule-table-simple-wrapper"> <table class="schedule-table"> <thead>
                         <tr>
                             <th>時段</th>
                             <th>週一至週五</th>
@@ -150,8 +189,7 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                     </thead>
                     <tbody>
                         <tr>
-                            <td>上午</td>
-                            <td rowspan="2">08:30 – 21:30<br>(中午 12:30–14:00 休息)</td>
+                            <td>全日</td> <td>08:30 – 21:30<br>(中午 12:30–14:00 休息)</td>
                             <td>08:30 – 12:30</td>
                         </tr>
                     </tbody>
@@ -203,9 +241,9 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                         (初診請於門診結束前 20 分鐘報到)
                     </p>
                     <p class="note" style="margin-top:1rem;">
-                        <strong>電針預約：</strong> 請來電 (02)2671-8910 預約。
+                        <strong>針極肌肉內電刺激複診治療預約：</strong> 請來電 (02)2671-8910 預約。
                         <br>
-                        (需提供姓名、民國生日、希望時段)
+                        (需提供姓名、民國生日、希望的門診時段)
                     </p>
 
                     <h3 style="margin-top: 2rem;">診所位置</h3>
@@ -228,9 +266,9 @@ const pageDesc = "新北市三峽區謝明福復健科診所，(02)2671-8910。�
                     </ul>
                 </div>
                 
-                <div class="map-container">
+                <div class="map-container">                   
                     <iframe 
-                        src="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.9766755253318!2d121.37238134060719!3d24.932864488726022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bed818951bb%3A0xa0fcac84eec260d7!2z6Kyd5piO56aP5b6p5YGl56eR6Ki65omA!5e0!3m2!1szh-TW!2stw!4v1762579348594!5m2!1szh-TW!2stw"
                         width="100%" 
                         height="450" 
                         style="border:0;" 
