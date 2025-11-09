@@ -79,10 +79,22 @@ const { Content } = await post.render();
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
         }
-        .prose ul, .prose ol {
+        .prose ul {
+            font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+            padding-left: 2rem;
+            /* 🚨 關鍵修正：強制設定列表類型和位置 */
+            list-style-type: disc; 
         }
+
+        .prose ol {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            /* 🚨 關鍵修正：強制設定列表類型和位置 */
+            list-style-type: decimal; /* 確保有序列表顯示數字 */
+        }
+
         .prose li {
              margin-bottom: 0.5rem;
         }

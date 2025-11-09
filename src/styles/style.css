@@ -80,11 +80,18 @@ body {
     line-height: 1.7; /* 增加行高以提高易讀性 */
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
     color: var(--color-heading);
     margin-bottom: 1rem;
     line-height: 1.3;
     font-weight: 700 !important; /* (關鍵) 請加上這一行 */
+}
+
+h3, h4, h5, h6 {
+    color: var(--color-heading);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-weight: 550 !important; /* (關鍵) 請加上這一行 */
 }
 
 h2 { /* 區塊大標題 */
@@ -123,8 +130,12 @@ a:hover {
     text-decoration: underline;
 }
 
+ul {
+    /* list-style-type: disc; /* 重新指定為實心圓點 */
+}
+
 ul, li {
-    list-style-position: inside;
+    list-style-position: outside;
 }
 
 img {
