@@ -2,15 +2,33 @@
 // 匯入您的全域 CSS
 import '../styles/style.css';
 
-// 接收傳入的 SEO 資訊
-interface Props {
-    title: string;
-    description: string;
+// 1. (修改) 擴充 Props 介面，加入可選的 ogImage
+export interface Props {
+    title: string;
+    description: string;
+    ogImage?: string; // 讓 index.astro 可以傳入專屬的 OG 圖片
 }
-const { title, description } = Astro.props;
+
+// 2. (修改) 接收 Props，並為 ogImage 設定 "預設圖片"
+//    (如果 index.astro 沒傳 ogImage，就會使用這張)
+const { 
+    title, 
+    description, 
+    ogImage = '/images/default-og-image-1200x630.jpg' // (重要) 請換成您預設圖的路徑
+} = Astro.props;
+
+// 3. (新增) 獲取標準網址 (Canonical URL)
+// 注意：Astro.site 必須在 astro.config.mjs 中設定
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+// 4. (新增) 產生 OG 圖片的 "絕對路徑" (Line/Messenger 必需)
+// Astro.site 必須在 astro.config.mjs 中設定
+const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
 ---
+
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,9 +36,26 @@ const { title, description } = Astro.props;
     <title>{title}</title>
     <meta name="description" content={description}>
     
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonicalURL.href}>
+
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:url" content={canonicalURL.href}>
+    <meta property="og:type" content="website">
     
+    <meta property="og:image" content={new URL(ogImage, Astro.site).href}>
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <link rel="icon" type="image/png" href="/favicon.svg/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="謝明福復健科診所" />
+    <link rel="manifest" href="/favicon.svg/site.webmanifest" />
+
 </head>
+
 <body>
 
     <header>
