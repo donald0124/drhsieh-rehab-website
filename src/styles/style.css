@@ -382,6 +382,24 @@ nav ul li a:hover {
     text-decoration: none;
 }
 
+.note a {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+/* --- NEW --- */
+.note a:hover {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    text-decoration: none;
+}
+
 
 /* (3) 醫師團隊 (Team) */
 .doctor-profile {
@@ -582,9 +600,7 @@ nav ul li a:hover {
     min-width: 0; /* (移除 min-width) */
     width: 100%; /* (設為 100%) */
 }
-.schedule-table-simple-wrapper .schedule-table th {
-    width: 33.33%; /* (讓三欄平分) */
-}
+
 
 
 /* (3. 處理我們新增的 <small> 標籤) */

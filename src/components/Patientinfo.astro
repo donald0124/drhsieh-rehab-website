@@ -1,0 +1,130 @@
+---
+// 匯入 QA 元件
+import QA from './QA.astro';
+---
+
+<section id="patient-info"> <h2>就診資訊</h2>
+
+    <div class="info-banner" style="background-color: var(--color-primary-dark); color: white; padding: 1.5rem 2rem; border-radius: 8px; text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <h3 style="color: white; margin: 0; font-size: 1.5rem;">
+            本診所一律採現場掛號，無需預約
+        </h3>
+        <p style="color: white; opacity: 0.9; margin: 0.5rem 0 0; font-size: 1.1rem;">
+            (初診請於門診時段結束前 20 分鐘報到)
+        </p>
+    </div>
+
+    <h3>門診時段</h3>
+    <div class="schedule-table-wrapper">
+        <table class="schedule-table schedule-table-complex">
+            <thead>
+                <tr>
+                    <th>時段</th> <th>一</th> <th>二</th> <th>三</th> <th>四</th> <th>五</th> <th>六</th> <th>日</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>上午<small>09:00-11:30</small></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td rowspan="3" style="vertical-align: middle;">全日<br>休診</td>
+                </tr>
+                <tr>
+                    <td>下午<small>14:30-17:00</small></td>
+                    <td><strong>O</strong></td>
+                    <td>
+                        <a href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4" target="_blank" rel="noopener noreferrer">
+                            三總<br>汀州
+                        </a>
+                    </td>
+                    <td>休診</td>
+                    <td>休診</td>
+                    <td><strong>O</strong></td>
+                    <td rowspan="2" style="vertical-align: middle;">下午<br>晚上<br>休診</td>
+                </tr>
+                <tr>
+                    <td>晚上<small>18:30-21:00</small></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong><small>(19:00 開始)</small></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                    <td><strong>O</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <h3 style="margin-top: 2.5rem;">復健治療時間</h3>
+    <div class="schedule-table-simple-wrapper">
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>時段</th>
+                    <th>週一至週五</th>
+                    <th>週六</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>全日</td>
+                    <td>08:30 – 21:30<br><small>(中午 12:30–14:00 休息)</small></td>
+                    <td>08:30 – 12:30</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3 style="margin-top: 4rem;">交通與聯絡</h3>
+    <div class="contact-grid">
+        <div class="contact-info">
+            
+            <div class="note" style="margin-top: 2rem; text-align: left;">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">電話</h3>
+                <p>
+                    <a href="tel:0226718910">(02) 2671-8910</a>
+                </p>                
+            </div>
+          
+            <div class="note" style="margin-top: 2rem; text-align: left;">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">診所位置</h3>
+                <p>
+                    <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" rel="noopener noreferrer">
+                        新北市三峽區中華路22號2樓
+                    </a>
+                </p>
+                <ul style="padding-left: 1.5rem; margin: 0.5rem 0 0;">
+                    <li>三峽黃昏市場附近、小北百貨隔壁</li>
+                    <li>龍門社區大樓附設電梯，可搭至2樓</li>
+                </ul>
+            </div>
+            
+            <div class="note" style="margin-top: 2rem; text-align: left;">
+                <h3 style="margin-top: 0; margin-bottom: 1rem;">交通方式</h3>
+                <ul style="padding-left: 1.5rem; margin: 0;">
+                    <li><strong>910公車：</strong>「中華路」站 (可經<strong>捷運新埔、板橋、府中站</strong>轉乘)</li>
+                    <li><strong>705、706公車：</strong>「礁溪里」站 (可經<strong>捷運頂埔站</strong>轉乘)</li>
+                    <li>附近有收費停車場</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="map-container">
+            <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.9766755253318!2d121.37238134060719!3d24.932864488726022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bed818951bb%3A0xa0fcac84eec260d7!2z6Kyd5piO56aP5b6p5YGl56eR6Ki65omA!5e0!3m2!1szh-TW!2stw!4v1762579348594!5m2!1szh-TW!2stw"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen="" 
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+    
+    <QA />
+        
+</section>
