@@ -1,0 +1,49 @@
+---
+// src/components/QAItem.astro
+// 這是您要的「樣板」(form)，它只負責 "一題" Q&A 的外觀
+// 我們在這裡實現您要的「反轉底色」
+
+interface Props {
+  question: string; // 我們只接受一個 "問題" 屬性
+}
+const { question } = Astro.props;
+---
+<details class="accordion-item bg-white rounded-lg shadow-sm overflow-hidden border border-gray-200">
+    
+    <summary class="accordion-summary flex items-center text-left w-full p-6 bg-white hover:bg-gray-50 transition-colors duration-200 cursor-pointer list-none gap-3">
+        <h4 class="text-lg text-grey-700 m-0">{question}</h4>
+        <svg class="accordion-icon w-6 h-6 text-grey-600 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </summary>
+    
+    <div class="accordion-content p-6 bg-blue-50 border-t border-gray-200">
+        <div class="prose prose-sm max-w-none">
+            <slot /> </div>
+    </div>
+</details>
+
+<style>
+    .accordion-summary { list-style: none; }
+    .accordion-summary::-webkit-details-marker { display: none; }
+    .accordion-icon {
+        width: 1.5rem; height: 1.5rem; flex-shrink: 0;  
+        transform: rotate(0deg);
+        transition: transform 0.3s ease-in-out;
+    }
+    details[open] > .accordion-summary .accordion-icon {
+        transform: rotate(180deg);
+    }
+    .accordion-summary h4 { margin: 0; }
+
+    /* 美化答案區塊的文字 */
+    .accordion-content .prose {
+        font-size: 1rem;
+        color: var(--color-text);
+        line-height: 1.7;
+    }
+    .accordion-content .prose p {
+        margin-bottom: 1rem;
+    }
+    .accordion-content .prose p:last-child {
+        margin-bottom: 0;
+    }
+</style>

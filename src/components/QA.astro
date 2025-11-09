@@ -1,0 +1,37 @@
+---
+// src/components/QA.astro
+// (Req 2: 我們匯入剛剛建立的 "樣板")
+import QAItem from './QAItem.astro';
+
+// (Req 2: 未來您要新增/修改 Q&A，"只需要" 在這裡編輯)
+const qaList = [
+  {
+    question: "Q: 初診可以預約掛號嗎?",
+    answer: `<p>A: 本診所一律採現場掛號。</p>`
+  },
+  {
+    question: "Q: 看診時忘了帶健保卡怎麼辦？",
+    answer: `<p>A: 若忘了攜帶健保卡，需支付押金NT$500元。隔天起十日內(含例假日)持收據正本、健保卡及其他優待證件，於掛號櫃檯辦理退費手續。</p>`
+  },
+  {
+    question: "Q: 看一次門診可以做幾次復健？有期限嗎？",
+    answer: `
+      <p>A: 依據健保局規定，每次門診後可進行六次復健治療，需於治療日起30天內完成，逾期需重新掛號。第二次至第六次復健治療，每次需繳交健保部分負擔50元。請注意，所有復健療程皆須經由醫師看診評估後才能安排。為確保療效，建議您安排固定時間前來，並請務必於每時段結束前30分鐘報到。</p>
+      
+    `
+  }
+];
+---
+<div class="qna-section" style="margin-top: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+    <h3>常見 Q&A</h3>
+    
+    <div id="accordion-qa-container" class="space-y-4" style="margin-top: 2rem;">
+        
+        {qaList.map(qa => (
+          <QAItem question={qa.question}>
+            <Fragment set:html={qa.answer} />
+          </QAItem>
+        ))}
+
+    </div>
+</div>

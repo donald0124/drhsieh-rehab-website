@@ -1,0 +1,78 @@
+---
+// src/components/ServiceItem.astro
+// 這是您的「樣板」(form)，負責單一治療項目的外觀
+// 它會從 Services.astro 接收 props
+
+interface Props {
+  title: string; // 標題 (例如: "頭頸")
+  tags: string[]; // 治療標籤 (例如: ["落枕", "肩頸痠痛"])
+  symptoms: string[]; // 困擾列表 (例如: ["早上起床...", "嘴巴打開..."])
+  
+  // (選填) 延伸閱讀的文章列表
+  relatedPosts?: {
+    slug: string;
+    title: string;
+  }[];
+}
+
+const { title, tags, symptoms, relatedPosts } = Astro.props;
+---
+
+<details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
+    <summary class="accordion-summary flex items-center w-full p-6 justify-center bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
+        <h3 class="text-xl md:text-2xl font-semibold text-blue-800 m-0">{title}</h3>
+        <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    </summary>
+    
+    <div class="accordion-content p-6 bg-white">
+        
+        <div class="content-section mb-6">
+            <div class="flex flex-wrap gap-2">
+                {tags.map(tag => (
+                    <span class="treatment-tag">{tag}</span>
+                ))}
+            </div>
+        </div>
+
+        <div class="content-section mb-6">
+            <h4>您是否有這些困擾？</h4>
+            <ul class="symptom-list">
+                {symptoms.map(symptom => (
+                    <li>{symptom}</li>
+                ))}
+            </ul>
+        </div>
+
+        {relatedPosts && relatedPosts.length > 0 && (
+            <div class="content-section">
+                <h4>延伸閱讀：衛教專欄</h4>
+                <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
+                    {relatedPosts.map(post => (
+                        <a href={post.slug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
+                            → {post.title}
+                        </a>
+                    ))}
+                </div>
+            </div>
+        )}
+    </div>
+</details>
+
+<style>
+    .accordion-summary {
+        list-style: none;
+    }
+    .accordion-summary::-webkit-details-marker {
+        display: none;
+    }
+    .accordion-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        flex-shrink: 0;  
+        transform: rotate(0deg);
+        transition: transform 0.3s ease-in-out;
+    }
+    details[open] > .accordion-summary .accordion-icon {
+        transform: rotate(180deg);
+    }
+</style>

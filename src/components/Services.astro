@@ -1,240 +1,127 @@
 ---
-// 此元件完全使用 HTML 原生 <details>/<summary> 實現互動，無需 JavaScript。
+// src/components/Services.astro
+// (這現在是 "資料" 中心)
 import { getCollection } from 'astro:content';
+import ServiceItem from './ServiceItem.astro'; // <--- (1. 匯入您的新樣板)
 
-// 取得衛教專欄文章，用於「延伸閱讀」連結
+// (取得衛教專欄文章，這部分邏輯不變)
 const blogPosts = await getCollection('blog');
-// 找到特定文章的 slug 以便建立連結
 const getPostSlug = (tag: string) => {
-    // 優先找最新的文章 (根據 pubDate 排序)
     const sortedPosts = blogPosts.sort(
         (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
     );
     const post = sortedPosts.find(p => p.data.tags?.includes(tag));
-    return post ? `/blog/${post.slug}/` : '#';
+    // (優化) 如果找不到文章，就回傳 null
+    return post ? { slug: `/blog/${post.slug}/`, title: post.data.title } : null;
 };
 
-// 手動設定要連結的文章標籤
-const mommyThumbSlug = getPostSlug('媽媽手'); // 連結到 tag: '媽媽手'
-const runnerKneeSlug = getPostSlug('跑者膝'); // 連結到 tag: '跑者膝'
-// 針極電刺激文章 (NEIMS)
-const neimsSlug = getPostSlug('NEIMS');
+// (手動取得文章連結)
+const mommyThumbPost = getPostSlug('媽媽手');
+const runnerKneePost = getPostSlug('跑者膝');
+const neimsPost = getPostSlug('NEIMS');
+
+
+// --- (2. 這裡是您易於維護的「資料區」) ---
+// 未來您要新增/修改，只需要動這裡的文字
+const servicesData = [
+  {
+    title: "頭頸",
+    tags: ["顳顎關節障礙", "顏面神經麻痺", "落枕", "肩頸痠痛", "甩鞭症候群"],
+    symptoms: [
+      "早上起床脖子卡住，轉頭就痛 (落枕)",
+      "嘴巴打開會痛、有「喀喀」聲 (顳顎關節)",
+      "肩頸長期僵硬，甚至引起頭痛"
+    ],
+    relatedPosts: [] // (目前沒有，可留空)
+  },
+  {
+    title: "上肢",
+    tags: ["五十肩 (冰凍肩)", "網球肘 (外上髁炎)", "媽媽手 (狹窄性肌腱滑膜炎)", "腕隧道症候群", "高爾夫球肘", "板機指", "肩夾擠症候群", "旋轉肌袖損傷"],
+    symptoms: [
+      "肩膀卡住，手舉不起來，無法穿脫衣服，半夜會痛醒",
+      "手肘外側壓了會痛，擰毛巾或提重物時會無力",
+      "手腕大拇指側疼痛，抓握東西 (如抱小孩) 時更明顯",
+      "手指又麻又痛，尤其晚上睡覺或騎車時更嚴重"
+    ],
+    // (自動連結 "媽媽手" 和新增 "五十肩" 文章)
+    relatedPosts: [
+      mommyThumbPost, // (來自 getPostSlug)
+      { slug: "#", title: "告別五十肩，三招居家運動" } // (範例)
+    ].filter(post => post !== null) // (過濾掉找不到的文章)
+  },
+  {
+    title: "下肢",
+    tags: ["梨狀肌症候群", "跑者膝 (髂脛束摩擦症候群)", "跳躍膝", "足底筋膜炎", "扁平足", "十字韌帶術後", "人工膝/髖關節術後", "拇趾外翻"],
+    symptoms: [
+      "早上起床腳踩地，腳跟劇痛 (足底筋膜炎)",
+      "跑步時膝蓋外側疼痛 (跑者膝)",
+      "臀部深深地痠痛，甚至有點麻到小腿 (梨狀肌)"
+    ],
+    relatedPosts: [
+      runnerKneePost // (來自 getPostSlug)
+    ].filter(post => post !== null)
+  },
+  {
+    title: "脊椎",
+    tags: ["椎間盤突出", "脊椎側彎", "坐骨神經痛", "骨刺", "僵直性脊椎炎", "壓迫性骨折術後"],
+    symptoms: [
+      "彎腰或打噴嚏時，背部劇痛並伴隨腿部麻木 (椎間盤突出)",
+      "無法久坐或久站，下背部持續痠痛",
+      "走路時感覺腿部無力、緊繃，像被電到 (坐骨神經痛)"
+    ],
+    relatedPosts: []
+  },
+  {
+    title: "全身性 / 其他",
+    tags: ["肌筋膜疼痛", "肌少症", "運動傷害", "退化性關節炎", "腦中風及神經復健", "骨外科術後疼痛", "帕金森氏症"],
+    symptoms: [
+      "全身多處痠痛，有特定壓了會劇痛的「激痛點」",
+      "走路遲緩、握力下降、容易跌倒 (肌少症)",
+      "運動中扭傷、拉傷，或術後關節僵硬、疼痛"
+    ],
+    relatedPosts: [
+      neimsPost // (來自 getPostSlug)
+    ].filter(post => post !== null)
+  }
+];
 ---
 
 <section id="services" class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-4 max-w-5xl">
 
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">主治項目</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">治療項目</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">快速對照您的症狀，了解我們如何提供專業、整合性的解決方案。</p>
         </div>
 
         <div id="accordion-container" class="space-y-4">
-
-            <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-800">頭頸</h3>
-                    <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </summary>
-                
-                <div class="accordion-content p-6 bg-white">
-                    
-                    <div class="content-section mb-6">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="treatment-tag">顳顎關節障礙</span>
-                            <span class="treatment-tag">顏面神經麻痺</span>
-                            <span class="treatment-tag">落枕</span>
-                            <span class="treatment-tag">肩頸痠痛</span>
-                            <span class="treatment-tag">甩鞭症候群</span>
-                        </div>
-                    </div>
-
-                    <div class="content-section mb-6">
-                        <h4>您是否有這些困擾？</h4>
-                        <ul class="symptom-list">
-                            <li>早上起床脖子卡住，轉頭就痛 (落枕)</li>
-                            <li>嘴巴打開會痛、有「喀喀」聲 (顳顎關節)</li>
-                            <li>肩頸長期僵硬，甚至引起頭痛</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </details>
-
-            <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-800">上肢</h3>
-                    <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </summary>
-                
-                <div class="accordion-content p-6 bg-white">
-                    <div class="content-section mb-6">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="treatment-tag">五十肩 (冰凍肩)</span>
-                            <span class="treatment-tag">網球肘 (外上髁炎)</span>
-                            <span class="treatment-tag">媽媽手 (狹窄性肌腱滑膜炎)</span>
-                            <span class="treatment-tag">腕隧道症候群</span>
-                            <span class="treatment-tag">高爾夫球肘</span>
-                            <span class="treatment-tag">板機指</span>
-                            <span class="treatment-tag">肩夾擠症候群</span>
-                            <span class="treatment-tag">旋轉肌袖損傷</span>
-                        </div>
-                    </div>
-
-                    <div class="content-section mb-6">
-                        <h4>您是否有這些困擾？</h4>
-                        <ul class="symptom-list">
-                            <li>肩膀卡住，手舉不起來，無法穿脫衣服，半夜會痛醒</li>
-                            <li>手肘外側壓了會痛，擰毛巾或提重物時會無力</li>
-                            <li>手腕大拇指側疼痛，抓握東西 (如抱小孩) 時更明顯</li>
-                            <li>手指又麻又痛，尤其晚上睡覺或騎車時更嚴重</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-section">
-                        <h4>延伸閱讀：衛教專欄</h4>
-                        <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
-                            <a href={mommyThumbSlug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
-                                → 媽媽手是什麼？(狄奎凡氏症)
-                            </a>
-                            <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
-                                → 告別五十肩，三招居家運動
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </details>
-
-            <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-800">下肢</h3>
-                    <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </summary>
-                
-                <div class="accordion-content p-6 bg-white">
-                    <div class="content-section mb-6">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="treatment-tag">梨狀肌症候群</span>
-                            <span class="treatment-tag">跑者膝 (髂脛束摩擦症候群)</span>
-                            <span class="treatment-tag">跳躍膝</span>
-                            <span class="treatment-tag">足底筋膜炎</span>
-                            <span class="treatment-tag">扁平足</span>
-                            <span class="treatment-tag">十字韌帶術後</span>
-                            <span class="treatment-tag">人工膝/髖關節術後</span>
-                            <span class="treatment-tag">拇趾外翻</span>
-                        </div>
-                    </div>
-
-                    <div class="content-section mb-6">
-                        <h4>您是否有這些困擾？</h4>
-                        <ul class="symptom-list">
-                            <li>早上起床腳踩地，腳跟劇痛 (足底筋膜炎)</li>
-                            <li>跑步時膝蓋外側疼痛 (跑者膝)</li>
-                            <li>臀部深深地痠痛，甚至有點麻到小腿 (梨狀肌)</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-section">
-                        <h4>延伸閱讀：衛教專欄</h4>
-                        <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
-                            <a href={runnerKneeSlug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
-                                → 跑者膝：為什麼一跑步膝蓋就痛？
-                            </a>
-                        </div>
-                    </div>
-
-                </div>
-            </details>
-
-            <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-800">脊椎</h3>
-                    <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </summary>
-                
-                <div class="accordion-content p-6 bg-white">
-                    <div class="content-section mb-6">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="treatment-tag">椎間盤突出</span>
-                            <span class="treatment-tag">脊椎側彎</span>
-                            <span class="treatment-tag">坐骨神經痛</span>
-                            <span class="treatment-tag">骨刺</span>
-                            <span class="treatment-tag">僵直性脊椎炎</span>
-                            <span class="treatment-tag">壓迫性骨折術後</span>
-                        </div>
-                    </div>
-
-                    <div class="content-section mb-6">
-                        <h4>您是否有這些困擾？</h4>
-                        <ul class="symptom-list">
-                            <li>彎腰或打噴嚏時，背部劇痛並伴隨腿部麻木 (椎間盤突出)</li>
-                            <li>無法久坐或久站，下背部持續痠痛</li>
-                            <li>走路時感覺腿部無力、緊繃，像被電到 (坐骨神經痛)</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </details>
-
-            <details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-                <summary class="accordion-summary flex items-center w-full p-6 text-left bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-                    <h3 class="text-xl md:text-2xl font-semibold text-blue-800">全身性 / 其他</h3>
-                    <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </summary>
-                
-                <div class="accordion-content p-6 bg-white">
-                    <div class="content-section mb-6">
-                        <div class="flex flex-wrap gap-2">
-                            <span class="treatment-tag">肌筋膜疼痛</span>
-                            <span class="treatment-tag">肌少症</span>
-                            <span class="treatment-tag">運動傷害</span>
-                            <span class="treatment-tag">退化性關節炎</span>
-                            <span class="treatment-tag">腦中風及神經復健</span>
-                            <span class="treatment-tag">骨外科術後疼痛</span>
-                            <span class="treatment-tag">帕金森氏症</span>
-                        </div>
-                    </div>
-
-                    <div class="content-section mb-6">
-                        <h4>您是否有這些困擾？</h4>
-                        <ul class="symptom-list">
-                            <li>全身多處痠痛，有特定壓了會劇痛的「激痛點」</li>
-                            <li>走路遲緩、握力下降、容易跌倒 (肌少症)</li>
-                            <li>運動中扭傷、拉傷，或術後關節僵硬、疼痛</li>
-                        </ul>
-                    </div>
-
-                    <div class="content-section">
-                        <h4>延伸閱讀：衛教專欄</h4>
-                        <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
-                            <a href={neimsSlug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
-                                → 針極肌肉內電刺激 (NEIMS)：精準治療深層痛點
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </details>
-
+            {servicesData.map(item => (
+                <ServiceItem
+                    title={item.title}
+                    tags={item.tags}
+                    symptoms={item.symptoms}
+                    relatedPosts={item.relatedPosts}
+                />
+            ))}
         </div> 
         
         <div class="mt-12 md:mt-24 max-w-5xl mx-auto">
             <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">我們的治療原則：精準與整合</h3>
-            <p class="text-lg text-gray-600 mb-8">
-                無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「**精準診斷、整合治療**」的核心原則，為您制定最有效率的康復方案：
+            <p class="text-lg text-gray-800 mb-8">
+                無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「<strong>精準診斷、整合治療</strong>」的核心原則，為您制定最有效率的康復方案：
             </p>
             
-            <ul class="grid md:grid-cols-3 gap-6 text-left space-y-0 text-gray-700">
+            <ul class="grid md:grid-cols-3 gap-6 justify-center space-y-0 text-gray-700">
                 <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
                     <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
                     <div>
-                        <strong class="text-gray-900">精準診斷</strong>: 醫師將透過專業理學檢查，找到疼痛的真正根源 (肌腱、韌帶、神經或關節)。
+                        <strong class="text-gray-900">精準診斷</strong>: 醫師將透過專業理學檢查，找到疼痛的真正根源 (肌肉、肌腱、韌帶、神經、關節或其他肇因)。
                     </div>
                 </li>
                 <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
                     <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
                     <div>
-                        <strong class="text-gray-900">整合性治療</strong>: 結合徒手治療、儀器治療 (如高能量雷射) 及院長特長 (如增生注射/NEIMS) 進行修復。
+                        <strong class="text-gray-900">整合性治療</strong>: 結合多元儀器物理治療及院長專長（如<strong>直線偏極光治療 SuperLizer</strong> / <strong>針極肌肉內電刺激 NEIMS</strong>）進行治療。
                     </div>
                 </li>
                 <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
@@ -249,7 +136,7 @@ const neimsSlug = getPostSlug('NEIMS');
         <div class="specialty-section mt-16 md:mt-24">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">特別專長</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">除了健保儀器，我們更提供先進的自費治療選項，加速您的康復</p>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">除了健保給付的各項儀器物理治療，我們更提供先進的自費治療選項，加速您的康復</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -274,29 +161,3 @@ const neimsSlug = getPostSlug('NEIMS');
 
     </div>
 </section>
-
-<style>
-    /* 隱藏原生瀏覽器的箭頭 (Summary Marker) */
-    .accordion-summary {
-        list-style: none; /* 移除 Firefox 的原生箭頭 */
-    }
-    .accordion-summary::-webkit-details-marker {
-        display: none; /* 移除 Chrome/Safari 的原生箭頭 */
-    }
-
-    /* 1. 初始狀態: 箭頭朝下 */
-    .accordion-icon {
-        /* 新增純 CSS 尺寸限制 */
-        width: 1.5rem; /* 24px */
-        height: 1.5rem; /* 24px */
-        flex-shrink: 0;  
-        
-        transform: rotate(0deg);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    /* 2. 展開狀態: 當 <details> 被打開時，旋轉箭頭 */
-    details[open] > .accordion-summary .accordion-icon {
-        transform: rotate(180deg);
-    }
-</style>
