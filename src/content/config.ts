@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
         title: z.string(), // 標題 (必填)
         description: z.string(), // 描述 (必填，用於 SEO)
         pubDate: z.date(), // 發布日期 (必填)
-
+        lastMod: z.date().optional(),
         // 封面圖 (選填)
         heroImage: z.string().optional(), 
 

@@ -1,7 +1,7 @@
 ---
 title: '為什麼坐骨神經痛腰椎牽引沒效? 可能是梨狀肌症候群或肌筋膜炎?'
 description: '坐骨神經痛腰椎牽引沒效？本文探討可能的替代診斷，如梨狀肌症候群或肌筋膜炎，並分享實際案例。'
-pubDate: 2016-08-22
+pubDate: 2016-08-20
 #heroImage: '/images/blog/sciatica-piriformis-syndrome.jpg'
 tags: ['坐骨神經痛', '腰椎牽引', '梨狀肌症候群', '肌筋膜炎', '腸薦關節']
 ---

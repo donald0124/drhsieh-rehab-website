@@ -35,8 +35,15 @@ const { Content } = await post.render();
 
         <p style="font-size: 1rem; color: #555;">
             發布日期: {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    
+            {post.data.lastMod && (
+                <span style="color: #888; margin-left: 1rem;">
+                    (更新於: {post.data.lastMod.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })})
+                </span>
+            )}
+        
         </p>
-
+        
         {post.data.heroImage && (
             <img src={post.data.heroImage} alt={post.data.title} style="
                 width: 100%; 

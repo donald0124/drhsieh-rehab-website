@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+// (步驟 2.1：新增) 從 src/consts.ts 匯入
+import { CATEGORY_MAP, CATEGORY_KEYS } from '../../consts.ts';
+
+// (步驟 2.2：刪除) 移除此處舊的 CATEGORY_MAP 定義
+// const CATEGORY_MAP: { [key: string]: string } = { ... };
+
+// (Astro 核心) 告訴 Astro 要建立哪些頁面
+export async function getStaticPaths() {
+    // 取得所有文章並排序 (邏輯不變)
+    const allPosts = (await getCollection('blog')).sort(
+        (a, b) => {
+            const dateB = (b.data.lastMod ?? b.data.pubDate).valueOf();
+            const dateA = (a.data.lastMod ?? a.data.pubDate).valueOf();
+            return dateB - dateA;
+        }
+    );
+
+    // (步驟 2.3：修改) 
+    // 使用匯入的 CATEGORY_KEYS (更安全)
+    // 取代 Object.keys(CATEGORY_MAP) (會報錯)
+    return CATEGORY_KEYS.map(categorySlug => {
+        
+        // 過濾出 "只" 屬於這個分類的文章
+        const categoryPosts = allPosts.filter(post => 
+            post.id.startsWith(categorySlug + '/')
+        );
+
+        // 取得這個分類的中文名稱 (現在 100% 型別安全)
+        const categoryName = CATEGORY_MAP[categorySlug];
+
+        // 告訴 Astro：
+        // 1. 頁面網址 (params): 例如 /blog/health
+        // 2. 要傳送的資料 (props): 傳送 "所有" 該分類的文章 + 中文名稱
+        return {
+            params: { category: categorySlug },
+            props: {
+                posts: categoryPosts,
+                categoryName: categoryName
+            }
+        };
+    });
+}
+
+// 3. 接收 getStaticPaths 傳來的資料 (不變)
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  categoryName: string;
+}
+const { posts, categoryName } = Astro.props;
+
+// 4. (選用) 建立日期格式化函式 (不變)
+const getDisplayDate = (post: CollectionEntry<'blog'>) => {
+    return post.data.lastMod ?? post.data.pubDate;
+};
+const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
+    return post.data.lastMod ? true : false;
+};
+---
+
+<BaseLayout title={`${categoryName} | 專欄文章`} description={`查看所有關於「${categoryName}」的文章與資訊。`}>
+
+    <section id="category-hero" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
+        <h1>{categoryName}</h1>
+        <p>
+            共 {posts.length} 篇文章
+        </p>
+    </section>
+
+    <section id="post-list" style="padding: 4rem 1rem;">
+        <div class="container" style="max-width: 900px; margin: 0 auto;">
+            
+            <div class="posts-grid">
+                
+                {posts.map(post => (
+                    <a href={`/blog/${post.slug}/`} class="post-card">
+                        
+                        {post.data.heroImage && (
+                            <img src={post.data.heroImage} alt={post.data.title} class="card-image">
+                        )}
+                            
+                        <div class="card-content">
+                            <h3>{post.data.title}</h3>
+                            <p>{post.data.description}</p>
+                            
+                            <span class="card-date">
+                                {hasBeenUpdated(post) && <span class.bind:value="update-badge">(已更新) </span>}
+                                {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                            </span>
+                        </div>
+                    </a>
+                ))}
+            </div>
+
+            <div style="text-align: center; margin-top: 4rem;">
+                <a href="/blog" class="back-link">
+                    &larr; 返回所有分類
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</BaseLayout>
+
+<style>
+    /* ... (所有 CSS 樣式保持不變) ... */
+    .posts-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* 手機 1 欄 */
+        gap: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+        .posts-grid {
+            grid-template-columns: 1fr 1fr; /* 桌面 2 欄 */
+        }
+    }
+    .post-card {
+        display: block;
+        background: #fff;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        overflow: hidden;
+        text-decoration: none;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .post-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    .card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .card-content {
+        padding: 1.5rem;
+    }
+    .card-content h3 {
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem;
+        color: var(--color-primary);
+    }
+    .card-content p {
+        margin: 0 0 1rem;
+        color: var(--color-text);
+    }
+    .card-date {
+        font-size: 0.9rem;
+        color: #777;
+    }
+    .update-badge {
+        color: #007A00;
+        font-weight: bold;
+    }
+    .back-link {
+        display: inline-block;
+        font-weight: bold;
+        color: var(--color-primary);
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid var(--color-primary);
+        border-radius: 4px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+    .back-link:hover {
+        background-color: var(--color-primary);
+        color: #fff;
+    }
+</style>
