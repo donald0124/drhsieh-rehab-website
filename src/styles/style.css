@@ -84,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-heading);
     margin-bottom: 1rem;
     line-height: 1.3;
-    font-weight: 600; /* (關鍵) 請加上這一行 */
+    font-weight: 700 !important; /* (關鍵) 請加上這一行 */
 }
 
 h2 { /* 區塊大標題 */
@@ -207,6 +207,7 @@ nav ul {
     display: flex;
     flex-wrap: wrap; /* (手機) 空間不夠時換行 */
     justify-content: center;
+    align-items: center;
     gap: 0.5rem 1rem; /* 上下 0.5rem, 左右 1rem */
 }
 
@@ -439,6 +440,21 @@ nav ul li a:hover {
 .doctor-profile ul {
     list-style: none; /* 移除項目符號 */
     padding: 0;
+}
+
+.doctor-profile-detail ul {
+    /* 這是關鍵：強制列表項目使用點點 */
+    list-style-type: disc; 
+    
+    /* 由於您可能在 .doctor-profile ul 設了 padding: 0;
+       這裡需要重新給一個 padding 才能讓點點顯示出來 */
+    padding-left: 20px; 
+    
+    /* 讓項目符號顯示在列表項目的外面 */
+    list-style-position: outside; 
+    
+    /* 確保 li 之間有間距 */
+    margin-bottom: 0.5rem; 
 }
 
 /*
@@ -747,6 +763,8 @@ footer p {
         gap: 1.5rem;
     }
 
+    
+
     /* (Hero) */
     #hero {
         min-height: 60vh;
@@ -961,16 +979,42 @@ details[open] > .accordion-summary .accordion-icon {
 .footer-social-icons a {
     display: inline-block;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0.7;
+    opacity: 0.8;
 }
 .footer-social-icons a:hover {
     opacity: 1;
-    transform: translateY(-3px);
+    transform: translateY(-5px);
 }
 .footer-social-icons svg {
     width: 28px;  /* (圖示大小) */
-    height: 28px; /* (圖示大小) */
-    fill: #f0f0f0; /* (圖示顏色) */
+    height: 28px; /* (圖示大小) */    
+}
+
+/* (8.1-2) nav bar社群圖示 (新) */
+
+/* 1. 針對圖示本身設定尺寸和垂直對齊 *//* 這是將 style="width: 24px; height: 24px; vertical-align: middle;" 移出 HTML 的位置 */
+.nav-social-icon img {
+    width: 24px;
+    height: 24px;
+    /* 確保圖片本身在它自己的容器中垂直置中 */
+    vertical-align: middle; 
+}
+
+/* 2. 設定預設狀態和過渡動畫 *//* 這裡加上了過渡(transition)，讓滑鼠懸停效果更平滑 */
+.nav-social-icon a {
+    /* 將您原有的樣式設為預設狀態 */
+    opacity: 0.9;
+    transform: translateY(0); /* 預設位置，我將您原先的 -3px 移到 hover 狀態 */
+    /* 讓 transform 變化更平滑，例如 0.3 秒 */
+    transition: transform 0.3s ease-out; 
+    padding: 0;
+}
+
+/* 3. 設定滑鼠懸停狀態 *//* 這裡實作您想要的上漂效果 */
+.nav-social-icon a:hover{
+    opacity: 1; 
+    /* 讓圖示鏈結上移 3 像素 */
+    transform: translateY(-3px); 
 }
 
 /* (8.2) 響應式 YouTube 影片 (新) */

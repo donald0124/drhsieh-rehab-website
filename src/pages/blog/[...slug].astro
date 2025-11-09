@@ -26,14 +26,27 @@ const { Content } = await post.render();
 <BaseLayout title={post.data.title} description={post.data.description}>
 
     <section id="article-header" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
-        <h1>{post.data.title}</h1>
+    
+        <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem;">{post.data.title}</h1>
+
+        <p style="font-size: 1.25rem; color: #444; max-width: 700px; margin: 0 auto 1.5rem;">
+            {post.data.description}
+        </p>
+
         <p style="font-size: 1rem; color: #555;">
             發布日期: {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
+
         {post.data.heroImage && (
-            <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; max-width: 700px; margin-top: 2rem; border-radius: 8px;">
+            <img src={post.data.heroImage} alt={post.data.title} style="
+                width: 100%; 
+                max-width: 700px; 
+                margin: 2rem auto 0; /* <-- 修改點 */
+                border-radius: 8px;
+            ">
         )}
     </section>
+
 
     <section id="article-content" style="padding: 3rem 1rem;">
         <article class="prose" style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
@@ -44,7 +57,7 @@ const { Content } = await post.render();
     </section>
 
     <div style="text-align: center; padding-bottom: 4rem;">
-        <a href="/blog" class="cta-button">返回衛教資訊列表</a>
+        <a href="/blog" class="cta-button">返回文章列表</a>
     </div>
 
     <style is:global>
@@ -55,10 +68,12 @@ const { Content } = await post.render();
             margin-bottom: 1.5rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid var(--color-border);
+            text-align: left;
         }
         .prose h3 {
             font-size: 1.5rem;
             margin-top: 2rem;
+            text-align: left;
         }
         .prose p {
             font-size: 1.1rem;

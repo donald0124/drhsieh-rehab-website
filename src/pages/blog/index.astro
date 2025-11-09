@@ -1,15 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-// 1. 從 'astro:content' 匯入 "型別" (CollectionEntry)
 import { getCollection, type CollectionEntry } from 'astro:content';
 
-// 2. 明確宣告 posts 的型別是 CollectionEntry<'blog'> 的 "陣列"
-const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
-    
-    // 3. 明確宣告 a 和 b 的型別
+// 1. 取得所有文章並排序 (這行不變)
+const allPosts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
     (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
         b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// 2. (修改) 定義資料夾名稱與它們的「顯示名稱」
+const CATEGORY_MAP = {
+    health: '衛教資訊',
+    reports: '報導',
+    director: '院長專欄'
+};
+
+// 3. (修改) 根據 "檔案路徑 (ID)" 來過濾文章
+//    我們使用 post.id.startsWith('資料夾名稱/')
+const healthPosts = allPosts.filter(post => 
+    post.id.startsWith('health/')
+);
+
+const reportPosts = allPosts.filter(post => 
+    post.id.startsWith('reports/')
+);
+
+const directorPosts = allPosts.filter(post => 
+    post.id.startsWith('director/')
+);
+
+// 4. (修改) 找出 "不" 屬於上述資料夾的文章 (例如直接放在 blog/ 底下的文章)
+const otherPosts = allPosts.filter(post => 
+    !post.id.startsWith('health/') &&
+    !post.id.startsWith('reports/') &&
+    !post.id.startsWith('director/')
 );
 ---
 
@@ -18,68 +42,176 @@ const posts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
     <section id="blog-hero" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
         <h1>衛教資訊 & 媒體報導</h1>
         <p>我們分享最新的復健知識、疼痛治療新知與媒體專訪。</p>
-        </section>
+    </section>
 
     <section id="blog-list" style="padding: 4rem 1rem;">
         <div class="container" style="max-width: 900px; margin: 0 auto;">
 
-            <div class="posts-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+            {healthPosts.length > 0 && (
+                <>
+                    <h2 class="category-title">{CATEGORY_MAP.health}</h2>
+                    <div class="posts-grid">
+                        {healthPosts.map(post => (
+                            <a href={`/blog/${post.slug}/`} class="post-card">
+                                {post.data.heroImage && (
+                                    <img src={post.data.heroImage} alt={post.data.title} class="card-image">
+                                )}
+                                <div class="card-content">
+                                    <h3>{post.data.title}</h3>
+                                    <p>{post.data.description}</p>
+                                    <span class="card-date">
+                                        {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </>
+            )}
 
-                {posts.map(post => (
-                    <a href={`/blog/${post.slug}/`} class="post-card" style="
-                        display: block; 
-                        background: #fff; 
-                        border: 1px solid var(--color-border); 
-                        border-radius: 8px; 
-                        overflow: hidden; 
-                        text-decoration: none;
-                        transition: transform 0.3s ease, box-shadow 0.3s ease;
-                    ">
-                        {post.data.heroImage && (
-                            <img src={post.data.heroImage} alt={post.data.title} style="width: 100%; height: 200px; object-fit: cover;">
-                        )}
+            {reportPosts.length > 0 && (
+                <>
+                    <h2 class="category-title">{CATEGORY_MAP.reports}</h2>
+                    <div class="posts-grid">
+                        {reportPosts.map(post => (
+                            <a href={`/blog/${post.slug}/`} class="post-card">
+                                {post.data.heroImage && (
+                                    <img src={post.data.heroImage} alt={post.data.title} class="card-image">
+                                )}
+                                <div class="card-content">
+                                    <h3>{post.data.title}</h3>
+                                    <p>{post.data.description}</p>
+                                    <span class="card-date">
+                                        {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </>
+            )}
+            
+            {directorPosts.length > 0 && (
+                <>
+                    <h2 class="category-title">{CATEGORY_MAP.director}</h2>
+                    <div class="posts-grid">
+                        {directorPosts.map(post => (
+                            <a href={`/blog/${post.slug}/`} class="post-card">
+                                {post.data.heroImage && (
+                                    <img src={post.data.heroImage} alt={post.data.title} class="card-image">
+                                )}
+                                <div class="card-content">
+                                    <h3>{post.data.title}</h3>
+                                    <p>{post.data.description}</p>
+                                    <span class="card-date">
+                                        {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </>
+            )}
 
-                        <div class="card-content" style="padding: 1.5rem;">
-                            <h3 style="margin: 0 0 0.5rem; color: var(--color-primary);">{post.data.title}</h3>
-                            <p style="margin: 0 0 1rem; color: var(--color-text);">{post.data.description}</p>
-                            <span style="font-size: 0.9rem; color: #777;">
-                                {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                            </span>
-                        </div>
-                    </a>
-                ))}
+            {otherPosts.length > 0 && (
+                <>
+                    <h2 class="category-title">其他文章</h2>
+                    <div class="posts-grid">
+                        {otherPosts.map(post => (
+                            <a href={`/blog/${post.slug}/`} class="post-card">
+                                {post.data.heroImage && (
+                                    <img src={post.data.heroImage} alt={post.data.title} class="card-image">
+                                )}
+                                <div class="card-content">
+                                    <h3>{post.data.title}</h3>
+                                    <p>{post.data.description}</p>
+                                    <span class="card-date">
+                                        {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </>
+            )}
 
-            </div>
         </div>
     </section>
 
     <section id="info" style="background-color: var(--color-gray-bg);">
-        <div class="container" style="max-width: 1100px; margin: 0 auto;">
-            <h2>媒體報導 & 連結</h2>
-            <div class="service-cards-container">
-                <div class="card">
-                    <h3>LINE AI 智能客服</h3>
-                    <p>快速了解診所資訊...<br><a href="https://reurl.cc/VY92XZ" target="_blank">點此加入</a></p>
-                </div>
-                <div class="card"><h3>《聚焦2.0》專訪</h3><p>...<br><a href="https://bit.ly/drhsieh_interview" target="_blank">觀看影片</a></p></div>
-                <div class="card"><h3>《良醫健康網》專訪</h3><p>...<br><a href="https://bit.ly/drhsieh_interview2" target="_blank">閱讀文章</a></p></div>
-                <div class="card"><h3>院長部落格</h3><p>...<br><a href="https://bit.ly/drhsieh_blog" target="_blank">前往部落格</a></p></div>
-            </div>
-        </div>
-    </section>
+        </section>
 
     <style>
-        /* 讓部落格卡片在桌面上變兩欄 */
+        .category-title {
+            font-size: 2rem;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+            margin-top: 3rem; /* 讓分類之間有間距 */
+        }
+        .category-title:first-of-type {
+            margin-top: 0; /* 第一個標題不需要上間距 */
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
         @media (min-width: 768px) {
             .posts-grid {
                 grid-template-columns: 1fr 1fr; /* 2 欄 */
             }
         }
 
+        .post-card {
+            display: block;
+            background: #fff;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
         .post-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+        .card-content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--color-primary);
+        }
+        .card-content p {
+            margin: 0 0 1rem;
+            color: var(--color-text);
+        }
+        .card-date {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* 複製 index.astro 自己的 <section id="info"> 樣式 */
+        #info {
+            background-color: var(--color-gray-bg);
+        }
+        #info .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        /* ... 其他在 index.astro 檔案中 <section id="info"> 底下的樣式 ... */
+        
     </style>
 
 </BaseLayout>
