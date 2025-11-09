@@ -17,7 +17,7 @@ tags: ['媽媽手', '手腕痛', '狹窄性橈骨莖突腱鞘炎', '復健治療
 
 ## 🧐 狹窄性橈骨莖突腱鞘炎：淺談「媽媽手」的專業診斷
 
-上述症狀在專業醫學上稱為 **「狹窄性橈骨莖突腱鞘炎」（De Quervain’s Tenosynovitis）** 。
+上述症狀在專業醫學上稱為 **「狹窄性橈骨莖突腱鞘炎」** **（De Quervain’s Tenosynovitis）** 。
 
 這是一種過度使用引起的肌腱發炎問題，主要影響到兩條負責大拇指活動的肌腱，分別是「外展姆長肌」（Abductor Pollicis Longus, APL）和「伸姆短肌」（Extensor Pollicis Brevis, EPB）。這兩條肌腱共同穿過手腕橈骨莖突處的一個狹窄通道（腱鞘）。
 
