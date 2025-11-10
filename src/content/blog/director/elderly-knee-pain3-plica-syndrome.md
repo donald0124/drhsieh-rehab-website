@@ -1,5 +1,5 @@
 ---
-title: '老人家膝蓋痛一定是退化性關節炎嗎？(下集) 內側皺褶症候群 (Plica syndrome)'
+title: '老人家膝蓋痛一定是退化性關節炎嗎？內側皺褶症候群 (Plica syndrome)'
 description: '復健科門診精選問答：探討老年人膝蓋疼痛的另一可能原因，內側皺褶症候群（Medial Plica Syndrome），並分享針對特殊病患（如服用抗凝血劑者）的保守治療策略。'
 pubDate: 2016-09-28
 heroImage: '' 
