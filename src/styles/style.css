@@ -442,7 +442,7 @@ nav ul li a:hover {
 
 .doctor-profile h4 {
     color: var(--color-primary);
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
@@ -451,6 +451,14 @@ nav ul li a:hover {
 .doctor-profile ul {
     list-style: none; /* 移除項目符號 */
     padding: 0;
+}
+
+.doctor-profile-detail h4 {
+    color: var(--color-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .doctor-profile-detail ul {
