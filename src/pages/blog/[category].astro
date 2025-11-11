@@ -103,6 +103,19 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
 
 <style>
     /* ... (所有 CSS 樣式保持不變) ... */
+    
+    #category-hero h1 {
+            font-size: 2.5rem; /* 或是你想要的大小，例如 3rem */
+            color: var(--color-heading); /* 也可以順便統一顏色 */
+            margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+        }
+
+    #category-hero p {
+        font-size: 1.1rem; /* 或是你想要的大小，例如 3rem */
+        color: var(--color-heading); /* 也可以順便統一顏色 */
+        margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+    }
+    
     .posts-grid {
         display: grid;
         grid-template-columns: 1fr; /* 手機 1 欄 */
@@ -139,9 +152,10 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
         font-size: 1.5rem;
         margin: 0 0 0.5rem;
         color: var(--color-primary);
+        text-align: left;
     }
     .card-content p {
-        margin: 0 0 1rem;
+        margin: 0 0 0.5rem;
         color: var(--color-text);
     }
     .card-date {

@@ -1,13 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
-
-// (步驟 3.1：新增) 從 src/consts.ts 匯入
 import { CATEGORY_MAP } from '../../consts.ts';
 
-
-
-// 1. Get all posts and sort by the "most recent" date (lastMod or pubDate)
+// 1. Get all posts and sort (邏輯不變)
 const allPosts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
     (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
         const dateB = (b.data.lastMod ? b.data.lastMod : b.data.pubDate).valueOf();
@@ -16,16 +12,23 @@ const allPosts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
     }
 );
 
+// --------------------------------------------------------
+// (👇 關鍵修正：從 'post.id.startsWith' 改為 'post.data.category ===')
+// --------------------------------------------------------
+const healthPosts = allPosts.filter(post => post.data.category === 'health');
+const reportPosts = allPosts.filter(post => post.data.category === 'reports');
+const directorPosts = allPosts.filter(post => post.data.category === 'director');
 
-// 3. Filter posts based on their folder (ID)
-const healthPosts = allPosts.filter(post => post.id.startsWith('health/'));
-const reportPosts = allPosts.filter(post => post.id.startsWith('reports/'));
-const directorPosts = allPosts.filter(post => post.id.startsWith('director/'));
+// (👇 為了安全起見，我們也修改 'otherPosts' 的邏輯)
 const otherPosts = allPosts.filter(post => 
-    !post.id.startsWith('health/') &&
-    !post.id.startsWith('reports/') &&
-    !post.id.startsWith('director/')
+    !post.data.category || // 抓出未分類的
+    (post.data.category !== 'health' &&
+     post.data.category !== 'reports' &&
+     post.data.category !== 'director')
 );
+// --------------------------------------------------------
+// (👆 修正結束)
+// --------------------------------------------------------
 
 // 4. Split each category into "Latest" (1) and "Remaining" (up to 4)
 const latestHealthPost = healthPosts[0];
@@ -40,7 +43,7 @@ const remainingDirectorPosts = directorPosts.slice(1, 5);
 const latestOtherPost = otherPosts[0];
 const remainingOtherPosts = otherPosts.slice(1, 5);
 
-// Helper function to get the correct date to display
+// Helper function (邏輯不變)
 const getDisplayDate = (post: CollectionEntry<'blog'>) => {
     return post.data.lastMod ?? post.data.pubDate;
 };
@@ -49,11 +52,11 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
 };
 ---
 
-<BaseLayout title="專欄文章 | 謝明福復健科診所" description="診所最新衛教資訊、文章與媒體報導。">
+<BaseLayout title="專欄文章｜謝明福復健科診所" description="謝明福復健科診所最新衛教資訊、文章與媒體報導。">
 
-    <section id="blog-hero" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
-        <h1>衛教資訊 & 媒體報導</h1>
-        <p>我們分享最新的復健知識、疼痛治療新知與媒體專訪。</p>
+    <section id="blog-hero">
+        <h1>復健新知．疼痛治療專欄</h1>
+        <p>最新的復健知識、疼痛治療新知與媒體專訪</p>
     </section>
 
     <section id="blog-list" style="padding: 4rem 1rem;">
@@ -137,7 +140,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
 
                         {reportPosts.length > 5 && (
                             <div class="view-all-container">
-                                <a href={`/blog/report`} class="view-all-link">
+                                <a href={`/blog/reports`} class="view-all-link">
                                     查看所有「{CATEGORY_MAP.reports}」文章 &rarr;
                                 </a>
                             </div>
@@ -221,7 +224,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             ))}
                         </div>
 
-                        {otherPosts.length > 5 && (
+                        {reportPosts.length > 5 && (
                             <div class="view-all-container">
                                 <a href={`/blog/other`} class="view-all-link">
                                     查看所有其他文章 &rarr;
@@ -240,6 +243,45 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
     </section>
 
     <style>
+        
+        #blog-hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 20vh; /* (建議拉高一點) */
+            padding: 3rem 1rem;
+            
+            /* (關鍵) 
+            1. linear-gradient 是加上 40% 的黑色漸層 (讓白字更易讀)
+            2. url(...) 是您在 public/images/ 的圖片路徑
+            3. center center/cover 讓圖片置中且填滿 (不變形)
+
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('/images/blog-hero-cover.jpg') no-repeat center center/cover;
+                        */
+
+            /* (可選) 讓背景圖固定不動，產生視差滾動效果 */
+            background-attachment: fixed; 
+            
+            /* (關鍵) 讓區塊內的 "預設" 文字 (如 P) 變成白色 */
+            color: var(--color-white);
+        }
+
+        
+        #blog-hero h1 {
+            font-size: 2.5rem; /* 或是你想要的大小，例如 3rem */
+            color: var(--color-heading); /* 也可以順便統一顏色 */
+            margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+        }
+
+        #blog-hero p {
+            font-size: 1.1rem; /* 或是你想要的大小，例如 3rem */
+            color: var(--color-heading); /* 也可以順便統一顏色 */
+            margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+        }
+
         .category-title {
             font-size: 2rem;
             color: var(--color-primary);
@@ -287,6 +329,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             font-size: 1.75rem;
             margin: 0 0 0.5rem;
             color: var(--color-primary);
+            text-align: left;
         }
         .featured-card .card-content p {
             margin: 0 0 1rem;
@@ -308,7 +351,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
 
         .view-all-container {
             /* 讓這個連結橫跨整個 .category-layout 的底部 */
-            grid-column: 1 / -1; 
+            grid-column: 1 / -1;
             text-align: right;
             margin-top: 1rem;
         }

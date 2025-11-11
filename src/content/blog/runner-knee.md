@@ -3,7 +3,7 @@ title: '跑步膝蓋外側痛、下坡更痛？認識「髂脛束摩擦症候群
 description: '熱愛跑步、自行車卻飽受膝蓋外側疼痛困擾？復健科醫師帶您解析髂脛束摩擦症候群的成因，提供急性期處置與專業整合治療方案，助您重返運動場。'
 pubDate: 2014-10-09
 lastMod: 2025-11-10
-heroImage: '/images/blog/runner-knee.jpg'
+heroImage: '/images/blog/runner-knee-hero.jpg'
 category: 'health'
 tags: ['髂脛束摩擦症候群', '跑步膝', '膝蓋外側痛', 'ITBFS', '復健治療']
 ---
@@ -21,6 +21,8 @@ tags: ['髂脛束摩擦症候群', '跑步膝', '膝蓋外側痛', 'ITBFS', '復
 這種常見於跑者和騎士的膝蓋外側疼痛，在醫學上稱為「**髂脛束摩擦症候群 (Iliotibial band friction syndrome, ITBFS)**」，俗稱「**跑者膝**」。
 
 髂脛束（ITB）是一條從臀部延伸至膝蓋外側的厚實結締組織。當我們在跑步或騎自行車時，膝關節不斷屈伸，可能會造成髂脛束在股骨外上髁處過度摩擦，導致局部發炎和疼痛。
+
+<img src="/images/blog/runner-knee.jpg" alt="ITB anatomy">
 
 **常見誘發原因包括：**
 
