@@ -7,7 +7,7 @@ category: 'director'
 tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '高位脛骨截骨術', '針極肌肉內電刺激']
 ---
 
-## 復健科門診常見問題問答精選集：縫匠肌肌筋膜炎 (Sartorius Myofascial Pain)
+## 縫匠肌肌筋膜炎 (Sartorius Myofascial Pain)
 
 最近門診碰到幾位老年病人膝蓋疼痛，都自認是膝退化性關節炎。
 

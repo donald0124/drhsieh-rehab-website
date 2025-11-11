@@ -82,7 +82,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             <p>{post.data.description}</p>
                             
                             <span class="card-date">
-                                {hasBeenUpdated(post) && <span class.bind:value="update-badge">(已更新) </span>}
+                                {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
                                 {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                             </span>
                         </div>
@@ -160,7 +160,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
     }
     .card-date {
         font-size: 0.9rem;
-        color: #777;
+        color: #0777;
     }
     .update-badge {
         color: #007A00;
