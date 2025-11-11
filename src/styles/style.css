@@ -1076,21 +1076,19 @@ details[open] > .accordion-summary .accordion-icon {
 
 /* --- Final CTA Block --- */
 .cta-final {
-    background-color: #f4f8ff; /* 淺藍色背景 */
+    background-color: var(--color-primary-light); /* 淺藍色背景 */
     border: 1px solid #cce0ff;
     border-radius: 12px;
     padding: 2.5rem;
-    text-align: center;
-    margin-top: 3rem;
 }
 
 .cta-final h2 {
-    margin-top: 0;
-    color: #003d6b;
+    color: var(--color-primary-dark);
 }
 
 .cta-final .cta-container {
     margin: 1.5rem 0;
+    text-align: center;
 }
 
 .link-secondary {
