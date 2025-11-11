@@ -3,6 +3,7 @@ title: '痠痛、緊繃、睡不好？認識「直線偏極光治療」這項非
 description: '了解直線偏極光治療（如 SuperLizer）如何透過光照射，用於緩解慢性疼痛、肌肉緊繃，並輔助調節自律神經失調等問題。'
 pubDate: 2025-11-09
 heroImage: '/images/blog/superlizer-hero.jpg'
+category: 'health'
 tags: ['直線偏光近紅外線', '光療', '疼痛緩解', '自律神經失調', '物理治療']
 ---
 **前言：當疼痛與自律神經失調成為日常**

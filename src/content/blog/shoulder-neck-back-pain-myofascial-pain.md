@@ -4,6 +4,7 @@ description: '長期肩頸背痛，且摸到肌肉有「激痛點」？復健科
 pubDate: 2013-11-10
 lastMod: 2025-11-10
 heroImage: ''
+category: 'health'
 tags: ['肌筋膜疼痛症候群', '肩頸背痛', '激痛點', '肌肉僵硬', '復健治療']
 ---
 

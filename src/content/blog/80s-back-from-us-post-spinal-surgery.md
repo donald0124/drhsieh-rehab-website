@@ -3,6 +3,7 @@ title: '脊椎術後引發的肌筋膜炎---美國遠道而來的病人'
 description: '分享一位旅美華僑在胸椎手術後，因嚴重肌筋膜疼痛症候群困擾，最終選擇回台尋求針極肌肉內電刺激（NEIMS）治療的經驗。'
 pubDate: 2015-01-16
 #heroImage: '/images/blog/post-spinal-surgery-myofascial-pain-neims.jpg'
+category: 'director'
 tags: ['脊椎術後疼痛', '肌筋膜炎', '肌筋膜疼痛症候群', '針極肌肉內電刺激', 'NEIMS', '銀髮族照護']
 ---
 

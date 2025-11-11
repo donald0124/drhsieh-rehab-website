@@ -3,6 +3,7 @@ title: '如何治療大腿內側或鼠蹊部的肌肉拉傷或慢性肌筋膜炎
 description: '針對大腿內收肌拉傷及慢性肌筋膜炎，分享兒童腳踏車姿勢不良、成人滑倒等案例，並探討直線偏極光與針極肌肉內電刺激的治療應用。'
 pubDate: 2015-08-26
 #heroImage: '/images/blog/adductor-strain-neims-treatment.jpg'
+category: 'director'
 tags: ['大腿內側拉傷', '鼠蹊部疼痛', '內收肌', '肌筋膜炎', '直線偏極光', '針極肌肉內電刺激']
 ---
 

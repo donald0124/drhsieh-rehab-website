@@ -11,7 +11,7 @@ const blogCollection = defineCollection({
         lastMod: z.date().optional(),
         // 封面圖 (選填)
         heroImage: z.string().optional(), 
-
+        category: z.string(),
         // 標籤 (選填，例如 [媽媽手, 復健])
         tags: z.array(z.string()).optional(), 
     }),

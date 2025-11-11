@@ -4,6 +4,7 @@ description: '手腕大拇指側疼痛、無力？復健科醫師帶您解析狹
 pubDate: 2014-01-03
 lastMod: 2025-11-10
 heroImage: '/images/blog/mommy-thumb.jpg'
+category: 'health'
 tags: ['媽媽手', '手腕痛', '狹窄性橈骨莖突腱鞘炎', '復健治療', '肌腱炎']
 ---
 

@@ -1,9 +1,9 @@
-
 ---
 title: '腓總神經受傷造成垂足之針極肌肉電刺激(NEIMS)治療經驗分享'
 description: '分享腓總神經受傷引起的垂足現象（Foot drop）的臨床案例，並介紹針極肌肉電刺激（NEIMS）的治療經驗與成效。'
 pubDate: 2016-08-22
 #heroImage: '/images/blog/peroneal-nerve-injury-foot-drop-neims.jpg'
+category: 'director'
 tags: ['腓總神經', '垂足', 'Foot drop', '針極肌肉電刺激', 'NEIMS', '復健治療']
 ---
 

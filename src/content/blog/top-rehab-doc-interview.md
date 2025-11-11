@@ -3,6 +3,7 @@ title: '「止痛藥自己不吃，怎麼開給病人吃？」藏在三峽小診
 description: '謝明福醫師，一位從三總走出來、堅持少開止痛藥，並運用「針極肌肉內電刺激治療」技術，在三峽小鎮打造出高評價的復健科診所。'
 pubDate: 2025-11-09
 heroImage: '/images/blog/interview-hero.jpg'
+category: 'reports'
 tags: ['復健科', '謝明福', '針極肌肉內電刺激治療', '肌筋膜疼痛', '三峽診所']
 ---
 

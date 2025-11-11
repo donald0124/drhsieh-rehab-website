@@ -23,17 +23,13 @@ export async function getStaticPaths() {
     // 取代 Object.keys(CATEGORY_MAP) (會報錯)
     return CATEGORY_KEYS.map(categorySlug => {
         
-        // 過濾出 "只" 屬於這個分類的文章
+        // (新的正確邏輯：讀取 'category' 標籤)
         const categoryPosts = allPosts.filter(post => 
-            post.id.startsWith(categorySlug + '/')
+            post.data.category === categorySlug
         );
 
-        // 取得這個分類的中文名稱 (現在 100% 型別安全)
         const categoryName = CATEGORY_MAP[categorySlug];
 
-        // 告訴 Astro：
-        // 1. 頁面網址 (params): 例如 /blog/health
-        // 2. 要傳送的資料 (props): 傳送 "所有" 該分類的文章 + 中文名稱
         return {
             params: { category: categorySlug },
             props: {
