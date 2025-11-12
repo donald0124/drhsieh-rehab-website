@@ -77,7 +77,25 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
             <ul>
                 <li><a href="/#about-us">關於我們</a></li>
                 <li><a href="/#team">醫師介紹</a></li>
-                <li><a href="/#services">治療項目</a></li>
+                <li class="dropdown-item">
+                    <a href="/#services" class="dropdown-title">
+                        治療項目 <span class="arrow">▾</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/blog/neims/">
+                                <span class="mobile-show">NEIMS<br>電刺激</span>
+                                <span class="desktop-show">針極肌肉內電刺激 (NEIMS)</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/blog/superlizer/">
+                                <span class="mobile-show">Superlizer<br>雷射</span>
+                                <span class="desktop-show">直線偏極光治療 (Superlizer)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li><a href="/blog">專欄文章</a></li>
                 <li><a href="/#patient-info" class="nav-cta-button">就診資訊</a></li> 
                 
