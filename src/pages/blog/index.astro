@@ -95,7 +95,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             ))}
                         </div>
 
-                        {healthPosts.length > 5 && (
+                        {healthPosts.length > 3 && (
                             <div class="view-all-container">
                                 <a href={`/blog/health`} class="view-all-link">
                                     查看所有「{CATEGORY_MAP.health}」文章 &rarr;
@@ -138,7 +138,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             ))}
                         </div>
 
-                        {reportPosts.length > 5 && (
+                        {reportPosts.length > 3 && (
                             <div class="view-all-container">
                                 <a href={`/blog/reports`} class="view-all-link">
                                     查看所有「{CATEGORY_MAP.reports}」文章 &rarr;
@@ -181,7 +181,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             ))}
                         </div>
 
-                        {directorPosts.length > 5 && (
+                        {directorPosts.length > 3 && (
                             <div class="view-all-container">
                                 <a href={`/blog/director`} class="view-all-link">
                                     查看所有「{CATEGORY_MAP.director}」文章 &rarr;
@@ -224,7 +224,7 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                             ))}
                         </div>
 
-                        {reportPosts.length > 5 && (
+                        {otherPosts.length > 3 && (
                             <div class="view-all-container">
                                 <a href={`/blog/other`} class="view-all-link">
                                     查看所有其他文章 &rarr;
