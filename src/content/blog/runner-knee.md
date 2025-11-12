@@ -3,7 +3,7 @@ title: '跑步膝蓋外側痛、下坡更痛？認識「髂脛束摩擦症候群
 description: '熱愛跑步、自行車卻飽受膝蓋外側疼痛困擾？復健科醫師帶您解析髂脛束摩擦症候群的成因，提供急性期處置與專業整合治療方案，助您重返運動場。'
 pubDate: 2014-10-09
 lastMod: 2025-11-10
-heroImage: '/images/blog/runner-knee-hero.jpg'
+heroImage: '/images/blog/runners-knee-hero.jpg'
 category: 'health'
 tags: ['髂脛束摩擦症候群', '跑步膝', '膝蓋外側痛', 'ITBFS', '復健治療']
 ---
