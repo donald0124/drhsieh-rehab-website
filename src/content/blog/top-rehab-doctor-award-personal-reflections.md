@@ -3,7 +3,7 @@ title: '商業周刊「Top1良醫真心話」出版後個人感言'
 description: '一位復健科醫師從離島、災區到美國進修，分享他堅守初衷、推廣正確醫學常識，並在健保制度下努力成為良醫的心路歷程。'
 category: 'director'
 pubDate: 2017-12-28
-heroImage: 'images/blog/good-doc-personal-reflect-hero.jpg' 
+heroImage: '/images/blog/good-doc-personal-reflect-hero.jpg' 
 tags: ['良醫真心話', '醫師感言', '復健醫療', '醫病關係', '商業周刊']
 ---
 
