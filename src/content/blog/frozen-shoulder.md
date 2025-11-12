@@ -2,7 +2,7 @@
 title: '肩膀卡住、手舉不高？認識「五十肩」的病程分期與復健科整合治療'
 description: '肩膀疼痛、手舉不高？復健科醫師帶您認識五十肩（沾黏性肩關節囊炎）的成因、病程分期，並提供專業整合治療方案，避免沾黏加劇。'
 pubDate: 2025-11-12
-heroImage: ''
+heroImage: '/images/blog/frozen-shoulder-hero.jpg'
 category: 'health'
 tags: ['五十肩', '肩膀痛', '手舉不高', '復健治療', '沾黏性肩關節囊炎']
 ---
