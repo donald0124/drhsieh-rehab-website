@@ -23,7 +23,11 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout 
+    title={post.data.title} 
+    description={post.data.description} 
+    ogImage={post.data.heroImage}
+>
 
     <section id="article-header" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
     
