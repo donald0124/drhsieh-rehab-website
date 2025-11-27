@@ -107,49 +107,6 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                 </>
             )}
 
-            {latestReportPost && (
-                <>
-                    <h2 class="category-title">{CATEGORY_MAP.reports}</h2>
-                    <div class="category-layout">
-                        <a href={`/blog/${latestReportPost.slug}/`} class="featured-card post-card">
-                            {latestReportPost.data.heroImage && (
-                                <img src={latestReportPost.data.heroImage} alt={latestReportPost.data.title} class="card-image">
-                            )}
-                            <div class="card-content">
-                                <h3>{latestReportPost.data.title}</h3>
-                                <p>{latestReportPost.data.description}</p>
-                                <span class="card-date">
-                                    {hasBeenUpdated(latestReportPost) && <span class="update-badge">(已更新) </span>}
-                                    {getDisplayDate(latestReportPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                </span>
-                            </div>
-                        </a>
-                        <div class="list-container">
-                            {remainingReportPosts.map(post => (
-                                <a href={`/blog/${post.slug}/`} class="list-item">
-                                    <div class="list-item-content">
-                                        <h3>{post.data.title}</h3>
-                                        <span class="list-item-date">
-                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
-                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                        </span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-
-                        {reportPosts.length > 3 && (
-                            <div class="view-all-container">
-                                <a href={`/blog/reports`} class="view-all-link">
-                                    查看所有「{CATEGORY_MAP.reports}」文章 &rarr;
-                                </a>
-                            </div>
-                        )}
-
-                    </div>
-                </>
-            )}
-
             {latestDirectorPost && (
                 <>
                     <h2 class="category-title">{CATEGORY_MAP.director}</h2>
@@ -192,6 +149,50 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
                     </div>
                 </>
             )}
+            
+            {latestReportPost && (
+                <>
+                    <h2 class="category-title">{CATEGORY_MAP.reports}</h2>
+                    <div class="category-layout">
+                        <a href={`/blog/${latestReportPost.slug}/`} class="featured-card post-card">
+                            {latestReportPost.data.heroImage && (
+                                <img src={latestReportPost.data.heroImage} alt={latestReportPost.data.title} class="card-image">
+                            )}
+                            <div class="card-content">
+                                <h3>{latestReportPost.data.title}</h3>
+                                <p>{latestReportPost.data.description}</p>
+                                <span class="card-date">
+                                    {hasBeenUpdated(latestReportPost) && <span class="update-badge">(已更新) </span>}
+                                    {getDisplayDate(latestReportPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                </span>
+                            </div>
+                        </a>
+                        <div class="list-container">
+                            {remainingReportPosts.map(post => (
+                                <a href={`/blog/${post.slug}/`} class="list-item">
+                                    <div class="list-item-content">
+                                        <h3>{post.data.title}</h3>
+                                        <span class="list-item-date">
+                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
+                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                        </span>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+
+                        {reportPosts.length > 3 && (
+                            <div class="view-all-container">
+                                <a href={`/blog/reports`} class="view-all-link">
+                                    查看所有「{CATEGORY_MAP.reports}」文章 &rarr;
+                                </a>
+                            </div>
+                        )}
+
+                    </div>
+                </>
+            )}
+           
             
             {latestOtherPost && (
                 <>
