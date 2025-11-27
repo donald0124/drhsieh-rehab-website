@@ -45,7 +45,7 @@ const { title, tags, symptoms, relatedPosts } = Astro.props;
 
         {relatedPosts && relatedPosts.length > 0 && (
             <div class="content-section">
-                <h4>延伸閱讀：衛教專欄</h4>
+                <h4>延伸閱讀：</h4>
                 <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
                     {relatedPosts.map(post => (
                         <a href={post.slug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
