@@ -1,8 +1,8 @@
 ---
-title: '趴睡20年，下場是椎間盤突出！第一名復健科醫師告訴你：睡覺時，該注意哪些事'
+title: '趴睡20年，下場是椎間盤突出！第一名復健科醫師告訴你：睡覺時，該注意哪些事｜謝明福復健科'
 description: '復健科第一名好醫師謝明福分享正確的睡姿原則（仰睡、硬床）、不建議趴睡的原因，以及慢性疼痛患者最適合的復健運動和日常脊椎保健注意事項。'
 pubDate: 2025-11-09
-heroImage: ''
+heroImage: '/images/blog/sleep-posture-disc-herniation-spine-care-hero.jpg'
 category: 'reports'
 tags: ['睡眠姿勢', '椎間盤突出', '脊椎保健', '復健運動', '肌筋膜疼痛']
 ---

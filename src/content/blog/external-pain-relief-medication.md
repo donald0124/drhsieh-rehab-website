@@ -1,5 +1,5 @@
 ---
-title: '痠痛藥膏、貼布貼了無效？認識外用止痛藥的正確使用與潛在風險'
+title: '痠痛藥膏、貼布貼了無效？認識外用止痛藥的正確使用與潛在風險｜謝明福復健科'
 description: '外用痠痛藥膏或貼布是許多人緩解疼痛的首選，但貼錯或過量使用可能增加風險。復健科醫師帶您了解成分、正確使用原則與何時應尋求專業治療。'
 pubDate: 2025-11-23
 heroImage: '/images/blog/external-pain-relief-medication-hero.jpg'
