@@ -1,5 +1,5 @@
 ---
-title: '深入疼痛根源：解析「直線偏極光 (SuperLizer)」如何修復組織、調節自律神經｜謝明福復健科'
+title: '直線偏極光治療 (SuperLizer) ：深入了解對於組織修復、自律神經的幫助及作用機制｜謝明福復健科'
 description: '慢性疼痛、脊椎退化或失眠久治不癒？謝明福醫師引進非侵入性「直線偏極光治療 (SuperLizer)」，解析其穿透皮下5公分的修復原理，與調節星狀神經節的獨特應用。'
 pubDate: 2025-11-27
 heroImage: '/images/blog/superlizer-hero.jpg'
