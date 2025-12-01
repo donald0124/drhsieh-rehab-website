@@ -2,7 +2,7 @@
 title: '筋骨比人軟Q卻老是痠痛扭傷？認識「關節過動症」的穩定治療與訓練｜謝明福復健科'
 description: '關節比別人軟Q，卻長期深受慢性痠痛、扭傷困擾？復健科醫師解析關節過動症的症狀、貝登量表評估，以及如何透過專業治療與訓練穩定關節。'
 pubDate: 2025-11-10
-heroImage: ''
+heroImage: '/images/blog/hypermobility-syndrome-hero.jpg'
 category: 'health'
 tags: ['關節過動症', '筋骨軟Q', '慢性疼痛', '貝登量表', '關節不穩定']
 ---

@@ -3,7 +3,7 @@ title: '脖子硬、背部有硬塊？解析「肌筋膜疼痛症候群」的整
 description: '長期肩頸背痛，按壓肌肉會有劇痛感？復健科醫師帶您了解肌筋膜疼痛症候群的成因、專業治療方式，以及居家姿勢調整與運動預防方法。'
 pubDate: 2013-11-10
 lastMod: 2025-11-10
-#heroImage: ''
+heroImage: '/images/blog/myofascial-pain-syndrome-hero.jpg'
 category: 'health'
 tags: ['肌筋膜疼痛症候群', '肩頸痠痛', '激痛點', '肌肉僵硬', '復健治療']
 ---
