@@ -149,7 +149,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
     <footer>
         <div class="footer-container" style="max-width: 900px; margin: 0 auto; padding: 0 1rem; text-align: center;">
 
-<div class="footer-social-icons">
+            <div class="footer-social-icons">
                 <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" rel="noopener noreferrer" title="LINE 官方帳號">
                     <img src="/LINE_icon.svg" alt="LINE 官方帳號" style="width: 32px; height: 32px;">
                 </a>
@@ -162,7 +162,22 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
             <p style="margin-top: 1.5rem;">謝明福復健科診所</p>
             <p>電話: (02) 2671-8910<br>地址: 新北市三峽區中華路22號2樓</p>
             
-            <p style="margin-top: 1rem; opacity: 0.8;">
+            <!-- SEO 優化：特色治療方式區塊 -->
+            <div style="margin-top: 2rem; padding: 1.5rem; background-color: rgba(255,255,255,0.05); border-radius: 8px; font-size: 0.95rem; line-height: 1.6;">
+                <p style="margin-bottom: 1rem; font-weight: 500;">
+                    本診所專精於<strong>肌筋膜疼痛</strong>及<strong>運動傷害</strong>治療，提供整合性復健方案：
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    <a href="/blog/neims/" style="color: #60a5fa; text-decoration: underline; font-weight: 500;">針極肌肉內電刺激 (NEIMS)</a> — 
+                    深層肌肉放鬆，舒緩頸痛、肩痛、坐骨神經痛、肌筋膜炎等難纏疼痛。
+                </p>
+                <p style="margin-bottom: 0;">
+                    <a href="/blog/superlizer/" style="color: #60a5fa; text-decoration: underline; font-weight: 500;">直線偏極光治療 (Superlizer)</a> — 
+                    偏極光深層滲透，促進血液循環、加速軟組織修復、改善自律神經失調。
+                </p>
+            </div>
+            
+            <p style="margin-top: 1.5rem; opacity: 0.8;">
                 © 2025 DRHSIEH-REHAB.com <br>All Rights Reserved.<br>
                 <a href="/privacy" style="color: #f0f0f0; text-decoration: underline;">
                     聲明與隱私權政策
