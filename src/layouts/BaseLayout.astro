@@ -43,6 +43,46 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    // 網站結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的網站資訊
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "謝明福復健科診所",
+      "url": "https://drhsieh-rehab.com/",
+      "alternateName": ["謝明福復健科診所", "三峽謝明福復健科"]
+    }
+    </script>
+
+    // 醫療機構結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的診所資訊
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      "name": "謝明福復健科診所",
+      "image": "https://drhsieh-rehab.com/images/clinic-outside.jpg",
+      "@id": "https://drhsieh-rehab.com/",
+      "url": "https://drhsieh-rehab.com/",
+      "telephone": "+886-2-2671-8910",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "中華路22號2樓",
+        "addressLocality": "三峽區",
+        "addressRegion": "新北市",
+        "postalCode": "237",
+        "addressCountry": "TW"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 24.9336, 
+        "longitude": 121.3723
+      }
+    }
+    </script>
+
+
+    <meta property="og:site_name" content="謝明福復健科診所" />
 
     <title>{title}</title>
     <meta name="description" content={description}>
