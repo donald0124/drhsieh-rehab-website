@@ -1,12 +1,12 @@
 ---
-title: "落枕怎麼辦？物理治療師教你3招快速緩解與急救法"
+title: "落枕怎麼辦？復健科醫師教你3招快速緩解與急救法"
 pubDate: 2026-02-18
 description: "早上起床脖子卡住、轉頭就痛？這就是典型的「落枕」。本文由復健科醫師解析落枕成因、以及不可做的禁忌，並教您居家緩解與正確就醫時機。"
 author: "謝明福院長"
 # image:
 #   url: "/images/blog/stiff-neck-cover.jpg" 
 #   alt: "落枕治療與緩解"
-featured: false
+featured: true
 tags: ['落枕', '肩頸痠痛', '頭頸']
 ---
 
