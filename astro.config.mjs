@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 // 匯入官方 Tailwind 整合套件
-import tailwind from "@astrojs/tailwind"; 
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +10,7 @@ export default defineConfig({
 
   // 啟用 sitemap 和 tailwind 整合套件
   integrations: [
-    sitemap(),
+    sitemap({ trailingSlash: 'always' }),
     tailwind() // <--- 確保 tailwind() 在這裡被啟用
   ],
 
