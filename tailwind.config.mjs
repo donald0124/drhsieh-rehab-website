@@ -5,7 +5,18 @@ export default {
     './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: '#005a9c', // 專業藍
+          dark: '#004070',    // 深藍 (hover)
+          light: '#eaf4fbff',   // 淺藍背景
+        },
+        heading: '#222222',
+        text: '#444444',
+        border: '#dddddd',
+      }
+    },
   },
   plugins: [],
 }

@@ -5,6 +5,7 @@
 
 interface Props {
   title: string; // 標題 (例如: "頭頸")
+  icon?: string; // 圖示名稱
   tags: string[]; // 治療標籤 (例如: ["落枕", "肩頸痠痛"])
   symptoms: string[]; // 困擾列表 (例如: ["早上起床...", "嘴巴打開..."])
   
@@ -15,41 +16,52 @@ interface Props {
   }[];
 }
 
-const { title, tags, symptoms, relatedPosts } = Astro.props;
+const { title, icon = "general", tags, symptoms, relatedPosts } = Astro.props;
+import ServiceIcon from './ServiceIcon.astro';
 ---
 
-<details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden">
-    <summary class="accordion-summary flex items-center w-full p-6 justify-center bg-blue-50 hover:bg-blue-100 transition-colors duration-200 cursor-pointer list-none gap-3">
-        <h3 class="text-xl md:text-2xl font-semibold text-blue-800 m-0">{title}</h3>
-        <svg class="accordion-icon w-6 h-6 text-blue-700 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+<details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
+    <summary class="accordion-summary flex items-center w-full p-5 md:p-6 justify-between bg-primary-light hover:bg-blue-50 transition-colors duration-200 cursor-pointer list-none gap-4">
+        <div class="flex items-center gap-3 md:gap-4">
+            <div class="p-2 bg-white rounded-full shadow-sm text-primary">
+                <ServiceIcon name={icon} class="w-6 h-6 md:w-7 md:h-7" />
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-primary-dark m-0 tracking-wide">{title}</h3>
+        </div>
+        <svg class="accordion-icon w-6 h-6 text-primary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
     </summary>
     
-    <div class="accordion-content p-6 bg-white">
+    <div class="accordion-content p-6 bg-white border-t border-gray-100">
         
         <div class="content-section mb-6">
             <div class="flex flex-wrap gap-2">
                 {tags.map(tag => (
-                    <span class="treatment-tag">{tag}</span>
+                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-primary-light hover:text-primary transition-colors duration-200">{tag}</span>
                 ))}
             </div>
         </div>
 
         <div class="content-section mb-6">
-            <h4>您是否有這些困擾？</h4>
-            <ul class="symptom-list">
+            <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
+                <span class="text-primary"></span> 您是否有這些困擾？
+            </h4>
+            <ul class="symptom-list space-y-2 pl-2">
                 {symptoms.map(symptom => (
-                    <li>{symptom}</li>
+                    <li class="text-gray-600 flex items-start gap-2">
+                        <span>{symptom}</span>
+                    </li>
                 ))}
             </ul>
         </div>
 
         {relatedPosts && relatedPosts.length > 0 && (
-            <div class="content-section">
-                <h4>延伸閱讀：</h4>
-                <div class="flex flex-col sm:flex-row gap-x-6 gap-y-2">
+            <div class="content-section mt-6 pt-6 border-t border-gray-100">
+                <h4 class="text-base font-bold text-gray-500 mb-3 uppercase tracking-wider">延伸閱讀</h4>
+                <div class="grid gap-3 sm:grid-cols-2">
                     {relatedPosts.map(post => (
-                        <a href={post.slug} class="text-blue-600 hover:text-blue-800 hover:underline transition-colors duration-200">
-                            → {post.title}
+                        <a href={post.slug} class="group flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200">
+                            <span class="opacity-50 group-hover:opacity-100 transition-opacity">→</span>
+                            <span class="underline decoration-transparent group-hover:decoration-primary-dark underline-offset-4 transition-all">{post.title}</span>
                         </a>
                     ))}
                 </div>
