@@ -1,4 +1,5 @@
 ---
+import StickyFooter from '../components/StickyFooter.astro';
 // 匯入您的全域 CSS
 import '../styles/style.css';
 
@@ -51,7 +52,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
       "@type": "WebSite",
       "name": "謝明福復健科診所",
       "url": "https://drhsieh-rehab.com/",
-      "alternateName": ["謝明福復健科診所", "三峽謝明福復健科"]
+      "alternateName": ["謝明福復健科診所", "三峽謝明福復健科", "謝明福復健"]
     }
     </script>
 
@@ -62,7 +63,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
       "@type": "MedicalClinic",
       "name": "謝明福復健科診所",
       "image": "https://drhsieh-rehab.com/images/clinic-outside.jpg",
-      "@id": "https://drhsieh-rehab.com/",
+      "@id": "https://drhsieh-rehab.com/#clinic",
       "url": "https://drhsieh-rehab.com/",
       "telephone": "+886-2-2671-8910",
       "address": {
@@ -72,7 +73,16 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
         "addressRegion": "新北市",
         "postalCode": "237",
         "addressCountry": "TW"
-      }
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "24.9326845", 
+        "longitude": "121.3739576"
+      },
+      "sameAs": [
+        "https://www.facebook.com/Top.rehabilitation.center",
+        "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97"
+      ]
     }
     </script>
 
@@ -217,7 +227,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
             
             <p style="margin-top: 1rem; opacity: 0.8;">
                 © {new Date().getFullYear()} DRHSIEH-REHAB.com <br>All Rights Reserved.<br>
-                <a href="/privacy" style="color: #f0f0f0; text-decoration: underline;">
+                <a href="/privacy/" style="color: #f0f0f0; text-decoration: underline;">
                     聲明與隱私權政策
                 </a>
             </p>
@@ -226,5 +236,6 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
     </footer>
 
 
+    <StickyFooter />
 </body>
 </html>

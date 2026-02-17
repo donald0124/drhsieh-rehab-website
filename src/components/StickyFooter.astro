@@ -5,30 +5,50 @@
 <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
     
     <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        <!-- Lucide Map Pin -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+            <circle cx="12" cy="10" r="3" />
         </svg>
         <span class="text-xs font-bold">導航前往</span>
     </a>
 
     <a href="/#patient-info" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <!-- Lucide Clock -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
         </svg>
         <span class="text-xs font-bold">門診時間</span>
     </a>
 
     <a href="tel:0226718910" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        <!-- Lucide Phone -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </svg>
         <span class="text-xs font-bold">電話諮詢</span>
     </a>
 
-     <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-[#00B900] active:text-[#00B900] hover:bg-gray-50 transition-colors">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
-             <path d="M12 2C6.48 2 2 5.86 2 10.61C2 13.9 4.3 16.79 7.74 18.23C7.4 19.34 6.78 21.05 6.73 21.19C6.67 21.36 6.64 21.56 6.81 21.65C6.98 21.73 7.15 21.6 7.28 21.55C8.84 20.94 11.02 19.53 11.75 19.06C11.83 19.06 11.91 19.07 12 19.07C17.52 19.07 22 15.21 22 10.46C22 5.71 17.52 2 12 2ZM6.38 12.87C6.07 12.87 5.82 12.62 5.82 12.31V8.91C5.82 8.6 6.07 8.35 6.38 8.35C6.69 8.35 6.94 8.6 6.94 8.91V11.23L9.61 8.39C9.76 8.23 10.04 8.16 10.23 8.31C10.42 8.46 10.43 8.74 10.27 8.93L7.74 11.62H10.15C10.46 11.62 10.71 11.87 10.71 12.18C10.71 12.49 10.46 12.74 10.15 12.74H6.38V12.87ZM13 12.31C13 12.62 12.75 12.87 12.44 12.87C12.13 12.87 11.88 12.62 11.88 12.31V8.91C11.88 8.6 12.13 8.35 12.44 8.35C12.75 8.35 13 8.6 13 8.91V12.31ZM16.38 12.86H14.15C13.84 12.87 13.59 12.61 13.59 12.31V8.91C13.59 8.6 13.84 8.35 14.15 8.35C14.46 8.35 14.71 8.91V9.92H16.27C16.58 9.92 16.83 10.17 16.83 10.48C16.83 10.79 16.58 11.04 16.27 11.04H14.71V12.31H16.38C16.69 12.31 16.94 12.56 16.94 12.87C16.94 13.18 16.69 13.43 16.38 13.43V12.86ZM20.21 11.62L18.8 11.63L18.8 12.31C18.8 12.62 18.55 12.87 18.24 12.87C17.93 12.87 17.68 12.62 17.68 12.31V8.91C17.68 8.6 17.93 8.35 18.24 8.35C18.55 8.35 18.8 8.6 18.8 8.91V10.51H20.21C20.52 10.51 20.77 10.76 20.77 11.07C20.77 11.38 20.52 11.63 20.21 11.63V11.62Z" />
+    <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-[#00B900] active:text-[#00B900] hover:bg-gray-50 transition-colors">
+        <!-- LINE Logo (Custom) -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" viewBox="0 0 296.528 296.528" fill="currentColor">
+            <path d="M295.838,115.347l0.003-0.001l-0.092-0.76c-0.001-0.013-0.002-0.023-0.004-0.036c-0.001-0.011-0.002-0.021-0.004-0.032
+		l-0.344-2.858c-0.069-0.574-0.148-1.228-0.238-1.974l-0.072-0.594l-0.147,0.018c-3.617-20.571-13.553-40.093-28.942-56.762
+		c-15.317-16.589-35.217-29.687-57.548-37.878c-19.133-7.018-39.434-10.577-60.337-10.577c-28.22,0-55.627,6.637-79.257,19.193
+		C23.289,47.297-3.585,91.799,0.387,136.461c2.056,23.111,11.11,45.11,26.184,63.621c14.188,17.423,33.381,31.483,55.503,40.66
+		c13.602,5.642,27.051,8.301,41.291,11.116l1.667,0.33c3.921,0.776,4.975,1.842,5.247,2.264c0.503,0.784,0.24,2.329,0.038,3.18
+		c-0.186,0.785-0.378,1.568-0.57,2.352c-1.529,6.235-3.11,12.683-1.868,19.792c1.428,8.172,6.531,12.859,14.001,12.86
+		c0.001,0,0.001,0,0.002,0c8.035,0,17.18-5.39,23.231-8.956l0.808-0.475c14.436-8.478,28.036-18.041,38.271-25.425
+		c22.397-16.159,47.783-34.475,66.815-58.17C290.172,175.745,299.2,145.078,295.838,115.347z M92.343,160.561H66.761
+		c-3.866,0-7-3.134-7-7V99.865c0-3.866,3.134-7,7-7c3.866,0,7,3.134,7,7v46.696h18.581c3.866,0,7,3.134,7,7
+		C99.343,157.427,96.209,160.561,92.343,160.561z M119.03,153.371c0,3.866-3.134,7-7,7c-3.866,0-7-3.134-7-7V99.675
+		c0-3.866,3.134-7,7-7c3.866,0,7,3.134,7,7V153.371z M182.304,153.371c0,3.033-1.953,5.721-4.838,6.658
+		c-0.712,0.231-1.441,0.343-2.161,0.343c-2.199,0-4.323-1.039-5.666-2.888l-25.207-34.717v30.605c0,3.866-3.134,7-7,7
+		c-3.866,0-7-3.134-7-7v-52.16c0-3.033,1.953-5.721,4.838-6.658c2.886-0.936,6.045,0.09,7.827,2.545l25.207,34.717V99.675
+		c0-3.866,3.134-7,7-7c3.866,0,7,3.134,7,7V153.371z M233.311,159.269h-34.645c-3.866,0-7-3.134-7-7v-26.847V98.573
+		c0-3.866,3.134-7,7-7h33.57c3.866,0,7,3.134,7,7s-3.134,7-7,7h-26.57v12.849h21.562c3.866,0,7,3.134,7,7c0,3.866-3.134,7-7,7
+		h-21.562v12.847h27.645c3.866,0,7,3.134,7,7S237.177,159.269,233.311,159.269z"/>
         </svg>
         <span class="text-xs font-bold">LINE諮詢</span>
     </a>
