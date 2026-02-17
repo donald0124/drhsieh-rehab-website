@@ -3,8 +3,9 @@ title: '嘴巴張不開、咀嚼有「喀喀」聲？認識「顳顎關節障礙
 description: '咀嚼時下顎痠痛、張嘴有喀喀聲，甚至伴隨頭痛與肩頸僵硬？復健科醫師解析顳顎關節障礙症(TMJD)的成因，並介紹居家保養與NEIMS、雷射等專業整合治療方案。'
 pubDate: 2025-11-28
 heroImage: '/images/blog/tmjd-hero.jpg'
-category: 'health'
-tags: ['顳顎關節障礙', '下巴痛', '嘴巴張不開', '臉頰痠痛', 'NEIMS']
+author: '謝明福 院長'
+featured: false
+tags: ['顳顎關節障礙', '下巴痛', '嘴巴張不開', '臉頰痠痛', 'NEIMS', '衛教文章']
 ---
 
 ## 您的下巴也常「卡卡」或痠痛嗎？

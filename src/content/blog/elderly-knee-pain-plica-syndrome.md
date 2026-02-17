@@ -4,8 +4,9 @@ description: '許多長輩膝蓋疼痛常被誤認為單純的退化性關節炎
 pubDate: 2016-09-28
 lastMod: 2025-11-30
 #heroImage: '' 
-category: 'director'
-tags: ['內側皺褶症候群', 'Plica Syndrome', '膝蓋疼痛', '髕骨內側痛', '抗凝血劑', '物理治療']
+author: '謝明福 院長'
+featured: false
+tags: ['內側皺褶症候群', 'Plica Syndrome', '膝蓋疼痛', '髕骨內側痛', '抗凝血劑', '物理治療', '院長經驗談']
 ---
 
 ## 不只是退化？中風長輩的膝蓋難題

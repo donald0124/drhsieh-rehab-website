@@ -3,8 +3,9 @@ title: '針極肌肉內電刺激 (NEIMS)：謝明福院長20年經驗，精準�
 description: '由謝明福院長解析針極肌肉內電刺激 (NEIMS) 的科學原理與治療原則，針對深層肌筋膜激痛點，提供慢性疼痛患者根源性的精準治療方案。'
 pubDate: 2025-11-12
 heroImage: '/images/blog/neims-hero.jpg'
-category: 'health' 
-tags: ['NEIMS', '肌筋膜疼痛症候群', '慢性疼痛', '激痛點', '電針治療']
+author: '謝明福 院長'
+featured: false
+tags: ['NEIMS', '肌筋膜疼痛症候群', '慢性疼痛', '激痛點', '電針治療', '衛教文章']
 ---
 
 ## 您是否也「痛」了很久，卻找不到答案？

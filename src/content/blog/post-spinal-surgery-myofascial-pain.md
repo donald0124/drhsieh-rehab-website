@@ -4,8 +4,9 @@ description: '許多銀髮族在脊椎手術後，骨頭雖已癒合，卻仍深
 pubDate: 2015-01-16
 lastMod: 2025-11-20
 ＃heroImage: ''
-category: 'director'
-tags: ['脊椎手術', '背痛', '術後沾黏', '肌筋膜疼痛症候群', '針極肌肉內電刺激', 'NEIMS']
+author: '謝明福 院長'
+featured: false
+tags: ['脊椎手術', '背痛', '術後沾黏', '肌筋膜疼痛症候群', '針極肌肉內電刺激', 'NEIMS', '院長經驗談']
 ---
 
 ## 手術成功了，為什麼背還是痛？

@@ -4,8 +4,9 @@ description: '為什麼只是翹腳或蹲著打掃，竟然會導致腳板無力
 pubDate: 2016-08-22
 lastMod: 2025-12-01
 #heroImage: ''
-category: 'director'
-tags: ['腓總神經', '垂足', 'Foot drop', '針極肌肉內電刺激', 'NEIMS', '脛前肌', '復健醫學']
+author: '謝明福 院長'
+featured: false
+tags: ['腓總神經', '垂足', 'Foot drop', '針極肌肉內電刺激', 'NEIMS', '脛前肌', '復健醫學', '院長經驗談']
 ---
 
 ## 別讓「壞姿勢」壓壞你的神經：從日常生活看垂足成因

@@ -4,8 +4,9 @@ description: '膝蓋痛不一定都是關節退化。復健科醫師解析人體
 pubDate: 2016-08-03
 lastMod: 2025-11-23
 heroImage: '/images/blog/elderly-knee-pain-sartorius-myofascial-hero.jpg' 
-category: 'director'
-tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '跑者膝', '針極肌肉內電刺激', 'NEIMS']
+author: '謝明福 院長'
+featured: false
+tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '跑者膝', '針極肌肉內電刺激', 'NEIMS', '院長經驗談']
 ---
 
 ## 膝蓋痛，真的只是因為「老了」嗎？

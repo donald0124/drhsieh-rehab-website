@@ -1,54 +1,53 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
-import { CATEGORY_MAP } from '../../consts.ts';
 
-// 1. Get all posts and sort (邏輯不變)
-const allPosts: CollectionEntry<'blog'>[] = (await getCollection('blog')).sort(
-    (a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => {
-        const dateB = (b.data.lastMod ? b.data.lastMod : b.data.pubDate).valueOf();
-        const dateA = (a.data.lastMod ? a.data.lastMod : a.data.pubDate).valueOf();
+// 1. Get all posts and sort
+const allPosts = (await getCollection('blog')).sort(
+    (a, b) => {
+        // Sort by Featured first (true > false)
+        if (a.data.featured !== b.data.featured) {
+            return a.data.featured ? -1 : 1;
+        }
+        // Then by Date (Updated > Published)
+        const dateB = (b.data.updatedDate ?? b.data.lastMod ?? b.data.pubDate).valueOf();
+        const dateA = (a.data.updatedDate ?? a.data.lastMod ?? a.data.pubDate).valueOf();
         return dateB - dateA;
     }
 );
 
-// --------------------------------------------------------
-// (👇 關鍵修正：從 'post.id.startsWith' 改為 'post.data.category ===')
-// --------------------------------------------------------
-const healthPosts = allPosts.filter(post => post.data.category === 'health');
-const reportPosts = allPosts.filter(post => post.data.category === 'reports');
-const directorPosts = allPosts.filter(post => post.data.category === 'director');
+// 2. Filter by Tags (Not Category)
+const healthPosts = allPosts.filter(post => post.data.tags?.includes('衛教文章'));
+const reportPosts = allPosts.filter(post => post.data.tags?.includes('媒體報導'));
+const directorPosts = allPosts.filter(post => post.data.tags?.includes('院長經驗談'));
 
-// (👇 為了安全起見，我們也修改 'otherPosts' 的邏輯)
+// 3. Other posts (none of the above tags)
 const otherPosts = allPosts.filter(post => 
-    !post.data.category || // 抓出未分類的
-    (post.data.category !== 'health' &&
-     post.data.category !== 'reports' &&
-     post.data.category !== 'director')
+    !post.data.tags?.some(t => ['衛教文章', '媒體報導', '院長經驗談'].includes(t))
 );
-// --------------------------------------------------------
-// (👆 修正結束)
-// --------------------------------------------------------
 
-// 4. Split each category into "Latest" (1) and "Remaining" (up to 4)
-const latestHealthPost = healthPosts[0];
-const remainingHealthPosts = healthPosts.slice(1, 5); 
+// Helper function for categorization
+const getPostsBySection = (posts: CollectionEntry<'blog'>[]) => {
+    if (posts.length === 0) return { featured: null, list: [] };
+    // If there is a manually featured post in this group, pick it. 
+    // Since we sorted allPosts by featured first, posts[0] SHOULD be the featured one if it exists.
+    return {
+        featured: posts[0],
+        list: posts.slice(1, 5) // Show next 4
+    };
+};
 
-const latestReportPost = reportPosts[0];
-const remainingReportPosts = reportPosts.slice(1, 5);
+const healthSection = getPostsBySection(healthPosts);
+const reportSection = getPostsBySection(reportPosts);
+const directorSection = getPostsBySection(directorPosts);
+const otherSection = getPostsBySection(otherPosts);
 
-const latestDirectorPost = directorPosts[0];
-const remainingDirectorPosts = directorPosts.slice(1, 5);
-
-const latestOtherPost = otherPosts[0];
-const remainingOtherPosts = otherPosts.slice(1, 5);
-
-// Helper function (邏輯不變)
+// Date helper
 const getDisplayDate = (post: CollectionEntry<'blog'>) => {
-    return post.data.lastMod ?? post.data.pubDate;
+    return post.data.updatedDate ?? post.data.lastMod ?? post.data.pubDate;
 };
 const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
-    return post.data.lastMod ? true : false;
+    return (post.data.updatedDate || post.data.lastMod) ? true : false;
 };
 ---
 
@@ -62,177 +61,158 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
     <section id="blog-list" style="padding: 4rem 1rem;">
         <div class="container" style="max-width: 900px; margin: 0 auto;">
 
-            {latestHealthPost && (
+            {healthSection.featured && (
                 <>
-                    <h2 class="category-title">{CATEGORY_MAP.health}</h2>
+                    <h2 class="category-title">衛教文章</h2>
                     <div class="category-layout">
-                        
-                        <a href={`/blog/${latestHealthPost.slug}/`} class="featured-card post-card">
-                            {latestHealthPost.data.heroImage && (
-                                <img src={latestHealthPost.data.heroImage} alt={latestHealthPost.data.title} class="card-image">
+                        <a href={`/blog/${healthSection.featured.slug}/`} class="featured-card post-card">
+                            {healthSection.featured.data.heroImage && (
+                                <img src={healthSection.featured.data.heroImage} alt={healthSection.featured.data.title} class="card-image" />
                             )}
                             <div class="card-content">
-                                <h3>{latestHealthPost.data.title}</h3>
-                                <p>{latestHealthPost.data.description}</p>
-                                <span class="card-date">
-                                    {hasBeenUpdated(latestHealthPost) && <span class="update-badge">(已更新) </span>}
-                                    {getDisplayDate(latestHealthPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                </span>
+                                <h3>{healthSection.featured.data.title}</h3>
+                                <p>{healthSection.featured.data.description}</p>
+                                <div class="card-meta">
+                                    <span class="card-author">{healthSection.featured.data.author || '謝明福 院長'}</span>
+                                    <span class="card-date">
+                                        {hasBeenUpdated(healthSection.featured) && <span class="update-badge">(已更新) </span>}
+                                        {getDisplayDate(healthSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
                             </div>
                         </a>
 
                         <div class="list-container">
-                            {remainingHealthPosts.map(post => (
+                            {healthSection.list.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="list-item">
                                     <div class="list-item-content">
                                         <h3>{post.data.title}</h3>
-                                        <span class="list-item-date">
-                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
-                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                        </span>
+                                        <div class="list-meta">
+                                            <span class="list-item-date">
+                                                {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                            </span>
+                                        </div>
                                     </div>
                                 </a>
                             ))}
                         </div>
 
-                        {healthPosts.length > 3 && (
+                        {healthPosts.length > 5 && (
                             <div class="view-all-container">
-                                <a href={`/blog/health/`} class="view-all-link">
-                                    查看所有「{CATEGORY_MAP.health}」文章 &rarr;
+                                <a href={`/blog/tag/衛教文章/`} class="view-all-link">
+                                    查看所有「衛教文章」 &rarr;
                                 </a>
                             </div>
                         )}
-
                     </div>
                 </>
             )}
 
-            {latestDirectorPost && (
+            {directorSection.featured && (
                 <>
-                    <h2 class="category-title">{CATEGORY_MAP.director}</h2>
+                    <h2 class="category-title">院長經驗談</h2>
                     <div class="category-layout">
-                        <a href={`/blog/${latestDirectorPost.slug}/`} class="featured-card post-card">
-                            {latestDirectorPost.data.heroImage && (
-                                <img src={latestDirectorPost.data.heroImage} alt={latestDirectorPost.data.title} class="card-image">
+                        <a href={`/blog/${directorSection.featured.slug}/`} class="featured-card post-card">
+                            {directorSection.featured.data.heroImage && (
+                                <img src={directorSection.featured.data.heroImage} alt={directorSection.featured.data.title} class="card-image" />
                             )}
                             <div class="card-content">
-                                <h3>{latestDirectorPost.data.title}</h3>
-                                <p>{latestDirectorPost.data.description}</p>
-                                <span class="card-date">
-                                    {hasBeenUpdated(latestDirectorPost) && <span class="update-badge">(已更新) </span>}
-                                    {getDisplayDate(latestDirectorPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                </span>
+                                <h3>{directorSection.featured.data.title}</h3>
+                                <p>{directorSection.featured.data.description}</p>
+                                 <div class="card-meta">
+                                    <span class="card-author">{directorSection.featured.data.author}</span>
+                                    <span class="card-date">
+                                        {getDisplayDate(directorSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    </span>
+                                </div>
                             </div>
                         </a>
                         <div class="list-container">
-                            {remainingDirectorPosts.map(post => (
+                            {directorSection.list.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="list-item">
                                     <div class="list-item-content">
                                         <h3>{post.data.title}</h3>
                                         <span class="list-item-date">
-                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
                                             {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                                         </span>
                                     </div>
                                 </a>
                             ))}
                         </div>
-
-                        {directorPosts.length > 3 && (
+                         {directorPosts.length > 5 && (
                             <div class="view-all-container">
-                                <a href={`/blog/director/`} class="view-all-link">
-                                    查看所有「{CATEGORY_MAP.director}」文章 &rarr;
-                                </a>
+                                <a href={`/blog/tag/院長經驗談/`} class="view-all-link">查看更多 &rarr;</a>
                             </div>
                         )}
-
                     </div>
                 </>
             )}
             
-            {latestReportPost && (
+            {reportSection.featured && (
                 <>
-                    <h2 class="category-title">{CATEGORY_MAP.reports}</h2>
+                    <h2 class="category-title">媒體報導</h2>
                     <div class="category-layout">
-                        <a href={`/blog/${latestReportPost.slug}/`} class="featured-card post-card">
-                            {latestReportPost.data.heroImage && (
-                                <img src={latestReportPost.data.heroImage} alt={latestReportPost.data.title} class="card-image">
+                        <a href={`/blog/${reportSection.featured.slug}/`} class="featured-card post-card">
+                            {reportSection.featured.data.heroImage && (
+                                <img src={reportSection.featured.data.heroImage} alt={reportSection.featured.data.title} class="card-image" />
                             )}
                             <div class="card-content">
-                                <h3>{latestReportPost.data.title}</h3>
-                                <p>{latestReportPost.data.description}</p>
+                                <h3>{reportSection.featured.data.title}</h3>
+                                <p>{reportSection.featured.data.description}</p>
                                 <span class="card-date">
-                                    {hasBeenUpdated(latestReportPost) && <span class="update-badge">(已更新) </span>}
-                                    {getDisplayDate(latestReportPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    {getDisplayDate(reportSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                                 </span>
                             </div>
                         </a>
                         <div class="list-container">
-                            {remainingReportPosts.map(post => (
+                            {reportSection.list.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="list-item">
                                     <div class="list-item-content">
                                         <h3>{post.data.title}</h3>
                                         <span class="list-item-date">
-                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
                                             {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                                         </span>
                                     </div>
                                 </a>
                             ))}
                         </div>
-
-                        {reportPosts.length > 3 && (
+                         {reportPosts.length > 5 && (
                             <div class="view-all-container">
-                                <a href={`/blog/reports/`} class="view-all-link">
-                                    查看所有「{CATEGORY_MAP.reports}」文章 &rarr;
-                                </a>
+                                <a href={`/blog/tag/媒體報導/`} class="view-all-link">查看更多 &rarr;</a>
                             </div>
                         )}
-
                     </div>
                 </>
             )}
-           
-            
-            {latestOtherPost && (
+
+            {otherSection.featured && (
                 <>
-                    <h2 class="category-title">其他文章</h2>
+                    <h2 class="category-title">其他精選</h2>
                     <div class="category-layout">
-                        <a href={`/blog/${latestOtherPost.slug}/`} class="featured-card post-card">
-                            {latestOtherPost.data.heroImage && (
-                                <img src={latestOtherPost.data.heroImage} alt={latestOtherPost.data.title} class="card-image">
+                         <a href={`/blog/${otherSection.featured.slug}/`} class="featured-card post-card">
+                            {otherSection.featured.data.heroImage && (
+                                <img src={otherSection.featured.data.heroImage} alt={otherSection.featured.data.title} class="card-image" />
                             )}
                             <div class="card-content">
-                                <h3>{latestOtherPost.data.title}</h3>
-                                <p>{latestOtherPost.data.description}</p>
+                                <h3>{otherSection.featured.data.title}</h3>
+                                <p>{otherSection.featured.data.description}</p>
                                 <span class="card-date">
-                                    {hasBeenUpdated(latestOtherPost) && <span class="update-badge">(已更新) </span>}
-                                    {getDisplayDate(latestOtherPost).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                    {getDisplayDate(otherSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                                 </span>
                             </div>
                         </a>
                         <div class="list-container">
-                            {remainingOtherPosts.map(post => (
+                            {otherSection.list.map(post => (
                                 <a href={`/blog/${post.slug}/`} class="list-item">
                                     <div class="list-item-content">
                                         <h3>{post.data.title}</h3>
                                         <span class="list-item-date">
-                                            {hasBeenUpdated(post) && <span class="update-badge">(已更新) </span>}
                                             {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                                         </span>
                                     </div>
                                 </a>
                             ))}
                         </div>
-
-                        {otherPosts.length > 3 && (
-                            <div class="view-all-container">
-                                <a href={`/blog/other`} class="view-all-link">
-                                    查看所有其他文章 &rarr;
-                                </a>
-                            </div>
-                        )}
-
                     </div>
                 </>
             )}
@@ -244,43 +224,29 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
     </section>
 
     <style>
-        
+        /* ... Styles Kept largely the same ... */
         #blog-hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            min-height: 20vh; /* (建議拉高一點) */
+            min-height: 20vh;
             padding: 3rem 1rem;
-            
-            /* (關鍵) 
-            1. linear-gradient 是加上 40% 的黑色漸層 (讓白字更易讀)
-            2. url(...) 是您在 public/images/ 的圖片路徑
-            3. center center/cover 讓圖片置中且填滿 (不變形)
-
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('/images/blog-hero-cover.jpg') no-repeat center center/cover;
-                        */
-
-            /* (可選) 讓背景圖固定不動，產生視差滾動效果 */
             background-attachment: fixed; 
-            
-            /* (關鍵) 讓區塊內的 "預設" 文字 (如 P) 變成白色 */
             color: var(--color-white);
+             /* Fallback background if image missing, or use global style */
+             background-color: var(--color-primary); 
         }
-
-        
         #blog-hero h1 {
-            font-size: 2.5rem; /* 或是你想要的大小，例如 3rem */
-            color: var(--color-heading); /* 也可以順便統一顏色 */
-            margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+            font-size: 2.5rem;
+            color: var(--color-heading);
+            margin-bottom: 0.5rem;
         }
-
         #blog-hero p {
-            font-size: 1.1rem; /* 或是你想要的大小，例如 3rem */
-            color: var(--color-heading); /* 也可以順便統一顏色 */
-            margin-bottom: 0.5rem; /* 調整一下跟底下 <p> 的間距 */
+            font-size: 1.1rem;
+            color: var(--color-heading);
+            margin-bottom: 0.5rem;
         }
 
         .category-title {
@@ -295,14 +261,12 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             margin-top: 0;
         }
 
-        /* New category layout: 1.5fr (featured) + 1fr (list) on desktop */
         .category-layout {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
             gap: 2rem;
         }
 
-        /* Base card style */
         .post-card {
             display: block;
             background: #fff;
@@ -317,7 +281,6 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Featured card styles (the large card) */
         .featured-card .card-image {
              height: 250px;
              width: 100%;
@@ -336,22 +299,26 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             margin: 0 0 1rem;
             color: var(--color-text);
         }
-        .featured-card .card-date {
+        
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 0.9rem;
             color: #777;
         }
+        .card-author {
+            font-weight: bold;
+            color: var(--color-primary-dark);
+        }
 
-        /* List container for remaining posts */
         .list-container {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
         }
 
-        /* ... (您原有的 style 標籤內) ... */
-
         .view-all-container {
-            /* 讓這個連結橫跨整個 .category-layout 的底部 */
             grid-column: 1 / -1;
             text-align: right;
             margin-top: 1rem;
@@ -371,9 +338,6 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             color: #fff;
         }
 
-        
-
-        /* Individual list item styles */
         .list-item {
             display: block;
             text-decoration: none;
@@ -402,12 +366,11 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             color: #777;
         }
  
-        .update-badge {    /* Updated" badge style */
-            color: #007A00; /* A green color for emphasis */
+        .update-badge {
+            color: #007A00;
             font-weight: bold;
         }
         
-        /* Responsive: On mobile, stack layout */
         @media (max-width: 768px) {
             .category-layout {
                 grid-template-columns: 1fr;
@@ -428,7 +391,6 @@ const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
             }
         }
 
-        /* Styles for your #info section */
         #info {
             background-color: var(--color-gray-bg);
         }

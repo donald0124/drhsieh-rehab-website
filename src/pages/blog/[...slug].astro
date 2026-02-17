@@ -47,12 +47,16 @@ const recommendedPosts = otherPosts.slice(0, randomCount);
             {post.data.description}
         </p>
 
+        <p style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold; margin: 0 auto 0.5rem;">
+            {post.data.author || '謝明福 院長'}
+        </p>
+
         <p style="font-size: 1rem; color: #555;">
             發布日期: {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
                     
-            {post.data.lastMod && (
-                <span style="color: #888; margin-left: 1rem;">
-                    (更新於: {post.data.lastMod.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })})
+            {(post.data.updatedDate || post.data.lastMod) && (
+                <span style="color: #007A00; margin-left: 1rem; font-weight: bold;">
+                    (更新於: {(post.data.updatedDate || post.data.lastMod).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })})
                 </span>
             )}
         

@@ -3,8 +3,9 @@ title: '3C產品新型的手部傷害：扳機指｜謝明福復健科'
 description: '過度使用3C產品導致兒童與高齡者罹患「扳機指」，扳機指的成因、治療與實用預防方法。'
 pubDate: 2015-11-09
 heroImage: '' 
-category: 'health'
-tags: ['扳機指', 'Trigger Finger', '3C產品傷害', '肌腱腱鞘炎', '復健衛教']
+author: '謝明福 院長'
+featured: false
+tags: ['扳機指', 'Trigger Finger', '3C產品傷害', '肌腱腱鞘炎', '復健衛教', '衛教文章']
 ---
 
 ## 📱 3C產品新型的手部傷害：「扳機指」

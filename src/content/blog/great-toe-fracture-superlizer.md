@@ -4,8 +4,9 @@ description: '大腳趾閉鎖性非移位性骨折常見於車禍或重物砸傷
 pubDate: 2016-04-13
 lastMod: 2025-11-29
 heroImage: '/images/blog/great-toe-fracture-superlizer-hero.jpg' 
-category: 'director'
-tags: ['大腳趾骨折', '趾骨骨折', '閉鎖性骨折', '熱塑型護木', '直線偏光治療儀', '物理治療']
+author: '謝明福 院長'
+featured: false
+tags: ['大腳趾骨折', '趾骨骨折', '閉鎖性骨折', '熱塑型護木', '直線偏光治療儀', '物理治療', '院長經驗談']
 ---
 
 ## 車禍與跌倒常見的傷害：閉鎖性非移位性骨折

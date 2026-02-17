@@ -3,8 +3,9 @@ title: '難以啟齒的鼠蹊部疼痛？談大腿內收肌拉傷與慢性肌筋
 description: '大腿內側或鼠蹊部疼痛常因運動傷害、姿勢不良或久傷不癒造成。本文解析內收肌群解剖構造，探討從急性拉傷到慢性肌筋膜炎的成因，並介紹直線偏極光與針極肌肉內電刺激(NEIMS)的治療原理與臨床應用。'
 pubDate: 2025-11-23
 heroImage: '/images/blog/groin-pain-myofasciitis-neims-hero.jpg'
-category: 'director'
-tags: ['鼠蹊部疼痛', '大腿內收肌', '運動傷害', '肌筋膜炎', 'NEIMS', '直線偏極光']
+author: '謝明福 院長'
+featured: false
+tags: ['鼠蹊部疼痛', '大腿內收肌', '運動傷害', '肌筋膜炎', 'NEIMS', '直線偏極光', '院長經驗談']
 ---
 
 ## 為什麼走路會痛？大腿內側與鼠蹊部的疼痛警訊

@@ -4,8 +4,9 @@ description: '針對長期使用電腦、姿勢不良導致嚴重肩頸僵硬、
 pubDate: 2013-09-29
 lastMod: 2025-11-20
 heroImage: '/images/blog/chronic-myofascial-pain-neims-hero.jpg'
-category: 'health'
-tags: ['針極肌肉內電刺激', '肌筋膜疼痛症候群', '上班族職業病', '頸因性頭痛', '肩頸痠痛']
+author: '謝明福 院長'
+featured: false
+tags: ['針極肌肉內電刺激', '肌筋膜疼痛症候群', '上班族職業病', '頸因性頭痛', '肩頸痠痛', '衛教文章']
 ---
 
 ## 只是肩頸痠痛，為什麼會頭暈想吐？

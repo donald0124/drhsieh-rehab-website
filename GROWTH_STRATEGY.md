@@ -92,7 +92,7 @@
 ### Phase 2: 內容深化 (Content Deep Dive)
 
 * [ ] **Content**: 撰寫更多針對服務項目 (Services) 中 tags 的對應文章，填滿內部連結網絡。
-* [ ] **UX**: 優化 `ServiceItem` 設計，使其更具吸引力（例如加入 icon 或圖片）。
+* [x] **UX**: 優化 `ServiceItem` 設計，使其更具吸引力（已加入 Icon 與 Theme Color）。
 
 ### Phase 3: 進階功能
 

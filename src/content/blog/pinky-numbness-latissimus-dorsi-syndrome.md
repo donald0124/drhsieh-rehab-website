@@ -4,8 +4,9 @@ description: '肩膀腋下痠痛延伸至小指，常被誤認為頸椎骨刺？
 pubDate: 2015-03-21
 lastMod: 2025-11-28
 heroImage: '/images/blog/pinky-numbness-latissimus-dorsi-syndrome-hero.jpg'
-category: 'health'
-tags: ['闊背肌筋膜炎', '肌筋膜疼痛症候群', '小指麻', '頸椎病鑑別', '肩頸痠痛', '針極肌肉內電刺激', '直線偏光治療']
+author: '謝明福 院長'
+featured: false
+tags: ['闊背肌筋膜炎', '肌筋膜疼痛症候群', '小指麻', '頸椎病鑑別', '肩頸痠痛', '針極肌肉內電刺激', '直線偏光治療', '衛教文章']
 ---
 
 ## 手指麻木一定是頸椎長骨刺嗎？

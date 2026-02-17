@@ -4,8 +4,9 @@ description: '許多患者長期受臀部疼痛或腿麻困擾，常被誤認為
 pubDate: 2016-08-20
 lastMod: 2025-11-28
 heroImage: '/images/blog/sciatica-piriformis-myofascial-pain-hero.jpg'
-category: 'director'
-tags: ['坐骨神經痛', '腰椎牽引', '梨狀肌症候群', '肌筋膜炎', '腸薦關節', '髂脛束摩擦症候群']
+author: '謝明福 院長'
+featured: false
+tags: ['坐骨神經痛', '腰椎牽引', '梨狀肌症候群', '肌筋膜炎', '腸薦關節', '髂脛束摩擦症候群', '院長經驗談']
 ---
 
 ## 為什麼做了腰椎牽引與推拿，屁股和腿還是痛？

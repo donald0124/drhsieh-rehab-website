@@ -4,8 +4,9 @@ description: '長期肩頸背痛，按壓肌肉會有劇痛感？復健科醫師
 pubDate: 2013-11-10
 lastMod: 2025-11-10
 heroImage: '/images/blog/myofascial-pain-syndrome-hero.jpg'
-category: 'health'
-tags: ['肌筋膜疼痛症候群', '肩頸痠痛', '激痛點', '肌肉僵硬', '復健治療']
+author: '謝明福 院長'
+featured: false
+tags: ['肌筋膜疼痛症候群', '肩頸痠痛', '激痛點', '肌肉僵硬', '復健治療', '衛教文章']
 ---
 
 ## 長期肩頸背僵硬、脖子轉不動，還有壓了會痛的硬塊？
