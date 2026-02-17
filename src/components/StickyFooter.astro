@@ -1,0 +1,35 @@
+---
+// src/components/StickyFooter.astro
+// Mobile-only sticky footer
+---
+<div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex z-50 md:hidden pb-[env(safe-area-inset-bottom)]">
+    
+    <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <span class="text-xs font-bold">導航前往</span>
+    </a>
+
+    <a href="/#patient-info" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span class="text-xs font-bold">門診時間</span>
+    </a>
+
+    <a href="tel:0226718910" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-blue-600 active:text-blue-600 hover:bg-gray-50 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+        </svg>
+        <span class="text-xs font-bold">電話諮詢</span>
+    </a>
+
+     <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" class="flex-1 flex flex-col items-center justify-center py-2 text-gray-600 hover:text-[#00B900] active:text-[#00B900] hover:bg-gray-50 transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+             <path d="M12 2C6.48 2 2 5.86 2 10.61C2 13.9 4.3 16.79 7.74 18.23C7.4 19.34 6.78 21.05 6.73 21.19C6.67 21.36 6.64 21.56 6.81 21.65C6.98 21.73 7.15 21.6 7.28 21.55C8.84 20.94 11.02 19.53 11.75 19.06C11.83 19.06 11.91 19.07 12 19.07C17.52 19.07 22 15.21 22 10.46C22 5.71 17.52 2 12 2ZM6.38 12.87C6.07 12.87 5.82 12.62 5.82 12.31V8.91C5.82 8.6 6.07 8.35 6.38 8.35C6.69 8.35 6.94 8.6 6.94 8.91V11.23L9.61 8.39C9.76 8.23 10.04 8.16 10.23 8.31C10.42 8.46 10.43 8.74 10.27 8.93L7.74 11.62H10.15C10.46 11.62 10.71 11.87 10.71 12.18C10.71 12.49 10.46 12.74 10.15 12.74H6.38V12.87ZM13 12.31C13 12.62 12.75 12.87 12.44 12.87C12.13 12.87 11.88 12.62 11.88 12.31V8.91C11.88 8.6 12.13 8.35 12.44 8.35C12.75 8.35 13 8.6 13 8.91V12.31ZM16.38 12.86H14.15C13.84 12.87 13.59 12.61 13.59 12.31V8.91C13.59 8.6 13.84 8.35 14.15 8.35C14.46 8.35 14.71 8.91V9.92H16.27C16.58 9.92 16.83 10.17 16.83 10.48C16.83 10.79 16.58 11.04 16.27 11.04H14.71V12.31H16.38C16.69 12.31 16.94 12.56 16.94 12.87C16.94 13.18 16.69 13.43 16.38 13.43V12.86ZM20.21 11.62L18.8 11.63L18.8 12.31C18.8 12.62 18.55 12.87 18.24 12.87C17.93 12.87 17.68 12.62 17.68 12.31V8.91C17.68 8.6 17.93 8.35 18.24 8.35C18.55 8.35 18.8 8.6 18.8 8.91V10.51H20.21C20.52 10.51 20.77 10.76 20.77 11.07C20.77 11.38 20.52 11.63 20.21 11.63V11.62Z" />
+        </svg>
+        <span class="text-xs font-bold">LINE諮詢</span>
+    </a>
+</div>

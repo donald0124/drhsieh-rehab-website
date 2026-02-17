@@ -19,7 +19,23 @@ const qaList = [
   },
 
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": qaList.map(qa => ({
+    "@type": "Question",
+    "name": qa.question.replace(/^Q:\s*/, ''),
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": qa.answer.replace(/^<p>A:\s*/, '').replace(/<\/p>$/, '')
+    }
+  }))
+};
+
 ---
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
 <div class="qna-section" style="margin-top: 4rem; max-width: 900px; margin-left: auto; margin-right: auto;">
     <h3>常見 Q&A</h3>
     

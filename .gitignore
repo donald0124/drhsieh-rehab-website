@@ -5,6 +5,7 @@ dist/
 
 # dependencies
 node_modules/
+GSCreport/
 
 # logs
 npm-debug.log*

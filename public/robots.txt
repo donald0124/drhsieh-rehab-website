@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drhsieh-rehab.com/sitemap-index.xml
