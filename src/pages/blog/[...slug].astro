@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Calendar, User, Clock, List } from 'lucide-react';
 
 // 1. 產生所有文章的靜態路徑
 export async function getStaticPaths() {
@@ -20,9 +21,13 @@ interface Props {
 
 // 3. 取得這篇文章的資料
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
 
-// 4. 取得所有文章，並隨機推薦 3-5 篇（排除當前文章）
+// 4. 計算閱讀時間 (簡單估算：中文字數 / 300)
+const wordCount = post.body.length;
+const readingTime = Math.ceil(wordCount / 300);
+
+// 5. 取得所有文章，並隨機推薦 3-5 篇（排除當前文章）
 const allPosts = await getCollection('blog');
 const otherPosts = allPosts
   .filter((p: CollectionEntry<'blog'>) => p.slug !== post.slug) // 排除當前文章
@@ -31,6 +36,8 @@ const otherPosts = allPosts
 // 隨機取 3-5 篇
 const randomCount = Math.min(3 + Math.floor(Math.random() * 3), otherPosts.length);
 const recommendedPosts = otherPosts.slice(0, randomCount);
+
+import TableOfContents from '../../components/TableOfContents.astro';
 ---
 
 <BaseLayout 
@@ -59,6 +66,10 @@ const recommendedPosts = otherPosts.slice(0, randomCount);
                     (更新於: {(post.data.updatedDate || post.data.lastMod).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })})
                 </span>
             )}
+            
+            <span style="margin-left: 1rem; color: #666;">
+                 閱讀時間約 {readingTime} 分鐘
+            </span>
         
         </p>
         
@@ -75,6 +86,8 @@ const recommendedPosts = otherPosts.slice(0, randomCount);
 
     <section id="article-content" style="padding: 3rem 1rem;">
         <article class="prose" style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            
+            <TableOfContents headings={headings} />
             
             <Content />
 
@@ -136,7 +149,7 @@ const recommendedPosts = otherPosts.slice(0, randomCount);
     </section>
 
     <div style="text-align: center; padding: 2rem 1rem 4rem;">
-        <a href="/blog" class="cta-button">返回文章列表</a>
+        <a href="/blog/" class="cta-button">返回文章列表</a>
     </div>
 
     <style is:global>

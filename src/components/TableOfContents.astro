@@ -1,0 +1,79 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// Filter only h2 and h3
+const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+---
+
+{toc.length > 0 && (
+    <nav class="toc-container">
+        <h2 class="toc-title">本文目錄</h2>
+        <ul class="toc-list">
+            {toc.map((heading) => (
+                <li class={`toc-item depth-${heading.depth}`}>
+                    <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+            ))}
+        </ul>
+    </nav>
+)}
+
+<style>
+    .toc-container {
+        background-color: #f9fafb;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border: 1px solid #e5e7eb;
+    }
+
+    .toc-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        color: var(--color-primary-dark);
+        border-bottom: 2px solid var(--color-primary-light);
+        padding-bottom: 0.5rem;
+    }
+
+    .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .toc-item {
+        margin-bottom: 0.5rem;
+    }
+
+    .toc-item a {
+        text-decoration: none;
+        color: var(--color-text);
+        transition: color 0.2s;
+        display: block;
+        padding: 0.25rem 0;
+    }
+
+    .toc-item a:hover {
+        color: var(--color-primary);
+        background-color: #f0f9ff;
+        padding-left: 0.5rem;
+        border-radius: 4px;
+    }
+
+    .depth-2 {
+        font-weight: 600;
+    }
+
+    .depth-3 {
+        padding-left: 1.5rem;
+        font-size: 0.95rem;
+        color: #666;
+    }
+</style>
