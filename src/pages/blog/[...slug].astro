@@ -1,22 +1,20 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Calendar, User, Clock, List } from 'lucide-react';
-
+import { getCollection, type CollectionEntry } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 // 1. 產生所有文章的靜態路徑
 export async function getStaticPaths() {
-  const allPosts = await getCollection('blog');
-  
-  // 幫 'post' 加上型別
-  return allPosts.map((post: CollectionEntry<'blog'>) => ({
-    params: { slug: post.slug },
-    props: { post }, 
-  }));
+    const allPosts = await getCollection("blog");
+
+    // 幫 'post' 加上型別
+    return allPosts.map((post: CollectionEntry<"blog">) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
 }
 
 // 2. 幫傳入的 props 定義型別
 interface Props {
-  post: CollectionEntry<'blog'>;
+    post: CollectionEntry<"blog">;
 }
 
 // 3. 取得這篇文章的資料
@@ -28,84 +26,122 @@ const wordCount = post.body.length;
 const readingTime = Math.ceil(wordCount / 300);
 
 // 5. 取得所有文章，並隨機推薦 3-5 篇（排除當前文章）
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection("blog");
 const otherPosts = allPosts
-  .filter((p: CollectionEntry<'blog'>) => p.slug !== post.slug) // 排除當前文章
-  .sort(() => Math.random() - 0.5); // 隨機排序
+    .filter((p: CollectionEntry<"blog">) => p.slug !== post.slug) // 排除當前文章
+    .sort(() => Math.random() - 0.5); // 隨機排序
 
 // 隨機取 3-5 篇
-const randomCount = Math.min(3 + Math.floor(Math.random() * 3), otherPosts.length);
+const randomCount = Math.min(
+    3 + Math.floor(Math.random() * 3),
+    otherPosts.length,
+);
 const recommendedPosts = otherPosts.slice(0, randomCount);
+const lastModified = post.data.updatedDate || post.data.lastMod;
 
-import TableOfContents from '../../components/TableOfContents.astro';
+import TableOfContents from "../../components/TableOfContents.astro";
 ---
 
-<BaseLayout 
-    title={post.data.title} 
-    description={post.data.description} 
+<BaseLayout
+    title={post.data.title}
+    description={post.data.description}
     ogImage={post.data.heroImage}
 >
+    <section
+        id="article-header"
+        style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);"
+    >
+        <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem;">
+            {post.data.title}
+        </h1>
 
-    <section id="article-header" style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);">
-    
-        <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem;">{post.data.title}</h1>
-
-        <p style="font-size: 1.25rem; color: #444; max-width: 700px; margin: 0 auto 1.5rem;">
+        <p
+            style="font-size: 1.25rem; color: #444; max-width: 700px; margin: 0 auto 1.5rem;"
+        >
             {post.data.description}
         </p>
 
-        <p style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold; margin: 0 auto 0.5rem;">
-            {post.data.author || '謝明福 院長'}
+        <p
+            style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold; margin: 0 auto 0.5rem;"
+        >
+            {post.data.author || "謝明福 院長"}
         </p>
 
         <p style="font-size: 1rem; color: #555;">
-            發布日期: {post.data.pubDate.toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                    
-            {(post.data.updatedDate || post.data.lastMod) && (
-                <span style="color: #007A00; margin-left: 1rem; font-weight: bold;">
-                    (更新於: {(post.data.updatedDate || post.data.lastMod).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })})
-                </span>
-            )}
-            
+            發布日期: {
+                post.data.pubDate.toLocaleDateString("zh-TW", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                })
+            }
+
+            {
+                lastModified && (
+                    <span style="color: #007A00; margin-left: 1rem; font-weight: bold;">
+                        (更新於:{" "}
+                        {lastModified.toLocaleDateString("zh-TW", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        })}
+                        )
+                    </span>
+                )
+            }
+
             <span style="margin-left: 1rem; color: #666;">
-                 閱讀時間約 {readingTime} 分鐘
+                閱讀時間約 {readingTime} 分鐘
             </span>
-        
         </p>
-        
-        {post.data.heroImage && (
-            <img src={post.data.heroImage} alt={post.data.title} style="
+
+        {
+            post.data.heroImage && (
+                <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    style="
                 width: 100%; 
                 max-width: 900px; 
                 margin: 2rem auto 0; /* <-- 修改點 */
                 border-radius: 8px;
-            ">
-        )}
+            "
+                />
+            )
+        }
     </section>
 
-
     <section id="article-content" style="padding: 3rem 1rem;">
-        <article class="prose prose-lg max-w-none" style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
-            
+        <article
+            class="prose prose-lg max-w-none"
+            style="max-width: 800px; margin: 0 auto; line-height: 1.8;"
+        >
             <TableOfContents headings={headings} />
-            
-            <Content />
 
+            <Content />
         </article>
     </section>
 
     <!-- 推薦文章區塊 -->
-    <section id="recommended-posts" style="padding: 4rem 1rem; background-color: #f9fafb; margin-top: 4rem;">
+    <section
+        id="recommended-posts"
+        style="padding: 4rem 1rem; background-color: #f9fafb; margin-top: 4rem;"
+    >
         <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #1f2937;">
+            <h2
+                style="text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #1f2937;"
+            >
                 你可能也喜歡
             </h2>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
-                {recommendedPosts.map((recommendedPost: CollectionEntry<'blog'>) => (
-                    <a 
-                        href={`/blog/${recommendedPost.slug}/`}
-                        style="
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
+            >
+                {
+                    recommendedPosts.map((recommendedPost) => (
+                        <a
+                            href={`/blog/${recommendedPost.slug}/`}
+                            style="
                             text-decoration: none;
                             color: inherit;
                             background: white;
@@ -117,33 +153,37 @@ import TableOfContents from '../../components/TableOfContents.astro';
                             flex-direction: column;
                             height: 100%;
                         "
-                        onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.15)';"
-                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';"
-                    >
-                        {recommendedPost.data.heroImage && (
-                            <img 
-                                src={recommendedPost.data.heroImage} 
-                                alt={recommendedPost.data.title}
-                                style="width: 100%; height: 180px; object-fit: cover;"
-                            />
-                        )}
-                        <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                            <h3 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #1f2937; line-height: 1.4;">
-                                {recommendedPost.data.title}
-                            </h3>
-                            <p style="font-size: 0.95rem; color: #6b7280; margin: 0 0 1rem; flex: 1; line-height: 1.5;">
-                                {recommendedPost.data.description}
-                            </p>
-                            <p style="font-size: 0.85rem; color: #9ca3af; margin: 0;">
-                                {recommendedPost.data.pubDate.toLocaleDateString('zh-TW', { 
-                                    year: 'numeric', 
-                                    month: 'long', 
-                                    day: 'numeric' 
-                                })}
-                            </p>
-                        </div>
-                    </a>
-                ))}
+                            onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.15)';"
+                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';"
+                        >
+                            {recommendedPost.data.heroImage && (
+                                <img
+                                    src={recommendedPost.data.heroImage}
+                                    alt={recommendedPost.data.title}
+                                    style="width: 100%; height: 180px; object-fit: cover;"
+                                />
+                            )}
+                            <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
+                                <h3 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #1f2937; line-height: 1.4;">
+                                    {recommendedPost.data.title}
+                                </h3>
+                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0 0 1rem; flex: 1; line-height: 1.5;">
+                                    {recommendedPost.data.description}
+                                </p>
+                                <p style="font-size: 0.85rem; color: #9ca3af; margin: 0;">
+                                    {recommendedPost.data.pubDate.toLocaleDateString(
+                                        "zh-TW",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </p>
+                            </div>
+                        </a>
+                    ))
+                }
             </div>
         </div>
     </section>
@@ -182,7 +222,7 @@ import TableOfContents from '../../components/TableOfContents.astro';
             margin-bottom: 1.5rem;
             padding-left: 2rem;
             /* 🚨 關鍵修正：強制設定列表類型和位置 */
-            list-style-type: disc; 
+            list-style-type: disc;
         }
 
         .prose ol {
@@ -194,7 +234,7 @@ import TableOfContents from '../../components/TableOfContents.astro';
         }
 
         .prose li {
-             margin-bottom: 0.5rem;
+            margin-bottom: 0.5rem;
         }
         .prose img {
             max-width: 100%;
@@ -206,5 +246,4 @@ import TableOfContents from '../../components/TableOfContents.astro';
             text-decoration: underline;
         }
     </style>
-
 </BaseLayout>

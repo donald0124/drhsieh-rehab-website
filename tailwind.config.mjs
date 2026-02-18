@@ -76,3 +76,59 @@ export default {
     require('@tailwindcss/typography'),
   ],
 }
+
+
+    // <style is:global>
+    //     /* is:global 讓這些樣式能套用到 .md 產生的 HTML */
+    //     .prose h2 {
+    //         font-size: 2rem;
+    //         margin-top: 3rem;
+    //         margin-bottom: 1.5rem;
+    //         padding-bottom: 0.5rem;
+    //         border-bottom: 2px solid var(--color-border);
+    //         text-align: left;
+    //     }
+    //     .prose h3 {
+    //         font-size: 1.5rem;
+    //         margin-top: 2rem;
+    //         text-align: left;
+    //     }
+    //     .prose h4 {
+    //         font-size: 1.3rem;
+    //         margin-top: 2rem;
+    //         text-align: left;
+    //     }
+
+    //     .prose p {
+    //         font-size: 1.1rem;
+    //         margin-bottom: 1.5rem;
+    //     }
+    //     .prose ul {
+    //         font-size: 1.1rem;
+    //         margin-bottom: 1.5rem;
+    //         padding-left: 2rem;
+    //         /* 🚨 關鍵修正：強制設定列表類型和位置 */
+    //         list-style-type: disc; 
+    //     }
+
+    //     .prose ol {
+    //         font-size: 1.1rem;
+    //         margin-bottom: 1.5rem;
+    //         padding-left: 2rem;
+    //         /* 🚨 關鍵修正：強制設定列表類型和位置 */
+    //         list-style-type: decimal; /* 確保有序列表顯示數字 */
+    //     }
+
+    //     .prose li {
+    //          margin-bottom: 0.5rem;
+    //     }
+    //     .prose img {
+    //         max-width: 100%;
+    //         height: auto;
+    //         border-radius: 8px;
+    //         margin: 2rem 0;
+    //     }
+    //     .prose a {
+    //         text-decoration: underline;
+    //     }
+    // </style>
