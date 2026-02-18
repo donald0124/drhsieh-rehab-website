@@ -1,0 +1,58 @@
+<section id="hero">
+    <h1>謝明福復健科診所<br />三峽疼痛治療專家</h1>
+    <p>
+        精準診斷疼痛根源，提供多元整合治療<br />新北市三峽區中華路22號2樓<br
+        />(02) 2671-8910
+    </p>
+    <a href="#patient-info" class="cta-button">查看就診資訊</a>
+</section>
+
+<style>
+    /*
+ * ================================
+ * 5. 頁面區塊 (Page Sections)
+ * ================================
+ */
+
+    /* (1) 英雄區塊 (Hero) 
+  ▼▼▼ (以下為更新後的程式碼) ▼▼▼
+*/
+    #hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        min-height: 60vh;
+        /* (建議拉高一點) */
+        padding: 3rem 1rem;
+
+        /* (關鍵) 
+      1. linear-gradient 是加上 40% 的黑色漸層 (讓白字更易讀)
+      2. url(...) 是您在 public/images/ 的圖片路徑
+      3. center center/cover 讓圖片置中且填滿 (不變形)
+    */
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+            url("/images/hero-cover.jpg") no-repeat center center/cover;
+
+        /* (可選) 讓背景圖固定不動，產生視差滾動效果 */
+        background-attachment: fixed;
+
+        /* (關鍵) 讓區塊內的 "預設" 文字 (如 P) 變成白色 */
+        color: var(--color-white);
+    }
+
+    #hero h1 {
+        font-size: 2.5rem;
+        color: var(--color-white);
+    }
+
+    #hero p {
+        font-size: 1.15rem;
+        max-width: 600px;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+        color: var(--color-white);
+    }
+</style>

@@ -1,21 +1,23 @@
 ---
-import StickyFooter from '../components/StickyFooter.astro';
-// 匯入您的全域 CSS
-import '../styles/style.css';
+import StickyFooter from "../components/StickyFooter.astro";
+import "../styles/base.css"; // 1. 先引入地基 (變數 + Tailwind)
+import "../styles/style.css"; // 2. 再引入您的舊樣式 (這樣舊樣式才能吃到變數)
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
 // 1. (修改) 擴充 Props 介面，加入可選的 ogImage
 export interface Props {
-    title: string;
-    description: string;
+    title: string;
+    description: string;
     ogImage?: string; // 讓 index.astro 可以傳入專屬的 OG 圖片
 }
 
 // 2. (修改) 接收 Props，並為 ogImage 設定 "預設圖片"
 //    (如果 index.astro 沒傳 ogImage，就會使用這張)
-const { 
-    title, 
-    description, 
-    ogImage = '/images/default-og-image-1200x630.jpg' // (重要) 請換成您預設圖的路徑
+const {
+    title,
+    description,
+    ogImage = "/images/default-og-image-1200x630.jpg", // (重要) 請換成您預設圖的路徑
 } = Astro.props;
 
 // 3. (新增) 獲取標準網址 (Canonical URL)
@@ -27,215 +29,115 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-TW">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script
+            is:inline
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-QKK5EJVJ8K"
+        ></script>
+        <script is:inline>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-<head>
-    <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QKK5EJVJ8K"></script>
-    <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+            gtag("config", "G-QKK5EJVJ8K");
+        </script>
 
-    gtag('config', 'G-QKK5EJVJ8K');
-    </script>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的網站資訊 -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "謝明福復健科診所",
+                "url": "https://drhsieh-rehab.com/",
+                "alternateName": [
+                    "謝明福復健科診所",
+                    "三峽謝明福復健科",
+                    "謝明福復健"
+                ]
+            }
+        </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的網站資訊 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "謝明福復健科診所",
-      "url": "https://drhsieh-rehab.com/",
-      "alternateName": ["謝明福復健科診所", "三峽謝明福復健科", "謝明福復健"]
-    }
-    </script>
+        <!-- 醫療機構結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的診所資訊 -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "MedicalClinic",
+                "name": "謝明福復健科診所",
+                "image": "https://drhsieh-rehab.com/images/clinic-outside.jpg",
+                "@id": "https://drhsieh-rehab.com/#clinic",
+                "url": "https://drhsieh-rehab.com/",
+                "telephone": "+886-2-2671-8910",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "中華路22號2樓",
+                    "addressLocality": "三峽區",
+                    "addressRegion": "新北市",
+                    "postalCode": "237",
+                    "addressCountry": "TW"
+                },
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "24.9326845",
+                    "longitude": "121.3739576"
+                },
+                "sameAs": [
+                    "https://www.facebook.com/Top.rehabilitation.center",
+                    "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97"
+                ]
+            }
+        </script>
 
-    <!-- 醫療機構結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的診所資訊 -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "MedicalClinic",
-      "name": "謝明福復健科診所",
-      "image": "https://drhsieh-rehab.com/images/clinic-outside.jpg",
-      "@id": "https://drhsieh-rehab.com/#clinic",
-      "url": "https://drhsieh-rehab.com/",
-      "telephone": "+886-2-2671-8910",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "中華路22號2樓",
-        "addressLocality": "三峽區",
-        "addressRegion": "新北市",
-        "postalCode": "237",
-        "addressCountry": "TW"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "24.9326845", 
-        "longitude": "121.3739576"
-      },
-      "sameAs": [
-        "https://www.facebook.com/Top.rehabilitation.center",
-        "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97"
-      ]
-    }
-    </script>
+        <meta property="og:site_name" content="謝明福復健科診所" />
 
+        <title>{title}</title>
+        <meta name="description" content={description} />
 
-    <meta property="og:site_name" content="謝明福復健科診所" />
+        <link rel="canonical" href={canonicalURL.href} />
 
-    <title>{title}</title>
-    <meta name="description" content={description}>
-    
-    <link rel="canonical" href={canonicalURL.href}>
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonicalURL.href} />
+        <meta property="og:type" content="website" />
 
-    <meta property="og:title" content={title}>
-    <meta property="og:description" content={description}>
-    <meta property="og:url" content={canonicalURL.href}>
-    <meta property="og:type" content="website">
-    
-    <meta property="og:image" content={new URL(ogImage, Astro.site).href}>
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+        <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
-    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="謝明福復健科診所" />
-    <link rel="manifest" href="/favicon/site.webmanifest" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="/favicon/favicon-96x96.png"
+            sizes="96x96"
+        />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon/favicon.ico" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/favicon/apple-touch-icon.png"
+        />
+        <meta name="apple-mobile-web-app-title" content="謝明福復健科診所" />
+        <link rel="manifest" href="/favicon/site.webmanifest" />
+    </head>
 
-</head>
+    <body>
+        <Header />
 
-<body>
+        <main>
+            <slot />
+        </main>
 
-    <header>
-        <nav class="navbar">
-            <a href="/" class="logo">
-                <img src="/drhsieh-rehab-logo.svg" alt="謝明福復健科診所 Logo">                     
-            </a> 
+        <Footer />
 
-            <button id="menu-toggle" class="hamburger" aria-label="開啟選單">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <ul id="primary-navigation" class="nav-menu">
-                
-                <li><a href="/#patient-info" class="nav-cta-button">就診資訊</a></li> 
-                <li><a href="/#about-us">關於我們</a></li>
-                <li><a href="/#team">醫師介紹</a></li>
-                
-                <li class="dropdown-item">
-                    <a href="/#services" class="dropdown-title">
-                        主治項目 <span class="arrow">▾</span>
-                    </a>
-                    
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="/#services">主治項目</a>
-                        </li>
-                        <li>
-                            <a href="/blog/neims/">針極肌肉內電刺激 (NEIMS)</a>
-                        </li>
-                        <li>
-                            <a href="/blog/superlizer/">直線偏極光治療 (Superlizer)</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li><a href="/blog/">專欄文章</a></li>
-                
-                <li class="nav-social-container">
-                    <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" class="social-icon" title="LINE">
-                        <img src="/LINE_icon.svg" alt="LINE">
-                    </a>
-                    <a href="https://www.facebook.com/Top.rehabilitation.center" target="_blank" class="social-icon" title="Facebook">
-                        <img src="/Facebook_icon.svg" alt="Facebook">
-                    </a>
-                </li>
-
-                
-            </ul>
-        </nav>
-    </header>
-
-    <script is:inline>
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleButton = document.getElementById('menu-toggle');
-            const navMenu = document.getElementById('primary-navigation');
-
-            // 點擊漢堡按鈕：切換選單開關
-            toggleButton.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                toggleButton.classList.toggle('is-active');
-            });
-
-            // 點擊選單內的任何連結：自動關閉選單 (提升手機體驗)
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navMenu.classList.remove('active');
-                    toggleButton.classList.remove('is-active');
-                });
-            });
-        });
-    </script>
-
-    <main>
-        <slot />
-    </main>
-    
-    <footer>
-        <div class="footer-container" style="max-width: 900px; margin: 0 auto; padding: 0 1rem; text-align: center;">
-
-            <div class="footer-social-icons">
-                <a href="https://line.me/R/ti/p/@gsj9393s" target="_blank" rel="noopener noreferrer" title="LINE 官方帳號">
-                    <img src="/LINE_icon.svg" alt="LINE 官方帳號" style="width: 32px; height: 32px;">
-                </a>
-                
-                <a href="https://www.facebook.com/Top.rehabilitation.center" target="_blank" rel="noopener noreferrer" title="Facebook 粉絲專頁">
-                    <img src="/Facebook_icon.svg" alt="Facebook 粉絲專頁" style="width: 32px; height: 32px;">
-                </a>
-            </div>
-
-            
-            <div class="footer-section">
-                <p style="color: #ffffff; margin-top: 1.5rem; font-weight:bolder;">特色進階治療</p>
-                <ul class="footer-links">
-                    <li>
-                        <a href="/blog/neims/" style="color: #f0f0f0; text-decoration: underline;">
-                            針極肌肉內電刺激 (NEIMS)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/blog/superlizer/" style="color: #f0f0f0; text-decoration: underline;">
-                            直線偏極光治療 (SuperLizer)
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <p style="margin-top: 1.5rem;">謝明福復健科診所</p>
-            <p>電話: (02) 2671-8910<br>地址: 新北市三峽區中華路22號2樓</p>
-            
-            <p style="margin-top: 1rem; opacity: 0.8;">
-                © {new Date().getFullYear()} DRHSIEH-REHAB.com <br>All Rights Reserved.<br>
-                <a href="/privacy/" style="color: #f0f0f0; text-decoration: underline;">
-                    聲明與隱私權政策
-                </a>
-            </p>
-
-        </div>
-    </footer>
-
-
-    <StickyFooter />
-</body>
+        <StickyFooter />
+    </body>
 </html>

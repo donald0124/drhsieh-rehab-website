@@ -1,17 +1,47 @@
-/* base.css */
+/* src/styles/base.css */
+
+/* 1. 引入 Tailwind 的三大核心 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* 2. 定義全站變數 (這是唯一的真理來源) */
 @layer base {
-
-    /* 設定全站變數 */
     :root {
-        --color-primary: #005f73;
+        /* --- 品牌色系 --- */
+        --color-primary: #005a9c;
+        /* 專業藍 */
+        --color-primary-dark: #004070;
+        /* 深藍 (Hover用) */
+        --color-primary-light: #f0f6fa;
+        /* 淺藍 (背景用) */
+
+        /* --- 文字與邊框 --- */
+        --color-heading: #222222;
+        /* 標題黑 */
+        --color-text: #444444;
+        /* 內文灰 */
+        --color-border: #dddddd;
+        /* 邊框灰 */
+        --color-gray-bg: #f9f9f9;
+        /* 區塊灰底 */
+        --color-white: #ffffff;
+
+        /* --- 排版設定 --- */
+        --container-width: 1100px;
+        /* 容器最大寬度 */
+        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
     }
 
-    /* 只設定最基礎的字體，不要設定大小或邊框 */
+    /* 全域基礎設定 (只設字體顏色，不設排版，避免汙染) */
+    html {
+        @apply scroll-smooth;
+        scroll-behavior: smooth;
+    }
+
+
     body {
-        @apply text-slate-800 bg-white;
+        @apply font-sans text-[color:var(--color-text)] bg-white leading-relaxed;
     }
 }

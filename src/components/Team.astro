@@ -1,0 +1,184 @@
+<section id="team">
+    <h2 class="text-4xl font-bold text-center mb-10 text-heading">醫師介紹</h2>
+
+    <div class="doctor-profile">
+        <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片" />
+
+        <div class="doctor-bio-text">
+            <h3
+                class="text-[1.8rem] text-heading font-bold mb-1 mt-0 text-center"
+            >
+                謝明福 院長
+            </h3>
+
+            <h4 class="text-xl font-bold text-primary mt-4 mb-2">學歷</h4>
+            <ul>
+                <li>國防醫學院醫學士</li>
+                <li>中國醫藥大學針灸學分班</li>
+            </ul>
+
+            <h4 class="text-xl font-bold text-primary mt-4 mb-2">核心經歷</h4>
+            <ul>
+                <li>台灣復健醫學會 專科醫師</li>
+                <li>三軍總醫院復健部 住院/總/主治醫師</li>
+                <li>台大、台北榮總復健醫學部 進修醫師</li>
+                <li>國防醫學院復健醫學系 臨床助理教授</li>
+                <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>
+            </ul>
+        </div>
+    </div>
+    <div
+        class="doctor-profile-detail"
+        style="max-width: 92%; margin: 2.5rem auto 0;"
+    >
+        <h3 class="text-center font-bold mb-8 text-xl text-primary-dark">
+            院長詳細資歷
+        </h3>
+
+        <div class="doctor-experience-list">
+            <h4 class="text-xl font-bold text-primary mt-4 mb-2">曾任</h4>
+            <ul>
+                <li>國軍金門基層醫療醫官</li>
+                <li>國軍金門花崗石(820)醫院外科住院醫師</li>
+                <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
+                <li>九二一大地震災區巡回醫療 - 古坑地區</li>
+                <li>
+                    大台北地區各公家機關特約主治醫師
+                    (國防部、健保聯合門診、雨聲、國安局、三總北門)
+                </li>
+                <li>國軍桃園總醫院兼任復健科主治醫師</li>
+            </ul>
+
+            <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
+            <p>
+                <strong
+                    >謝明福復健科診所院長<br
+                    />三軍總醫院復健部兼任主治醫師</strong
+                >
+            </p>
+            <p>
+                擁有30年豐富臨床經驗，專精於<strong
+                    >「<a href="/blog/neims/">針極肌肉內電刺激治療</a>」</strong
+                >，擅長處理肌肉筋膜、軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
+            </p>
+            <ul>
+                <li>2014 商業週刊網路票選百大良醫前五十名</li>
+                <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="specialty-section">
+        <h3 style="text-align: center; font-size: 1.8rem;">媒體專訪</h3>
+        <h4 style="text-align: center; font-size: 1.4rem;">
+            年代新聞台《聚焦2.0》專訪
+        </h4>
+        <div
+            class="video-responsive-wrapper"
+            style="max-width: 800px; margin: 2rem auto;"
+        >
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/RSbH0PnGA6o?si=tF2Odabosqhno1rv"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+            >
+            </iframe>
+        </div>
+
+        <div style="max-width: 500px; margin: 0 auto;">
+            <div class="card">
+                <img
+                    src="images/blog/interview-hero.jpg"
+                    alt="良醫健康網專訪封面圖：止痛藥自己不吃，怎麼開給病人吃？"
+                    style="width: 100%; height: auto; display: block; margin-bottom: 8px; border-radius: 2px;"
+                />
+
+                <h3>《良醫健康網》專訪</h3>
+                <p>
+                    「止痛藥自己不吃，怎麼開給病人吃？」<br />
+                    <a
+                        href="blog/top-rehab-doctor-interview-sanxia-clinic"
+                        target="_blank">閱讀文章</a
+                    >
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* (3) 醫師團隊 (Team) */
+    .doctor-profile {
+        display: flex;
+        flex-direction: column;
+        /* (手機) 垂直排列 */
+        align-items: center;
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .doctor-profile img {
+        /* 建議放一張 200x200 的照片 */
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        /* 圓形頭像 */
+        object-fit: cover;
+        /* 確保照片比例正確 */
+        margin-bottom: 1.5rem;
+        border: 5px solid var(--color-white);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .doctor-profile h3 {
+        font-size: 1.8rem;
+        margin-bottom: 0.25rem;
+        margin-top: 0;
+        /* --- UPDATED --- */
+        text-align: center;
+        /* --- UPDATED --- */
+    }
+
+    .doctor-profile h4 {
+        color: var(--color-primary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .doctor-profile ul {
+        list-style: none;
+        /* 移除項目符號 */
+        padding: 0;
+    }
+
+    .doctor-profile-detail h4 {
+        color: var(--color-primary);
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .doctor-profile-detail ul {
+        /* 這是關鍵：強制列表項目使用點點 */
+        list-style-type: disc;
+
+        /* 由於您可能在 .doctor-profile ul 設了 padding: 0;
+       這裡需要重新給一個 padding 才能讓點點顯示出來 */
+        padding-left: 20px;
+
+        /* 讓項目符號顯示在列表項目的外面 */
+        list-style-position: outside;
+
+        /* 確保 li 之間有間距 */
+        margin-bottom: 0.5rem;
+    }
+</style>

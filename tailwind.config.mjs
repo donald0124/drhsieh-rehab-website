@@ -1,35 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
+      // 1. 連結到 base.css 的變數
       colors: {
         primary: {
-          DEFAULT: '#005a9c', // 專業藍
-          dark: '#004070',    // 深藍 (hover)
-          light: '#f0f6fa',   // 淺藍背景 (Synced with style.css)
+          DEFAULT: 'var(--color-primary)', // 對應 base.css
+          dark: 'var(--color-primary-dark)',
+          light: 'var(--color-primary-light)',
         },
-        heading: '#222222',
-        text: '#444444',
-        border: '#dddddd',
-        'gray-bg': '#f9f9f9', // Added from style.css
+        heading: 'var(--color-heading)',
+        text: 'var(--color-text)',
+        border: 'var(--color-border)',
+        'gray-bg': 'var(--color-gray-bg)',
       },
+
+      // 2. 連結字體設定
+      fontFamily: {
+        sans: ['var(--font-sans)', 'sans-serif'],
+      },
+
+      // 3. 容器設定 (同步 --container-width)
       container: {
         center: true,
         padding: '1rem',
         screens: {
-          lg: '1100px', // Synced with --container-width
+          lg: '1100px', // 必須手動對應 CSS 變數的數值，因為 media query 不能用 var()
           xl: '1100px',
           '2xl': '1100px',
         },
       },
+
+      // 4. 文章樣式 (Typography) - 這裡不需要改，因為它會自動引用上面的 colors
       typography: (theme) => ({
         DEFAULT: {
           css: {
             color: theme('colors.text'),
-            maxWidth: 'none', // Allow full width in container
+            maxWidth: 'none',
             h1: {
               color: theme('colors.heading'),
               fontWeight: '700',
@@ -39,8 +47,7 @@ export default {
               fontWeight: '700',
               marginTop: '2em',
               marginBottom: '1em',
-              // 這裡甚至可以加 border-bottom 來美化
-              borderBottom: `1px solid ${theme('colors.gray.200')}`,
+              borderBottom: `1px solid ${theme('colors.border')}`, // 改用變數
             },
             h3: {
               color: theme('colors.heading'),
@@ -57,12 +64,8 @@ export default {
               color: theme('colors.heading'),
               fontWeight: '600',
             },
-            // 修正列表樣式 (有時候 bullet 顏色會跟文字不同步)
             'ul > li::marker': {
               color: theme('colors.text'),
-            },
-            ul: {
-              listStyleType: 'disc',
             },
           },
         },

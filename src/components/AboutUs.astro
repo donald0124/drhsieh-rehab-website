@@ -1,0 +1,186 @@
+<section id="about-us">
+    <h2 class="text-4xl font-bold text-center mb-10 text-heading">關於我們</h2>
+    <p
+        style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;"
+    >
+        本診所於2011年開幕，擁有<strong>醫學中心等級</strong
+        >的主治醫師及復健治療設備。
+        我們在地深耕多年，竭誠歡迎三峽、土城、鶯歌、樹林、板橋、桃園八德、大溪、中壢以及鄰近新北與桃園等地有復健需求的居民前來就醫。
+    </p>
+    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">
+        我們的理念與承諾：創造光明幸福的生活品質
+    </h3>
+
+    <p
+        style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;"
+    >
+        本診所秉持<strong>專業、精準</strong
+        >的原則，協助緩解病患的新傷、舊疾，以及各種慢性或難以處理的<strong
+            >疼痛問題</strong
+        >。透過<strong>精準評估</strong>，我們推行<strong>非藥物</strong
+        >為主的治療方式，為每位病患尋求更安全、更適切的處理途徑。
+        <br /><br />我們將與您共同努力，協助您恢復身體機能，幫助您邁向<strong
+            >正常的日常生活、更有效率的工作，以及安穩的睡眠</strong
+        >。
+    </p>
+
+    <h3
+        class="text-center text-[1.8rem] text-primary-dark font-bold mb-8 mt-10"
+    >
+        環境設備
+    </h3>
+    <p
+        style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;"
+    >
+        我們提供明亮、舒適的看診與復健治療空間
+    </p>
+
+    <div class="carousel-container">
+        <div class="carousel-track">
+            <div class="carousel-slide">
+                <img
+                    src="/images/clinic-outside.jpg"
+                    alt="新北三峽 謝明福復健科診所 診所外觀"
+                />
+                <p class="carousel-caption">(1) 診所外觀</p>
+            </div>
+
+            <div class="carousel-slide">
+                <img
+                    src="/images/clinic-counter.jpg"
+                    alt="新北三峽 謝明福復健科診所 掛號櫃台"
+                />
+                <p class="carousel-caption">(2) 掛號櫃台</p>
+            </div>
+
+            <div class="carousel-slide">
+                <img
+                    src="/images/clinic-rehab.jpg"
+                    alt="新北三峽 謝明福復健科診所 復健治療區"
+                />
+                <p class="carousel-caption">(3) 復健治療區</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* (1) 關於我們 (About Us) */
+    #about-us {
+        padding: 4rem 1rem;
+        background-color: var(--color-bg-light);
+    }
+
+    #about-us h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #about-us p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    #about-us h3 {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    /*
+    * ================================
+    * (4) 環境設備 (Facility) - 輪播樣式
+    * ================================
+    */
+
+    /* --- NEW --- */
+    /* (取代舊的 .carousel-placeholder) */
+    .carousel-container {
+        max-width: 900px;
+        /* 限制輪播區的最大寬度 */
+        margin: 2rem auto 0;
+        overflow: hidden;
+        /* 隱藏 track 的滾動條外框 */
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--color-border);
+    }
+
+    /* --- NEW --- */
+    /* (滾動軌道) */
+    .carousel-track {
+        display: flex;
+        overflow-x: auto;
+        /* 關鍵：允許水平滾動 (用手指滑動) */
+
+        /* 關鍵：CSS 滾動對齊
+        這會讓您滑動時，自動 "吸附" 到下一張照片的中心
+        */
+        scroll-snap-type: x mandatory;
+
+        /* (讓 iOS 上的滑動更流暢) */
+        -webkit-overflow-scrolling: touch;
+
+        /* (隱藏醜醜的滾動條) */
+        scrollbar-width: none;
+        /* (for Firefox) */
+        -ms-overflow-style: none;
+        /* (for IE/Edge) */
+    }
+
+    /* --- NEW --- */
+    /* (隱藏醜醜的滾動條 for Chrome/Safari) */
+    .carousel-track::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* --- NEW --- */
+    /* (單張投影片) */
+    .carousel-slide {
+        flex: 0 0 100%;
+        /* 關鍵：每張投影片都佔滿 100% 容器寬度 */
+        scroll-snap-align: center;
+        /* 關鍵：將投影片的 "中心" 對齊容器 */
+        position: relative;
+        /* 為了讓下方的文字能疊加上來 */
+    }
+
+    /* --- NEW --- */
+    /* (輪播圖內的圖片) */
+    .carousel-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+        /* 移除圖片底部的 4px 謎之空白 */
+
+        /* ▼▼▼ (關鍵) 這兩行解決了您的「比例」問題 ▼▼▼
+        */
+        aspect-ratio: 16 / 9;
+        /* 強制 16:9 比例 */
+        object-fit: cover;
+        /* 圖片會自動裁切以填滿，不會變形 */
+    }
+
+    /* --- NEW --- */
+    /* (圖片上的文字標題) */
+    .carousel-caption {
+        position: absolute;
+        /* 疊在圖片上 */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0)
+        );
+        /* 黑色漸層底圖 */
+        color: white;
+        text-align: center;
+        padding: 2rem 1rem 1rem;
+        /* 文字的留白 */
+        margin: 0;
+        font-weight: 500;
+    }
+</style>

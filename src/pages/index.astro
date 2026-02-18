@@ -1,156 +1,24 @@
 ---
 // 1. 匯入我們剛建立的版型
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Services from '../components/Services.astro';
-import QA from '../components/QA.astro';
-import Patientinfo from '../components/Patientinfo.astro';
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Services from "../components/Services.astro";
+import QA from "../components/QA.astro";
+import Patientinfo from "../components/Patientinfo.astro";
+import Hero from "../components/Hero.astro";
+import AboutUs from "../components/AboutUs.astro";
+import Team from "../components/Team.astro";
 
 // 2. 定義這個頁面的 SEO 資訊 (來自您的檔案)
-const pageTitle = "謝明福復健科診所｜三峽、鶯歌地區專業復健治療｜肌筋膜炎｜運動傷害｜精準診斷、多元整合治療";
-const pageDesc = "三峽、鶯歌復健首選｜驗謝明福院長30年經驗，專精針極肌肉內電刺激、疼痛治療、物理治療，精準治療肌筋膜炎、運動傷害。提供專業、親切的復健醫療環境，協助您遠離長期痠痛。";
+const pageTitle =
+    "謝明福復健科診所｜三峽、鶯歌地區專業復健治療｜肌筋膜炎｜運動傷害｜精準診斷、多元整合治療";
+const pageDesc =
+    "三峽、鶯歌復健首選｜驗謝明福院長30年經驗，專精針極肌肉內電刺激、疼痛治療、物理治療，精準治療肌筋膜炎、運動傷害。提供專業、親切的復健醫療環境，協助您遠離長期痠痛。";
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc}>
-
-    <section id="hero">
-        <h1>謝明福復健科診所<br>三峽疼痛治療專家</h1>
-        <p>精準診斷疼痛根源，提供多元整合治療<br>新北市三峽區中華路22號2樓<br>(02) 2671-8910</p>
-        <a href="#patient-info" class="cta-button">查看就診資訊</a> </section>
-
-    <section id="about-us">
-        <h2 class="text-4xl font-bold text-center mb-10 text-heading">關於我們</h2>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">
-            本診所於2011年開幕，擁有<strong>醫學中心等級</strong>的主治醫師及復健治療設備。
-            我們在地深耕多年，竭誠歡迎三峽、土城、鶯歌、樹林、板橋、桃園八德、大溪、中壢以及鄰近新北與桃園等地有復健需求的居民前來就醫。
-        </p>               
-        <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">我們的理念與承諾：創造光明幸福的生活品質</h3>
-            
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 3rem; font-size: 1.1rem;">
-            本診所秉持<strong>專業、精準</strong>的原則，協助緩解病患的新傷、舊疾，以及各種慢性或難以處理的<strong>疼痛問題</strong>。透過<strong>精準評估</strong>，我們推行<strong>非藥物</strong>為主的治療方式，為每位病患尋求更安全、更適切的處理途徑。
-            <br><br>我們將與您共同努力，協助您恢復身體機能，幫助您邁向<strong>正常的日常生活、更有效率的工作，以及安穩的睡眠</strong>。
-        </p>
-        
-        
-        <h3 class="text-center text-[1.8rem] text-primary-dark font-bold mb-8 mt-10">環境設備</h3>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
-            我們提供明亮、舒適的看診與復健治療空間</p>
-        
-        <div class="carousel-container">
-            <div class="carousel-track">
-                
-                <div class="carousel-slide">
-                    <img src="/images/clinic-outside.jpg" alt="新北三峽 謝明福復健科診所 診所外觀">
-                    <p class="carousel-caption">(1) 診所外觀</p>
-                </div>
-                
-                <div class="carousel-slide">
-                    <img src="/images/clinic-counter.jpg" alt="新北三峽 謝明福復健科診所 掛號櫃台">
-                    <p class="carousel-caption">(2) 掛號櫃台</p>
-                </div>
-                
-                <div class="carousel-slide">
-                    <img src="/images/clinic-rehab.jpg" alt="新北三峽 謝明福復健科診所 復健治療區">
-                    <p class="carousel-caption">(3) 復健治療區</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="team">
-        <h2 class="text-4xl font-bold text-center mb-10 text-heading">醫師介紹</h2>
-        
-        <div class="doctor-profile">
-            
-            <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片">
-            
-            <div class="doctor-bio-text">
-                <h3 class="text-[1.8rem] text-heading font-bold mb-1 mt-0 text-center">謝明福 院長</h3>
-                                  
-                <h4 class="text-xl font-bold text-primary mt-4 mb-2">學歷</h4>
-                <ul>
-                    <li>國防醫學院醫學士</li>
-                    <li>中國醫藥大學針灸學分班</li>
-                </ul>
-                
-                <h4 class="text-xl font-bold text-primary mt-4 mb-2">核心經歷</h4>
-                <ul>
-                    <li>台灣復健醫學會 專科醫師</li>
-                    <li>三軍總醫院復健部 住院/總/主治醫師</li>
-                    <li>台大、台北榮總復健醫學部 進修醫師</li>
-                    <li>國防醫學院復健醫學系 臨床助理教授</li>
-                    <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>                    
-                </ul>
-            </div>
-        </div>
-        <div class="doctor-profile-detail" style="max-width: 92%; margin: 2.5rem auto 0;">
-        
-            <h3 class="text-center font-bold mb-8 text-xl text-primary-dark">院長詳細資歷</h3>
-        
-            <div class="doctor-experience-list">
-                <h4 class="text-xl font-bold text-primary mt-4 mb-2">曾任</h4>
-                <ul>
-                    <li>國軍金門基層醫療醫官</li>
-                    <li>國軍金門花崗石(820)醫院外科住院醫師</li>
-                    <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
-                    <li>九二一大地震災區巡回醫療 - 古坑地區</li>
-                    <li>大台北地區各公家機關特約主治醫師 (國防部、健保聯合門診、雨聲、國安局、三總北門)</li>
-                    <li>國軍桃園總醫院兼任復健科主治醫師</li>
-                </ul>
-
-                <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
-                <p>
-                    <strong>謝明福復健科診所院長<br>三軍總醫院復健部兼任主治醫師</strong>
-                </p>
-                <p>
-                    擁有30年豐富臨床經驗，專精於<strong>「<a href="/blog/neims/">針極肌肉內電刺激治療</a>」</strong>，擅長處理肌肉筋膜、軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
-                </p>
-                <ul>
-                    <li>2014 商業週刊網路票選百大良醫前五十名</li>
-                    <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="specialty-section">
-            
-            <h3 style="text-align: center; font-size: 1.8rem;">媒體專訪</h3>
-            <h4 style="text-align: center; font-size: 1.4rem;">年代新聞台《聚焦2.0》專訪</h4>
-            <div class="video-responsive-wrapper" style="max-width: 800px; margin: 2rem auto;">
-                <iframe 
-                    width="560" 
-                    height="315" 
-                    src="https://www.youtube.com/embed/RSbH0PnGA6o?si=tF2Odabosqhno1rv" 
-                    title="YouTube video player" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerpolicy="strict-origin-when-cross-origin" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-            
-            <div style="max-width: 500px; margin: 0 auto;">
-                <div class="card">
-                    <img src="images/blog/interview-hero.jpg" 
-                        alt="良醫健康網專訪封面圖：止痛藥自己不吃，怎麼開給病人吃？" 
-                        style="width: 100%; height: auto; display: block; margin-bottom: 8px; border-radius: 2px;">
-                                        
-                    <h3>《良醫健康網》專訪</h3>
-                    <p>「止痛藥自己不吃，怎麼開給病人吃？」
-                    <br><a href="blog/top-rehab-doctor-interview-sanxia-clinic" target="_blank">閱讀文章</a>
-                    </p>
-                </div>
-            </div>
-
-
-
-            
-
-        </div>
-    </section>
-
+    <Hero />
+    <AboutUs />
+    <Team />
     <Services />
     <Patientinfo />
-
 </BaseLayout>
