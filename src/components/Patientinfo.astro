@@ -3,7 +3,7 @@
 import QA from './QA.astro';
 ---
 
-<section id="patient-info"> <h2>就診資訊</h2>
+<section id="patient-info"> <h2 class="text-4xl font-bold text-center mb-10 text-heading">就診資訊</h2>
 
     <div class="info-banner" style="background-color: var(--color-primary-dark); color: white; padding: 1.5rem 2rem; border-radius: 8px; text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
         <h3 style="color: white; margin: 0; font-size: 1.5rem;">
@@ -14,7 +14,7 @@ import QA from './QA.astro';
         </p>
     </div>
 
-    <h3>門診時段</h3>
+    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">門診時段</h3>
     <div class="schedule-table-wrapper">
         <table class="schedule-table schedule-table-complex">
             <thead>
@@ -58,7 +58,7 @@ import QA from './QA.astro';
         </table>
     </div>
     
-    <h3 style="margin-top: 2.5rem;">復健治療時間</h3>
+    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">復健治療時間</h3>
     <div class="schedule-table-simple-wrapper">
         <table class="schedule-table">
             <thead>
@@ -78,19 +78,19 @@ import QA from './QA.astro';
         </table>
     </div>
 
-    <h3 style="margin-top: 4rem;">交通與聯絡</h3>
+    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-16">交通與聯絡</h3>
     <div class="contact-grid">
         <div class="contact-info">
             
             <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 style="margin-top: 0; margin-bottom: 1rem;">電話</h3>
+                <h3 class="text-xl font-bold text-heading mb-4 mt-0">電話</h3>
                 <p>
                     <a href="tel:0226718910">(02) 2671-8910</a>
                 </p>                
             </div>
           
             <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 style="margin-top: 0; margin-bottom: 1rem;">診所位置</h3>
+                <h3 class="text-xl font-bold text-heading mb-4 mt-0">診所位置</h3>
                 <p>
                     <a href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6" target="_blank" rel="noopener noreferrer">
                         新北市三峽區中華路22號2樓
@@ -103,7 +103,7 @@ import QA from './QA.astro';
             </div>
             
             <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 style="margin-top: 0; margin-bottom: 1rem;">交通方式</h3>
+                <h3 class="text-xl font-bold text-heading mb-4 mt-0">交通方式</h3>
                 <ul style="padding-left: 1.5rem; margin: 0;">
                     <li><strong>910公車：</strong>「中華路」站 (可經<strong>捷運新埔、板橋、府中站</strong>轉乘)</li>
                     <li><strong>705、706公車：</strong>「礁溪里」站 (可經<strong>捷運頂埔站</strong>轉乘)</li>

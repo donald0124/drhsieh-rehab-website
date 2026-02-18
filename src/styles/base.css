@@ -1,0 +1,17 @@
+/* base.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+    /* 設定全站變數 */
+    :root {
+        --color-primary: #005f73;
+    }
+
+    /* 只設定最基礎的字體，不要設定大小或邊框 */
+    body {
+        @apply text-slate-800 bg-white;
+    }
+}

@@ -1,63 +1,68 @@
-/* ================================
- * style.css
- * 網站: 謝明福復健科診所
- * 架構: Tailwind CSS + Custom Components
- * ================================ */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ================================
- * 1. Base Layer (變數與基礎設定)
- * ================================ */
-@layer base {
-    :root {
-        /* 顏色 */
-        --color-primary: #005a9c;
-        /* 專業、信任感的藍色 */
-        --color-primary-dark: #004070;
-        /* 用於 hover 效果 */
-        --color-primary-light: #f0f6fa;
-        /* 用於區塊背景 */
-        --color-heading: #222222;
-        /* 標題 (深灰) */
-        --color-text: #444;
-        /* 內文 (中灰) */
-        --color-border: #dddddd;
-        /* 邊框/分隔線 */
-        --color-white: #ffffff;
-        --color-gray-bg: #f9f9f9;
+/*
+ * ================================
+ * style.css
+ * 網站: 謝明福復健科診所 (drhsieh-rehab.com)
+ * ================================
+ */
 
-        /* 字體 */
-        --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-
-        /* 容器設定 */
-        --container-width: 1100px;
-    }
-
-    /* 全域基礎設定 (只設字體顏色，不設排版，避免汙染) */
-    html {
-        @apply scroll-smooth;
-    }
-
-    body {
-        @apply font-sans text-[color:var(--color-text)] bg-white leading-relaxed;
-    }
-
-    /* * [重要] 移除所有對 h1, h2, p 的全域設定 
-   * 文章內容樣式改由 Tailwind Typography (.prose) 控制
-   */
+/*
+ * ================================
+ * 1. :root (全站變數) & 全局設定
+ * ================================
+ */
+:root {
+    /* (您所有的變數... --color-primary...) */
 }
 
+/* (您所有的 .card, #hero, .doctor-profile ... 等樣式) */
 
 
-/* ================================
- * 2. Components Layer (元件模組化)
- * 使用 @apply 將 Tailwind class 封裝，讓 HTML 更乾淨
- * ================================ */
+/*
+ * ================================
+ * style.css
+ * 網站: 謝明福復健科診所 (drhsieh-rehab.com)
+ * 原則: Mobile-First, Clean, Professional
+ * ================================
+ */
 
+/*
+ * ================================
+ * 1. :root (全站變數) & 全局設定
+ * ================================
+ */
+:root {
+    /* 顏色 */
+    --color-primary: #005a9c;
+    /* 專業、信任感的藍色 */
+    --color-primary-dark: #004070;
+    /* 用於 hover 效果 */
+    --color-primary-light: #f0f6fa;
+    /* 用於區塊背景 */
+    --color-heading: #222222;
+    /* 標題 (深灰) */
+    --color-text: #444;
+    /* 內文 (中灰) */
+    --color-border: #dddddd;
+    /* 邊框/分隔線 */
+    --color-white: #ffffff;
+    --color-gray-bg: #f9f9f9;
 
+    /* 字體 */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    /* 容器寬度 */
+    --container-width: 1100px;
+}
+
+/*
+ * ================================
+ * 2. 全局重設 (Global Resets)
+ * ================================
+ */
 * {
     margin: 0;
     padding: 0;

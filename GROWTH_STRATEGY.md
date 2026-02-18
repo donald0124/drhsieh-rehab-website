@@ -88,15 +88,26 @@
 * [x] **Fix**: **GSC 404 與 重定向問題** (透過 Cloudflare Bulk Redirects 解決)。
 * [x] **Feature**: 實作手機版 **Sticky Bottom CTA Bar** (導航、門診時間、電話、LINE)。
 * [x] **Update**:優化首頁 H1 與 Meta Title (強調「三峽」、「疼痛治療」)。
+* [x] **Add**: 建立 `public/robots.txt`。
+* [x] **Fix**: 在 `QA.astro` 中實作 `FAQPage` Schema。
+* [x] **Fix**: **GSC 404 與 重定向問題** (透過 Cloudflare Bulk Redirects 解決)。
+* [x] **Feature**: 實作手機版 **Sticky Bottom CTA Bar** (導航、門診時間、電話、LINE)。
+* [x] **Update**:優化首頁 H1 與 Meta Title (強調「三峽」、「疼痛治療」)。
 
 ### Phase 2: 內容深化 (Content Deep Dive)
 
 * [ ] **Content**: 撰寫更多針對服務項目 (Services) 中 tags 的對應文章，填滿內部連結網絡。
 * [x] **UX**: 優化 `ServiceItem` 設計，使其更具吸引力（已加入 Icon 與 Theme Color）。
 
-### Phase 3: 進階功能
+### Phase 3: 技術債與樣式重構 (Technical Debt & CSS Refactoring)
+
+* [x] **Plan**: 建立 CSS 重構計畫 (`CSS_REFACTORING_PLAN.md`)，解決全域樣式污染與維護問題。
+* [ ] **Refactor**: 導入 Tailwind Typography，將 `style.css` 模組化，確保長期維護性與視覺一致性。
+
+### Phase 4: 進階功能 (Advanced Features)
 
 * [ ] **System**: 建立預約查詢系統或更深度的 LINE 整合 (Bot)。
+* [ ] **Content**: 持續執行 `CONTENT_PLAN.md`，擴充長尾關鍵字覆蓋率。
 
 ---
 
