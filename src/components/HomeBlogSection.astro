@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+import BlogPreview from "./BlogPreview.astro";
+
+// 1. 取得所有文章並依照「置頂」與「日期」排序 (邏輯與 blog/index.astro 一致)
+const allPosts = (await getCollection("blog")).sort((a, b) => {
+    // 條件一：先比對置頂狀態 (featured: true 的排在前面)
+    // const isAFeatured = a.data.featured === true;
+    // const isBFeatured = b.data.featured === true;
+
+    // if (isAFeatured && !isBFeatured) return -1;
+    // if (!isAFeatured && isBFeatured) return 1;
+
+    // 條件二：若置頂狀態相同，則依照日期排序 (新 -> 舊)
+    const dateB = (
+        b.data.updatedDate ??
+        b.data.lastMod ??
+        b.data.pubDate
+    ).valueOf();
+    const dateA = (
+        a.data.updatedDate ??
+        a.data.lastMod ??
+        a.data.pubDate
+    ).valueOf();
+    return dateB - dateA;
+});
+
+// 2. 取前 3 篇文章 (最新或置頂)
+const latestPosts = allPosts.slice(0, 3);
+---
+
+<section class="py-15 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-heading mb-4">
+                熱門衛教與復健新知
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                由謝明福院長與專業治療團隊撰寫，帶您了解最新的復健醫學知識與疼痛治療趨勢。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {
+                latestPosts.map((post) => (
+                    <div class="h-full">
+                        <BlogPreview post={post} />
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="text-center mt-12">
+            <a
+                href="/blog/"
+                class="inline-flex items-center gap-2 bg-white text-primary border-2 border-primary px-8 py-3 rounded-full font-bold hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-md"
+            >
+                閱讀更多文章
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>

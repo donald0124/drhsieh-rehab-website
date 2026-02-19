@@ -1,61 +1,119 @@
 ---
 // 1. 匯入您的共用版型
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout 
-    title="聲明與隱私權政策 | 謝明福復健科診所" 
-    description="謝明福復健科診所網站之禁止轉錄聲明與隱私權政策。">
+<BaseLayout
+    title="聲明與隱私權政策 | 謝明福復健科診所"
+    description="謝明福復健科診所網站之禁止轉錄聲明、醫療免責聲明與隱私權保護政策。"
+>
+    <header
+        class="bg-gradient-to-b from-primary-light/60 to-white pt-16 pb-12 border-b border-gray-100"
+    >
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1
+                class="text-3xl md:text-4xl font-extrabold text-heading mb-4 tracking-tight"
+            >
+                聲明與隱私權政策
+            </h1>
+            <p class="text-gray-500 font-medium">最後更新日期：2026年2月</p>
+        </div>
+    </header>
 
-    <section id="privacy-content" style="padding: 4rem 1rem;">
-        <article class="prose" style="max-width: 900px; margin: 0 auto;">
-            
-            <h1>聲明與隱私權政策</h1>
+    <section class="max-w-4xl mx-auto px-4 py-12 mb-16">
+        <div
+            class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12"
+        >
+            <div
+                class="bg-primary-light/40 border-l-4 border-primary p-6 rounded-r-xl mb-12"
+            >
+                <h2
+                    class="text-xl font-bold text-primary-dark mb-3 flex items-center gap-2 mt-0"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-primary"
+                        ><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"
+                        ></path><path d="m9 12 2 2 4-4"></path></svg
+                    >
+                    醫療機構網際網路資訊管理辦法聲明
+                </h2>
+                <p class="text-gray-700 leading-relaxed font-medium mb-0">
+                    依據「醫療機構網際網路資訊管理辦法」規定：<br />
+                    <strong class="text-heading text-lg tracking-wide"
+                        >禁止任何網際網路服務業者轉錄本網站資訊之內容供人點閱。</strong
+                    ><br />
+                    <span class="text-gray-500 text-sm mt-1 block"
+                        >但以網路搜尋或超連結方式，進入本網站直接點閱者，不在此限。</span
+                    >
+                </p>
+            </div>
 
-            <h2>禁止轉錄聲明</h2>
-            <p>
-                依據「醫療機構網際網路資訊管理辦法」規定：<br>
-                <strong>禁止任何網際網路服務業者轉錄本網站資訊之內容供人點閱。<br></strong>
-                但以網路搜尋或超連結方式，進入本網站直接點閱者，不在此限。
-            </p>
+            <article
+                class="prose prose-lg prose-headings:text-heading prose-h3:text-primary-dark prose-a:text-primary hover:prose-a:text-primary-dark max-w-none"
+            >
+                <h2 class="border-b border-gray-100 pb-3 mb-6">
+                    隱私權保護政策
+                </h2>
+                <p>
+                    感謝您造訪「謝明福復健科診所」網站
+                    (以下簡稱本網站)。我們尊重並保護您的隱私權。為了幫助您瞭解本網站如何蒐集、應用及保護您所提供的個人資訊，請詳細閱讀下列說明：
+                </p>
 
-            <h2>隱私權政策</h2>
-            <p>
-                感謝您造訪「謝明福復健科診所」網站 (以下簡稱本網站)。
-                我們尊重並保護您的隱私權。
-            </p>
+                <h3>一、資料的間接收集</h3>
+                <p>
+                    當您瀏覽本網站時，本網站的伺服器 (由 GitHub Pages 及
+                    Cloudflare 提供) 可能會自動記錄技術性資訊，例如您裝置的 IP
+                    位址、瀏覽器類型、作業系統及瀏覽時間。這些資訊僅用於流量分析和網站服務優化，<strong
+                        >不會與您的個人身份連結</strong
+                    >，我們也無法透過這些數據識別您的真實身分。
+                </p>
 
-            <h3>一、資料的間接收集</h3>
-            <p>
-                當您瀏覽本網站時，本網站的伺服器 (由 GitHub Pages 及 Cloudflare 提供) 
-                可能會自動記錄技術性資訊，例如您裝置的 IP 位址、瀏覽器類型、
-                作業系統及瀏覽時間。這些資訊僅用於流量分析和網站服務優化，
-                不會與您的個人身份連結。
-            </p>
+                <h3>二、第三方服務與 Cookie</h3>
+                <p>
+                    本網站為提升使用體驗與提供交通資訊，使用了 Google Maps
+                    等第三方服務。Google Maps 可能會在您的瀏覽器中設置 Cookie
+                    以收集相關數據。其資料處理規範請參閱 <a
+                        href="http://googleusercontent.com/policies.google.com/0"
+                        target="_blank"
+                        rel="noopener noreferrer">Google 隱私權政策</a
+                    >。您可以隨時透過瀏覽器設定來取消或限制 Cookie 的功能。
+                </p>
 
-            <h3>二、第三方服務與 Cookie</h3>
-            <p>
-                本網站使用 Google Maps (Google 地圖) 以提供交通資訊。
-                Google Maps 可能會在您的瀏覽器中設置 Cookie 
-                以收集相關數據。
-                其資料處理規範請參閱 <a href="http://googleusercontent.com/policies.google.com/0" target="_blank" rel="noopener noreferrer">Google 隱私權政策</a>。
-            </p>
+                <h3>三、對外相關連結</h3>
+                <p>
+                    本網站的網頁可能提供其他網站的網路連結 (例如：LINE
+                    官方帳號、Facebook
+                    粉絲專頁、媒體專訪頁面等)。當您點選這些連結時，將會離開本網站並進入第三方網站。您必須參考該連結網站中的隱私權保護政策，本網站不對外部網站的內容或隱私權實務負任何連帶責任。
+                </p>
 
-            <h3>三、對外相關連結</h3>
-            <p>
-                本網站的網頁可能提供其他網站的網路連結 (例如 LINE、Facebook、
-                媒體專訪、院長部落格)。
-                當您點選這些連結時，將會離開本網站，
-                您必須參考該連結網站中的隱私權保護政策，本網站不負任何連帶責任。
-            </p>
+                <h3>四、隱私權政策之修正</h3>
+                <p>
+                    本網站隱私權保護政策將因應法規變更或網站需求隨時進行修正，修正後的條款將直接刊登於本網站上，不另行個別通知。
+                </p>
+            </article>
 
-            <h3>四、隱私權政策之修正</h3>
-            <p>
-                本網站隱私權保護政策將因應需求隨時進行修正，
-                修正後的條款將直接刊登於網站上。
-            </p>
-            
-        </article>
+            <hr class="my-10 border-gray-200" />
+
+            <div class="bg-gray-50 border-l-4 border-gray-400 p-6 rounded-r-xl">
+                <p
+                    class="text-gray-600 leading-relaxed font-medium mb-0 italic"
+                >
+                    <strong
+                        class="text-gray-800 not-italic bg-white px-2 py-0.5 rounded shadow-sm mr-1"
+                        >免責聲明</strong
+                    >
+                    本文（含全站衛教文章）內容僅供衛教參考，並非醫療建議，實際治療效果因人而異，需由醫師親自評估診斷後方可進行。所有醫療行為應與您的專業醫師充分討論後共同決定。
+                </p>
+            </div>
+        </div>
     </section>
-
 </BaseLayout>

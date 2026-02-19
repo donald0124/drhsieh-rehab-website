@@ -59,7 +59,10 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
 });
 ---
 
-<BaseLayout title="衛教專欄與最新消息 | 謝明福復健科診所">
+<BaseLayout
+    title="衛教專欄與最新消息 | 謝明福復健科診所"
+    description="為您提供最專業的復健醫學知識、居家保健指南與診所最新動態。"
+>
     <header
         class="bg-gradient-to-br from-primary via-[#004b82] to-primary-dark pt-20 pb-16 mb-10 shadow-inner relative overflow-hidden"
     >
@@ -89,7 +92,7 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
             <p
                 class="text-lg md:text-xl text-blue-50 leading-relaxed max-w-2xl mx-auto opacity-90"
             >
-                由謝明福院長親自撰寫與審閱，為您提供最專業的復健醫學知識、居家保健指南與診所最新動態。
+                為您提供最專業的復健醫學知識、居家保健指南與診所最新動態。
             </p>
         </div>
     </header>
@@ -113,7 +116,7 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                     class="flex flex-nowrap overflow-x-auto gap-3 pb-2 pt-1 px-1 scrollbar-hide snap-x transition-all duration-300"
                 >
                     <button
-                        class="filter-btn active flex-shrink-0 snap-start bg-primary text-white border border-primary px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm"
+                        class="filter-btn active flex-shrink-0 snap-start bg-primary text-white border border-primary px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm sticky left-0 z-30"
                         data-tag="all"
                     >
                         全部文章
@@ -228,7 +231,7 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                     );
                     tagsContainer.classList.add("flex-wrap");
                     // 箭頭旋轉 180 度朝上
-                    chevronIcon.classList.add("rotate-180");
+                    if (chevronIcon) chevronIcon.classList.add("rotate-180");
                     // 隱藏漸層遮罩
                     if (gradientLeft) gradientLeft.style.opacity = "0";
                     if (gradientRight) gradientRight.style.opacity = "0";
@@ -242,7 +245,7 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                         "scrollbar-hide",
                     );
                     // 箭頭恢復朝下
-                    chevronIcon.classList.remove("rotate-180");
+                    if (chevronIcon) chevronIcon.classList.remove("rotate-180");
                     // 恢復漸層遮罩
                     if (gradientLeft) gradientLeft.style.opacity = "1";
                     if (gradientRight) gradientRight.style.opacity = "1";
@@ -307,6 +310,31 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                 }
             });
         });
+
+        // 👇 新增這段：處理 URL Query Parameter (?tag=TagName)
+        const urlParams = new URLSearchParams(window.location.search);
+        const tagParam = urlParams.get("tag");
+
+        if (tagParam) {
+            // Find the button with the matching data-tag
+            const targetBtn = Array.from(filterBtns).find(
+                (btn) => btn.getAttribute("data-tag") === tagParam,
+            );
+
+            if (targetBtn) {
+                // Simulate click to trigger filtering logic
+                (targetBtn as HTMLElement).click();
+
+                // Scroll the button into view (centering it in the horizontal scroll list)
+                setTimeout(() => {
+                    targetBtn.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "center",
+                    });
+                }, 100);
+            }
+        }
     });
 </script>
 

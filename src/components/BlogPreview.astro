@@ -34,11 +34,14 @@ const displayDate =
     post.data.updatedDate || post.data.lastMod || post.data.pubDate;
 ---
 
-<a href={`/blog/${post.slug}/`} class="block group h-full">
+<div class="block group h-full relative">
     <div
         class="bg-white rounded-xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col"
     >
-        <div class="aspect-video w-full overflow-hidden bg-gray-50 relative">
+        <a
+            href={`/blog/${post.slug}/`}
+            class="aspect-video w-full overflow-hidden bg-gray-50 relative block"
+        >
             {
                 post.data.featured && (
                     <div class="absolute top-3 right-3 bg-primary-dark opacity-85 text-white text-xs font-bold px-2.5 py-1 rounded-md shadow-sm z-20 flex items-center gap-1 backdrop-blur-sm">
@@ -88,28 +91,36 @@ const displayDate =
                     </div>
                 )
             }
-        </div>
+            }
+        </a>
 
         <div class="p-5 flex flex-col flex-grow relative">
-            <div class="flex flex-nowrap gap-2 mb-3 overflow-hidden relative">
+            <div
+                class="flex flex-nowrap gap-2 mb-3 overflow-hidden relative z-10 w-full overflow-x-auto scrollbar-hide"
+            >
                 {
                     post.data.tags?.map((tag) => (
-                        <span class="text-xs font-medium text-primary bg-primary-light px-2.5 py-1 rounded-full whitespace-nowrap">
+                        <a
+                            href={`/blog/?tag=${tag}`}
+                            class="text-xs font-medium text-primary bg-primary-light px-2.5 py-1 rounded-full whitespace-nowrap hover:bg-primary hover:text-white transition-colors z-20 relative"
+                        >
                             {tag}
-                        </span>
+                        </a>
                     ))
                 }
                 <div
-                    class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10"
+                    class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"
                 >
                 </div>
             </div>
 
-            <h4
-                class="text-lg font-bold text-heading mb-2 line-clamp-2 group-hover:text-primary transition-colors"
-            >
-                {post.data.title}
-            </h4>
+            <a href={`/blog/${post.slug}/`} class="block">
+                <h4
+                    class="text-lg font-bold text-heading mb-2 line-clamp-2 group-hover:text-primary transition-colors"
+                >
+                    {post.data.title}
+                </h4>
+            </a>
 
             <div class="mt-auto pt-4 flex items-center text-sm text-gray-500">
                 <span>
@@ -129,4 +140,15 @@ const displayDate =
             </div>
         </div>
     </div>
-</a>
+</div>
+
+<style>
+    /* 隱藏橫向滾動條，但保留滑動功能 */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+</style>
