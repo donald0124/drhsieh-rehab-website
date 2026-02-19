@@ -1,58 +1,195 @@
 <section id="hero">
-    <h1>謝明福復健科診所<br />三峽疼痛治療專家</h1>
-    <p>
-        精準診斷疼痛根源，提供多元整合治療<br />新北市三峽區中華路22號2樓<br
-        />(02) 2671-8910
-    </p>
-    <a href="#patient-info" class="cta-button">查看就診資訊</a>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="drop-shadow-lg">
+            <span
+                class="block text-2xl md:text-3xl font-medium tracking-wider mb-2 text-white"
+                >謝明福復健科診所</span
+            >
+            <span class="block text-4xl md:text-6xl font-bold leading-tight">
+                三峽復健與疼痛治療
+            </span>
+        </h1>
+        <p
+            class="mt-6 text-lg md:text-xl text-gray-100 max-w-xl leading-relaxed drop-shadow-md"
+        >
+            深入解析疼痛根源，提供多元整合治療方案。<br
+                class="hidden md:block"
+            />
+            結合傳統復健與現代醫學，為您規劃專屬的復健療程。
+        </p>
+        <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="#patient-info" class="cta-button primary">
+                查看就診資訊
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="ml-2 icon"
+                    ><line x1="12" y1="5" x2="12" y2="19"></line><line
+                        x1="5"
+                        y1="12"
+                        x2="19"
+                        y2="12"></line></svg
+                >
+            </a>
+            <a href="#services" class="cta-button secondary"> 了解主治項目 </a>
+        </div>
+    </div>
 </section>
 
 <style>
     /*
- * ================================
- * 5. 頁面區塊 (Page Sections)
- * ================================
- */
-
-    /* (1) 英雄區塊 (Hero) 
-  ▼▼▼ (以下為更新後的程式碼) ▼▼▼
-*/
+     * ================================
+     * Hero Section - Premium Design
+     * ================================
+     */
     #hero {
+        position: relative;
+        /* (關鍵) 視窗高度設定：電腦版 85vh，手機版 80vh (避免瀏覽器工具列遮擋) */
+        min-height: 80vh;
         display: flex;
-        flex-direction: column;
+        align-items: flex-end; /* 手機版預設：內容置底 (避免遮擋上方人臉) */
+        justify-content: center;
+        overflow: hidden;
+        background-color: #0d1b2a; /* 圖片載入前的深色背景 */
+    }
+
+    /* 背景圖片層 (與 Overlay 分開以實現視差效果而不影響內容) */
+    #hero::before {
+        content: "";
+        position: absolute;
+        top: 0%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/images/hero-cover.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* (關鍵) 手機版定位：上方居中 (確保人臉可見) */
+        background-position: 70% 20%;
+        z-index: 0;
+        /* (手機版通常不使用 fixed attachment 以避免效能問題與跳動) */
+    }
+
+    /* 漸層遮罩層 (Overlay) - 增加文字可讀性 */
+    .hero-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        /* 手機版漸層：由下往上變黑 (文字在下方，上方留給人臉) */
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.5) 60%,
+            transparent 100%
+        );
+    }
+
+    /* 內容容器 */
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 1280px; /* max-w-7xl */
+        padding: 2rem 1.5rem 5rem 1.5rem; /* 手機版底部留白較多 */
+        color: var(--color-white);
+        text-align: center; /* 手機版文字居中 */
+    }
+
+    /*
+     * --------------------------------
+     * 電腦版樣式 (Desktop / Tablet)
+     * --------------------------------
+     */
+    @media (min-width: 768px) {
+        #hero {
+            min-height: 85vh;
+            align-items: center; /* 電腦版：垂直居中 */
+            justify-content: flex-start; /* 電腦版：內容靠左 */
+        }
+
+        #hero::before {
+            /* (關鍵) 電腦版定位：靠右 (人物在右側) */
+            background-position: 80% center;
+            /* 視差滾動效果 (僅在電腦版啟用) */
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            /* 電腦版漸層：由左往右變黑 (文字在左，右方留給人物) */
+            background: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.85) 0%,
+                rgba(0, 0, 0, 0.6) 50%,
+                transparent 100%
+            );
+        }
+
+        .hero-content {
+            text-align: left; /* 電腦版文字靠左 */
+            padding: 4rem;
+            padding-left: 10%; /* 左側留白 */
+        }
+    }
+
+    /* CTA 按鈕樣式 (Premium Buttons) */
+    .cta-button {
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        min-height: 60vh;
-        /* (建議拉高一點) */
-        padding: 3rem 1rem;
-
-        /* (關鍵) 
-      1. linear-gradient 是加上 40% 的黑色漸層 (讓白字更易讀)
-      2. url(...) 是您在 public/images/ 的圖片路徑
-      3. center center/cover 讓圖片置中且填滿 (不變形)
-    */
-        background:
-            linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-            url("/images/hero-cover.jpg") no-repeat center center/cover;
-
-        /* (可選) 讓背景圖固定不動，產生視差滾動效果 */
-        background-attachment: fixed;
-
-        /* (關鍵) 讓區塊內的 "預設" 文字 (如 P) 變成白色 */
-        color: var(--color-white);
+        padding: 0.875rem 2rem;
+        border-radius: 9999px; /* Pill shape */
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        letter-spacing: 0.05em;
     }
 
-    #hero h1 {
-        font-size: 2.5rem;
-        color: var(--color-white);
+    /* 主要按鈕 (Solid) */
+    .cta-button.primary {
+        background: linear-gradient(
+            135deg,
+            var(--color-primary) 70%,
+            var(--color-primary-dark) 100%
+        );
+        color: white;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        border: 0px solid transparent;
     }
 
-    #hero p {
-        font-size: 1.15rem;
-        max-width: 600px;
-        opacity: 0.9;
-        margin-bottom: 1.5rem;
-        color: var(--color-white);
+    .cta-button.primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        filter: brightness(1.1);
+    }
+
+    .cta-button.primary .icon {
+        transition: transform 0.3s ease;
+    }
+
+    .cta-button.primary:hover .icon {
+        transform: rotate(90deg);
+    }
+
+    /* 次要按鈕 (Outline) */
+    .cta-button.secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+    }
+
+    .cta-button.secondary:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: white;
+        transform: translateY(-2px);
     }
 </style>

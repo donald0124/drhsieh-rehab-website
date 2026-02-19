@@ -3,363 +3,490 @@
 import QA from "./QA.astro";
 ---
 
-<section id="patient-info">
-    <h2 class="text-4xl font-bold text-center mb-10 text-heading">就診資訊</h2>
+<section id="patient-info" class="scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-10 text-heading">
+            就診資訊
+        </h2>
 
-    <div
-        class="info-banner"
-        style="background-color: var(--color-primary-dark); color: white; padding: 1.5rem 2rem; border-radius: 8px; text-align: center; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;"
-    >
-        <h3 style="color: white; margin: 0; font-size: 1.5rem;">
-            本診所一律採現場掛號，無需預約
-        </h3>
-        <p
-            style="color: white; opacity: 0.9; margin: 0.5rem 0 0; font-size: 1.1rem;"
+        <!-- 1. 質感升級：無需預約 Banner (漸層 + 玻璃擬態) -->
+        <div
+            class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-dark to-primary p-8 md:p-10 text-center shadow-lg transform hover:scale-[1.01] transition-transform duration-300 mb-16 max-w-4xl mx-auto"
         >
-            (初診請於門診時段結束前 20 分鐘報到)
-        </p>
-    </div>
-
-    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">
-        門診時段
-    </h3>
-    <div class="schedule-table-wrapper">
-        <table class="schedule-table schedule-table-complex">
-            <thead>
-                <tr>
-                    <th>時段</th>
-                    <th>一</th>
-                    <th>二</th>
-                    <th>三</th>
-                    <th>四</th>
-                    <th>五</th>
-                    <th>六</th>
-                    <th>日</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>上午<small>09:00-11:30</small></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td rowspan="3" style="vertical-align: middle;"
-                        >全日<br />休診</td
-                    >
-                </tr>
-                <tr>
-                    <td>下午<small>14:30-17:00</small></td>
-                    <td><strong>O</strong></td>
-                    <td>
-                        <a
-                            href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            三總<br />汀州
-                        </a>
-                    </td>
-                    <td>休診</td>
-                    <td>休診</td>
-                    <td><strong>O</strong></td>
-                    <td rowspan="2" style="vertical-align: middle;"
-                        >下午<br />晚上<br />休診</td
-                    >
-                </tr>
-                <tr>
-                    <td>晚上<small>18:30-21:00</small></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong><small>(19:00 開始)</small></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                    <td><strong>O</strong></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-10">
-        復健治療時間
-    </h3>
-    <div class="schedule-table-simple-wrapper">
-        <table class="schedule-table">
-            <thead>
-                <tr>
-                    <th>時段</th>
-                    <th>週一至週五</th>
-                    <th>週六</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>全日</td>
-                    <td
-                        >08:30 – 21:30<br /><small
-                            >(中午 12:30–14:00 休息)</small
-                        ></td
-                    >
-                    <td>08:30 – 12:30</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <h3 class="text-2xl font-bold text-primary-dark text-center mb-6 mt-16">
-        交通與聯絡
-    </h3>
-    <div class="contact-grid">
-        <div class="contact-info">
-            <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 class="text-xl font-bold text-heading mb-4 mt-0">電話</h3>
-                <p>
-                    <a href="tel:0226718910">(02) 2671-8910</a>
+            <div
+                class="absolute inset-0 bg-white/10 backdrop-blur-[2px] opacity-20"
+            >
+            </div>
+            <div class="relative z-10">
+                <h3
+                    class="text-2xl md:text-3xl font-bold text-white mb-3 tracking-wide"
+                >
+                    本診所一律採現場掛號，無需預約
+                </h3>
+                <p class="text-white/90 text-lg md:text-xl font-medium">
+                    (初診請於門診時段結束前 20 分鐘報到)
                 </p>
             </div>
+        </div>
 
-            <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 class="text-xl font-bold text-heading mb-4 mt-0">
-                    診所位置
-                </h3>
-                <p>
+        <div class="grid lg:grid-cols-2 gap-12 mb-16">
+            <!-- 2. 門診時段 (優化表格樣式) -->
+            <div>
+                <div
+                    class="flex items-center gap-3 mb-6 justify-center lg:justify-start"
+                >
+                    <div class="p-2 bg-blue-100 rounded-lg text-primary-dark">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"></rect><line
+                                x1="16"
+                                y1="2"
+                                x2="16"
+                                y2="6"></line><line x1="8" y1="2" x2="8" y2="6"
+                            ></line><line x1="3" y1="10" x2="21" y2="10"
+                            ></line></svg
+                        >
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary-dark">
+                        門診時段
+                    </h3>
+                </div>
+
+                <div
+                    class="overflow-hidden rounded-xl border border-gray-200 shadow-sm bg-white"
+                >
+                    <table class="w-full text-center border-collapse">
+                        <thead class="bg-primary-light/30 text-primary-dark">
+                            <tr>
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >時段</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >一</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >二</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >三</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >四</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >五</th
+                                >
+                                <th
+                                    class="py-4 px-2 font-bold border-b border-gray-200"
+                                    >六</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr
+                                class="border-b border-gray-100 hover:bg-gray-50/50"
+                            >
+                                <td
+                                    class="py-4 px-1 font-semibold text-heading bg-gray-50/50 text-sm md:text-base"
+                                >
+                                    上午<br /><span
+                                        class="text-xs text-gray-500 font-normal"
+                                        >09:00-11:30</span
+                                    >
+                                </td>
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                            </tr>
+                            <tr
+                                class="border-b border-gray-100 hover:bg-gray-50/50"
+                            >
+                                <td
+                                    class="py-4 px-1 font-semibold text-heading bg-gray-50/50 text-sm md:text-base"
+                                >
+                                    下午<br /><span
+                                        class="text-xs text-gray-500 font-normal"
+                                        >14:30-17:00</span
+                                    >
+                                </td>
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2 text-xs md:text-sm">
+                                    <a
+                                        href="https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4"
+                                        target="_blank"
+                                        class="text-primary hover:underline font-medium bg-blue-50 px-2 py-1 rounded inline-block leading-tight"
+                                    >
+                                        三總<br />汀州
+                                    </a>
+                                </td>
+                                <td class="py-2 text-gray-300 text-sm">休</td>
+                                <td class="py-2 text-gray-300 text-sm">休</td>
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2 text-gray-300 text-sm">休</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50/50">
+                                <td
+                                    class="py-4 px-1 font-semibold text-heading bg-gray-50/50 text-sm md:text-base"
+                                >
+                                    晚上<br /><span
+                                        class="text-xs text-gray-500 font-normal"
+                                        >18:30-21:00</span
+                                    >
+                                </td>
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2">
+                                    <span class="text-primary font-bold text-xl"
+                                        >●</span
+                                    >
+                                    <div
+                                        class="text-[10px] text-gray-500 leading-tight mt-1"
+                                    >
+                                        19:00<br />開始
+                                    </div>
+                                </td>
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2"
+                                    ><span
+                                        class="text-primary font-bold text-xl"
+                                        >●</span
+                                    ></td
+                                >
+                                <td class="py-2 text-gray-300 text-sm">休</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div
+                        class="bg-gray-50 p-3 text-center text-xs text-gray-500 border-t border-gray-100"
+                    >
+                        週日全日休診
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. 復健治療時間 -->
+            <div>
+                <div
+                    class="flex items-center gap-3 mb-6 justify-center lg:justify-start"
+                >
+                    <div class="p-2 bg-green-100 rounded-lg text-green-700">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            ><path
+                                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary-dark">
+                        復健治療時間
+                    </h3>
+                </div>
+
+                <div
+                    class="overflow-hidden rounded-xl border border-gray-200 shadow-sm bg-white h-[calc(100%-4rem)]"
+                >
+                    <div class="p-6 md:p-8 flex flex-col justify-center h-full">
+                        <div class="flex items-start gap-4 mb-8">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary-light/20 flex items-center justify-center flex-shrink-0 text-primary font-bold text-xl"
+                            >
+                                平日
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-heading mb-1">
+                                    週一至週五
+                                </h4>
+                                <p class="text-2xl font-bold text-primary">
+                                    08:30 – 21:30
+                                </p>
+                                <p
+                                    class="text-gray-500 mt-1 flex items-center gap-1"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="16"
+                                        height="16"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="text-gray-400"
+                                        ><circle cx="12" cy="12" r="10"
+                                        ></circle><polyline
+                                            points="12 6 12 12 16 14"
+                                        ></polyline></svg
+                                    >
+                                    中午 12:30–14:00 休息
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="w-full h-px bg-gray-100 mb-8 mx-auto"></div>
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 text-red-500 font-bold text-xl"
+                            >
+                                六
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg text-heading mb-1">
+                                    週六
+                                </h4>
+                                <p class="text-2xl font-bold text-primary">
+                                    08:30 – 12:30
+                                </p>
+                                <p class="text-gray-500 mt-1">
+                                    上午時段正常與看診
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 交通與聯絡 (Semantic HTML + Large CTA) -->
+        <h3 class="text-2xl font-bold text-primary-dark text-center mb-8 mt-16">
+            交通與聯絡
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-8 items-start mb-16">
+            <!-- 左側：聯絡資訊與 CTA -->
+            <div class="space-y-6">
+                <!-- 大型 CTA 按鈕群 -->
+                <div class="grid grid-cols-2 gap-4">
+                    <a
+                        href="tel:0226718910"
+                        class="flex flex-col items-center justify-center p-6 bg-primary text-white rounded-xl shadow-md hover:text-white hover:bg-primary-dark hover:scale-[1.02] transition-all group"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="mb-2 group-hover:rotate-12 transition-transform"
+                            ><path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                            ></path></svg
+                        >
+                        <span class="font-bold text-lg">撥打電話</span>
+                        <span class="text-sm opacity-90">(02) 2671-8910</span>
+                    </a>
                     <a
                         href="https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6"
                         target="_blank"
                         rel="noopener noreferrer"
+                        class="flex flex-col items-center justify-center p-6 bg-white border-2 border-primary text-primary rounded-xl shadow-md hover:bg-blue-50 hover:scale-[1.02] transition-all group"
                     >
-                        新北市三峽區中華路22號2樓
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="mb-2 group-hover:animate-bounce"
+                            ><path
+                                d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                            ></path><circle cx="12" cy="10" r="3"></circle></svg
+                        >
+                        <span class="font-bold text-lg">Google 導航</span>
+                        <span class="text-sm opacity-80">立即前往</span>
                     </a>
-                </p>
-                <ul style="padding-left: 1.5rem; margin: 0.5rem 0 0;">
-                    <li>三峽黃昏市場附近、小北百貨隔壁</li>
-                    <li>龍門社區大樓附設電梯，可搭至2樓</li>
-                </ul>
+                </div>
+
+                <!-- 詳細地址資訊 (Address Tag) -->
+                <address
+                    class="not-italic bg-white p-6 rounded-xl shadow-sm border border-gray-100"
+                >
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="mt-1 text-primary">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><path
+                                    d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
+                                ></path><circle cx="12" cy="10" r="3"
+                                ></circle></svg
+                            >
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">地址</h4>
+                            <p class="text-gray-600">
+                                新北市三峽區中華路22號2樓
+                            </p>
+                            <p class="text-sm text-gray-500 mt-1">
+                                (三峽黃昏市場附近、小北百貨隔壁、龍門社區大樓附設電梯)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="mt-1 text-primary">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="20"
+                                height="20"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                ><rect width="20" height="16" x="2" y="4" rx="2"
+                                ></rect><path
+                                    d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                                ></path></svg
+                            >
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">
+                                交通方式
+                            </h4>
+                            <ul
+                                class="text-gray-600 text-sm space-y-1 list-disc pl-4"
+                            >
+                                <li>
+                                    <strong>910公車：</strong>「中華路」站
+                                    (經捷運新埔/板橋/府中站)
+                                </li>
+                                <li>
+                                    <strong>705、706公車：</strong>「礁溪里」站
+                                    (經捷運頂埔站)
+                                </li>
+                                <li>附近有收費停車場</li>
+                            </ul>
+                        </div>
+                    </div>
+                </address>
             </div>
 
-            <div class="note" style="margin-top: 2rem; text-align: left;">
-                <h3 class="text-xl font-bold text-heading mb-4 mt-0">
-                    交通方式
-                </h3>
-                <ul style="padding-left: 1.5rem; margin: 0;">
-                    <li>
-                        <strong>910公車：</strong>「中華路」站 (可經<strong
-                            >捷運新埔、板橋、府中站</strong
-                        >轉乘)
-                    </li>
-                    <li>
-                        <strong>705、706公車：</strong>「礁溪里」站 (可經<strong
-                            >捷運頂埔站</strong
-                        >轉乘)
-                    </li>
-                    <li>附近有收費停車場</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="map-container">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.9766755253318!2d121.37238134060719!3d24.932864488726022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bed818951bb%3A0xa0fcac84eec260d7!2z6Kyd5piO56aP5b6p5YGl56eR6Ki65omA!5e0!3m2!1szh-TW!2stw!4v1762579348594!5m2!1szh-TW!2stw"
-                width="100%"
-                height="450"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+            <!-- 右側：地圖 -->
+            <div
+                class="h-full min-h-[300px] rounded-2xl overflow-hidden shadow-md border border-gray-200"
             >
-            </iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.9766755253318!2d121.37238134060719!3d24.932864488726022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34681bed818951bb%3A0xa0fcac84eec260d7!2z6Kyd5piO56aP5b6p5YGl56eR6Ki65omA!5e0!3m2!1szh-TW!2stw!4v1762579348594!5m2!1szh-TW!2stw"
+                    width="100%"
+                    height="100%"
+                    style="border:0; min-height: 350px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="謝明福復健科診所地圖"
+                >
+                </iframe>
+            </div>
         </div>
-    </div>
 
-    <QA />
+        <QA />
+    </div>
 </section>
 
 <style>
-    /* (5) 門診時間 (Schedule) */
-    .schedule-table-wrapper {
-        /* 關鍵：讓表格在手機上可以水平滾動 */
-        overflow-x: auto;
-        max-width: 100%;
-    }
-
-    .schedule-table {
-        width: 100%;
-        min-width: 450px;
-        /* 確保表格內容不會擠壓得太難看 */
-        border-collapse: collapse;
-        margin-bottom: 1.5rem;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    }
-
-    .schedule-table th,
-    .schedule-table td {
-        border: 1px solid var(--color-border);
-        padding: 0.8rem;
-        text-align: center;
-    }
-
-    .schedule-table th {
-        background-color: var(--color-primary-light);
-        color: var(--color-primary-dark);
-        white-space: nowrap;
-        /* 確保內容不換行 */
-    }
-
-    .schedule-table tbody tr:nth-of-type(even) {
-        background-color: var(--color-gray-bg);
-    }
-
-    .schedule-table td:first-child {
-        /* 第一欄 (時段) */
-        font-weight: 600;
-        background-color: var(--color-white);
-    }
-
-    .schedule-table td[rowspan] {
-        /* --- NEW --- */
-        /* 讓跨欄的儲存格內容垂直置中 */
-        vertical-align: middle;
-    }
-
-    /*
-    * ================================
-    * (5.1) 門診時間 (Schedule) - 樣式優化
-    * ================================
-    */
-
-    /* (1. 讓 "門診時段" 複雜表格更緊湊) */
-    .schedule-table-complex th,
-    .schedule-table-complex td {
-        padding: 0.5rem 0.3rem;
-        /* (縮小左右 padding) */
-        white-space: nowrap;
-        /* (標題"一""二""三" 保持不換行) */
-    }
-
-    /*
-    * ▼▼▼ (關鍵：新增) ▼▼▼
-    * * 1. 強制表格使用固定寬度演算法
-    * 這會讓「一～日」的 7 欄寬度平均分配
-    */
-    .schedule-table-complex {
-        table-layout: fixed;
-    }
-
-    /*
-    * 2. 指定第一欄 (時段) 的寬度
-    * 我們給它 30%，剩下 7 欄會自動均分 70%
-    */
-    .schedule-table-complex th:first-child,
-    .schedule-table-complex td:first-child {
-        width: 20%;
-        /* (您可以調整 25% ~ 35%) */
-    }
-
-    /* (2. 讓 "復健時間" 簡單表格 100% 寬) */
-    .schedule-table-simple-wrapper .schedule-table {
-        min-width: 0;
-        /* (移除 min-width) */
-        width: 100%;
-        /* (設為 100%) */
-    }
-
-    /* (3. 處理我們新增的 <small> 標籤) */
-    .schedule-table td small {
-        font-size: 0.85em;
-        display: block;
-        /* (關鍵：讓 small 換到下一行) */
-        margin-top: 0.25rem;
-        white-space: normal;
-        /* (允許 "19:00 開始" 換行) */
-    }
-
-    /* (4. 讓第一欄 (時段) 的，並允許換行) */
-    .schedule-table td:first-child {
-        white-space: normal;
-        /* (允許 "上午" 和 "時間" 換行) */
-        vertical-align: middle;
-        /* (讓 "上午" 和 "O" 對齊) */
-    }
-
-    /* (5. "O" 儲存格的樣式) */
-    .schedule-table td strong {
-        font-size: 1.3rem;
-        color: var(--color-primary);
-    }
-
-    /* (6. "休診" 儲存格的樣式) */
-    .schedule-table
-        td:not(:first-child):not([rowspan]):not(:has(strong)):not(:has(a)) {
-        color: #000000;
-        font-size: 0.9em;
-    }
-
-    /* (7. 讓三總汀州連結換行) */
-    .schedule-table td a {
-        white-space: normal;
-        text-decoration: underline;
-    }
-
-    /* (6) 聯絡我們 & 交通 (Contact) */
-    .contact-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        /* (手機) 1 欄 */
-        gap: 2rem;
-        max-width: var(--container-width);
-        margin: 0 auto;
-    }
-
-    .contact-info p {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .contact-info strong {
-        color: var(--color-heading);
-        margin-right: 0.5rem;
-    }
-
-    .contact-info h3 {
-        margin-top: 2rem;
-        margin-bottom: 0.5rem;
-        border-bottom: 2px solid var(--color-primary);
-        padding-bottom: 0.5rem;
-        display: inline-block;
-        text-align: left;
-        /* --- UPDATED --- */
-    }
-
-    .contact-info ul {
-        list-style: none;
-        padding: 0;
-    }
-
-    /* --- NEW --- */
-    /* (掛號/預約 提示) */
-    .contact-info .note {
-        font-size: 0.95rem;
-        background-color: var(--color-white);
-        padding: 1rem;
-        border-radius: 8px;
-        border-left: 5px solid var(--color-primary);
-        line-height: 1.6;
-        margin-top: 1rem;
-    }
-
-    .map-container {
-        width: 100%;
-        height: 350px;
-        border-radius: 8px;
-        overflow: hidden;
-        /* 確保 iframe 圓角 */
-        border: 1px solid var(--color-border);
-    }
-
-    .map-container iframe {
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
+    /* 如果還有其他地方需要特殊調整，可以寫在這裡，但大部分樣式已整合進 Tailwind Class */
 </style>

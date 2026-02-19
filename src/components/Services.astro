@@ -1,208 +1,337 @@
 ---
 // src/components/Services.astro
-import { getCollection } from 'astro:content';
-import ServiceItem from './ServiceItem.astro';
+import { getCollection } from "astro:content";
+import ServiceItem from "./ServiceItem.astro";
 
 // 1. 取得所有文章並排序 (這部分邏輯維持)
-const allBlogPosts = await getCollection('blog');
+const allBlogPosts = await getCollection("blog");
 const sortedPosts = allBlogPosts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 // 2. 定義靜態資料 (原本的 servicesData，但移除了手動的 relatedPosts)
 // 建議：將 tags 裡的括號拆開，變成獨立的關鍵字，這樣自動對應會更準確
 const rawServicesData = [
-  {
-    title: "頭頸",
-    icon: "head",
-    tags: ["顳顎關節障礙", "顏面神經麻痺", "落枕", "肩頸痠痛", "甩鞭症候群"],
-    symptoms: [
-        "早上起床脖子卡住，轉頭就痛",
-        "嘴巴打開會痛、有「喀喀」聲",
-        "肩頸長期僵硬，甚至引起頭痛",
-        "張口時下巴會歪向某一邊",
-        "半邊臉部肌肉不受控制、眼睛閉不緊、嘴角歪斜、流口水",
-        "患側耳朵對聲音聲響過大或舌尖味覺減低",
-        "頭部突然被前後甩動後，出現頸部疼痛與僵硬",
-        "除頸痛外，還可能伴隨頭暈、耳鳴、視力模糊或手臂麻木",
-        "頸部活動度受限，尤其在轉頭或彎曲時"
-    ]
-  },
-  {
-    title: "上肢",
-    icon: "upper",
-    tags: ["五十肩", "冰凍肩", "網球肘", "外上髁炎", "媽媽手", "狹窄性肌腱滑膜炎", 
-           "腕隧道症候群", "肘隧道症候群", "高爾夫球肘", "板機指", "肩夾擠症候群", 
-           "旋轉肌袖損傷", "腕垂症", "闊背肌症候群", "旋轉肌拉傷", "腱鞘囊腫"],
-    symptoms: [
-        "肩膀卡住，手舉不起來，無法穿脫衣服，半夜會痛醒",
-        "手肘外側壓了會痛，擰毛巾或提重物時會無力",
-        "手腕大拇指側疼痛，抓握東西 (如抱小孩) 時更明顯",
-        "手指又麻又痛，尤其晚上睡覺或騎車時更嚴重",
-        "手指彎曲伸直不順暢，會發出彈響聲或卡住",
-        "手肘內側凸起處有壓痛，用力握拳或提重物時疼痛加劇",
-        "肩膀抬高手臂超過某個角度時會產生疼痛弧",
-        "手臂做向上抬高或外展動作時，感覺肩膀無力",
-        "休息時也感到手肘內側或外側隱隱作痛，並向下延伸到前臂"
-    ]
-  },
-  {
-    title: "下肢",
-    icon: "lower",
-    tags: ["梨狀肌症候群", "跑者膝", "髂脛束摩擦症候群", "跳躍膝", "髕骨肌腱炎", 
-           "足底筋膜炎", "扁平足", "十字韌帶術後", "人工膝關節術後", "人工髖關節術後", 
-           "拇趾外翻", "退化性關節炎", "鵝掌足滑囊炎", "垂足症", "內側皺褶症候群",
-           "貝氏囊腫", "髕骨外翻", "髕骨軟化症", "莫頓氏神經瘤", "腸薦關節韌帶扭傷"],
-    symptoms: [
-        "早上起床腳踩地，腳跟劇痛",
-        "跑步時膝蓋外側疼痛",
-        "臀部深深地痠痛，甚至有點麻到小腿",
-        "膝蓋前下方，髕骨下方疼痛，特別是跳躍或上下樓梯時",
-        "長時間站立或行走後，腳底感到疲勞和疼痛",
-        "大腳趾根部向外突出，穿鞋時容易磨擦疼痛",
-        "膝關節感到不穩定，走路或運動時有「膝蓋快掉出來」的感覺",
-        "膝蓋或髖部術後，關節活動度受限、周邊肌肉僵硬無力",
-        "長時間行走後，足弓塌陷，內側感到疼痛",
-        "膝蓋彎曲時，膝蓋骨下方有雜音或疼痛"
-    ],
-  },
-  {
-    title: "脊椎 / 骨骼",
-    icon: "spine",
-    tags: ["椎間盤突出", "脊椎側彎", "坐骨神經痛", "骨刺", "僵直性脊椎炎", 
-           "壓迫性骨折術後", "骨外科術後疼痛", "骨質疏鬆症"],
-    symptoms: [
-        "彎腰或打噴嚏時，背部劇痛並伴隨腿部麻木",
-        "無法久坐或久站，下背部持續痠痛",
-        "走路時感覺腿部無力、緊繃，像被電到",
-        "早上起床時背部僵硬疼痛，活動後會稍微緩解",
-        "雙肩高低不一或骨盆歪斜不對稱",
-        "腰部、臀部、大腿後側或小腿出現麻木或刺痛感",
-        "持續站立或行走時腿部疼痛與無力，前傾或坐下時症狀改善",
-        "下背部在休息時也感到疼痛，且使用非類固醇消炎藥效果較差"
-    ],
-  },
-  {
-    title: "全身性 / 其他",
-    icon: "general",
-    tags: ["肌筋膜疼痛症候群", "肌筋膜炎", "纖維肌痛症", "肌少症", "運動傷害", 
-           "扭傷", "拉傷", "挫傷", "腦中風", "神經復健", "巴金森氏症", 
-           "周邊神經損傷", "闊背肌症候群", "關節過動症候群", "類風濕性關節炎", 
-           "關節攣縮"],
-    symptoms: [
-        "全身多處痠痛，有特定壓了會劇痛的「激痛點」",
-        "明明沒有在運動，但長時間全身肌肉筋骨都很痠痛",
-        "走路遲緩、握力下降、容易跌倒",
-        "運動中扭傷、拉傷，或術後關節僵硬、疼痛",
-        "肢體一側或兩側無力、麻木、感覺異常，或吞嚥、語言困難",
-        "走路時腳步呈小碎步或彎腰駝背，姿勢不穩定",
-        "關節在活動後疼痛加劇，休息後緩解，早上會有僵硬感",
-        "關節活動時會發出「喀喀」的摩擦聲，或出現關節變形"
-    ],
-  }
+    {
+        title: "頭頸",
+        icon: "head",
+        tags: [
+            "顳顎關節障礙",
+            "顏面神經麻痺",
+            "落枕",
+            "肩頸痠痛",
+            "甩鞭症候群",
+        ],
+        symptoms: [
+            "早上起床脖子卡住，轉頭就痛",
+            "嘴巴打開會痛、有「喀喀」聲",
+            "肩頸長期僵硬，甚至引起頭痛",
+            "張口時下巴會歪向某一邊",
+            "半邊臉部肌肉不受控制、眼睛閉不緊、嘴角歪斜、流口水",
+            "患側耳朵對聲音聲響過大或舌尖味覺減低",
+            "頭部突然被前後甩動後，出現頸部疼痛與僵硬",
+            "除頸痛外，還可能伴隨頭暈、耳鳴、視力模糊或手臂麻木",
+            "頸部活動度受限，尤其在轉頭或彎曲時",
+        ],
+    },
+    {
+        title: "上肢",
+        icon: "upper",
+        tags: [
+            "五十肩",
+            "冰凍肩",
+            "網球肘",
+            "外上髁炎",
+            "媽媽手",
+            "狹窄性肌腱滑膜炎",
+            "腕隧道症候群",
+            "肘隧道症候群",
+            "高爾夫球肘",
+            "板機指",
+            "肩夾擠症候群",
+            "旋轉肌袖損傷",
+            "腕垂症",
+            "闊背肌症候群",
+            "旋轉肌拉傷",
+            "腱鞘囊腫",
+        ],
+        symptoms: [
+            "肩膀卡住，手舉不起來，無法穿脫衣服，半夜會痛醒",
+            "手肘外側壓了會痛，擰毛巾或提重物時會無力",
+            "手腕大拇指側疼痛，抓握東西 (如抱小孩) 時更明顯",
+            "手指又麻又痛，尤其晚上睡覺或騎車時更嚴重",
+            "手指彎曲伸直不順暢，會發出彈響聲或卡住",
+            "手肘內側凸起處有壓痛，用力握拳或提重物時疼痛加劇",
+            "肩膀抬高手臂超過某個角度時會產生疼痛弧",
+            "手臂做向上抬高或外展動作時，感覺肩膀無力",
+            "休息時也感到手肘內側或外側隱隱作痛，並向下延伸到前臂",
+        ],
+    },
+    {
+        title: "下肢",
+        icon: "lower",
+        tags: [
+            "梨狀肌症候群",
+            "跑者膝",
+            "髂脛束摩擦症候群",
+            "跳躍膝",
+            "髕骨肌腱炎",
+            "足底筋膜炎",
+            "扁平足",
+            "十字韌帶術後",
+            "人工膝關節術後",
+            "人工髖關節術後",
+            "拇趾外翻",
+            "退化性關節炎",
+            "鵝掌足滑囊炎",
+            "垂足症",
+            "內側皺褶症候群",
+            "貝氏囊腫",
+            "髕骨外翻",
+            "髕骨軟化症",
+            "莫頓氏神經瘤",
+            "腸薦關節韌帶扭傷",
+        ],
+        symptoms: [
+            "早上起床腳踩地，腳跟劇痛",
+            "跑步時膝蓋外側疼痛",
+            "臀部深深地痠痛，甚至有點麻到小腿",
+            "膝蓋前下方，髕骨下方疼痛，特別是跳躍或上下樓梯時",
+            "長時間站立或行走後，腳底感到疲勞和疼痛",
+            "大腳趾根部向外突出，穿鞋時容易磨擦疼痛",
+            "膝關節感到不穩定，走路或運動時有「膝蓋快掉出來」的感覺",
+            "膝蓋或髖部術後，關節活動度受限、周邊肌肉僵硬無力",
+            "長時間行走後，足弓塌陷，內側感到疼痛",
+            "膝蓋彎曲時，膝蓋骨下方有雜音或疼痛",
+        ],
+    },
+    {
+        title: "脊椎 / 骨骼",
+        icon: "spine",
+        tags: [
+            "椎間盤突出",
+            "脊椎側彎",
+            "坐骨神經痛",
+            "骨刺",
+            "僵直性脊椎炎",
+            "壓迫性骨折術後",
+            "骨外科術後疼痛",
+            "骨質疏鬆症",
+        ],
+        symptoms: [
+            "彎腰或打噴嚏時，背部劇痛並伴隨腿部麻木",
+            "無法久坐或久站，下背部持續痠痛",
+            "走路時感覺腿部無力、緊繃，像被電到",
+            "早上起床時背部僵硬疼痛，活動後會稍微緩解",
+            "雙肩高低不一或骨盆歪斜不對稱",
+            "腰部、臀部、大腿後側或小腿出現麻木或刺痛感",
+            "持續站立或行走時腿部疼痛與無力，前傾或坐下時症狀改善",
+            "下背部在休息時也感到疼痛，且使用非類固醇消炎藥效果較差",
+        ],
+    },
+    {
+        title: "全身性 / 其他",
+        icon: "general",
+        tags: [
+            "肌筋膜疼痛症候群",
+            "肌筋膜炎",
+            "纖維肌痛症",
+            "肌少症",
+            "運動傷害",
+            "扭傷",
+            "拉傷",
+            "挫傷",
+            "腦中風",
+            "神經復健",
+            "巴金森氏症",
+            "周邊神經損傷",
+            "闊背肌症候群",
+            "關節過動症候群",
+            "類風濕性關節炎",
+            "關節攣縮",
+        ],
+        symptoms: [
+            "全身多處痠痛，有特定壓了會劇痛的「激痛點」",
+            "明明沒有在運動，但長時間全身肌肉筋骨都很痠痛",
+            "走路遲緩、握力下降、容易跌倒",
+            "運動中扭傷、拉傷，或術後關節僵硬、疼痛",
+            "肢體一側或兩側無力、麻木、感覺異常，或吞嚥、語言困難",
+            "走路時腳步呈小碎步或彎腰駝背，姿勢不穩定",
+            "關節在活動後疼痛加劇，休息後緩解，早上會有僵硬感",
+            "關節活動時會發出「喀喀」的摩擦聲，或出現關節變形",
+        ],
+    },
 ];
 
 // 3. 自動配對邏輯 (Magic Code)
 // 這段程式碼會掃描所有的 servicesData，自動把相關文章塞進去
-const servicesData = rawServicesData.map(service => {
+const servicesData = rawServicesData.map((service) => {
     // 篩選出符合該服務分類的文章
-    const matchingPosts = sortedPosts.filter(post => {
+    const matchingPosts = sortedPosts.filter((post) => {
         // 安全檢查：確保文章有 tags
         if (!post.data.tags) return false;
-        
+
         // 比對邏輯：文章的任何一個 tag 是否出現在這個服務的 tags 清單中
         // 使用 includes 做寬鬆比對，確保命中率
-        return post.data.tags.some(postTag => 
-            service.tags.some(serviceTag => 
-                // 雙向包含：例如服務Tag是"五十肩"，文章Tag是"五十肩治療" -> 命中
-                serviceTag.includes(postTag) || postTag.includes(serviceTag)
-            )
+        return post.data.tags.some((postTag) =>
+            service.tags.some(
+                (serviceTag) =>
+                    // 雙向包含：例如服務Tag是"五十肩"，文章Tag是"五十肩治療" -> 命中
+                    serviceTag.includes(postTag) ||
+                    postTag.includes(serviceTag),
+            ),
         );
     });
 
     // 格式化文章資料，只取前 5 篇最新的
-    const relatedPosts = matchingPosts.map(p => ({
-        title: p.data.title,
-        slug: `/blog/${p.slug}/`
-    })).slice(0, 5);
+    const relatedPosts = matchingPosts
+        .map((p) => ({
+            title: p.data.title,
+            slug: `/blog/${p.slug}/`,
+        }))
+        .slice(0, 5);
 
     // 回傳組裝好的資料
     return {
         ...service,
-        relatedPosts: relatedPosts
+        relatedPosts: relatedPosts,
     };
 });
 ---
 
 <section id="services" class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-4 max-w-5xl">
-
         <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">主治項目</h2>
-            <p class="text-lg text-gray-600 max-w-2xl mx-auto">快速對照您的症狀，了解我們如何提供專業、整合性的解決方案。</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                主治項目
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                快速對照您的症狀，了解我們如何提供專業、整合性的解決方案。
+            </p>
         </div>
 
         <div id="accordion-container" class="space-y-4">
-            {servicesData.map(item => (
-                <ServiceItem
-                    title={item.title}
-                    icon={item.icon}
-                    tags={item.tags}
-                    symptoms={item.symptoms}
-                    relatedPosts={item.relatedPosts}
-                />
-            ))}
-        </div> 
-        
+            {
+                servicesData.map((item) => (
+                    <ServiceItem
+                        title={item.title}
+                        icon={item.icon}
+                        tags={item.tags}
+                        symptoms={item.symptoms}
+                        relatedPosts={item.relatedPosts}
+                    />
+                ))
+            }
+        </div>
+
         <div class="mt-12 md:mt-24 max-w-5xl mx-auto">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">我們的治療原則：精準與整合</h3>
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
+                我們的治療原則：精準與整合
+            </h3>
             <p class="text-lg text-gray-800 mb-8">
-                無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「<strong>精準診斷、整合治療</strong>」的核心原則，為您制定最有效率的治療方案：
+                無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「<strong
+                    >專業診斷、整合治療</strong
+                >」的核心原則，為您制定最有專業合適的治療方案：
             </p>
-            
-            <ul class="grid md:grid-cols-2 gap-6 justify-center space-y-0 text-gray-700">
-                <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
-                    <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
+
+            <ul
+                class="grid md:grid-cols-2 gap-6 justify-center space-y-0 text-gray-700"
+            >
+                <li
+                    class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm"
+                >
+                    <span class="text-blue-600 font-bold text-xl flex-shrink-0"
+                        >✓</span
+                    >
                     <div>
-                        <strong class="text-gray-900">精準診斷</strong>: 醫師將透過專業理學檢查，找到疼痛的真正根源 (肌肉、肌腱、韌帶、神經、關節或其他肇因)。
+                        <strong class="text-gray-900">專業診斷</strong>:
+                        醫師將透過專業理學檢查，找到疼痛的真正根源
+                        (肌肉、肌腱、韌帶、神經、關節或其他肇因)。
                     </div>
                 </li>
-                <li class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm">
-                    <span class="text-blue-600 font-bold text-xl flex-shrink-0">✓</span>
+                <li
+                    class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm"
+                >
+                    <span class="text-blue-600 font-bold text-xl flex-shrink-0"
+                        >✓</span
+                    >
                     <div>
-                        <strong class="text-gray-900">整合性治療</strong>: 結合多元儀器物理治療及院長專長（如<strong><a href="/blog/superlizer/">直線偏極光治療 SuperLizer</a></strong> / <strong><a href="/blog/neims/">針極肌肉內電刺激 NEIMS</a></strong>）進行治療。
+                        <strong class="text-gray-900">整合性治療</strong>:
+                        結合多元儀器物理治療及院長專長（如<strong
+                            ><a href="/blog/superlizer/"
+                                >直線偏極光治療 SuperLizer</a
+                            ></strong
+                        > / <strong
+                            ><a href="/blog/neims/">針極肌肉內電刺激 NEIMS</a
+                            ></strong
+                        >）進行治療。
                     </div>
-                </li>                
+                </li>
             </ul>
         </div>
 
         <div class="specialty-section mt-16 md:mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">特別專長</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">除了各項儀器物理治療，我們更提供先進的治療選項，加速您的康復</p>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    特別專長
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    除了各項儀器物理治療，我們更提供先進的治療選項，加速您的康復
+                </p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">針極肌肉內電刺激 (NEIMS)</h3>
-                    <p class="text-gray-600">透過針極電刺激，用於深層肌筋膜疼痛的輔助治療。</p>
-                    <p>閱讀更多關於<a href="/blog/neims/">針極肌肉內電刺激 (NEIMS)</a></p>
+                <div
+                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                        針極肌肉內電刺激 (NEIMS)
+                    </h3>
+                    <p class="text-gray-600">
+                        透過針極電刺激，用於深層肌筋膜疼痛的輔助治療。
+                    </p>
+                    <p>
+                        閱讀更多關於<a href="/blog/neims/"
+                            >針極肌肉內電刺激 (NEIMS)</a
+                        >
+                    </p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">直線偏光治療儀 (Superlizer)</h3>
-                    <p class="text-gray-600">偏極光照射促進血液循環，輔助緩解肌肉痠痛、軟組織修復、改善自律神經失調。</p>
-                    <p>閱讀更多關於<a href="/blog/superlizer/">直線偏光治療儀 (Superlizer)</a></p>
+                <div
+                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                        直線偏光治療儀 (Superlizer)
+                    </h3>
+                    <p class="text-gray-600">
+                        偏極光照射促進血液循環，輔助緩解肌肉痠痛、軟組織修復、改善自律神經失調。
+                    </p>
+                    <p>
+                        閱讀更多關於<a href="/blog/superlizer/"
+                            >直線偏光治療儀 (Superlizer)</a
+                        >
+                    </p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">關節玻尿酸注射</h3>
-                    <p class="text-gray-600">補充關節潤滑液，適用於退化性關節炎等特定適應症。</p>
+                <div
+                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                        關節玻尿酸注射
+                    </h3>
+                    <p class="text-gray-600">
+                        補充關節潤滑液，適用於退化性關節炎等特定適應症。
+                    </p>
                 </div>
-                <div class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">葡萄糖水增生注射</h3>
-                    <p class="text-gray-600">利用高濃度葡萄糖水刺激軟組織，輔助受傷韌帶與肌腱恢復。</p>
+                <div
+                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                        葡萄糖水增生注射
+                    </h3>
+                    <p class="text-gray-600">
+                        利用高濃度葡萄糖水刺激軟組織，輔助受傷韌帶與肌腱恢復。
+                    </p>
                 </div>
             </div>
         </div>
-
     </div>
 </section>
