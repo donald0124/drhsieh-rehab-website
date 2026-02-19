@@ -3,14 +3,13 @@
 import { getCollection } from "astro:content";
 import ServiceItem from "./ServiceItem.astro";
 
-// 1. 取得所有文章並排序 (這部分邏輯維持)
+// 1. 取得所有文章並排序
 const allBlogPosts = await getCollection("blog");
 const sortedPosts = allBlogPosts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-// 2. 定義靜態資料 (原本的 servicesData，但移除了手動的 relatedPosts)
-// 建議：將 tags 裡的括號拆開，變成獨立的關鍵字，這樣自動對應會更準確
+// 2. 定義靜態資料
 const rawServicesData = [
     {
         title: "頭頸",
@@ -163,20 +162,15 @@ const rawServicesData = [
     },
 ];
 
-// 3. 自動配對邏輯 (Magic Code)
-// 這段程式碼會掃描所有的 servicesData，自動把相關文章塞進去
+// 3. 自動配對邏輯
 const servicesData = rawServicesData.map((service) => {
     // 篩選出符合該服務分類的文章
     const matchingPosts = sortedPosts.filter((post) => {
-        // 安全檢查：確保文章有 tags
         if (!post.data.tags) return false;
-
         // 比對邏輯：文章的任何一個 tag 是否出現在這個服務的 tags 清單中
-        // 使用 includes 做寬鬆比對，確保命中率
         return post.data.tags.some((postTag) =>
             service.tags.some(
                 (serviceTag) =>
-                    // 雙向包含：例如服務Tag是"五十肩"，文章Tag是"五十肩治療" -> 命中
                     serviceTag.includes(postTag) ||
                     postTag.includes(serviceTag),
             ),
@@ -191,7 +185,6 @@ const servicesData = rawServicesData.map((service) => {
         }))
         .slice(0, 5);
 
-    // 回傳組裝好的資料
     return {
         ...service,
         relatedPosts: relatedPosts,
@@ -199,18 +192,35 @@ const servicesData = rawServicesData.map((service) => {
 });
 ---
 
-<section id="services" class="py-16 md:py-24 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-5xl">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+<section
+    id="services"
+    class="py-16 md:py-20 bg-gray-50 relative overflow-hidden"
+>
+    <!-- 背景裝飾 -->
+    <div
+        class="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style="background-image: radial-gradient(#005a9c 1px, transparent 1px); background-size: 32px 32px;"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 max-w-5xl relative z-10">
+        <!-- 標題區 -->
+        <div class="text-center mb-16">
+            <h2
+                class="text-3xl md:text-4xl font-bold text-heading mb-6 relative inline-block"
+            >
                 主治項目
+                <span
+                    class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"
+                ></span>
             </h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                 快速對照您的症狀，了解我們如何提供專業、整合性的解決方案。
             </p>
         </div>
 
-        <div id="accordion-container" class="space-y-4">
+        <!-- 手風琴列表 -->
+        <div id="accordion-container" class="space-y-6">
             {
                 servicesData.map((item) => (
                     <ServiceItem
@@ -224,55 +234,73 @@ const servicesData = rawServicesData.map((service) => {
             }
         </div>
 
-        <div class="mt-12 md:mt-24 max-w-5xl mx-auto">
-            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-                我們的治療原則：精準與整合
-            </h3>
-            <p class="text-lg text-gray-800 mb-8">
-                無論您的困擾屬於哪個分類，謝明福復健科診所都秉持「<strong
-                    >專業診斷、整合治療</strong
-                >」的核心原則，為您制定最有專業合適的治療方案：
-            </p>
+        <!-- 治療原則 -->
+        <div
+            class="mt-12 md:mt-16 max-w-4xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100 relative overflow-hidden"
+        >
+            <div class="relative z-10">
+                <h3
+                    class="text-2xl md:text-3xl font-bold text-gray-800 mb-8 text-center"
+                >
+                    我們的治療原則：<span class="text-primary">精準</span> 與 <span
+                        class="text-primary">整合</span
+                    >
+                </h3>
 
-            <ul
-                class="grid md:grid-cols-2 gap-6 justify-center space-y-0 text-gray-700"
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary text-2xl font-bold flex-shrink-0"
+                        >
+                            1
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">
+                                專業診斷
+                            </h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                醫師將透過專業理學檢查，找到疼痛的真正根源
+                                (肌肉、肌腱、韌帶、神經、關節或其他肇因)。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div
+                            class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary text-2xl font-bold flex-shrink-0"
+                        >
+                            2
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-2">
+                                整合性治療
+                            </h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                結合多元儀器物理治療及院長專長（如<a
+                                    href="/blog/superlizer/"
+                                    class="text-primary underline font-medium"
+                                    >直線偏極光</a
+                                > / <a
+                                    href="/blog/neims/"
+                                    class="text-primary underline font-medium"
+                                    >針極肌肉內電刺激</a
+                                >）進行治療。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 裝飾圓圈 -->
+            <div
+                class="absolute -top-24 -right-24 w-48 h-48 bg-blue-50 rounded-full blur-3xl opacity-50"
             >
-                <li
-                    class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm"
-                >
-                    <span class="text-blue-600 font-bold text-xl flex-shrink-0"
-                        >✓</span
-                    >
-                    <div>
-                        <strong class="text-gray-900">專業診斷</strong>:
-                        醫師將透過專業理學檢查，找到疼痛的真正根源
-                        (肌肉、肌腱、韌帶、神經、關節或其他肇因)。
-                    </div>
-                </li>
-                <li
-                    class="flex items-start gap-3 bg-white p-6 rounded-lg shadow-sm"
-                >
-                    <span class="text-blue-600 font-bold text-xl flex-shrink-0"
-                        >✓</span
-                    >
-                    <div>
-                        <strong class="text-gray-900">整合性治療</strong>:
-                        結合多元儀器物理治療及院長專長（如<strong
-                            ><a href="/blog/superlizer/"
-                                >直線偏極光治療 SuperLizer</a
-                            ></strong
-                        > / <strong
-                            ><a href="/blog/neims/">針極肌肉內電刺激 NEIMS</a
-                            ></strong
-                        >）進行治療。
-                    </div>
-                </li>
-            </ul>
+            </div>
         </div>
 
-        <div class="specialty-section mt-16 md:mt-24">
+        <!-- 特別專長 (Cards) -->
+        <div class="specialty-section mt-24">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-heading mb-4">
                     特別專長
                 </h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -281,53 +309,133 @@ const servicesData = rawServicesData.map((service) => {
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
                 <div
-                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    class="group relative bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
-                        針極肌肉內電刺激 (NEIMS)
-                    </h3>
-                    <p class="text-gray-600">
-                        透過針極電刺激，用於深層肌筋膜疼痛的輔助治療。
-                    </p>
-                    <p>
-                        閱讀更多關於<a href="/blog/neims/"
-                            >針極肌肉內電刺激 (NEIMS)</a
+                    <div
+                        class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <svg
+                            class="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg
                         >
-                    </p>
-                </div>
-                <div
-                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                >
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
-                        直線偏光治療儀 (Superlizer)
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-gray-800 mb-3 group-hover:text-primary transition-colors"
+                    >
+                        針極肌肉內電刺激
                     </h3>
-                    <p class="text-gray-600">
-                        偏極光照射促進血液循環，輔助緩解肌肉痠痛、軟組織修復、改善自律神經失調。
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        (NEIMS) 透過針極電刺激，用於深層肌筋膜疼痛的精準治療。
                     </p>
-                    <p>
-                        閱讀更多關於<a href="/blog/superlizer/"
-                            >直線偏光治療儀 (Superlizer)</a
-                        >
-                    </p>
+                    <a
+                        href="/blog/neims/"
+                        class="inline-flex items-center text-primary font-bold text-sm hover:gap-2 transition-all"
+                    >
+                        了解更多 <span class="ml-1">→</span>
+                    </a>
                 </div>
+
+                <!-- Card 2 -->
                 <div
-                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    class="group relative bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                    <div
+                        class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <svg
+                            class="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-gray-800 mb-3 group-hover:text-orange-600 transition-colors"
+                    >
+                        直線偏光治療
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        (Superlizer) 輔助緩解肌肉痠痛、軟組織修復。
+                    </p>
+                    <a
+                        href="/blog/superlizer/"
+                        class="inline-flex items-center text-orange-500 font-bold text-sm hover:gap-2 transition-all"
+                    >
+                        了解更多 <span class="ml-1">→</span>
+                    </a>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="group relative bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                >
+                    <div
+                        class="w-14 h-14 bg-teal-50 rounded-2xl flex items-center justify-center text-teal-600 mb-6 group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <svg
+                            class="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-gray-800 mb-3 group-hover:text-teal-600 transition-colors"
+                    >
                         關節玻尿酸注射
                     </h3>
-                    <p class="text-gray-600">
-                        補充關節潤滑液，適用於退化性關節炎等特定適應症。
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                        補充關節潤滑液，適用於退化性關節炎，增加活動潤滑度。
                     </p>
                 </div>
+
+                <!-- Card 4 -->
                 <div
-                    class="card bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                    class="group relative bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                    <h3 class="text-xl font-semibold text-blue-800 mb-2">
+                    <div
+                        class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-500 mb-6 group-hover:scale-110 transition-transform duration-300"
+                    >
+                        <svg
+                            class="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            ><path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                            ></path></svg
+                        >
+                    </div>
+                    <h3
+                        class="text-xl font-bold text-gray-800 mb-3 group-hover:text-pink-600 transition-colors"
+                    >
                         葡萄糖水增生注射
                     </h3>
-                    <p class="text-gray-600">
+                    <p class="text-gray-600 text-sm mb-4 leading-relaxed">
                         利用高濃度葡萄糖水刺激軟組織，輔助受傷韌帶與肌腱恢復。
                     </p>
                 </div>

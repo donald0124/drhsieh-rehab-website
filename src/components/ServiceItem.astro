@@ -1,90 +1,145 @@
 ---
 // src/components/ServiceItem.astro
-// 這是您的「樣板」(form)，負責單一治療項目的外觀
-// 它會從 Services.astro 接收 props
-
 interface Props {
-  title: string; // 標題 (例如: "頭頸")
-  icon?: string; // 圖示名稱
-  tags: string[]; // 治療標籤 (例如: ["落枕", "肩頸痠痛"])
-  symptoms: string[]; // 困擾列表 (例如: ["早上起床...", "嘴巴打開..."])
-  
-  // (選填) 延伸閱讀的文章列表
-  relatedPosts?: {
-    slug: string;
     title: string;
-  }[];
+    icon?: string;
+    tags: string[];
+    symptoms: string[];
+    relatedPosts?: {
+        slug: string;
+        title: string;
+    }[];
 }
 
 const { title, icon = "general", tags, symptoms, relatedPosts } = Astro.props;
-import ServiceIcon from './ServiceIcon.astro';
+import ServiceIcon from "./ServiceIcon.astro";
 ---
 
-<details class="accordion-item bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-    <summary class="accordion-summary flex items-center w-full p-5 md:p-6 justify-between bg-primary-light hover:bg-blue-50 transition-colors duration-200 cursor-pointer list-none gap-4">
-        <div class="flex items-center gap-3 md:gap-4">
-            <div class="p-2 bg-white rounded-full shadow-sm text-primary">
+<details
+    class="accordion-item bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden group mb-4"
+>
+    <summary
+        class="accordion-summary flex items-center w-full p-5 lg:p-6 justify-between cursor-pointer list-none bg-white hover:bg-gray-50 transition-colors duration-200 relative"
+    >
+        <!-- 左側飾條 (Active Indicator) -->
+        <div
+            class="absolute left-0 top-0 bottom-0 w-1.5 bg-primary opacity-0 group-open:opacity-100 transition-opacity duration-300"
+        >
+        </div>
+
+        <div class="flex items-center gap-4 md:gap-6 pl-2">
+            <!-- Icon Box -->
+            <div
+                class="w-12 h-12 md:w-14 md:h-14 bg-blue-50 text-primary rounded-full flex items-center justify-center flex-shrink-0 group-open:bg-primary group-open:text-white transition-colors duration-300 shadow-sm"
+            >
                 <ServiceIcon name={icon} class="w-6 h-6 md:w-7 md:h-7" />
             </div>
-            <h3 class="text-xl md:text-2xl font-bold text-primary-dark m-0 tracking-wide">{title}</h3>
+
+            <h3
+                class="text-xl md:text-2xl font-bold text-gray-800 group-hover:text-primary transition-colors duration-200"
+            >
+                {title}
+            </h3>
         </div>
-        <svg class="accordion-icon w-6 h-6 text-primary transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+
+        <!-- Chevron Icon -->
+        <div
+            class="w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 group-open:bg-primary/10 group-open:text-primary transition-all duration-300 transform group-open:rotate-180"
+        >
+            <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M19 9l-7 7-7-7"></path>
+            </svg>
+        </div>
     </summary>
-    
-    <div class="accordion-content p-6 bg-white border-t border-gray-100">
-        
-        <div class="content-section mb-6">
-            <div class="flex flex-wrap gap-2">
-                {tags.map(tag => (
-                    <span class="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full hover:bg-primary-light hover:text-primary transition-colors duration-200">{tag}</span>
-                ))}
-            </div>
+
+    <div
+        class="accordion-content bg-white border-t border-gray-100 px-6 py-8 md:pl-24 md:pr-10"
+    >
+        <!-- 1. Tags (Pills) -->
+        <div class="flex flex-wrap gap-2 mb-8">
+            {
+                tags.map((tag) => (
+                    <span class="inline-flex items-center px-3 py-1 bg-blue-50 text-primary-dark text-sm font-medium rounded-full border border-blue-100">
+                        #{tag}
+                    </span>
+                ))
+            }
         </div>
 
-        <div class="content-section mb-6">
-            <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-                <span class="text-primary"></span> 您是否有這些困擾？
-            </h4>
-            <ul class="symptom-list space-y-2 pl-2">
-                {symptoms.map(symptom => (
-                    <li class="text-gray-600 flex items-start gap-2">
-                        <span>{symptom}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
-
-        {relatedPosts && relatedPosts.length > 0 && (
-            <div class="content-section mt-6 pt-6 border-t border-gray-100">
-                <h4 class="text-base font-bold text-gray-500 mb-3 uppercase tracking-wider">延伸閱讀</h4>
-                <div class="grid gap-3 sm:grid-cols-2">
-                    {relatedPosts.map(post => (
-                        <a href={post.slug} class="group flex items-center gap-2 text-primary hover:text-primary-dark transition-colors duration-200">
-                            <span class="opacity-50 group-hover:opacity-100 transition-opacity">→</span>
-                            <span class="underline decoration-transparent group-hover:decoration-primary-dark underline-offset-4 transition-all">{post.title}</span>
-                        </a>
-                    ))}
-                </div>
+        <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+            <!-- 2. Symptoms List -->
+            <div>
+                <h4
+                    class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                    <span class="w-1 h-5 bg-primary rounded-full"></span>
+                    常見困擾
+                </h4>
+                <ul class="space-y-3">
+                    {
+                        symptoms.map((symptom) => (
+                            <li class="flex items-start gap-3 text-gray-600">
+                                <span class="mt-1 w-5 h-5 flex items-center justify-center bg-green-100 text-green-600 rounded-full flex-shrink-0 text-xs font-bold">
+                                    ✓
+                                </span>
+                                <span class="leading-relaxed">{symptom}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
             </div>
-        )}
+
+            <!-- 3. Related Posts -->
+            {
+                relatedPosts && relatedPosts.length > 0 && (
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+                            <span class="w-1 h-5 bg-primary rounded-full" />
+                            延伸閱讀
+                        </h4>
+                        <div class="space-y-3">
+                            {relatedPosts.map((post) => (
+                                <a
+                                    href={post.slug}
+                                    class="group block p-3 rounded-lg hover:bg-gray-50 border border-transparent hover:border-gray-100 transition-all duration-200"
+                                >
+                                    <h5 class="text-base font-bold text-primary group-hover:text-primary-dark mb-1 flex items-center justify-between">
+                                        {post.title}
+                                        <span class="opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300">
+                                            →
+                                        </span>
+                                    </h5>
+                                    <p class="text-sm text-gray-400">
+                                        閱讀文章
+                                    </p>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                )
+            }
+        </div>
     </div>
 </details>
 
 <style>
+    /* 隱藏原生 details 標記 */
     .accordion-summary {
         list-style: none;
     }
     .accordion-summary::-webkit-details-marker {
         display: none;
     }
-    .accordion-icon {
-        width: 1.5rem;
-        height: 1.5rem;
-        flex-shrink: 0;  
-        transform: rotate(0deg);
-        transition: transform 0.3s ease-in-out;
-    }
-    details[open] > .accordion-summary .accordion-icon {
-        transform: rotate(180deg);
-    }
+
+    /* 簡易滑動動畫 (利用 grid-template-rows) - Optional, need JS usually, but simple styling here is safer */
+    /* Keeping it simple without JS animations for now to avoid complexity */
 </style>

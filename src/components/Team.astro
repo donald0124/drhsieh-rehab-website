@@ -1,184 +1,221 @@
-<section id="team">
-    <h2 class="text-4xl font-bold text-center mb-10 text-heading">醫師介紹</h2>
+<section id="team" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-16 text-heading">
+            醫師介紹
+        </h2>
 
-    <div class="doctor-profile">
-        <img src="/images/dr-hsiehmf.jpg" alt="謝明福 院長 醫師照片" />
-
-        <div class="doctor-bio-text">
-            <h3
-                class="text-[1.8rem] text-heading font-bold mb-1 mt-0 text-center"
+        <!-- 1. 醫師名片卡 (Profile Card) -->
+        <article
+            class="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 flex flex-col md:flex-row max-w-5xl mx-auto mb-20 relative"
+        >
+            <!-- 背景裝飾 -->
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
             >
-                謝明福 院長
+            </div>
+
+            <!-- 左側：照片區 -->
+            <div class="md:w-2/5 relative min-h-[400px] md:min-h-full">
+                <img
+                    src="/images/dr-hsiehmf.jpg"
+                    alt="謝明福復健科診所院長 - 謝明福醫師"
+                    class="absolute inset-0 w-full h-full object-cover object-top"
+                />
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden"
+                >
+                </div>
+                <div class="absolute bottom-6 left-6 text-white md:hidden">
+                    <h3 class="text-3xl font-bold">謝明福 院長</h3>
+                    <p class="text-lg opacity-90 mt-1">30年臨床治療經驗</p>
+                </div>
+            </div>
+
+            <!-- 右側：資訊區 -->
+            <div class="md:w-3/5 p-8 md:p-12 flex flex-col justify-center">
+                <div class="hidden md:block mb-6">
+                    <h3 class="text-3xl font-bold text-heading">謝明福 院長</h3>
+                    <p class="text-lg text-gray-500 mt-2 font-medium">
+                        30年豐富臨床經驗
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- 學歷 -->
+                    <div>
+                        <h4
+                            class="text-lg font-bold text-primary mb-4 flex items-center gap-2"
+                        >
+                            <span class="w-1 h-6 bg-primary rounded-full"
+                            ></span>
+                            學歷
+                        </h4>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>國防醫學院醫學士</li>
+                            <li>中國醫藥大學針灸學分班</li>
+                        </ul>
+                    </div>
+
+                    <!-- 核心經歷 -->
+                    <div>
+                        <h4
+                            class="text-lg font-bold text-primary mb-4 flex items-center gap-2"
+                        >
+                            <span class="w-1 h-6 bg-primary rounded-full"
+                            ></span>
+                            核心經歷
+                        </h4>
+                        <ul class="space-y-2 text-gray-600">
+                            <li>台灣復健醫學會 專科醫師</li>
+                            <li>三軍總醫院復健部 住院/總/主治醫師</li>
+                            <li>台大、台北榮總復健醫學部 進修醫師</li>
+                            <li>國防醫學院復健醫學系 臨床助理教授</li>
+                            <li>
+                                美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-100">
+                    <p class="text-gray-600 leading-relaxed text-justify">
+                        專精於<strong class="text-primary-dark"
+                            >「<a
+                                href="/blog/neims/"
+                                class="underline decoration-2 underline-offset-2 hover:text-primary"
+                                >針極肌肉內電刺激治療 (NEIMS)</a
+                            >」</strong
+                        >。擅長處理肌肉筋膜、軟組織疼痛，為患者提供精準且溫和的治療選擇。
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <!-- 2. 詳細資歷 (Timeline Style) -->
+        <div class="max-w-4xl mx-auto mb-20 px-4">
+            <h3 class="text-2xl font-bold text-center text-heading mb-10">
+                完整資歷程
+            </h3>
+            <div
+                class="relative border-l-2 border-primary/20 space-y-10 pl-8 ml-4 md:ml-0"
+            >
+                <!-- Item 1 -->
+                <div class="relative">
+                    <span
+                        class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-primary border-4 border-white shadow-sm"
+                    ></span>
+                    <h4 class="text-lg font-bold text-gray-900">現任</h4>
+                    <ul class="mt-2 text-gray-600 space-y-1">
+                        <li>謝明福復健科診所 院長</li>
+                        <li>三軍總醫院復健部 兼任主治醫師</li>
+                    </ul>
+                </div>
+                <!-- Item 2 -->
+                <div class="relative">
+                    <span
+                        class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-gray-300 border-4 border-white"
+                    ></span>
+                    <h4 class="text-lg font-bold text-gray-900">曾任</h4>
+                    <ul class="mt-2 text-gray-600 space-y-1 checkbox-list">
+                        <li>
+                            大台北地區各公家機關特約主治醫師 (國防部、國安局等)
+                        </li>
+                        <li>國軍桃園總醫院 兼任復健科主治醫師</li>
+                        <li>國軍斗六(819)醫院 復健科主治醫師</li>
+                        <li>國軍金門花崗石醫院 外科住院醫師</li>
+                    </ul>
+                </div>
+                <!-- Item 3 -->
+                <div class="relative">
+                    <span
+                        class="absolute -left-[41px] top-1 w-5 h-5 rounded-full bg-gray-300 border-4 border-white"
+                    ></span>
+                    <h4 class="text-lg font-bold text-gray-900">
+                        專業成就與媒體報導
+                    </h4>
+                    <ul class="mt-2 text-gray-600 space-y-1 checkbox-list">
+                        <li>2014 商業週刊網路票選百大良醫前五十名</li>
+                        <li>《動動腳趾活更久》一書專業審定醫師</li>
+                        <li>多次受邀至 警廣、漢聲電台、康健雜誌 專訪</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 媒體專訪 (Featured Media) -->
+        <div class="max-w-5xl mx-auto">
+            <h3 class="text-2xl font-bold text-center text-heading mb-10">
+                媒體專訪
             </h3>
 
-            <h4 class="text-xl font-bold text-primary mt-4 mb-2">學歷</h4>
-            <ul>
-                <li>國防醫學院醫學士</li>
-                <li>中國醫藥大學針灸學分班</li>
-            </ul>
-
-            <h4 class="text-xl font-bold text-primary mt-4 mb-2">核心經歷</h4>
-            <ul>
-                <li>台灣復健醫學會 專科醫師</li>
-                <li>三軍總醫院復健部 住院/總/主治醫師</li>
-                <li>台大、台北榮總復健醫學部 進修醫師</li>
-                <li>國防醫學院復健醫學系 臨床助理教授</li>
-                <li>美國賓州大學(UPENN) 軟組織疼痛中心 臨床研究員</li>
-            </ul>
-        </div>
-    </div>
-    <div
-        class="doctor-profile-detail"
-        style="max-width: 92%; margin: 2.5rem auto 0;"
-    >
-        <h3 class="text-center font-bold mb-8 text-xl text-primary-dark">
-            院長詳細資歷
-        </h3>
-
-        <div class="doctor-experience-list">
-            <h4 class="text-xl font-bold text-primary mt-4 mb-2">曾任</h4>
-            <ul>
-                <li>國軍金門基層醫療醫官</li>
-                <li>國軍金門花崗石(820)醫院外科住院醫師</li>
-                <li>國軍斗六(819)醫院復健科主治醫師(三總外派支援)</li>
-                <li>九二一大地震災區巡回醫療 - 古坑地區</li>
-                <li>
-                    大台北地區各公家機關特約主治醫師
-                    (國防部、健保聯合門診、雨聲、國安局、三總北門)
-                </li>
-                <li>國軍桃園總醫院兼任復健科主治醫師</li>
-            </ul>
-
-            <h4 style="margin-top: 3.5rem;">現任 & 專業成就</h4>
-            <p>
-                <strong
-                    >謝明福復健科診所院長<br
-                    />三軍總醫院復健部兼任主治醫師</strong
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <!-- Video Card -->
+                <div
+                    class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100"
                 >
-            </p>
-            <p>
-                擁有30年豐富臨床經驗，專精於<strong
-                    >「<a href="/blog/neims/">針極肌肉內電刺激治療</a>」</strong
-                >，擅長處理肌肉筋膜、軟組織疼痛。2008年曾發表治療肌筋膜炎經驗記者會，刊登於國內各大媒體，後續曾接受警廣、台北之音、漢聲等電台、康健雜誌等專訪，並受邀至華梵大學、台北榮總、台北中山醫院、台電、威盛電子公司專題演講等。
-            </p>
-            <ul>
-                <li>2014 商業週刊網路票選百大良醫前五十名</li>
-                <li>2014 "動動腳趾活更久" 一書專業審定醫師</li>
-            </ul>
-        </div>
-    </div>
+                    <div class="aspect-video rounded-xl overflow-hidden mb-4">
+                        <iframe
+                            class="w-full h-full"
+                            src="https://www.youtube.com/embed/RSbH0PnGA6o?si=tF2Odabosqhno1rv"
+                            title="謝明福院長年代新聞專訪"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                    <h4 class="font-bold text-lg text-gray-800 text-center">
+                        年代新聞台《聚焦2.0》專訪
+                    </h4>
+                </div>
 
-    <div class="specialty-section">
-        <h3 style="text-align: center; font-size: 1.8rem;">媒體專訪</h3>
-        <h4 style="text-align: center; font-size: 1.4rem;">
-            年代新聞台《聚焦2.0》專訪
-        </h4>
-        <div
-            class="video-responsive-wrapper"
-            style="max-width: 800px; margin: 2rem auto;"
-        >
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/RSbH0PnGA6o?si=tF2Odabosqhno1rv"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-            >
-            </iframe>
-        </div>
-
-        <div style="max-width: 500px; margin: 0 auto;">
-            <div class="card">
-                <img
-                    src="images/blog/interview-hero.jpg"
-                    alt="良醫健康網專訪封面圖：止痛藥自己不吃，怎麼開給病人吃？"
-                    style="width: 100%; height: auto; display: block; margin-bottom: 8px; border-radius: 2px;"
-                />
-
-                <h3>《良醫健康網》專訪</h3>
-                <p>
-                    「止痛藥自己不吃，怎麼開給病人吃？」<br />
-                    <a
-                        href="blog/top-rehab-doctor-interview-sanxia-clinic"
-                        target="_blank">閱讀文章</a
-                    >
-                </p>
+                <!-- Article Card -->
+                <a
+                    href="/blog/top-rehab-doctor-interview-sanxia-clinic/"
+                    class="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
+                >
+                    <div class="h-48 overflow-hidden relative">
+                        <img
+                            src="/images/blog/interview-hero.jpg"
+                            alt="良醫健康網專訪"
+                            class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div
+                            class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm"
+                        >
+                            專訪報導
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h4
+                            class="font-bold text-xl text-gray-800 mb-3 group-hover:text-primary transition-colors"
+                        >
+                            《良醫健康網》專訪：第一名復健科醫師的堅持
+                        </h4>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            「止痛藥自己不吃，怎麼開給病人吃？」謝明福院長分享堅持非藥物治療的初衷，以及藏在小診所裡的專業堅持。
+                        </p>
+                        <span
+                            class="text-primary font-medium text-sm mt-auto flex items-center gap-1 group-hover:gap-2 transition-all"
+                        >
+                            閱讀完整文章 →
+                        </span>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
 <style>
-    /* (3) 醫師團隊 (Team) */
-    .doctor-profile {
-        display: flex;
-        flex-direction: column;
-        /* (手機) 垂直排列 */
-        align-items: center;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-
-    .doctor-profile img {
-        /* 建議放一張 200x200 的照片 */
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        /* 圓形頭像 */
-        object-fit: cover;
-        /* 確保照片比例正確 */
-        margin-bottom: 1.5rem;
-        border: 5px solid var(--color-white);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    .doctor-profile h3 {
-        font-size: 1.8rem;
-        margin-bottom: 0.25rem;
-        margin-top: 0;
-        /* --- UPDATED --- */
-        text-align: center;
-        /* --- UPDATED --- */
-    }
-
-    .doctor-profile h4 {
+    /* Timeline List Bullets */
+    .checkbox-list li::before {
+        content: "•";
         color: var(--color-primary);
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
     }
-
-    .doctor-profile ul {
-        list-style: none;
-        /* 移除項目符號 */
-        padding: 0;
-    }
-
-    .doctor-profile-detail h4 {
-        color: var(--color-primary);
-        font-size: 1.2rem;
-        font-weight: 700;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .doctor-profile-detail ul {
-        /* 這是關鍵：強制列表項目使用點點 */
-        list-style-type: disc;
-
-        /* 由於您可能在 .doctor-profile ul 設了 padding: 0;
-       這裡需要重新給一個 padding 才能讓點點顯示出來 */
-        padding-left: 20px;
-
-        /* 讓項目符號顯示在列表項目的外面 */
-        list-style-position: outside;
-
-        /* 確保 li 之間有間距 */
-        margin-bottom: 0.5rem;
+    .checkbox-list li {
+        padding-left: 1em;
     }
 </style>
