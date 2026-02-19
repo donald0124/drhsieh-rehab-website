@@ -1,7 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-// import CallToAction from "../../components/CallToAction.astro";
+import CallToAction from "../../components/CallToAction.astro";
 // 1. 產生所有文章的靜態路徑
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog");
@@ -136,7 +136,7 @@ import TableOfContents from "../../components/TableOfContents.astro";
         </div>
     </section>
 
-    <!-- <CallToAction /> -->
+    <CallToAction />
 
     <!-- 推薦文章區塊 -->
     <section

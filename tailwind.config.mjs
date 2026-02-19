@@ -1,4 +1,4 @@
-import { Bold } from 'lucide-astro';
+
 
 /** @type {import('tailwindcss').Config} */
 export default {

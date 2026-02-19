@@ -6,7 +6,6 @@ dist/
 # dependencies
 node_modules/
 GSCreport/
-blog_copy/
 
 # logs
 npm-debug.log*
