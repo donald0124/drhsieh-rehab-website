@@ -2,7 +2,7 @@
 title: '為什麼坐骨神經痛腰椎牽引沒效? 六大常見「偽裝」成因與鑑別診斷｜謝明福復健科'
 description: '許多患者長期受臀部疼痛或腿麻困擾，常被誤認為單純的坐骨神經痛或腰椎退化。本文解析六大常見但容易被忽略的疼痛成因，包括薦腸關節問題、梨狀肌症候群及肌筋膜炎，並介紹精準治療策略。'
 pubDate: 2016-08-20
-lastMod: 2025-11-28
+updatedDate: 2025-11-28
 heroImage: '/images/blog/sciatica-piriformis-myofascial-pain-hero.jpg'
 author: '謝明福 院長'
 featured: false

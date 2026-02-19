@@ -2,7 +2,7 @@
 title: '抱小孩、滑手機手腕疼痛？認識「媽媽手」的診斷與專業治療｜謝明福復健科'
 description: '手腕大拇指側疼痛、無力？復健科醫師帶您解析狹窄性橈骨莖突腱鞘炎（俗稱媽媽手）的成因，並提供居家照護與整合性專業治療方案。'
 pubDate: 2014-01-03
-lastMod: 2025-11-10
+updatedDate: 2025-11-10
 heroImage: '/images/blog/mommy-thumb-hero.jpg'
 author: '謝明福 院長'
 featured: false

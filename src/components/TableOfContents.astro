@@ -1,28 +1,47 @@
 ---
-import type { MarkdownHeading } from 'astro';
+import type { MarkdownHeading } from "astro";
 
 interface Props {
-  headings: MarkdownHeading[];
+    headings: MarkdownHeading[];
+    accordion?: boolean;
 }
 
-const { headings } = Astro.props;
+const { headings, accordion = false } = Astro.props;
 
 // Filter only h2 and h3
-const toc = headings.filter((heading) => heading.depth === 2 || heading.depth === 3);
+const toc = headings.filter(
+    (heading) => heading.depth === 2 || heading.depth === 3,
+);
 ---
 
-{toc.length > 0 && (
-    <nav class="toc-container">
-        <h2 class="toc-title">本文目錄</h2>
-        <ul class="toc-list">
-            {toc.map((heading) => (
-                <li class={`toc-item depth-${heading.depth}`}>
-                    <a href={`#${heading.slug}`}>{heading.text}</a>
-                </li>
-            ))}
-        </ul>
-    </nav>
-)}
+{
+    toc.length > 0 &&
+        (accordion ? (
+            <details class="toc-accordion">
+                <summary class="toc-summary">本文目錄</summary>
+                <nav class="toc-container">
+                    <ul class="toc-list">
+                        {toc.map((heading) => (
+                            <li class={`toc-item depth-${heading.depth}`}>
+                                <a href={`#${heading.slug}`}>{heading.text}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </nav>
+            </details>
+        ) : (
+            <nav class="toc-container">
+                <h2 class="toc-title">本文目錄</h2>
+                <ul class="toc-list">
+                    {toc.map((heading) => (
+                        <li class={`toc-item depth-${heading.depth}`}>
+                            <a href={`#${heading.slug}`}>{heading.text}</a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        ))
+}
 
 <style>
     .toc-container {
@@ -78,5 +97,51 @@ const toc = headings.filter((heading) => heading.depth === 2 || heading.depth ==
         padding-left: 1.5rem;
         font-size: 0.95rem;
         color: #666;
+    }
+
+    /* Accordion Styles */
+    .toc-accordion {
+        background-color: #f9fafb;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        margin-bottom: 2rem;
+        overflow: hidden;
+    }
+
+    .toc-summary {
+        background-color: #f0f6fa;
+        padding: 1rem 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        color: var(--color-primary-dark);
+        list-style: none; /* Hide default triangle in some browsers */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    /* Custom Arrow for Summary */
+    .toc-summary::after {
+        content: "▼";
+        font-size: 0.8rem;
+        transition: transform 0.3s;
+    }
+
+    details[open] .toc-summary::after {
+        transform: rotate(180deg);
+    }
+
+    /* Remove default arrow in Chrome/Safari */
+    .toc-summary::-webkit-details-marker {
+        display: none;
+    }
+
+    /* Adjust container style when inside accordion */
+    details .toc-container {
+        border: none;
+        margin: 0;
+        border-radius: 0;
+        background-color: transparent;
+        padding-top: 0;
     }
 </style>

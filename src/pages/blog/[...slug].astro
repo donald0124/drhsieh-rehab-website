@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+// import CallToAction from "../../components/CallToAction.astro";
 // 1. 產生所有文章的靜態路徑
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog");
@@ -51,12 +52,14 @@ import TableOfContents from "../../components/TableOfContents.astro";
         id="article-header"
         style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);"
     >
-        <h1 style="font-size: 2.8rem; margin-bottom: 1.5rem;">
+        <h1
+            style="font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--color-heading);"
+        >
             {post.data.title}
         </h1>
 
         <p
-            style="font-size: 1.25rem; color: #444; max-width: 700px; margin: 0 auto 1.5rem;"
+            style="font-size: 1.25rem; color: var(--color-text); max-width: 700px; margin: 0 auto 1.5rem;"
         >
             {post.data.description}
         </p>
@@ -67,7 +70,7 @@ import TableOfContents from "../../components/TableOfContents.astro";
             {post.data.author || "謝明福 院長"}
         </p>
 
-        <p style="font-size: 1rem; color: #555;">
+        <p style="font-size: 1rem; color: var(--color-text);">
             發布日期: {
                 post.data.pubDate.toLocaleDateString("zh-TW", {
                     year: "numeric",
@@ -90,7 +93,7 @@ import TableOfContents from "../../components/TableOfContents.astro";
                 )
             }
 
-            <span style="margin-left: 1rem; color: #666;">
+            <span style="margin-left: 1rem; color: var(--color-text);">
                 閱讀時間約 {readingTime} 分鐘
             </span>
         </p>
@@ -111,16 +114,29 @@ import TableOfContents from "../../components/TableOfContents.astro";
         }
     </section>
 
-    <section id="article-content" style="padding: 3rem 1rem;">
-        <article
-            class="prose prose-lg max-w-none"
-            style="max-width: 800px; margin: 0 auto; line-height: 1.8;"
-        >
-            <TableOfContents headings={headings} />
+    <section id="article-content" style="padding: 3rem 2rem;">
+        <div class="blog-grid-container">
+            <!-- Mobile TOC (Hidden on desktop via CSS) -->
+            <div class="mobile-only-toc">
+                <TableOfContents headings={headings} accordion={true} />
+            </div>
+            <article
+                class="prose prose-lg max-w-none blog-main"
+                style="line-height: 1.8;"
+            >
+                <Content />
+            </article>
 
-            <Content />
-        </article>
+            <!-- Sidebar TOC (Visible on desktop via CSS) -->
+            <aside class="blog-sidebar">
+                <div class="sticky-toc">
+                    <TableOfContents headings={headings} />
+                </div>
+            </aside>
+        </div>
     </section>
+
+    <!-- <CallToAction /> -->
 
     <!-- 推薦文章區塊 -->
     <section
@@ -192,58 +208,62 @@ import TableOfContents from "../../components/TableOfContents.astro";
         <a href="/blog/" class="cta-button">返回文章列表</a>
     </div>
 
-    <style is:global>
-        /* is:global 讓這些樣式能套用到 .md 產生的 HTML */
-        .prose h2 {
-            font-size: 2rem;
-            margin-top: 3rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--color-border);
-            text-align: left;
-        }
-        .prose h3 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            text-align: left;
-        }
-        .prose h4 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            text-align: left;
+    <!-- Scoped Styles for Grid Layout -->
+    <style>
+        /* Mobile First: Default Layout */
+        .blog-grid-container {
+            width: 100%;
+            max-width: 800px; /* Limit width on mobile/single column */
+            margin: 0 auto;
+            position: relative;
         }
 
-        .prose p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-        }
-        .prose ul {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-            /* 🚨 關鍵修正：強制設定列表類型和位置 */
-            list-style-type: disc;
+        .blog-main {
+            width: 100%;
         }
 
-        .prose ol {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            padding-left: 2rem;
-            /* 🚨 關鍵修正：強制設定列表類型和位置 */
-            list-style-type: decimal; /* 確保有序列表顯示數字 */
+        /* Hide Sidebar by default on Mobile */
+        .blog-sidebar {
+            display: none;
         }
 
-        .prose li {
-            margin-bottom: 0.5rem;
+        .mobile-only-toc {
+            display: block;
+            margin-bottom: 2rem;
         }
-        .prose img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 2rem 0;
-        }
-        .prose a {
-            text-decoration: underline;
+
+        /* Desktop Layout (Large Screens) */
+        @media (min-width: 1024px) {
+            .blog-grid-container {
+                display: grid;
+                /* Main Content (70-75%) | Sidebar (Remaining) */
+                grid-template-columns: 3fr 1fr;
+                gap: 3rem;
+                max-width: 1200px; /* Increase container width for side-by-side */
+            }
+
+            .blog-main {
+                /* Remove max-width restriction inside grid */
+                max-width: 100%;
+                /* Ensure it takes full width of grid cell */
+                width: 100%;
+            }
+
+            .mobile-only-toc {
+                display: none; /* Hide top TOC on desktop */
+            }
+
+            .blog-sidebar {
+                display: block; /* Show sidebar */
+                height: 100%; /* Full height container */
+            }
+
+            .sticky-toc {
+                position: sticky;
+                top: 100px; /* Sticky positioning as requested */
+                max-height: calc(100vh - 120px); /* Prevent overflow */
+                overflow-y: auto; /* Scrollable if TOC is too long */
+            }
         }
     </style>
 </BaseLayout>

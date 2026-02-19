@@ -2,7 +2,7 @@
 title: '膝蓋內側痛就是退化？小心是「縫匠肌」在抗議：長者與跑者的隱形殺手｜謝明福復健科'
 description: '膝蓋痛不一定都是關節退化。復健科醫師解析人體最長的肌肉—縫匠肌（Sartorius muscle）如何造成膝內側疼痛，特別是在術後長者與馬拉松跑者身上常見的肌筋膜炎問題。'
 pubDate: 2016-08-03
-lastMod: 2025-11-23
+updatedDate: 2025-11-23
 heroImage: '/images/blog/elderly-knee-pain-sartorius-myofascial-hero.jpg' 
 author: '謝明福 院長'
 featured: false

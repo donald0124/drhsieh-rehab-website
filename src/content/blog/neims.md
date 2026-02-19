@@ -77,7 +77,7 @@ tags: ['NEIMS', '肌筋膜疼痛症候群', '慢性疼痛', '激痛點', '電針
 
 ## 什麼是針極肌肉內電刺激 (NEIMS)？
 
-針極肌肉內電刺激 (Needle Electrical Intra-Muscular Stimulation, NEIMS)，又常稱為 NEIMS (Intramuscular Stimulation)，是一種結合中西醫學精髓，專門處理深層肌筋膜疼痛與神經肌肉病變的先進療法。
+針極肌肉內電刺激 (Needle Electrical Intra-Muscular Stimulation, NEIMS)，是一種結合中西醫學精髓，專門處理深層肌筋膜疼痛與神經肌肉病變的先進療法。
 
 ### 治療原理：直達病灶的「美式電針治療」
 

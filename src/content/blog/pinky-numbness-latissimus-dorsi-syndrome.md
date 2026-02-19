@@ -2,7 +2,7 @@
 title: '肩膀手臂痠痛伴隨手指麻木？復健科醫師解析，這不一定是頸椎問題，可能是深層的「闊背肌筋膜炎」在作祟｜謝明福復健科'
 description: '肩膀腋下痠痛延伸至小指，常被誤認為頸椎骨刺？復健科醫師指出，若檢查無神經壓迫，有可能是深層「闊背肌筋膜炎」。本文解析症狀差異、高風險族群，並介紹針極肌肉內電刺激與直線偏光治療等精準治療策略。'
 pubDate: 2015-03-21
-lastMod: 2025-11-28
+updatedDate: 2025-11-28
 heroImage: '/images/blog/pinky-numbness-latissimus-dorsi-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false

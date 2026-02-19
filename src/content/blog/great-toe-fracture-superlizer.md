@@ -2,7 +2,7 @@
 title: '大腳趾骨折腫痛難行？閉鎖性非移位性趾骨骨折的整合物理治療策略'
 description: '大腳趾閉鎖性非移位性骨折常見於車禍或重物砸傷，雖無需手術，但急性期的腫脹與疼痛常讓人寸步難行。本文解析如何透過熱塑型護木固定，搭配直線偏光治療儀(SuperLizer)等物理治療，加速復原並緩解疼痛。'
 pubDate: 2016-04-13
-lastMod: 2025-11-29
+updatedDate: 2025-11-29
 heroImage: '/images/blog/great-toe-fracture-superlizer-hero.jpg' 
 author: '謝明福 院長'
 featured: false

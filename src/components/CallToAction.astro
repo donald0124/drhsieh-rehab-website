@@ -1,0 +1,87 @@
+---
+import { CalendarCheck, Zap, Activity, ArrowRight } from "lucide-astro";
+
+// 您可以透過 Props 讓標題在不同文章可以微調，這裡設定預設值
+interface Props {
+    title?: string;
+    subtitle?: string;
+}
+
+const {
+    title = "疼痛困擾許久，卻找不到原因？",
+    subtitle = "每個人的疼痛成因都不同。謝明福院長堅持親自評估，為您找出疼痛根源，量身打造整合性治療方案。",
+} = Astro.props;
+---
+
+<section
+    class="my-12 bg-primary-light/50 rounded-2xl border border-blue-100 overflow-hidden shadow-sm"
+>
+    <div class="p-8 md:p-10">
+        <div class="text-center mb-8">
+            <h3 class="text-2xl md:text-3xl font-bold text-heading mb-3">
+                {title}
+            </h3>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">
+                {subtitle}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div
+                class="bg-white p-6 rounded-xl border border-blue-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div
+                    class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-primary mb-4"
+                >
+                    <CalendarCheck size={28} />
+                </div>
+                <h4 class="text-xl font-bold text-heading mb-2">
+                    我想預約評估
+                </h4>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">
+                    了解門診時間、掛號方式以及初診需要攜帶的證件。
+                </p>
+                <a
+                    href="/#patient-info"
+                    class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-primary-dark hover:text-white transition-colors w-full justify-center md:w-auto"
+                >
+                    查看初診須知 <ArrowRight size={18} />
+                </a>
+            </div>
+
+            <div
+                class="bg-white p-6 rounded-xl border border-blue-100 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow"
+            >
+                <div
+                    class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center text-orange-600 mb-4"
+                >
+                    <Zap size={28} />
+                </div>
+                <h4 class="text-xl font-bold text-heading mb-2">
+                    了解特色治療
+                </h4>
+                <p class="text-gray-500 text-sm mb-6 flex-grow">
+                    針對頑固型疼痛、神經壓迫，我們提供進階的治療選項。
+                </p>
+                <div
+                    class="flex flex-col sm:flex-row gap-3 w-full justify-center"
+                >
+                    <a
+                        href="/blog/superlizer/"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-primary border border-primary hover:bg-blue-50 transition-colors text-sm font-semibold"
+                    >
+                        <Activity size={16} /> 直線偏光治療
+                    </a>
+                    <a
+                        href="/blog/neims/"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-primary border border-primary hover:bg-blue-50 transition-colors text-sm font-semibold"
+                    >
+                        <Zap size={16} /> 針極肌肉內電刺激
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-2 bg-gradient-to-r from-primary to-blue-400 w-full"></div>
+</section>
