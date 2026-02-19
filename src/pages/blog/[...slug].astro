@@ -2,6 +2,9 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import CallToAction from "../../components/CallToAction.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import BlogPreview from "../../components/BlogPreview.astro";
+
 // 1. 產生所有文章的靜態路徑
 export async function getStaticPaths() {
     const allPosts = await getCollection("blog");
@@ -26,21 +29,38 @@ const { Content, headings } = await post.render();
 const wordCount = post.body.length;
 const readingTime = Math.ceil(wordCount / 300);
 
-// 5. 取得所有文章，並隨機推薦 3-5 篇（排除當前文章）
+// 5. 相關文章推薦演算法 (基於 Tags 的加權計分)
 const allPosts = await getCollection("blog");
-const otherPosts = allPosts
+const currentTags = post.data.tags || []; // 取得當前文章的標籤，若無則設為空陣列
+
+// 5.1 計算每篇文章的關聯分數
+const scoredPosts = allPosts
     .filter((p: CollectionEntry<"blog">) => p.slug !== post.slug) // 排除當前文章
-    .sort(() => Math.random() - 0.5); // 隨機排序
+    .map((p: CollectionEntry<"blog">) => {
+        const postTags = p.data.tags || [];
+        // 計算這篇文章與當前文章有幾個相同的標籤 (+1 分)
+        const score = postTags.reduce((acc, tag) => {
+            return currentTags.includes(tag) ? acc + 1 : acc;
+        }, 0);
 
-// 隨機取 3-5 篇
-const randomCount = Math.min(
-    3 + Math.floor(Math.random() * 3),
-    otherPosts.length,
-);
-const recommendedPosts = otherPosts.slice(0, randomCount);
+        return { post: p, score };
+    });
+
+// 5.2 依照分數與日期進行排序
+scoredPosts.sort((a, b) => {
+    // 條件一：先比分數 (由高到低)
+    if (b.score !== a.score) {
+        return b.score - a.score;
+    }
+    // 條件二：若分數相同，加入隨機性 (讓同分群的文章輪流曝光)
+    return Math.random() - 0.5;
+});
+
+// 5.3 取得前 3 篇最高分的文章
+// (建議固定取 3 篇，因為 3 篇在電腦版剛好可以排成漂亮的一列 Grid)
+const recommendedPosts = scoredPosts.slice(0, 3).map((item) => item.post);
+
 const lastModified = post.data.updatedDate || post.data.lastMod;
-
-import TableOfContents from "../../components/TableOfContents.astro";
 ---
 
 <BaseLayout
@@ -48,71 +68,127 @@ import TableOfContents from "../../components/TableOfContents.astro";
     description={post.data.description}
     ogImage={post.data.heroImage}
 >
-    <section
-        id="article-header"
-        style="text-align: center; padding: 4rem 1rem; background-color: var(--color-primary-light);"
-    >
-        <h1
-            style="font-size: 2.8rem; margin-bottom: 1.5rem; font-weight: 800; color: var(--color-heading);"
-        >
-            {post.data.title}
-        </h1>
-
-        <p
-            style="font-size: 1.25rem; color: var(--color-text); max-width: 700px; margin: 0 auto 1.5rem;"
-        >
-            {post.data.description}
-        </p>
-
-        <p
-            style="font-size: 1.1rem; color: var(--color-primary); font-weight: bold; margin: 0 auto 0.5rem;"
-        >
-            {post.data.author || "謝明福 院長"}
-        </p>
-
-        <p style="font-size: 1rem; color: var(--color-text);">
-            發布日期: {
-                post.data.pubDate.toLocaleDateString("zh-TW", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                })
-            }
+    <header class="pt-12 pb-8 md:pt-20 md:pb-12 text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <h1
+                class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-6"
+            >
+                {post.data.title}
+            </h1>
 
             {
-                lastModified && (
-                    <span style="color: #007A00; margin-left: 1rem; font-weight: bold;">
-                        (更新於:{" "}
-                        {lastModified.toLocaleDateString("zh-TW", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                        })}
-                        )
-                    </span>
+                post.data.description && (
+                    <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+                        {post.data.description}
+                    </p>
                 )
             }
 
-            <span style="margin-left: 1rem; color: var(--color-text);">
-                閱讀時間約 {readingTime} 分鐘
-            </span>
-        </p>
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm md:text-base text-gray-500 mb-10"
+            >
+                <div class="flex items-center gap-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="text-primary"
+                        ><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"
+                        ></path><circle cx="12" cy="7" r="4"></circle></svg
+                    >
+                    <span class="font-bold text-primary"
+                        >{post.data.author || "謝明福 院長"}</span
+                    >
+                </div>
+
+                <span class="hidden md:inline text-gray-300">|</span>
+
+                <div class="flex items-center gap-2">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><rect width="18" height="18" x="3" y="4" rx="2" ry="2"
+                        ></rect><line x1="16" x2="16" y1="2" y2="6"></line><line
+                            x1="8"
+                            x2="8"
+                            y1="2"
+                            y2="6"></line><line x1="3" x2="21" y1="10" y2="10"
+                        ></line></svg
+                    >
+                    <span>
+                        {
+                            lastModified ? (
+                                <span class="font-medium">
+                                    更新於{" "}
+                                    {lastModified.toLocaleDateString("zh-TW", {
+                                        year: "numeric",
+                                        month: "long",
+                                        day: "numeric",
+                                    })}
+                                </span>
+                            ) : (
+                                <span>
+                                    發布於{" "}
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "zh-TW",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </span>
+                            )
+                        }
+                    </span>
+                </div>
+
+                <span class="hidden md:inline text-gray-300">|</span>
+
+                <div class="flex items-center gap-2 font-medium">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        ><circle cx="12" cy="12" r="10"></circle><polyline
+                            points="12 6 12 12 16 14"></polyline></svg
+                    >
+                    <span>閱讀時間 {readingTime} 分鐘</span>
+                </div>
+            </div>
+        </div>
 
         {
             post.data.heroImage && (
-                <img
-                    src={post.data.heroImage}
-                    alt={post.data.title}
-                    style="
-                width: 100%; 
-                max-width: 900px; 
-                margin: 2rem auto 0; /* <-- 修改點 */
-                border-radius: 8px;
-            "
-                />
+                <div class="max-w-4xl mx-auto mt-2 px-2 md:px-0">
+                    <img
+                        src={post.data.heroImage}
+                        alt={post.data.title}
+                        class="w-full h-auto aspect-video object-cover rounded-2xl shadow-lg border border-gray-100"
+                    />
+                </div>
             )
         }
-    </section>
+    </header>
 
     <section id="article-content" style="padding: 3rem 2rem;">
         <div class="blog-grid-container">
@@ -138,75 +214,68 @@ import TableOfContents from "../../components/TableOfContents.astro";
 
     <CallToAction />
 
-    <!-- 推薦文章區塊 -->
-    <section
-        id="recommended-posts"
-        style="padding: 4rem 1rem; background-color: #f9fafb; margin-top: 4rem;"
-    >
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2
-                style="text-align: center; font-size: 2rem; margin-bottom: 3rem; color: #1f2937;"
-            >
-                你可能也喜歡
-            </h2>
-
-            <div
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;"
-            >
-                {
-                    recommendedPosts.map((recommendedPost) => (
-                        <a
-                            href={`/blog/${recommendedPost.slug}/`}
-                            style="
-                            text-decoration: none;
-                            color: inherit;
-                            background: white;
-                            border-radius: 8px;
-                            overflow: hidden;
-                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                            transition: transform 0.3s ease, box-shadow 0.3s ease;
-                            display: flex;
-                            flex-direction: column;
-                            height: 100%;
-                        "
-                            onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 8px 16px rgba(0, 0, 0, 0.15)';"
-                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 8px rgba(0, 0, 0, 0.1)';"
-                        >
-                            {recommendedPost.data.heroImage && (
-                                <img
-                                    src={recommendedPost.data.heroImage}
-                                    alt={recommendedPost.data.title}
-                                    style="width: 100%; height: 180px; object-fit: cover;"
-                                />
-                            )}
-                            <div style="padding: 1.5rem; flex: 1; display: flex; flex-direction: column;">
-                                <h3 style="font-size: 1.2rem; margin: 0 0 0.75rem; color: #1f2937; line-height: 1.4;">
-                                    {recommendedPost.data.title}
-                                </h3>
-                                <p style="font-size: 0.95rem; color: #6b7280; margin: 0 0 1rem; flex: 1; line-height: 1.5;">
-                                    {recommendedPost.data.description}
-                                </p>
-                                <p style="font-size: 0.85rem; color: #9ca3af; margin: 0;">
-                                    {recommendedPost.data.pubDate.toLocaleDateString(
-                                        "zh-TW",
-                                        {
-                                            year: "numeric",
-                                            month: "long",
-                                            day: "numeric",
-                                        },
-                                    )}
-                                </p>
-                            </div>
-                        </a>
-                    ))
-                }
-            </div>
-        </div>
-    </section>
-
-    <div style="text-align: center; padding: 2rem 1rem 4rem;">
+    <!-- 返回文章列表 -->
+    <div style="text-align: center; padding: 2rem 1rem 2rem;">
         <a href="/blog/" class="cta-button">返回文章列表</a>
     </div>
+
+    {
+        recommendedPosts.length > 0 && (
+            <section class="mt-16 pt-10 border-t border-gray-100">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+                    <h3 class="text-2xl font-bold text-heading flex items-center gap-2">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="text-primary"
+                        >
+                            <>
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                            </>
+                        </svg>
+                        為您推薦的相關文章
+                    </h3>
+
+                    <a
+                        href="/blog/"
+                        class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark transition-colors bg-primary-light hover:bg-blue-100 px-4 py-2 rounded-full"
+                    >
+                        查看所有文章
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <>
+                                <path d="M5 12h14" />
+                                <path d="m12 5 7 7-7 7" />
+                            </>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {recommendedPosts.map((post) => (
+                        <BlogPreview post={post} />
+                    ))}
+                </div>
+            </section>
+        )
+    }
 
     <!-- Scoped Styles for Grid Layout -->
     <style>

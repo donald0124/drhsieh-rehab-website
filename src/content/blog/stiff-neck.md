@@ -6,7 +6,7 @@ author: "謝明福院長"
 # image:
 #   url: "/images/blog/stiff-neck-cover.jpg" 
 #   alt: "落枕治療與緩解"
-featured: true
+featured: false
 tags: ['落枕', '肩頸痠痛', '頭頸']
 ---
 

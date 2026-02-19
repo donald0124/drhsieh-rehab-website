@@ -129,7 +129,7 @@ export default {
             blockquote: {
               fontWeight: '500',
               fontStyle: 'italic',
-              color: theme('colors.heading'),
+              color: theme('colors.text'),
               borderLeftWidth: '4px',
               borderLeftColor: theme('colors.primary.DEFAULT'), // 左側粗藍線
               backgroundColor: theme('colors.gray-bg'), // 灰色背景
@@ -140,10 +140,10 @@ export default {
               quotes: '"\\201C""\\201D""\\2018""\\2019"', // 定義引號樣式
             },
             'blockquote p:first-of-type::before': {
-              content: 'open-quote',
+              content: 'none',
             },
             'blockquote p:last-of-type::after': {
-              content: 'close-quote',
+              content: 'none',
             },
 
             // 6. 圖片與媒體
@@ -160,7 +160,7 @@ export default {
               marginTop: '0.5em',
               opacity: '0.8',
             },
-            
+
             // 7. 表格 (如果有用到 Markdown 表格)
             table: {
               width: '100%',
@@ -189,105 +189,9 @@ export default {
         },
       }),
 
-      // 4. 文章樣式 (Typography) - 這裡不需要改，因為它會自動引用上面的 colors
-      // typography: (theme) => ({
-      //   DEFAULT: {
-      //     css: {
-      //       color: theme('colors.text'),
-      //       maxWidth: 'none',
-      //       lineHeight: '1.8',
-
-      //       h1: {
-      //         color: theme('colors.heading'),
-      //         fontWeight: '700',
-      //       },
-      //       h2: {
-      //         color: theme('colors.heading'),
-      //         fontWeight: '700',
-      //         marginTop: '2em',
-      //         marginBottom: '1em',
-      //         borderBottom: `1px solid ${theme('colors.border')}`, // 改用變數
-      //       },
-      //       h3: {
-      //         color: theme('colors.heading'),
-      //         fontWeight: '600',
-      //       },
-      //       a: {
-      //         color: theme('colors.primary.DEFAULT'),
-      //         textDecoration: 'underline',
-      //         '&:hover': {
-      //           color: theme('colors.primary.dark'),
-      //         },
-      //       },
-      //       strong: {
-      //         color: theme('colors.heading'),
-      //         fontWeight: '600',
-      //       },
-      //       'ul > li::marker': {
-      //         color: theme('colors.text'),
-      //       },
-      //     },
-      //   },
-      // }),
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
 }
-
-
-    // <style is:global>
-    //     /* is:global 讓這些樣式能套用到 .md 產生的 HTML */
-    //     .prose h2 {
-    //         font-size: 2rem;
-    //         margin-top: 3rem;
-    //         margin-bottom: 1.5rem;
-    //         padding-bottom: 0.5rem;
-    //         border-bottom: 2px solid var(--color-border);
-    //         text-align: left;
-    //     }
-    //     .prose h3 {
-    //         font-size: 1.5rem;
-    //         margin-top: 2rem;
-    //         text-align: left;
-    //     }
-    //     .prose h4 {
-    //         font-size: 1.3rem;
-    //         margin-top: 2rem;
-    //         text-align: left;
-    //     }
-
-    //     .prose p {
-    //         font-size: 1.1rem;
-    //         margin-bottom: 1.5rem;
-    //     }
-    //     .prose ul {
-    //         font-size: 1.1rem;
-    //         margin-bottom: 1.5rem;
-    //         padding-left: 2rem;
-    //         /* 🚨 關鍵修正：強制設定列表類型和位置 */
-    //         list-style-type: disc; 
-    //     }
-
-    //     .prose ol {
-    //         font-size: 1.1rem;
-    //         margin-bottom: 1.5rem;
-    //         padding-left: 2rem;
-    //         /* 🚨 關鍵修正：強制設定列表類型和位置 */
-    //         list-style-type: decimal; /* 確保有序列表顯示數字 */
-    //     }
-
-    //     .prose li {
-    //          margin-bottom: 0.5rem;
-    //     }
-    //     .prose img {
-    //         max-width: 100%;
-    //         height: auto;
-    //         border-radius: 8px;
-    //         margin: 2rem 0;
-    //     }
-    //     .prose a {
-    //         text-decoration: underline;
-    //     }
-    // </style>

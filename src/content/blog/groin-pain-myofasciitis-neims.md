@@ -5,7 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/groin-pain-myofasciitis-neims-hero.jpg'
 author: '謝明福 院長'
 featured: false
-tags: ['鼠蹊部疼痛', '大腿內收肌', '運動傷害', '肌筋膜炎', 'NEIMS', '直線偏極光', '院長經驗談']
+tags: ['鼠蹊部疼痛', '大腿內收肌', '運動傷害', '肌筋膜炎', '針極肌肉內電刺激', '直線偏極光', '院長經驗談']
 ---
 
 ## 為什麼走路會痛？大腿內側與鼠蹊部的疼痛警訊

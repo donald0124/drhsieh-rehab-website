@@ -6,7 +6,7 @@ updatedDate: 2025-11-23
 heroImage: '/images/blog/elderly-knee-pain-sartorius-myofascial-hero.jpg' 
 author: '謝明福 院長'
 featured: false
-tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '跑者膝', '針極肌肉內電刺激', 'NEIMS', '院長經驗談']
+tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '跑者膝', '針極肌肉內電刺激', '院長經驗談']
 ---
 
 ## 膝蓋痛，真的只是因為「老了」嗎？

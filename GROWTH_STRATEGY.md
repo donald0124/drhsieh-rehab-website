@@ -102,7 +102,7 @@
 ### Phase 3: 技術債與樣式重構 (Technical Debt & CSS Refactoring)
 
 * [x] **Plan**: 建立 CSS 重構計畫 (`CSS_REFACTORING_PLAN.md`)，解決全域樣式污染與維護問題。
-* [ ] **Refactor**: 導入 Tailwind Typography，將 `style.css` 模組化，確保長期維護性與視覺一致性。
+* [x] **Refactor**: 導入 Tailwind Typography，將 `style.css` 模組化，確保長期維護性與視覺一致性。
 
 ### Phase 4: 進階功能 (Advanced Features)
 

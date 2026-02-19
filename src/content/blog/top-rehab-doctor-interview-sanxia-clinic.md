@@ -4,7 +4,7 @@ description: '謝明福醫師，一位從三總走出來、堅持少開止痛藥
 pubDate: 2025-11-09
 heroImage: '/images/blog/interview-hero.jpg'
 author: '謝明福 院長'
-featured: false
+featured: true
 tags: ['復健科', '謝明福', '針極肌肉內電刺激治療', '肌筋膜疼痛', '三峽診所', '媒體報導']
 ---
 

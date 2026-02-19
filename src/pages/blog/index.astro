@@ -1,403 +1,333 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPreview from "../../components/BlogPreview.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 
-// 1. Get all posts and sort
-const allPosts = (await getCollection('blog')).sort(
-    (a, b) => {
-        // Sort by Featured first (true > false)
-        if (a.data.featured !== b.data.featured) {
-            return a.data.featured ? -1 : 1;
-        }
-        // Then by Date (Updated > Published)
-        const dateB = (b.data.updatedDate ?? b.data.lastMod ?? b.data.pubDate).valueOf();
-        const dateA = (a.data.updatedDate ?? a.data.lastMod ?? a.data.pubDate).valueOf();
-        return dateB - dateA;
+// 1. 取得所有文章並依照「置頂」與「日期」排序
+const allPosts = (await getCollection("blog")).sort((a, b) => {
+    // 條件一：先比對置頂狀態 (featured: true 的排在前面)
+    const isAFeatured = a.data.featured === true;
+    const isBFeatured = b.data.featured === true;
+
+    if (isAFeatured && !isBFeatured) return -1;
+    if (!isAFeatured && isBFeatured) return 1;
+
+    // 條件二：若置頂狀態相同（都是 true 或都是 false），則依照日期排序 (新 -> 舊)
+    const dateB = (
+        b.data.updatedDate ??
+        b.data.lastMod ??
+        b.data.pubDate
+    ).valueOf();
+    const dateA = (
+        a.data.updatedDate ??
+        a.data.lastMod ??
+        a.data.pubDate
+    ).valueOf();
+    return dateB - dateA;
+});
+
+// 2. 提取所有標籤並計算出現次數 (改用 Map)
+const tagCounts = new Map<string, number>();
+allPosts.forEach((post) => {
+    if (post.data.tags) {
+        post.data.tags.forEach((tag) => {
+            // 如果標籤已經存在就 +1，不存在就設為 1
+            tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+        });
     }
-);
+});
 
-// 2. Filter by Tags (Not Category)
-const healthPosts = allPosts.filter(post => post.data.tags?.includes('衛教文章'));
-const reportPosts = allPosts.filter(post => post.data.tags?.includes('媒體報導'));
-const directorPosts = allPosts.filter(post => post.data.tags?.includes('院長經驗談'));
+// 3. 標籤排序邏輯 (優先標籤 -> 出現次數高到低 -> 筆畫順序)
+const priorityTags = ["衛教文章", "院長經驗談", "媒體報導"];
+const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
+    // 條件一：判斷是否為「優先保留標籤」
+    const indexA = priorityTags.indexOf(a);
+    const indexB = priorityTags.indexOf(b);
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
 
-// 3. Other posts (none of the above tags)
-const otherPosts = allPosts.filter(post => 
-    !post.data.tags?.some(t => ['衛教文章', '媒體報導', '院長經驗談'].includes(t))
-);
+    // 條件二：依照「出現次數」由高到低排序
+    const countA = tagCounts.get(a) || 0;
+    const countB = tagCounts.get(b) || 0;
+    if (countA !== countB) {
+        return countB - countA; // 數字大的排前面
+    }
 
-// Helper function for categorization
-const getPostsBySection = (posts: CollectionEntry<'blog'>[]) => {
-    if (posts.length === 0) return { featured: null, list: [] };
-    // If there is a manually featured post in this group, pick it. 
-    // Since we sorted allPosts by featured first, posts[0] SHOULD be the featured one if it exists.
-    return {
-        featured: posts[0],
-        list: posts.slice(1, 5) // Show next 4
-    };
-};
-
-const healthSection = getPostsBySection(healthPosts);
-const reportSection = getPostsBySection(reportPosts);
-const directorSection = getPostsBySection(directorPosts);
-const otherSection = getPostsBySection(otherPosts);
-
-// Date helper
-const getDisplayDate = (post: CollectionEntry<'blog'>) => {
-    return post.data.updatedDate ?? post.data.lastMod ?? post.data.pubDate;
-};
-const hasBeenUpdated = (post: CollectionEntry<'blog'>) => {
-    return (post.data.updatedDate || post.data.lastMod) ? true : false;
-};
+    // 條件三：如果出現次數一樣，則依照字首筆畫/字母排序
+    return a.localeCompare(b);
+});
 ---
 
-<BaseLayout title="專欄文章｜謝明福復健科診所" description="謝明福復健科診所最新衛教資訊、文章與媒體報導。">
-
-    <section id="blog-hero">
-        <h1>復健新知．疼痛治療專欄</h1>
-        <p>最新的復健知識、疼痛治療新知與媒體專訪</p>
-    </section>
-
-    <section id="blog-list" style="padding: 4rem 1rem;">
-        <div class="container" style="max-width: 900px; margin: 0 auto;">
-
-            {healthSection.featured && (
-                <>
-                    <h2 class="category-title">衛教文章</h2>
-                    <div class="category-layout">
-                        <a href={`/blog/${healthSection.featured.slug}/`} class="featured-card post-card">
-                            {healthSection.featured.data.heroImage && (
-                                <img src={healthSection.featured.data.heroImage} alt={healthSection.featured.data.title} class="card-image" />
-                            )}
-                            <div class="card-content">
-                                <h3>{healthSection.featured.data.title}</h3>
-                                <p>{healthSection.featured.data.description}</p>
-                                <div class="card-meta">
-                                    <span class="card-author">{healthSection.featured.data.author || '謝明福 院長'}</span>
-                                    <span class="card-date">
-                                        {hasBeenUpdated(healthSection.featured) && <span class="update-badge">(已更新) </span>}
-                                        {getDisplayDate(healthSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                    </span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <div class="list-container">
-                            {healthSection.list.map(post => (
-                                <a href={`/blog/${post.slug}/`} class="list-item">
-                                    <div class="list-item-content">
-                                        <h3>{post.data.title}</h3>
-                                        <div class="list-meta">
-                                            <span class="list-item-date">
-                                                {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-
-                        {healthPosts.length > 5 && (
-                            <div class="view-all-container">
-                                <a href={`/blog/tag/衛教文章/`} class="view-all-link">
-                                    查看所有「衛教文章」 &rarr;
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </>
-            )}
-
-            {directorSection.featured && (
-                <>
-                    <h2 class="category-title">院長經驗談</h2>
-                    <div class="category-layout">
-                        <a href={`/blog/${directorSection.featured.slug}/`} class="featured-card post-card">
-                            {directorSection.featured.data.heroImage && (
-                                <img src={directorSection.featured.data.heroImage} alt={directorSection.featured.data.title} class="card-image" />
-                            )}
-                            <div class="card-content">
-                                <h3>{directorSection.featured.data.title}</h3>
-                                <p>{directorSection.featured.data.description}</p>
-                                 <div class="card-meta">
-                                    <span class="card-author">{directorSection.featured.data.author}</span>
-                                    <span class="card-date">
-                                        {getDisplayDate(directorSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                    </span>
-                                </div>
-                            </div>
-                        </a>
-                        <div class="list-container">
-                            {directorSection.list.map(post => (
-                                <a href={`/blog/${post.slug}/`} class="list-item">
-                                    <div class="list-item-content">
-                                        <h3>{post.data.title}</h3>
-                                        <span class="list-item-date">
-                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                        </span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                         {directorPosts.length > 5 && (
-                            <div class="view-all-container">
-                                <a href={`/blog/tag/院長經驗談/`} class="view-all-link">查看更多 &rarr;</a>
-                            </div>
-                        )}
-                    </div>
-                </>
-            )}
-            
-            {reportSection.featured && (
-                <>
-                    <h2 class="category-title">媒體報導</h2>
-                    <div class="category-layout">
-                        <a href={`/blog/${reportSection.featured.slug}/`} class="featured-card post-card">
-                            {reportSection.featured.data.heroImage && (
-                                <img src={reportSection.featured.data.heroImage} alt={reportSection.featured.data.title} class="card-image" />
-                            )}
-                            <div class="card-content">
-                                <h3>{reportSection.featured.data.title}</h3>
-                                <p>{reportSection.featured.data.description}</p>
-                                <span class="card-date">
-                                    {getDisplayDate(reportSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                </span>
-                            </div>
-                        </a>
-                        <div class="list-container">
-                            {reportSection.list.map(post => (
-                                <a href={`/blog/${post.slug}/`} class="list-item">
-                                    <div class="list-item-content">
-                                        <h3>{post.data.title}</h3>
-                                        <span class="list-item-date">
-                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                        </span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                         {reportPosts.length > 5 && (
-                            <div class="view-all-container">
-                                <a href={`/blog/tag/媒體報導/`} class="view-all-link">查看更多 &rarr;</a>
-                            </div>
-                        )}
-                    </div>
-                </>
-            )}
-
-            {otherSection.featured && (
-                <>
-                    <h2 class="category-title">其他精選</h2>
-                    <div class="category-layout">
-                         <a href={`/blog/${otherSection.featured.slug}/`} class="featured-card post-card">
-                            {otherSection.featured.data.heroImage && (
-                                <img src={otherSection.featured.data.heroImage} alt={otherSection.featured.data.title} class="card-image" />
-                            )}
-                            <div class="card-content">
-                                <h3>{otherSection.featured.data.title}</h3>
-                                <p>{otherSection.featured.data.description}</p>
-                                <span class="card-date">
-                                    {getDisplayDate(otherSection.featured).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                </span>
-                            </div>
-                        </a>
-                        <div class="list-container">
-                            {otherSection.list.map(post => (
-                                <a href={`/blog/${post.slug}/`} class="list-item">
-                                    <div class="list-item-content">
-                                        <h3>{post.data.title}</h3>
-                                        <span class="list-item-date">
-                                            {getDisplayDate(post).toLocaleDateString('zh-TW', { year: 'numeric', month: 'long', day: 'numeric' })}
-                                        </span>
-                                    </div>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </>
-            )}
-
+<BaseLayout title="衛教專欄與最新消息 | 謝明福復健科診所">
+    <header
+        class="bg-gradient-to-br from-primary via-[#004b82] to-primary-dark pt-20 pb-16 mb-10 shadow-inner relative overflow-hidden"
+    >
+        <div
+            class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10 pointer-events-none"
+        >
+            <svg
+                class="absolute -top-24 -right-24 w-96 h-96 text-white"
+                fill="currentColor"
+                viewBox="0 0 100 100"
+                ><circle cx="50" cy="50" r="50"></circle></svg
+            >
+            <svg
+                class="absolute top-1/2 -left-12 w-48 h-48 text-white"
+                fill="currentColor"
+                viewBox="0 0 100 100"
+                ><circle cx="50" cy="50" r="50"></circle></svg
+            >
         </div>
-    </section>
 
-    <section id="info" style="background-color: var(--color-gray-bg);">
-    </section>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h1
+                class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight drop-shadow-md"
+            >
+                衛教專欄與最新消息
+            </h1>
+            <p
+                class="text-lg md:text-xl text-blue-50 leading-relaxed max-w-2xl mx-auto opacity-90"
+            >
+                由謝明福院長親自撰寫與審閱，為您提供最專業的復健醫學知識、居家保健指南與診所最新動態。
+            </p>
+        </div>
+    </header>
 
-    <style>
-        /* ... Styles Kept largely the same ... */
-        #blog-hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            min-height: 20vh;
-            padding: 3rem 1rem;
-            background-attachment: fixed; 
-            color: var(--color-white);
-             /* Fallback background if image missing, or use global style */
-             background-color: var(--color-primary); 
-        }
-        #blog-hero h1 {
-            font-size: 2.5rem;
-            color: var(--color-heading);
-            margin-bottom: 0.5rem;
-        }
-        #blog-hero p {
-            font-size: 1.1rem;
-            color: var(--color-heading);
-            margin-bottom: 0.5rem;
-        }
+    <div class="max-w-6xl mx-auto px-4 mb-12 relative">
+        <div class="flex items-start gap-2">
+            <div class="relative flex-grow overflow-hidden">
+                <div
+                    id="gradient-left"
+                    class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300"
+                >
+                </div>
+                <div
+                    id="gradient-right"
+                    class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300"
+                >
+                </div>
 
-        .category-title {
-            font-size: 2rem;
-            color: var(--color-primary);
-            border-bottom: 2px solid var(--color-border);
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-            margin-top: 3rem;
-        }
-        .category-title:first-of-type {
-            margin-top: 0;
-        }
+                <div
+                    id="tags-container"
+                    class="flex flex-nowrap overflow-x-auto gap-3 pb-2 pt-1 px-1 scrollbar-hide snap-x transition-all duration-300"
+                >
+                    <button
+                        class="filter-btn active flex-shrink-0 snap-start bg-primary text-white border border-primary px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm"
+                        data-tag="all"
+                    >
+                        全部文章
+                    </button>
+                    {
+                        sortedTags.map((tag) => (
+                            <button
+                                class="filter-btn flex-shrink-0 snap-start bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-primary-light hover:text-primary hover:border-primary-light transition-all"
+                                data-tag={tag}
+                            >
+                                {tag}
+                            </button>
+                        ))
+                    }
+                </div>
+            </div>
 
-        .category-layout {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 2rem;
-        }
+            <button
+                id="toggle-tags-btn"
+                class="flex-shrink-0 mt-1 w-9 h-9 flex items-center justify-center rounded-full bg-white text-gray-500 hover:bg-primary-light hover:text-primary transition-colors border border-gray-200 shadow-sm z-20"
+                aria-label="展開所有標籤"
+            >
+                <svg
+                    id="chevron-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="transition-transform duration-300"
+                >
+                    <path d="m6 9 6 6 6-6"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
-        .post-card {
-            display: block;
-            background: #fff;
-            border: 1px solid var(--color-border);
-            border-radius: 8px;
-            overflow: hidden;
-            text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .featured-card .card-image {
-             height: 250px;
-             width: 100%;
-             object-fit: cover;
-        }
-        .featured-card .card-content {
-             padding: 1.5rem;
-        }
-        .featured-card .card-content h3 {
-            font-size: 1.75rem;
-            margin: 0 0 0.5rem;
-            color: var(--color-primary);
-            text-align: left;
-        }
-        .featured-card .card-content p {
-            margin: 0 0 1rem;
-            color: var(--color-text);
-        }
-        
-        .card-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #777;
-        }
-        .card-author {
-            font-weight: bold;
-            color: var(--color-primary-dark);
-        }
-
-        .list-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .view-all-container {
-            grid-column: 1 / -1;
-            text-align: right;
-            margin-top: 1rem;
-        }
-        .view-all-link {
-            display: inline-block;
-            font-weight: bold;
-            color: var(--color-primary);
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-        .view-all-link:hover {
-            background-color: var(--color-primary);
-            color: #fff;
-        }
-
-        .list-item {
-            display: block;
-            text-decoration: none;
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 0;
-            transition: background-color 0.2s ease;
-        }
-        .list-item:first-of-type {
-            padding-top: 0;
-        }
-        .list-item:last-of-type {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-        .list-item:hover {
-            background-color: #f9f9f9;
-        }
-
-        .list-item-content h3 {
-            font-size: 1.1rem;
-            color: var(--color-text);
-            margin: 0 0 0.25rem;
-        }
-        .list-item-date {
-            font-size: 0.9rem;
-            color: #777;
-        }
- 
-        .update-badge {
-            color: #007A00;
-            font-weight: bold;
-        }
-        
-        @media (max-width: 768px) {
-            .category-layout {
-                grid-template-columns: 1fr;
+    <div class="max-w-6xl mx-auto px-4 pb-20">
+        <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+            id="post-grid"
+        >
+            {
+                allPosts.map((post) => (
+                    <div
+                        class="post-item"
+                        data-tags={JSON.stringify(post.data.tags || [])}
+                    >
+                        <BlogPreview post={post} />
+                    </div>
+                ))
             }
-            .list-container {
-                border-top: 2px solid var(--color-border);
-                margin-top: 1rem;
-                padding-top: 1rem;
-            }
-            .list-item:first-of-type {
-                 padding-top: 0;
-            }
-            .featured-card .card-image {
-                height: 200px;
-            }
-            .featured-card .card-content h3 {
-                font-size: 1.5rem;
-            }
-        }
+        </div>
 
-        #info {
-            background-color: var(--color-gray-bg);
-        }
-        #info .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-    </style>
-
+        <div id="no-results" class="hidden text-center py-20">
+            <div
+                class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 text-gray-400 mb-4"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><circle cx="11" cy="11" r="8"></circle><path
+                        d="m21 21-4.3-4.3"></path></svg
+                >
+            </div>
+            <h3 class="text-xl font-bold text-gray-700 mb-2">
+                找不到相關標籤的文章
+            </h3>
+            <p class="text-gray-500">
+                請嘗試點擊其他標籤，或查看「全部文章」。
+            </p>
+        </div>
+    </div>
 </BaseLayout>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const postItems = document.querySelectorAll(".post-item");
+        const noResults = document.getElementById("no-results");
+        // 👇 新增這段：標籤展開/收合邏輯
+        const toggleTagsBtn = document.getElementById("toggle-tags-btn");
+        const tagsContainer = document.getElementById("tags-container");
+        const chevronIcon = document.getElementById("chevron-icon");
+        const gradientLeft = document.getElementById("gradient-left");
+        const gradientRight = document.getElementById("gradient-right");
+
+        let isTagsExpanded = false;
+
+        if (toggleTagsBtn && tagsContainer) {
+            toggleTagsBtn.addEventListener("click", () => {
+                isTagsExpanded = !isTagsExpanded;
+
+                if (isTagsExpanded) {
+                    // 展開狀態：允許換行 (flex-wrap)、取消橫向滾動 (overflow-x-auto)
+                    tagsContainer.classList.remove(
+                        "flex-nowrap",
+                        "overflow-x-auto",
+                        "snap-x",
+                        "scrollbar-hide",
+                    );
+                    tagsContainer.classList.add("flex-wrap");
+                    // 箭頭旋轉 180 度朝上
+                    chevronIcon.classList.add("rotate-180");
+                    // 隱藏漸層遮罩
+                    if (gradientLeft) gradientLeft.style.opacity = "0";
+                    if (gradientRight) gradientRight.style.opacity = "0";
+                } else {
+                    // 收合狀態：恢復單行橫向滾動
+                    tagsContainer.classList.remove("flex-wrap");
+                    tagsContainer.classList.add(
+                        "flex-nowrap",
+                        "overflow-x-auto",
+                        "snap-x",
+                        "scrollbar-hide",
+                    );
+                    // 箭頭恢復朝下
+                    chevronIcon.classList.remove("rotate-180");
+                    // 恢復漸層遮罩
+                    if (gradientLeft) gradientLeft.style.opacity = "1";
+                    if (gradientRight) gradientRight.style.opacity = "1";
+                }
+            });
+        }
+
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                // 按鈕樣式切換
+                filterBtns.forEach((b) => {
+                    b.classList.remove(
+                        "active",
+                        "bg-primary",
+                        "text-white",
+                        "border-primary",
+                        "shadow-sm",
+                    );
+                    b.classList.add(
+                        "bg-white",
+                        "text-gray-600",
+                        "border-gray-200",
+                    );
+                });
+
+                btn.classList.remove(
+                    "bg-white",
+                    "text-gray-600",
+                    "border-gray-200",
+                );
+                btn.classList.add(
+                    "active",
+                    "bg-primary",
+                    "text-white",
+                    "border-primary",
+                    "shadow-sm",
+                );
+
+                const selectedTag = btn.getAttribute("data-tag");
+                let visibleCount = 0;
+
+                // 篩選文章
+                postItems.forEach((item) => {
+                    const tags = JSON.parse(
+                        item.getAttribute("data-tags") || "[]",
+                    );
+                    if (selectedTag === "all" || tags.includes(selectedTag)) {
+                        (item as HTMLElement).style.display = "block";
+                        (item as HTMLElement).style.animation =
+                            "fadeIn 0.5s ease";
+                        visibleCount++;
+                    } else {
+                        (item as HTMLElement).style.display = "none";
+                    }
+                });
+
+                // 顯示無結果狀態
+                if (visibleCount === 0 && noResults) {
+                    noResults.classList.remove("hidden");
+                } else if (noResults) {
+                    noResults.classList.add("hidden");
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    /* 隱藏橫向滾動條，但保留滑動功能 */
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
