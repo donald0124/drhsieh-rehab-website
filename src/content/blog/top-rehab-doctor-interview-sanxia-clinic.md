@@ -5,7 +5,7 @@ pubDate: 2025-11-09
 heroImage: '/images/blog/interview-hero.jpg'
 author: '謝明福 院長'
 featured: true
-tags: ['復健科', '謝明福', '針極肌肉內電刺激治療', '肌筋膜疼痛', '三峽診所', '媒體報導']
+tags: ['針極肌肉內電刺激', '直線偏極光治療', 'SuperLizer', '肌筋膜疼痛', '三峽診所', '媒體報導']
 ---
 
 ## 謝明福醫師：從三總到三峽，走出自己的路

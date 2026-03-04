@@ -6,7 +6,7 @@ updatedDate: 2025-11-29
 heroImage: '/images/blog/great-toe-fracture-superlizer-hero.jpg' 
 author: '謝明福 院長'
 featured: false
-tags: ['大腳趾骨折', '趾骨骨折', '閉鎖性骨折', '熱塑型護木', '直線偏光治療儀', '物理治療', '院長經驗談']
+tags: ['大腳趾骨折', '趾骨骨折', '閉鎖性骨折', '熱塑型護木', '直線偏極光治療', 'SuperLizer', '物理治療', '院長經驗談']
 ---
 
 ## 車禍與跌倒常見的傷害：閉鎖性非移位性骨折

@@ -5,7 +5,7 @@ pubDate: 2025-11-27
 heroImage: '/images/blog/superlizer-hero.jpg'
 author: '謝明福 院長'
 featured: false
-tags: ['直線偏極光', 'SuperLizer', '慢性疼痛', '自律神經失調', '星狀神經節阻斷', '非侵入性治療', '衛教文章']
+tags: ['直線偏極光治療', 'SuperLizer', '慢性疼痛', '自律神經失調', '星狀神經節阻斷', '非侵入性治療', '衛教文章']
 ---
 
 

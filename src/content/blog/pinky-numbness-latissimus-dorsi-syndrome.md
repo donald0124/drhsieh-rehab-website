@@ -6,7 +6,7 @@ updatedDate: 2025-11-28
 heroImage: '/images/blog/pinky-numbness-latissimus-dorsi-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
-tags: ['闊背肌筋膜炎', '肌筋膜疼痛症候群', '小指麻', '頸椎病鑑別', '肩頸痠痛', '針極肌肉內電刺激', '直線偏光治療', '衛教文章']
+tags: ['闊背肌筋膜炎', '肌筋膜疼痛症候群', '手麻', '頸椎骨刺', '頸椎病鑑別', '肩頸痠痛', '針極肌肉內電刺激', '直線偏極光治療', 'SuperLizer',  '衛教文章']
 ---
 
 ## 手指麻木一定是頸椎長骨刺嗎？

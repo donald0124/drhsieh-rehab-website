@@ -5,7 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/neims-ankle-sprain-hero.jpg'
 author: '謝明福 院長'
 featured: false
-tags: ['腳踝扭傷', '運動傷害', '針極肌肉內電刺激', '韌帶損傷', '復健醫學', '直線偏光治療儀', '院長經驗談']
+tags: ['腳踝扭傷', '運動傷害', '針極肌肉內電刺激', '韌帶損傷', '復健醫學', '直線偏極光治療', 'SuperLizer', '院長經驗談']
 ---
 
 ## 腳踝扭傷後的頑固性腫脹：為何休息了還不好？

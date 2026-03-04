@@ -61,6 +61,34 @@ scoredPosts.sort((a, b) => {
 const recommendedPosts = scoredPosts.slice(0, 3).map((item) => item.post);
 
 const lastModified = post.data.updatedDate || post.data.lastMod;
+
+// 👇 新增這段：生成 Breadcrumb 的 JSON-LD 結構化標記
+const siteUrl = "https://drhsieh-rehab.com"; // 請確認這是您的正式網址
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "首頁",
+            "item": `${siteUrl}/`
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "衛教專欄",
+            "item": `${siteUrl}/blog/`
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": post.data.title,
+            "item": `${siteUrl}/blog/${post.slug}/`
+        }
+    ]
+});
+
 ---
 
 <BaseLayout
@@ -73,8 +101,31 @@ const lastModified = post.data.updatedDate || post.data.lastMod;
         <div id="reading-progress-bar"></div>
     </div>
 
+    <script type="application/ld+json" set:html={breadcrumbSchema} />
+
     <header class="pt-12 pb-8 md:pt-20 md:pb-12 text-center px-4">
         <div class="max-w-4xl mx-auto">
+            
+            <nav aria-label="Breadcrumb" class="mb-6 flex justify-start text-sm text-gray-500">
+                <ol class="flex items-center space-x-2">
+                    <li>
+                        <a href="/" class="hover:text-primary transition-colors">首頁</a>
+                    </li>
+                    <li>
+                        <span class="text-gray-400">/</span>
+                    </li>
+                    <li>
+                        <a href="/blog/" class="hover:text-primary transition-colors">衛教專欄</a>
+                    </li>
+                    <li>
+                        <span class="text-gray-400">/</span>
+                    </li>
+                    <li class="text-gray-800 font-medium truncate max-w-[150px] sm:max-w-xs" aria-current="page">
+                        {post.data.title}
+                    </li>
+                </ol>
+            </nav>
+            
             <h1
                 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-6"
             >
@@ -215,6 +266,41 @@ const lastModified = post.data.updatedDate || post.data.lastMod;
                 </div>
             </aside>
         </div>
+
+        <!-- Tags (在文章內容下方，CallToAction 上方) -->
+        {
+            post.data.tags && post.data.tags.length > 0 && (
+                <div class="max-w-7xl mx-auto mt-8 px-4">
+                    <div class="relative">
+                        <div class="flex flex-nowrap gap-2 overflow-x-auto tag-scroll py-2">
+                            {
+                                post.data.tags.map((tag) => (
+                                    <a
+                                        href={`/blog/?tag=${encodeURIComponent(tag)}`}
+                                        class="text-xs font-medium text-primary bg-white px-2.5 py-1 rounded-full whitespace-nowrap hover:bg-primary hover:text-white transition-colors flex items-center gap-1"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="12"
+                                            height="12"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                            stroke="none"
+                                        >
+                                            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                                            <circle cx="8" cy="8" r="1.5" fill="white" />
+                                        </svg>
+                                        {tag}
+                                    </a>
+                                ))
+                            }
+                        </div>
+
+                        <div class="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+                    </div>
+                </div>
+            )
+        }
     </section>
 
     <CallToAction />
@@ -351,6 +437,15 @@ const lastModified = post.data.updatedDate || post.data.lastMod;
             background-color: var(--color-primary);
             width: 0%;
             transition: width 0.1s ease-out;
+        }
+
+        /* 隱藏水平滾動條但保留滑動（Tags 區塊專用） */
+        .tag-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .tag-scroll {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
         }
     </style>
 
