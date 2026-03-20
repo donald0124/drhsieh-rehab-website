@@ -5,6 +5,7 @@ pubDate: 2025-11-10
 heroImage: '/images/blog/hypermobility-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['關節過動症', '筋骨軟Q', '慢性疼痛', '貝登量表', '關節不穩定', '直線偏極光治療', 'SuperLizer', '衛教文章']
 ---
 

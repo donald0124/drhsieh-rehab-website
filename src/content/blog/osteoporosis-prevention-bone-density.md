@@ -5,6 +5,7 @@ pubDate: 2016-10-27
 heroImage: ''
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '媒體報導', '復健衛教']
 tags: ['骨質疏鬆', '骨密度', '脊椎壓迫性骨折', '鈣質補充', '直線偏極光治療', 'SuperLizer',  '媒體報導']
 ---
 

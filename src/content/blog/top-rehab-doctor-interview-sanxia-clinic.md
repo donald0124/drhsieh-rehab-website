@@ -5,6 +5,7 @@ pubDate: 2025-11-09
 heroImage: '/images/blog/interview-hero.jpg'
 author: '謝明福 院長'
 featured: true
+category: ['特色治療', '媒體報導', '復健衛教']
 tags: ['針極肌肉內電刺激', '直線偏極光治療', 'SuperLizer', '肌筋膜疼痛', '三峽診所', '媒體報導']
 ---
 

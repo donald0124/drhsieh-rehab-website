@@ -5,6 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/external-pain-relief-medication-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['痠痛貼布', '外用藥膏', 'NSAIDs', '肌肉痠痛', '用藥安全', '直線偏極光治療', 'SuperLizer', '衛教文章']
 ---
 

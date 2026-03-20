@@ -11,7 +11,7 @@ const blogCollection = defineCollection({
     updatedDate: z.date().optional(), // 更新日期 (選填)
     lastMod: z.date().optional(), // (舊欄位，保留相容性)
     heroImage: z.string().optional(),
-    // category: z.string(), // 已移除，改用 tags
+    category: z.array(z.string()).optional(), // 文章分類
     tags: z.array(z.string()).optional(),
     author: z.string().optional().default('謝明福 院長'), // 作者
     featured: z.boolean().optional().default(false), // 是否置頂

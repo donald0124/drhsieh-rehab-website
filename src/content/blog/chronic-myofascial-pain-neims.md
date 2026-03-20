@@ -6,6 +6,7 @@ updatedDate: 2025-11-20
 heroImage: '/images/blog/chronic-myofascial-pain-neims-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['針極肌肉內電刺激', '肌筋膜疼痛症候群', '上班族職業病', '頸因性頭痛', '肩頸痠痛', '衛教文章']
 ---
 

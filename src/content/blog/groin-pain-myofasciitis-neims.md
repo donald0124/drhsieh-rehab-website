@@ -5,6 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/groin-pain-myofasciitis-neims-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['鼠蹊部疼痛', '大腿內收肌', '運動傷害', '肌筋膜炎', '針極肌肉內電刺激', '直線偏極光治療', 'SuperLizer', '院長經驗談']
 ---
 

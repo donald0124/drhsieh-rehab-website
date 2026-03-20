@@ -6,6 +6,7 @@ updatedDate: 2025-12-01
 #heroImage: ''
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['腓總神經', '垂足', '針極肌肉內電刺激', '脛前肌', '復健醫學', '院長經驗談']
 ---
 

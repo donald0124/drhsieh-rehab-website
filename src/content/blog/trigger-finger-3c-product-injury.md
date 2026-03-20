@@ -5,6 +5,7 @@ pubDate: 2015-11-09
 heroImage: '' 
 author: '謝明福 院長'
 featured: false
+category: ['復健衛教']
 tags: ['扳機指', 'Trigger Finger', '3C產品傷害', '肌腱腱鞘炎', '衛教文章']
 ---
 

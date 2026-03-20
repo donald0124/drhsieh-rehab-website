@@ -6,6 +6,7 @@ updatedDate: 2026-03-04
 heroImage: '/images/blog/mommy-thumb-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['復健衛教']
 tags: ['媽媽手', '手腕痛', '狹窄性橈骨莖突腱鞘炎', '復健治療', '衛教文章']
 ---
 

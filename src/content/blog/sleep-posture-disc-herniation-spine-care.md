@@ -5,6 +5,7 @@ pubDate: 2025-11-09
 heroImage: '/images/blog/sleep-posture-disc-herniation-spine-care-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['媒體報導', '復健衛教']
 tags: ['睡眠姿勢', '椎間盤突出', '脊椎保健', '復健運動', '肌筋膜疼痛', '媒體報導']
 ---
 

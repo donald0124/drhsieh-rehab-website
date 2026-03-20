@@ -6,6 +6,7 @@ updatedDate: 2025-11-10
 heroImage: '/images/blog/runners-knee-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['復健衛教']
 tags: ['髂脛束摩擦症候群', '跑步膝', '膝蓋外側痛', 'ITBFS', '復健治療', '衛教文章']
 ---
 

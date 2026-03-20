@@ -5,6 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/neims-ankle-sprain-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['腳踝扭傷', '運動傷害', '針極肌肉內電刺激', '韌帶損傷', '復健醫學', '直線偏極光治療', 'SuperLizer', '院長經驗談']
 ---
 

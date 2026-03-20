@@ -5,6 +5,7 @@ pubDate: 2025-11-24
 heroImage: '/images/blog/pes-anserine-bursitis-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['鵝掌足滑囊炎', '鵝掌肌腱炎', '膝蓋內側痛', '膝蓋痛', '跑者膝', '直線偏極光治療', 'SuperLizer', '衛教文章']
 ---
 

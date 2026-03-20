@@ -5,6 +5,7 @@ pubDate: 2025-11-23
 heroImage: '/images/blog/neims-sciatica-elderly-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['針極肌肉內電刺激', '坐骨神經痛', '腰椎骨刺', '骨刺', '脊椎腔狹窄症', '免開刀治療', '院長經驗談']
 ---
 

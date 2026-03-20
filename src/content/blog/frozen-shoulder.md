@@ -5,6 +5,7 @@ pubDate: 2025-11-12
 heroImage: '/images/blog/frozen-shoulder-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['復健衛教']
 tags: ['五十肩', '肩膀痛', '手舉不高', '復健治療', '沾黏性肩關節囊炎', '衛教文章']
 ---
 

@@ -6,6 +6,7 @@ updatedDate: 2025-11-28
 heroImage: '/images/blog/sciatica-piriformis-myofascial-pain-hero.jpg'
 author: '謝明福 院長'
 featured: false
+category: ['特色治療', '復健衛教']
 tags: ['坐骨神經痛', '腰椎牽引', '梨狀肌症候群', '肌筋膜炎', 骨刺','腸薦關節', '髂脛束摩擦症候群','直線偏極光治療', 'SuperLizer', '院長經驗談']
 ---
 
