@@ -26,45 +26,20 @@ const allPosts = (await getCollection("blog")).sort((a, b) => {
     return dateB - dateA;
 });
 
-// 2. 提取所有標籤並計算出現次數 (改用 Map)
-const tagCounts = new Map<string, number>();
-allPosts.forEach((post) => {
-    if (post.data.tags) {
-        post.data.tags.forEach((tag) => {
-            // 如果標籤已經存在就 +1，不存在就設為 1
-            tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
-        });
-    }
-});
-
-// 3. 標籤排序邏輯 (優先標籤 -> 出現次數高到低 -> 筆畫順序)
-const priorityTags = ["衛教文章", "院長經驗談", "媒體報導"];
-const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
-    // 條件一：判斷是否為「優先保留標籤」
-    const indexA = priorityTags.indexOf(a);
-    const indexB = priorityTags.indexOf(b);
-    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-    if (indexA !== -1) return -1;
-    if (indexB !== -1) return 1;
-
-    // 條件二：依照「出現次數」由高到低排序
-    const countA = tagCounts.get(a) || 0;
-    const countB = tagCounts.get(b) || 0;
-    if (countA !== countB) {
-        return countB - countA; // 數字大的排前面
-    }
-
-    // 條件三：如果出現次數一樣，則依照字首筆畫/字母排序
-    return a.localeCompare(b);
-});
+const categories = [
+    { id: "all", label: "全部文章" },
+    { id: "復健衛教", label: "復健衛教" },
+    { id: "特色治療", label: "特色治療" },
+    { id: "媒體報導", label: "媒體報導" },
+];
 ---
 
 <BaseLayout
-    title="衛教專欄與最新消息 | 謝明福復健科診所"
+    title="復健醫學與疼痛診療專欄 | 謝明福復健科診所"
     description="為您提供最專業的復健醫學知識、居家保健指南與診所最新動態。"
 >
     <header
-        class="bg-gradient-to-br from-primary via-[#004b82] to-primary-dark pt-20 pb-16 mb-10 shadow-inner relative overflow-hidden"
+        class="bg-gradient-to-br from-primary via-[#004b82] to-primary-dark pt-20 pb-10 mb-10 shadow-inner relative overflow-hidden"
     >
         <div
             class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 opacity-10 pointer-events-none"
@@ -87,7 +62,7 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
             <h1
                 class="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight drop-shadow-md"
             >
-                衛教專欄與最新消息
+                復健醫學與疼痛診療專欄
             </h1>
             <p
                 class="text-lg md:text-xl text-blue-50 leading-relaxed max-w-2xl mx-auto opacity-90"
@@ -97,64 +72,28 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
         </div>
     </header>
 
-    <div class="max-w-6xl mx-auto px-4 mb-12 relative">
-        <div class="flex items-start gap-2">
-            <div class="relative flex-grow overflow-hidden">
-                <div
-                    id="gradient-left"
-                    class="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300"
-                >
-                </div>
-                <div
-                    id="gradient-right"
-                    class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none md:hidden transition-opacity duration-300"
-                >
-                </div>
-
-                <div
-                    id="tags-container"
-                    class="flex flex-nowrap overflow-x-auto gap-3 pb-2 pt-1 px-1 scrollbar-hide snap-x transition-all duration-300"
-                >
-                    <button
-                        class="filter-btn active flex-shrink-0 snap-start bg-primary text-white border border-primary px-5 py-2 rounded-full text-sm font-semibold transition-all shadow-sm sticky left-0 z-30"
-                        data-tag="all"
-                    >
-                        全部文章
-                    </button>
-                    {
-                        sortedTags.map((tag) => (
-                            <button
-                                class="filter-btn flex-shrink-0 snap-start bg-white text-gray-600 border border-gray-200 px-5 py-2 rounded-full text-sm font-medium hover:bg-primary-light hover:text-primary hover:border-primary-light transition-all"
-                                data-tag={tag}
-                            >
-                                {tag}
-                            </button>
-                        ))
-                    }
-                </div>
-            </div>
-
-            <button
-                id="toggle-tags-btn"
-                class="flex-shrink-0 mt-1 w-9 h-9 flex items-center justify-center rounded-full bg-white text-gray-500 hover:bg-primary-light hover:text-primary transition-colors border border-gray-200 shadow-sm z-20"
-                aria-label="展開所有標籤"
+    <div class="max-w-6xl mx-auto px-3 mb-5 md:mb-5 relative">
+        <div class="flex justify-center">
+            <div
+                id="categories-container"
+                class="flex flex-wrap justify-center gap-2 md:gap-3 transition-all duration-300 w-full"
             >
-                <svg
-                    id="chevron-icon"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="transition-transform duration-300"
-                >
-                    <path d="m6 9 6 6 6-6"></path>
-                </svg>
-            </button>
+                {
+                    categories.map((cat, index) => (
+                        <button
+                            class={`filter-btn flex flex-wrap justify-center items-center leading-tight flex-1 sm:flex-none max-w-[48%] sm:max-w-none px-3 py-2 md:px-5 md:py-2.5 rounded-xl md:rounded-full text-sm font-semibold transition-all shadow-sm ${index === 0 ? "active bg-primary text-white border border-primary" : "bg-white text-gray-600 border border-gray-200 hover:bg-primary-light hover:text-primary hover:border-primary-light"}`}
+                            data-category={cat.id}
+                        >
+                            <span class="whitespace-nowrap">
+                                {cat.label.substring(0, 2)}
+                            </span>
+                            <span class="whitespace-nowrap">
+                                {cat.label.substring(2)}
+                            </span>
+                        </button>
+                    ))
+                }
+            </div>
         </div>
     </div>
 
@@ -167,7 +106,9 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                 allPosts.map((post) => (
                     <div
                         class="post-item"
-                        data-tags={JSON.stringify(post.data.tags || [])}
+                        data-categories={JSON.stringify(
+                            post.data.category || [],
+                        )}
                     >
                         <BlogPreview post={post} />
                     </div>
@@ -194,10 +135,10 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                 >
             </div>
             <h3 class="text-xl font-bold text-gray-700 mb-2">
-                找不到相關標籤的文章
+                找不到相關分類的文章
             </h3>
             <p class="text-gray-500">
-                請嘗試點擊其他標籤，或查看「全部文章」。
+                請嘗試點擊其他分類，或查看「全部文章」。
             </p>
         </div>
     </div>
@@ -208,50 +149,6 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
         const filterBtns = document.querySelectorAll(".filter-btn");
         const postItems = document.querySelectorAll(".post-item");
         const noResults = document.getElementById("no-results");
-        // 👇 新增這段：標籤展開/收合邏輯
-        const toggleTagsBtn = document.getElementById("toggle-tags-btn");
-        const tagsContainer = document.getElementById("tags-container");
-        const chevronIcon = document.getElementById("chevron-icon");
-        const gradientLeft = document.getElementById("gradient-left");
-        const gradientRight = document.getElementById("gradient-right");
-
-        let isTagsExpanded = false;
-
-        if (toggleTagsBtn && tagsContainer) {
-            toggleTagsBtn.addEventListener("click", () => {
-                isTagsExpanded = !isTagsExpanded;
-
-                if (isTagsExpanded) {
-                    // 展開狀態：允許換行 (flex-wrap)、取消橫向滾動 (overflow-x-auto)
-                    tagsContainer.classList.remove(
-                        "flex-nowrap",
-                        "overflow-x-auto",
-                        "snap-x",
-                        "scrollbar-hide",
-                    );
-                    tagsContainer.classList.add("flex-wrap");
-                    // 箭頭旋轉 180 度朝上
-                    if (chevronIcon) chevronIcon.classList.add("rotate-180");
-                    // 隱藏漸層遮罩
-                    if (gradientLeft) gradientLeft.style.opacity = "0";
-                    if (gradientRight) gradientRight.style.opacity = "0";
-                } else {
-                    // 收合狀態：恢復單行橫向滾動
-                    tagsContainer.classList.remove("flex-wrap");
-                    tagsContainer.classList.add(
-                        "flex-nowrap",
-                        "overflow-x-auto",
-                        "snap-x",
-                        "scrollbar-hide",
-                    );
-                    // 箭頭恢復朝下
-                    if (chevronIcon) chevronIcon.classList.remove("rotate-180");
-                    // 恢復漸層遮罩
-                    if (gradientLeft) gradientLeft.style.opacity = "1";
-                    if (gradientRight) gradientRight.style.opacity = "1";
-                }
-            });
-        }
 
         filterBtns.forEach((btn) => {
             btn.addEventListener("click", () => {
@@ -268,13 +165,16 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                         "bg-white",
                         "text-gray-600",
                         "border-gray-200",
+                        "font-medium",
                     );
+                    b.classList.remove("font-semibold");
                 });
 
                 btn.classList.remove(
                     "bg-white",
                     "text-gray-600",
                     "border-gray-200",
+                    "font-medium",
                 );
                 btn.classList.add(
                     "active",
@@ -282,17 +182,21 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
                     "text-white",
                     "border-primary",
                     "shadow-sm",
+                    "font-semibold",
                 );
 
-                const selectedTag = btn.getAttribute("data-tag");
+                const selectedCategory = btn.getAttribute("data-category");
                 let visibleCount = 0;
 
                 // 篩選文章
                 postItems.forEach((item) => {
-                    const tags = JSON.parse(
-                        item.getAttribute("data-tags") || "[]",
+                    const categories = JSON.parse(
+                        item.getAttribute("data-categories") || "[]",
                     );
-                    if (selectedTag === "all" || tags.includes(selectedTag)) {
+                    if (
+                        selectedCategory === "all" ||
+                        categories.includes(selectedCategory)
+                    ) {
                         (item as HTMLElement).style.display = "block";
                         (item as HTMLElement).style.animation =
                             "fadeIn 0.5s ease";
@@ -311,14 +215,14 @@ const sortedTags = Array.from(tagCounts.keys()).sort((a, b) => {
             });
         });
 
-        // 👇 新增這段：處理 URL Query Parameter (?tag=TagName)
+        // 👇 新增這段：處理 URL Query Parameter (?category=CatName)
         const urlParams = new URLSearchParams(window.location.search);
-        const tagParam = urlParams.get("tag");
+        const categoryParam = urlParams.get("category");
 
-        if (tagParam) {
-            // Find the button with the matching data-tag
+        if (categoryParam) {
+            // Find the button with the matching data-category
             const targetBtn = Array.from(filterBtns).find(
-                (btn) => btn.getAttribute("data-tag") === tagParam,
+                (btn) => btn.getAttribute("data-category") === categoryParam,
             );
 
             if (targetBtn) {

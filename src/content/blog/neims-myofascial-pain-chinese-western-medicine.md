@@ -5,7 +5,7 @@ pubDate: 2013-09-29
 heroImage: '' 
 author: '謝明福 院長'
 featured: false
-category: ['特色治療', '媒體報導', '復健衛教']
+category: ['特色治療', '媒體報導']
 tags: ['肌筋膜疼痛症候群', '針極肌肉內電刺激', '激痛點', '直線偏極光治療', 'SuperLizer',  '中西醫合併治療', '媒體報導']
 ---
 

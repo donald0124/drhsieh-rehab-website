@@ -5,7 +5,7 @@ pubDate: 2013-12-24
 #heroImage: ''
 author: '謝明福 院長'
 featured: false
-category: ['特色治療', '復健衛教']
+category: ['特色治療']
 tags: ['醫師隨筆', '高齡照護', '脊椎壓迫性骨折', '針極肌肉內電刺激', '肌筋膜疼痛', '院長經驗談']
 ---
 

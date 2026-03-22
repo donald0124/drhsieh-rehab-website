@@ -6,7 +6,7 @@ updatedDate: 2025-11-10
 heroImage: '/images/blog/myofascial-pain-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
-category: ['特色治療', '復健衛教']
+category: ['復健衛教']
 tags: ['肌筋膜疼痛症候群', '肩頸痠痛', '激痛點', '肌肉僵硬', '復健治療','直線偏極光治療', 'SuperLizer',  '衛教文章']
 ---
 

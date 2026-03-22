@@ -6,7 +6,7 @@ updatedDate: 2025-11-30
 #heroImage: '' 
 author: '謝明福 院長'
 featured: false
-category: ['復健衛教']
+category: ['特色治療', '復健衛教']
 tags: ['內側皺褶症候群', 'Plica Syndrome', '膝蓋疼痛', '髕骨內側痛', '抗凝血劑', '物理治療', '院長經驗談']
 ---
 

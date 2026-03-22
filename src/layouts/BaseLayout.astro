@@ -51,20 +51,21 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的網站資訊 -->
-        <script type="application/ld+json">
-            {
-                "@context": "https://schema.org",
-                "@type": "WebSite",
-                "name": "謝明福復健科診所",
-                "url": "https://drhsieh-rehab.com/",
-                "alternateName": [
-                    "謝明福復健科診所",
-                    "三峽謝明福復健科",
-                    "謝明福復健"
-                ]
-            }
-        </script>
+        <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎正確顯示網站名稱 -->
+        {
+            Astro.url.pathname === '/' && (
+                <script type="application/ld+json" set:html={JSON.stringify({
+                    "@context": "https://schema.org",
+                    "@type": "WebSite",
+                    "name": "謝明福復健科診所",
+                    "url": "https://drhsieh-rehab.com/",
+                    "alternateName": [
+                        "謝明福復健科",
+                        "drhsieh-rehab.com"
+                    ]
+                })} />
+            )
+        }
 
         <!-- 醫療機構結構化資料  這段 JSON-LD 有助於搜尋引擎理解您的診所資訊 -->
         <script type="application/ld+json">

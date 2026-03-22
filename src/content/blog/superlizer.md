@@ -4,8 +4,8 @@ description: '慢性疼痛、脊椎退化或失眠久治不癒？謝明福醫師
 pubDate: 2025-11-27
 heroImage: '/images/blog/superlizer-hero.jpg'
 author: '謝明福 院長'
-featured: false
-category: ['特色治療', '復健衛教']
+featured: true
+category: ['特色治療']
 tags: ['直線偏極光治療', 'SuperLizer', '慢性疼痛', '自律神經失調', '星狀神經節阻斷', '非侵入性治療', '衛教文章']
 ---
 

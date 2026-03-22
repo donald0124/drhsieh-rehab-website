@@ -5,7 +5,7 @@ pubDate: 2017-12-28
 heroImage: '/images/blog/good-doc-personal-reflect-hero.jpg' 
 author: '謝明福 院長'
 featured: false
-category: ['媒體報導', '復健衛教']
+category: ['媒體報導']
 tags: ['良醫真心話', '醫師感言', '復健醫療', '醫病關係', '商業周刊', '院長經驗談']
 ---
 

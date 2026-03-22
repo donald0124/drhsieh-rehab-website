@@ -6,7 +6,7 @@ updatedDate: 2025-11-28
 heroImage: '/images/blog/pinky-numbness-latissimus-dorsi-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
-category: ['特色治療', '復健衛教']
+category: ['復健衛教']
 tags: ['闊背肌筋膜炎', '肌筋膜疼痛症候群', '手麻', '頸椎骨刺', '頸椎病鑑別', '肩頸痠痛', '針極肌肉內電刺激', '直線偏極光治療', 'SuperLizer',  '衛教文章']
 ---
 

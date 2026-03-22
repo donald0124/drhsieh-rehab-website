@@ -100,12 +100,11 @@ const displayDate =
             >
                 {
                     post.data.tags?.map((tag) => (
-                        <a
-                            href={`/blog/?tag=${tag}`}
-                            class="text-xs font-medium text-primary bg-primary-light px-2.5 py-1 rounded-full whitespace-nowrap hover:bg-primary hover:text-white transition-colors z-20 relative"
+                        <span
+                            class="text-xs font-medium text-primary bg-primary-light px-2.5 py-1 rounded-full whitespace-nowrap transition-colors z-20 relative cursor-default"
                         >
                             {tag}
-                        </a>
+                        </span>
                     ))
                 }
                 <div

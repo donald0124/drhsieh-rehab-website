@@ -4,7 +4,8 @@ description: '尋找三峽或北大特區的復健科診所？謝明福復健科
 pubDate: 2026-03-10
 heroImage: '/images/blog/sanxia-rehab-clinic-recommendation-hero.jpg'
 author: '謝明福 院長'
-featured: true
+featured: false
+category: ['特色治療']
 tags: ['三峽復健', '鶯歌復健', '北大特區復健', '新北復健','針極肌肉內電刺激']
 ---
 
