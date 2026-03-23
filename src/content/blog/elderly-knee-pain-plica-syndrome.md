@@ -3,7 +3,7 @@ title: '長輩膝蓋痛不一定是退化！認識「內側皺褶症候群」與
 description: '許多長輩膝蓋疼痛常被誤認為單純的退化性關節炎，其實「內側皺褶症候群 (Plica Syndrome)」也是常見原因。本文解析其症狀特徵、鑑別診斷，以及針對服用抗凝血劑等特殊族群的保守治療策略。'
 pubDate: 2016-09-28
 updatedDate: 2025-11-30
-#heroImage: '' 
+heroImage: '/images/blog/elderly-knee-pain-plica-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
 category: ['特色治療', '復健衛教']
