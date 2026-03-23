@@ -1,0 +1,104 @@
+---
+interface Props {
+    title: string;
+    url: string;
+}
+const { title, url } = Astro.props;
+// LINE 分享連結格式
+const lineShareUrl = `https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}`;
+---
+
+<div
+    class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mt-12 mb-8 py-4 border-t border-gray-200"
+>
+    <div
+        class="flex items-center gap-2"
+        style="color: var(--color-primary-dark)"
+    >
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path
+                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"
+            ></path></svg
+        >
+        <span
+            class="text-base font-bold"
+            style="color: var(--color-primary-dark)"
+            >這篇文章實用嗎？分享給親友</span
+        >
+    </div>
+
+    <div class="flex items-center gap-3">
+        <a
+            href={lineShareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:scale-110 transition-transform flex-shrink-0"
+            aria-label="分享至 LINE"
+        >
+            <img src="/LINE_icon.svg" alt="LINE" class="w-9 h-9" />
+        </a>
+
+        <button
+            id="nativeShareBtn"
+            class="border rounded-full transition-colors flex items-center gap-2 px-4 py-1.5 text-sm font-medium"
+            style="border-color: var(--color-primary-dark); color: var(--color-primary-dark);"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><circle cx="18" cy="5" r="3"></circle><circle
+                    cx="6"
+                    cy="12"
+                    r="3"></circle><circle cx="18" cy="19" r="3"></circle><line
+                    x1="8.59"
+                    y1="13.51"
+                    x2="15.42"
+                    y2="17.49"></line><line
+                    x1="15.41"
+                    y1="6.51"
+                    x2="8.59"
+                    y2="10.49"></line></svg
+            >
+            更多分享
+        </button>
+    </div>
+</div>
+
+<script define:vars={{ title, url }}>
+    const shareBtn = document.getElementById("nativeShareBtn");
+
+    shareBtn?.addEventListener("click", async () => {
+        // 檢查瀏覽器是否支援 Web Share API (現代手機瀏覽器皆支援)
+        if (navigator.share) {
+            try {
+                await navigator.share({
+                    title: title,
+                    text: `推薦謝明福醫師的專業文章：${title}`,
+                    url: url,
+                });
+            } catch (err) {
+                console.log("分享失敗或取消", err);
+            }
+        } else {
+            // 不支援時的備案：直接複製網址
+            navigator.clipboard.writeText(url);
+            alert("已複製文章連結，您可以手動貼上分享！");
+        }
+    });
+</script>
