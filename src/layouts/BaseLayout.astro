@@ -4,6 +4,7 @@ import "../styles/base.css"; // 1. 先引入地基 (變數 + Tailwind)
 import "../styles/style.css"; // 2. 再引入您的舊樣式 (這樣舊樣式才能吃到變數)
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import AnnouncementBanner from "../components/AnnouncementBanner.astro";
 
 // 1. (修改) 擴充 Props 介面，加入可選的 ogImage
 export interface Props {
@@ -53,17 +54,17 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
 
         <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎正確顯示網站名稱 -->
         {
-            Astro.url.pathname === '/' && (
-                <script type="application/ld+json" set:html={JSON.stringify({
-                    "@context": "https://schema.org",
-                    "@type": "WebSite",
-                    "name": "謝明福復健科診所",
-                    "url": "https://drhsieh-rehab.com/",
-                    "alternateName": [
-                        "謝明福復健科",
-                        "drhsieh-rehab.com"
-                    ]
-                })} />
+            Astro.url.pathname === "/" && (
+                <script
+                    type="application/ld+json"
+                    set:html={JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebSite",
+                        name: "謝明福復健科診所",
+                        url: "https://drhsieh-rehab.com/",
+                        alternateName: ["謝明福復健科", "drhsieh-rehab.com"],
+                    })}
+                />
             )
         }
 
@@ -139,6 +140,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
 
     <body>
         <Header />
+        <AnnouncementBanner />
 
         <main>
             <slot />
