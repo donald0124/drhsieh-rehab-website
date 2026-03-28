@@ -1,0 +1,338 @@
+---
+// src/components/PatientReviews.astro
+
+// 由於靜態網頁無法直接實時抓取 Google Maps 評論（會遇到 CORS 阻擋或需要付費 API Key），
+// 建議您可以固定從您的 Google Maps 精選 3-4 篇具有代表性的五星好評放在這裡。
+const reviews = [
+    {
+        name: "李先生",
+        date: "2026/01",
+        rating: 5,
+        text: "謝醫師對症狀的病因判斷準確，治療方式也很恰當。雷射治療的效果也很棒，難得的好醫生。幫忙做復健的員工客氣有禮貌。",
+    },
+    {
+        name: "Anne Wu",
+        date: "2025/11",
+        rating: 5,
+        text: "腰酸痛到無法前彎及起床起身都超痛到飆淚，還好今早冒雨走去看診，果真謝院長真的是華佗在世，雷射加強後，之後的電療+熱敷，護理師都超客氣，還跟我說如何加強核心，傍晚我就起床起身不痛了，真的很感謝診所的大家。",
+    },
+    {
+        name: "Elaine",
+        date: "2025/07",
+        rating: 5,
+        text: "護理師與櫃檯人員親切熱心、醫生專業又有親和力與耐心！終於知道小朋友多年問題的原因，以及改善方式，很謝謝醫生！",
+    },
+    {
+        name: "Victor Chen",
+        date: "2025/06",
+        rating: 5,
+        text: "「華佗再世」的謝院長看診細心周到、善氣迎人、滿臉笑容、親切體貼、謙和有禮、德醫雙馨、神醫妙手、仁心良術的好醫生。櫃檯人員服務親切、禮貌周到、善解人意、服務百分百完全到位。\n\n「先生緣、主人福」診所整體醫療技術與服務水平都是一流且完全到位的，健康永留，病魔難侵，值得大家信賴與肯定認同支持的好診所，強力推薦給大家！！！👍👍👍",
+    },
+    {
+        name: "范小姐",
+        date: "2025/05",
+        rating: 5,
+        text: "我足底筋膜炎痛了半年多，經熟人介紹到三峽找謝醫師做針極，兩次針極以後走路就不痛了，謝醫師醫術很了不起，他在摸一摸就知道哪裡出問題真謝謝他仁心仁術。",
+    },
+    {
+        name: "賴小姐",
+        date: "2024/11",
+        rating: 5,
+        text: "媽媽剛去腳無力酸痛，查了google謝醫生的文章，覺得很棒，櫃檯小姐態度好棒，總是會關心病人，天冷了要多穿衣服",
+    },
+    {
+        name: "Hsi neng Yu",
+        date: "2022/05",
+        rating: 5,
+        text: "第一次在此看診，醫師問診詳細專業，總能直抵核心！",
+    },
+    {
+        name: "林先生",
+        date: "2022/02",
+        rating: 5,
+        text: "謝醫師親切又專業的醫術，解決我已痛好久運動疼痛問題，值得推薦的好醫生！",
+    },
+    {
+        name: "lucky",
+        date: "2021/10",
+        rating: 5,
+        text: "謝醫生、真的太感謝您了！我終於擺脫2年多來吃藥的痛苦，尤其神經痛的藥服用後頭很痛，意識不清以為自己變笨了。患病這3年來腳麻刺痛沒有醫生可以找出病因，您竟然可以幫我診斷是「慢性前腔室症候群」，我真的好感謝您！立馬介紹給我周圍的親戚跟朋友們。",
+    },
+    {
+        name: "鄭先生",
+        date: "2019/05",
+        rating: 5,
+        text: "腰痛約3年了，看過很多的地方（醫師、民間整脊師⋯皆有），幾乎都是腰痛治腰，治療後有改善，但卻不見根本改善的可能！\n這次聽朋友介紹，來找謝醫師看診，他非常專業，瞭解完病因後，告知他判斷引發病徵的原因應該是大腿的肌肉緊繃而延伸至腰，因此腰有狀況，耐心的說明病徵解釋引發原因，並提醒暫時不要做硬舉的動作，哪些運動適合、哪些暫時不要都有完整回覆、也提供舒緩症狀的治療方式！\n\n個人感覺謝醫師的專業與精準的判斷處理，真的值得信賴！👍",
+    },
+    {
+        name: "Wei Jei Su",
+        date: "2018/12",
+        rating: 5,
+        text: "我平日工作在三峽。假日回台北。11月因為柔道練習而導致腳膝蓋扭傷、挫傷。假日經過馬偕、慈濟等大醫院的檢查，判斷主要韌帶以及骨頭沒有損傷。經過一個月的修養，腳膝蓋仍無法完全彎曲。在慈濟醫院建議看復健科的情況下，便於平日工作時，請假來到這邊。\n醫生很快的經由觸診診斷出，韌帶回復情況良好，而是仍存在著多處肌肉拉傷、“筋”緊繃。經過雷射和電療，膝蓋不能彎曲的症狀馬上有明顯的改善。\n醫生非常專業值得推薦。問診用心。針對運動傷害等情況，也都能仔細聊解。建議朋友有肌肉拉傷或是復健需要的，可以來此地看診。真心推薦。",
+    },
+];
+---
+
+<section id="reviews" class="py-10 md:py-16 bg-white relative overflow-hidden">
+    <!-- 輕微背景裝飾 -->
+    <div
+        class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-blue-50 rounded-full blur-3xl opacity-60 pointer-events-none"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 left-0 -mb-20 -ml-20 w-72 h-72 bg-orange-50 rounded-full blur-3xl opacity-60 pointer-events-none"
+    >
+    </div>
+
+    <div class="container mx-auto px-4 max-w-6xl relative z-10">
+        <!-- 標題區塊 (已移除總評分) -->
+        <div class="text-center mb-8">
+            <span
+                class="text-primary font-bold tracking-widest text-sm uppercase mb-2 block"
+                >Reviews</span
+            >
+            <h2
+                class="text-3xl md:text-5xl font-bold text-heading leading-tight"
+            >
+                病患好評
+            </h2>
+            <p
+                class="text-gray-500 mt-4 text-sm md:text-base max-w-2xl mx-auto"
+            >
+                感謝每一位患者的信任與真實回饋，您的健康是我們最大的目標。
+            </p>
+        </div>
+
+        <!-- 卡片與左右按鈕區塊 -->
+        <div class="relative w-full mx-auto group">
+            <!-- 桌機左滑按鈕 -->
+            <button
+                id="prev-review"
+                class="hidden md:flex absolute -left-4 lg:-left-12 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-100 rounded-full shadow-lg items-center justify-center text-gray-500 hover:text-primary hover:bg-gray-50 z-20 transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 opacity-0 group-hover:opacity-100"
+            >
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 19l-7-7 7-7"></path></svg
+                >
+            </button>
+
+            <!-- 卡片容器 -->
+            <div
+                id="reviews-carousel"
+                class="flex flex-nowrap overflow-x-auto pb-4 pt-2 -mx-4 px-4 md:mx-0 md:px-2 snap-x snap-mandatory gap-3 md:gap-4 hide-scrollbar scroll-smooth"
+            >
+                {
+                    reviews.map((review) => (
+                        <div class="w-[70vw] sm:w-[300px] md:w-[340px] shrink-0 snap-center bg-white border border-gray-100 p-5 md:p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full">
+                            <div class="flex text-yellow-400 mb-3">
+                                {Array.from({ length: review.rating }).map(
+                                    () => (
+                                        <svg
+                                            class="w-5 h-5 fill-current"
+                                            viewBox="0 0 20 20"
+                                        >
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    ),
+                                )}
+                            </div>
+                            <div class="mb-3 flex-grow flex flex-col items-start">
+                                <p class="review-content w-full text-gray-700 leading-relaxed text-sm md:text-base whitespace-pre-line line-clamp-3 transition-all duration-300">
+                                    {review.text}
+                                </p>
+                                <button
+                                    type="button"
+                                    class="read-more-btn text-blue-600 hover:text-blue-800 text-sm font-medium mt-1 hidden"
+                                >
+                                    閱讀全文
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center mt-auto pt-3 border-t border-gray-50">
+                                <span class="font-bold text-heading text-sm md:text-base">
+                                    {review.name}
+                                </span>
+                                <span class="text-gray-400 text-xs md:text-sm">
+                                    {review.date}
+                                </span>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+
+            <!-- 桌機右滑按鈕 -->
+            <button
+                id="next-review"
+                class="hidden md:flex absolute -right-4 lg:-right-12 top-1/2 -translate-y-1/2 w-10 h-10 bg-white border border-gray-100 rounded-full shadow-lg items-center justify-center text-gray-500 hover:text-primary hover:bg-gray-50 z-20 transition-all focus:outline-none focus:ring-2 focus:ring-primary/50 opacity-0 group-hover:opacity-100"
+            >
+                <svg
+                    class="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"></path></svg
+                >
+            </button>
+        </div>
+
+        <!-- 底部按鈕 -->
+        <div
+            class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
+        >
+            <a
+                href="https://share.google/D4RIXbD62LxDcVSwc"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-2 text-primary font-medium hover:text-blue-800 transition-colors"
+            >
+                <svg
+                    class="w-5 h-5"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <path
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                        fill="#4285F4"></path>
+                    <path
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.16v2.84C3.99 20.53 7.7 23 12 23z"
+                        fill="#34A853"></path>
+                    <path
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.16C1.43 8.55 1 10.22 1 12s.43 3.45 1.16 4.93l3.68-2.84z"
+                        fill="#FBBC05"></path>
+                    <path
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.16 7.07l3.68 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                        fill="#EA4335"></path>
+                </svg>
+                查看 Google 上的所有評價
+                <svg
+                    class="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    ></path></svg
+                >
+            </a>
+            <a
+                href="https://g.page/r/Cddgwu6ErPygEAE/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-[#002855] hover:bg-blue-900 text-white px-8 py-3 rounded-full font-medium transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
+            >
+                <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    ><path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                    ></path></svg
+                >
+                撰寫評價
+            </a>
+        </div>
+    </div>
+</section>
+
+<script>
+    // 在 Astro 中控制「閱讀全文」的展開/收合與左右滑動
+    function initReviews() {
+        // 先移除舊的按鈕事件避免重複綁定 (特別是在 ViewTransitions 情境下)
+        document.querySelectorAll(".read-more-btn").forEach((btn) => {
+            const newBtn = btn.cloneNode(true);
+            btn.parentNode.replaceChild(newBtn, btn);
+        });
+
+        // 判定是否顯示「閱讀全文」按鈕
+        const checkOverflow = () => {
+            document.querySelectorAll(".review-content").forEach((content) => {
+                const btn = content.nextElementSibling;
+                if (!btn) return;
+
+                // 檢查是否被 line-clamp 截斷 (實際內容高度 > 可見容器高度)
+                // 加上 2px 緩衝避免小數點計算誤差
+                if (content.scrollHeight > content.clientHeight + 2) {
+                    btn.classList.remove("hidden");
+                } else {
+                    if (content.classList.contains("line-clamp-3")) {
+                        btn.classList.add("hidden");
+                    }
+                }
+            });
+        };
+
+        // 給予瀏覽器極短時間完成渲染，以確保能精準計算 scrollHeight
+        setTimeout(checkOverflow, 50);
+
+        // 重新綁定展開/收合事件
+        document.querySelectorAll(".read-more-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const button = e.currentTarget;
+                const textContainer = button.previousElementSibling;
+
+                if (textContainer.classList.contains("line-clamp-3")) {
+                    textContainer.classList.remove("line-clamp-3");
+                    button.innerText = "收合";
+                } else {
+                    textContainer.classList.add("line-clamp-3");
+                    button.innerText = "閱讀全文";
+                }
+            });
+        });
+
+        // 綁定桌面左右箭頭
+        const carousel = document.getElementById("reviews-carousel");
+        const prevBtn = document.getElementById("prev-review");
+        const nextBtn = document.getElementById("next-review");
+
+        if (carousel && prevBtn && nextBtn) {
+            const scrollAmount = window.innerWidth > 768 ? 360 : 280;
+
+            // 使用複製方式重置按鈕事件
+            const newPrev = prevBtn.cloneNode(true);
+            const newNext = nextBtn.cloneNode(true);
+            prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+            nextBtn.parentNode.replaceChild(newNext, nextBtn);
+
+            newPrev.addEventListener("click", () => {
+                carousel.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+            });
+            newNext.addEventListener("click", () => {
+                carousel.scrollBy({ left: scrollAmount, behavior: "smooth" });
+            });
+        }
+    }
+
+    // 支援一般載入與 Astro ViewTransitions
+    document.addEventListener("DOMContentLoaded", initReviews);
+    document.addEventListener("astro:page-load", initReviews);
+</script>
+
+<style>
+    /* 隱藏滾動條但保留功能 */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .hide-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+</style>

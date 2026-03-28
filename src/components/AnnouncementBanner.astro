@@ -20,7 +20,7 @@
     }
   }
   .animate-astro-marquee {
-    animation: astro-marquee 30s linear infinite;
+    animation: astro-marquee 25s linear infinite;
   }
   .pause-on-hover:hover .animate-astro-marquee {
     animation-play-state: paused;
@@ -66,7 +66,7 @@
       this.API_URL =
         "https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMUijMkpvLbpELmZy2rDj1kCdfra-rdmjlqjMNFHNTqs1dHXRFUDHHWHYJyg6Penc37EewxIevybo9O05ywLvd6AhN4fp4Iz3b3L1a42B4R7OBZXGkGzeHOJsWZJg4SXdTK4CnaJnAwYsQcTHOkhSxwnMtX7hVdjWuatdeIdf8rbfJGP3-tqolCiGUs7scBHit-w_iHhQ0KmoDdUH0zJ6zhAHPWTDeqDHApD3JAPzptFqlB_wDX0jgqXiww7D16N4HA84--2M2JDasHnxZcO96FnPaeYbw&lib=M2RT9uHoxt1wB_xGvFK9YgeOW2yHdl2sE";
       this.CACHE_KEY = "drhsieh_announcement_cache";
-      this.CACHE_MINUTES = 1; //720; // 12 小時
+      this.CACHE_MINUTES = 720; // 12 小時
       this.isOpen = false;
       this.announcements = [];
     }
@@ -120,7 +120,7 @@
         const start = new Date(`${sy}-${sm}-${sd}T00:00:00+08:00`);
         const end = new Date(`${ey}-${em}-${ed}T23:59:59+08:00`);
 
-        const showTime = new Date(start.getTime() - 7 * 86400000);
+        const showTime = new Date(start.getTime() - 10 * 86400000);
         return nowTw >= showTime && nowTw <= end;
       });
     }
