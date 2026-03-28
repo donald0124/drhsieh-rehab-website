@@ -64,9 +64,9 @@
     constructor() {
       super();
       this.API_URL =
-        "https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMUijMkpvLbpELmZy2rDj1kCdfra-rdmjlqjMNFHNTqs1dHXRFUDHHWHYJyg6Penc37EewxIevybo9O05ywLvd6AhN4fp4Iz3b3L1a42B4R7OBZXGkGzeHOJsWZJg4SXdTK4CnaJnAwYsQcTHOkhSxwnMtX7hVdjWuatdeIdf8rbfJGP3-tqolCiGUs7scBHit-w_iHhQ0KmoDdUH0zJ6zhAHPWTDeqDHApD3JAPzptFqlB_wDX0jgqXiww7D16N4HA84--2M2JDasHnxZcO96FnPaeYbw&lib=M2RT9uHoxt1wB_xGvFK9YgeOW2yHdl2sE";
+        "https://script.google.com/macros/s/AKfycbzkfaD-oX6SivGM77-y4cK47eycf1l1FOKqy2kKWTvKZSY9i2RrbYMq3-OMtGhoe6Xx/exec";
       this.CACHE_KEY = "drhsieh_announcement_cache";
-      this.CACHE_MINUTES = 720; // 12 小時
+      this.CACHE_MINUTES = 0.1; //720; // 12 小時
       this.isOpen = false;
       this.announcements = [];
     }
@@ -108,20 +108,29 @@
 
     filterActive(data) {
       const now = new Date();
-      // 確保將當前時間補正到台灣時區 (+8)
-      const nowTwUtc = now.getTime() + now.getTimezoneOffset() * 60000;
-      const nowTw = new Date(nowTwUtc + 3600000 * 8);
+      // 確保將當前時間補正到台灣時區
+      const taiwanTimeStr = now.toLocaleString("en-US", {
+        timeZone: "Asia/Taipei",
+      });
+      const taiwanTime = new Date(taiwanTimeStr);
+
+      // 【新增邏輯】超過 22:00，日期加一天 (視為明天)
+      if (taiwanTime.getHours() >= 22) {
+        taiwanTime.setDate(taiwanTime.getDate() + 1);
+      }
+
+      // 格式化出 YYYY-MM-DD 作為比對基準
+      const yyyy = taiwanTime.getFullYear();
+      const mm = String(taiwanTime.getMonth() + 1).padStart(2, "0");
+      const dd = String(taiwanTime.getDate()).padStart(2, "0");
+      const checkDate = `${yyyy}-${mm}-${dd}`;
 
       this.announcements = data.filter((item) => {
-        if (!item.startDate || !item.endDate) return false;
+        // 確保 API 有回傳新版的 announceDate 和 endDate
+        if (!item.announceDate || !item.endDate) return false;
 
-        const [sy, sm, sd] = item.startDate.split("-");
-        const [ey, em, ed] = item.endDate.split("-");
-        const start = new Date(`${sy}-${sm}-${sd}T00:00:00+08:00`);
-        const end = new Date(`${ey}-${em}-${ed}T23:59:59+08:00`);
-
-        const showTime = new Date(start.getTime() - 10 * 86400000);
-        return nowTw >= showTime && nowTw <= end;
+        // 核心條件：基準日 >= 上架日 且 基準日 <= 結束日
+        return checkDate >= item.announceDate && checkDate <= item.endDate;
       });
     }
 
@@ -161,7 +170,7 @@
       const itemsHtml = this.announcements
         .map((a) => {
           const s = this.getStyles(a.status);
-          return `<span class="flex items-center gap-1.5 font-medium whitespace-nowrap text-sm sm:text-base">${s.icon} ${a.message}</span>`;
+          return `<span class="flex items-center gap-1.5 font-medium whitespace-nowrap text-sm sm:text-base">${s.icon} 【${a.title}】 ${a.message}</span>`;
         })
         .join("");
 
@@ -226,6 +235,7 @@
                <span class="px-2 py-1 text-xs font-semibold rounded ${sx.bg} ${sx.text}">${a.status}</span>
                <span class="text-sm font-semibold text-gray-500">${dateDisplay}</span>
              </div>
+             <h3 class="text-lg font-bold text-gray-800 mb-2">${a.title}</h3>
              <p class="text-gray-800 font-medium whitespace-pre-line leading-relaxed mb-3">${a.message}</p>
              ${hoursHtml}
           </div>
@@ -237,7 +247,7 @@
         <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" id="modal-overlay"></div>
         <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh] slide-up">
           <div class="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/80">
-            <h2 class="text-xl font-bold text-gray-800">最新門診公告</h2>
+            <h2 class="text-xl font-bold text-gray-800">最新門診異動</h2>
             <button id="modal-close" class="text-gray-400 hover:text-gray-600 transition-colors p-2 -mr-2 rounded-full hover:bg-gray-200">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
