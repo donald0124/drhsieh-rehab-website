@@ -66,7 +66,7 @@
       this.API_URL =
         "https://script.googleusercontent.com/macros/echo?user_content_key=AWDtjMUijMkpvLbpELmZy2rDj1kCdfra-rdmjlqjMNFHNTqs1dHXRFUDHHWHYJyg6Penc37EewxIevybo9O05ywLvd6AhN4fp4Iz3b3L1a42B4R7OBZXGkGzeHOJsWZJg4SXdTK4CnaJnAwYsQcTHOkhSxwnMtX7hVdjWuatdeIdf8rbfJGP3-tqolCiGUs7scBHit-w_iHhQ0KmoDdUH0zJ6zhAHPWTDeqDHApD3JAPzptFqlB_wDX0jgqXiww7D16N4HA84--2M2JDasHnxZcO96FnPaeYbw&lib=M2RT9uHoxt1wB_xGvFK9YgeOW2yHdl2sE";
       this.CACHE_KEY = "drhsieh_announcement_cache";
-      this.CACHE_MINUTES = 0.2; //720; // 12 小時
+      this.CACHE_MINUTES = 1; //720; // 12 小時
       this.isOpen = false;
       this.announcements = [];
     }
@@ -161,7 +161,7 @@
       const itemsHtml = this.announcements
         .map((a) => {
           const s = this.getStyles(a.status);
-          return `<span class="flex items-center gap-1.5 font-medium whitespace-nowrap text-xs sm:text-sm">${s.icon} ${a.message}</span>`;
+          return `<span class="flex items-center gap-1.5 font-medium whitespace-nowrap text-sm sm:text-base">${s.icon} ${a.message}</span>`;
         })
         .join("");
 
