@@ -208,7 +208,8 @@
 
       const modal = document.createElement("div");
       modal.id = "announcement-modal";
-      modal.className = `fixed inset-0 z-50 flex items-center justify-center p-4 fade-in`;
+      modal.className = "fade-in";
+      modal.style.cssText = "position:fixed;top:0;left:0;right:0;bottom:0;z-index:1200;display:flex;align-items:center;justify-content:center;padding:1rem;";
 
       let listHtml = this.announcements
         .map((a) => {
