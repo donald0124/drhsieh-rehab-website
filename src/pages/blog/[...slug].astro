@@ -89,6 +89,41 @@ const breadcrumbSchema = JSON.stringify({
         },
     ],
 });
+
+// 👇 新增這段：生成 MedicalWebPage & Article 的 JSON-LD 結構化標記，建立醫療權威性 (E-E-A-T)
+const medicalArticleSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": ["Article", "MedicalWebPage"],
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/blog/${post.slug}/`
+    },
+    "headline": post.data.title,
+    "description": post.data.description,
+    "image": post.data.heroImage 
+        ? [post.data.heroImage.startsWith('http') ? post.data.heroImage : `${siteUrl}${post.data.heroImage}`] 
+        : [],
+    "author": {
+        "@type": "Person",
+        "name": post.data.author || "謝明福 院長",
+        "jobTitle": "醫師",
+        "url": `${siteUrl}/` // 診所首頁或醫師介紹頁
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "logo": {
+            "@type": "ImageObject",
+            "url": `${siteUrl}/favicon.svg` // 替換為實際使用的 logo 網址
+        }
+    },
+    "datePublished": post.data.pubDate ? new Date(post.data.pubDate).toISOString() : undefined,
+    "dateModified": lastModified ? new Date(lastModified).toISOString() : (post.data.pubDate ? new Date(post.data.pubDate).toISOString() : undefined),
+    "about": {
+        "@type": "MedicalEntity",
+        "name": "復健醫學"
+    }
+});
 ---
 
 <BaseLayout
@@ -102,6 +137,7 @@ const breadcrumbSchema = JSON.stringify({
     </div>
 
     <script type="application/ld+json" set:html={breadcrumbSchema} />
+    <script type="application/ld+json" set:html={medicalArticleSchema} />
 
     <header class="pt-12 pb-8 md:pt-20 md:pb-12 text-center px-4">
         <div class="max-w-4xl mx-auto">
