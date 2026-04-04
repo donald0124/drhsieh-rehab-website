@@ -65,6 +65,8 @@ const displayDate =
                         src={coverImage}
                         alt={post.data.title}
                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                        decoding="async"
                     />
                 ) : (
                     <div class="w-full h-full p-6 flex flex-col items-center justify-center bg-gradient-to-br from-primary-light to-blue-100 text-primary-dark group-hover:scale-105 transition-transform duration-500">

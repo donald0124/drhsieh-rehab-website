@@ -1,3 +1,10 @@
+---
+import { Image } from 'astro:assets';
+import clinicOutsideImg from '../assets/images/clinic-outside.jpg';
+import clinicCounterImg from '../assets/images/clinic-counter.jpg';
+import clinicRehabImg from '../assets/images/clinic-rehab.jpg';
+---
+
 <section id="about-us" class="relative overflow-hidden pt-16 pb-0 bg-gray-50">
     <!-- 背景裝飾 (Subtle Pattern) -->
     <div
@@ -62,10 +69,12 @@
                 <div
                     class="col-span-2 relative group overflow-hidden rounded-2xl shadow-lg aspect-[16/9] lg:aspect-auto lg:h-[400px]"
                 >
-                    <img
-                        src="/images/clinic-outside.jpg"
+                    <Image
+                        src={clinicOutsideImg}
                         alt="謝明福復健科診所 - 診所外觀"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6"
@@ -79,10 +88,12 @@
                 <div
                     class="relative group overflow-hidden rounded-2xl shadow-lg aspect-[4/3]"
                 >
-                    <img
-                        src="/images/clinic-counter.jpg"
+                    <Image
+                        src={clinicCounterImg}
                         alt="謝明福復健科診所 - 掛號櫃台"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
@@ -96,10 +107,12 @@
                 <div
                     class="relative group overflow-hidden rounded-2xl shadow-lg aspect-[4/3]"
                 >
-                    <img
-                        src="/images/clinic-rehab.jpg"
+                    <Image
+                        src={clinicRehabImg}
                         alt="謝明福復健科診所 - 復健治療區"
                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
                     />
                     <div
                         class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"

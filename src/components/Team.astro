@@ -1,3 +1,9 @@
+---
+import { Image } from 'astro:assets';
+import drHsiehmfImg from '../assets/images/dr-hsiehmf.jpg';
+import interviewHeroImg from '../assets/images/blog/interview-hero.jpg';
+---
+
 <section id="team" class="py-20 bg-white">
     <div class="max-w-6xl mx-auto px-4">
         <h2 class="text-4xl font-bold text-center mb-16 text-heading">
@@ -16,10 +22,12 @@
 
             <!-- 左側：照片區 -->
             <div class="md:w-2/5 relative min-h-[400px] md:min-h-full">
-                <img
-                    src="/images/dr-hsiehmf.jpg"
+                <Image
+                    src={drHsiehmfImg}
                     alt="謝明福復健科診所院長 - 謝明福醫師"
                     class="absolute inset-0 w-full h-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
                 />
                 <div
                     class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent md:hidden"
@@ -173,10 +181,12 @@
                     class="group bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col h-full"
                 >
                     <div class="h-48 overflow-hidden relative">
-                        <img
-                            src="/images/blog/interview-hero.jpg"
+                        <Image
+                            src={interviewHeroImg}
                             alt="良醫健康網專訪"
                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                            loading="lazy"
+                            decoding="async"
                         />
                         <div
                             class="absolute top-4 left-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm"

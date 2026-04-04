@@ -286,6 +286,9 @@ const medicalArticleSchema = JSON.stringify({
                     <img
                         src={post.data.heroImage}
                         alt={post.data.title}
+                        fetchpriority="high"
+                        loading="eager"
+                        decoding="sync"
                         class="w-full h-auto aspect-video object-cover rounded-2xl shadow-lg border border-gray-100"
                     />
                 </div>
