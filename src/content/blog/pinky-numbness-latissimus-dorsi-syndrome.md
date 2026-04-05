@@ -2,7 +2,7 @@
 title: '肩膀手臂痠痛伴隨手指麻木？復健科醫師解析，這不一定是頸椎問題，可能是深層的「闊背肌筋膜炎」在作祟｜謝明福復健科'
 description: '肩膀腋下痠痛延伸至小指，常被誤認為頸椎骨刺？復健科醫師指出，若檢查無神經壓迫，有可能是深層「闊背肌筋膜炎」。本文解析症狀差異、高風險族群，並介紹針極肌肉內電刺激與直線偏光治療等精準治療策略。'
 pubDate: 2015-03-21
-updatedDate: 2025-11-28
+updatedDate: 2026-04-05
 heroImage: '/images/blog/pinky-numbness-latissimus-dorsi-syndrome-hero.jpg'
 author: '謝明福 院長'
 featured: false
@@ -92,7 +92,10 @@ NEIMS 基於**西醫解剖學**，使用細長的**鐵氟龍絕緣針極**，能
 
 若您的肩臂痠麻、手指麻木症狀持續未改善，且影響日常生活，建議尋求專業醫師的精準診斷，找出真正的疼痛根源。
 
-> 延伸閱讀：
->
-> * [針極肌肉內電刺激 (NEIMS)：謝明福院長20年經驗，精準處理深層慢性疼痛根源](/blog/neims/)
-> * [直線偏極光治療 (SuperLizer) ：深入了解對於組織修復、自律神經的幫助及作用機制](/blog/superlizer/)
+### 延伸閱讀與就醫資訊
+
+- [針極肌肉內電刺激 (NEIMS)：謝明福院長20年經驗，精準處理深層慢性疼痛根源](/blog/neims/)
+- [直線偏極光治療 (SuperLizer) ：深入了解對於組織修復、自律神經的幫助及作用機制](/blog/superlizer/)
+- [睡覺手麻常見三大原因與初步判斷](/blog/hand-numbness-when-sleeping/)
+- [肩頸硬塊與激痛點：肌筋膜疼痛症候群整合治療](/blog/myofascial-pain-syndrome/)
+- [肩臂痠麻持續影響睡眠與工作，建議先查看門診時間與就診資訊](/#patient-info)

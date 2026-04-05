@@ -2,7 +2,7 @@
 title: '膝蓋內側痛就是退化？小心是「縫匠肌」在抗議：長者與跑者的隱形殺手｜謝明福復健科'
 description: '膝蓋痛不一定都是關節退化。復健科醫師解析人體最長的肌肉—縫匠肌（Sartorius muscle）如何造成膝內側疼痛，特別是在術後長者與馬拉松跑者身上常見的肌筋膜炎問題。'
 pubDate: 2016-08-03
-updatedDate: 2025-11-23
+updatedDate: 2026-04-05
 heroImage: '/images/blog/elderly-knee-pain-sartorius-myofascial-hero.jpg' 
 author: '謝明福 院長'
 featured: false
@@ -53,5 +53,10 @@ tags: ['縫匠肌肌筋膜炎', '退化性關節炎', '膝蓋內側痛', '跑者
 
 > **【醫師叮嚀】**
 > 膝蓋內側疼痛原因眾多，除了肌筋膜炎，也可能涉及鵝掌肌腱滑囊炎或半月板損傷。若您有長期膝痛困擾，建議至醫療院所進行完整評估，切勿自行診斷。
-> 
-> **➡️[了解更多：針極肌肉內電刺激治療](/blog/neims/)**
+
+### 延伸閱讀與就醫資訊
+
+- [針極肌肉內電刺激治療原理與適用情境](/blog/neims/)
+- [長輩膝痛不一定退化：先看內側皺褶症候群重點](/blog/elderly-knee-pain-plica-syndrome/)
+- [膝內側痛合併軟腳：可參考鵝掌足滑囊炎鑑別](/blog/pes-anserine-bursitis/)
+- [膝內側痛持續影響活動，建議先查看門診時間與就診資訊](/#patient-info)
