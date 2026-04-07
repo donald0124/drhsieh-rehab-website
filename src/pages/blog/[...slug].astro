@@ -105,9 +105,10 @@ const medicalArticleSchema = JSON.stringify({
         : [],
     "author": {
         "@type": "Person",
-        "name": post.data.author || "謝明福 院長",
-        "jobTitle": "醫師",
-        "url": `${siteUrl}/` // 診所首頁或醫師介紹頁
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+        "url": `${siteUrl}/`
     },
     "publisher": {
         "@type": "MedicalOrganization",

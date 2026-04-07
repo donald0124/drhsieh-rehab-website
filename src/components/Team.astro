@@ -161,14 +161,20 @@ import interviewHeroImg from '../assets/images/blog/interview-hero.jpg';
                 <div
                     class="bg-white p-4 rounded-2xl shadow-lg border border-gray-100"
                 >
-                    <div class="aspect-video rounded-xl overflow-hidden mb-4">
-                        <iframe
-                            class="w-full h-full"
-                            src="https://www.youtube.com/embed/RSbH0PnGA6o?si=tF2Odabosqhno1rv"
-                            title="謝明福院長年代新聞專訪"
-                            frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen></iframe>
+                    <!-- YouTube Facade: 靜態縮圖，點擊後才載入 iframe，避免爬蟲解析 YouTube 錯誤訊息 -->
+                    <div class="aspect-video rounded-xl overflow-hidden mb-4 yt-facade" data-videoid="RSbH0PnGA6o">
+                        <img
+                            src="https://i.ytimg.com/vi/RSbH0PnGA6o/hqdefault.jpg"
+                            alt="謝明福院長年代新聞專訪影片縮圖"
+                            class="w-full h-full object-cover"
+                            loading="lazy"
+                            decoding="async"
+                            width="480"
+                            height="360"
+                        />
+                        <button class="yt-play-btn" aria-label="播放謝明福院長年代新聞專訪影片">
+                            <svg viewBox="0 0 68 48" width="68" height="48" aria-hidden="true"><path d="M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z" fill="#f00"/><path d="M45 24 27 14v20" fill="#fff"/></svg>
+                        </button>
                     </div>
                     <h4 class="font-bold text-lg text-gray-800 text-center">
                         年代新聞台《聚焦2.0》專訪
@@ -228,4 +234,50 @@ import interviewHeroImg from '../assets/images/blog/interview-hero.jpg';
     .checkbox-list li {
         padding-left: 1em;
     }
+
+    /* YouTube Facade */
+    .yt-facade {
+        position: relative;
+        cursor: pointer;
+        background: #000;
+    }
+    .yt-facade img {
+        display: block;
+        transition: opacity 0.2s;
+    }
+    .yt-facade:hover img {
+        opacity: 0.8;
+    }
+    .yt-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+        transition: transform 0.2s;
+    }
+    .yt-facade:hover .yt-play-btn {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
 </style>
+
+<script>
+    document.querySelectorAll<HTMLElement>('.yt-facade').forEach((facade) => {
+        facade.addEventListener('click', () => {
+            const videoId = facade.dataset.videoid;
+            const iframe = document.createElement('iframe');
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+            iframe.title = '謝明福院長年代新聞專訪';
+            iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+            iframe.allowFullscreen = true;
+            iframe.className = 'w-full h-full';
+            iframe.style.border = '0';
+            facade.innerHTML = '';
+            facade.appendChild(iframe);
+        }, { once: true });
+    });
+</script>

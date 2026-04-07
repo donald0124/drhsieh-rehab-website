@@ -1,0 +1,1651 @@
+{
+  "metadata": {
+    "exportedAt": "2026-04-07T17:31:36.773Z",
+    "originalTestDate": "2026-04-07T17:23:31.235Z",
+    "url": "https://drhsieh-rehab.com/",
+    "tool": "iGods GEO Visibility",
+    "testId": "2bfa5c"
+  },
+  "sections": {
+    "overview": {
+      "summary": {
+        "overallScore": 84,
+        "overallStatus": "GOOD",
+        "categoryScores": {
+          "javascript": {
+            "score": 100,
+            "status": "EXCELLENT"
+          },
+          "semantic": {
+            "score": 93,
+            "status": "EXCELLENT"
+          },
+          "headings": {
+            "score": 100,
+            "status": "EXCELLENT"
+          },
+          "schema": {
+            "score": 85,
+            "status": "GOOD"
+          },
+          "social": {
+            "score": 49,
+            "status": "POOR"
+          },
+          "accessibility": {
+            "score": 64,
+            "status": "NEEDS WORK"
+          }
+        }
+      },
+      "items": [
+        {
+          "name": "GEO Compatibility Score",
+          "description": "Overall compatibility with GEO standards",
+          "value": "84/100",
+          "status": "GOOD"
+        },
+        {
+          "name": "JavaScript Independence",
+          "description": "JavaScript dependency analysis and scoring",
+          "value": "100/100",
+          "status": "EXCELLENT"
+        },
+        {
+          "name": "Semantic",
+          "description": "Semantic HTML structure and elements",
+          "value": "93/100",
+          "status": "EXCELLENT"
+        },
+        {
+          "name": "Headings",
+          "description": "Heading hierarchy and structure",
+          "value": "100/100",
+          "status": "EXCELLENT"
+        },
+        {
+          "name": "Schema",
+          "description": "Schema.org structured data implementation",
+          "value": "85/100",
+          "status": "GOOD"
+        },
+        {
+          "name": "Social",
+          "description": "Social media tags and metadata",
+          "value": "49/100",
+          "status": "POOR"
+        },
+        {
+          "name": "Accessibility",
+          "description": "Web accessibility compliance",
+          "value": "64/100",
+          "status": "NEEDS WORK"
+        }
+      ]
+    },
+    "js_dependency_results": {
+      "summary": {
+        "overallJsIndependence": 100,
+        "overallStatus": "EXCELLENT",
+        "schemaIndependence": 100,
+        "semanticIndependence": 100,
+        "socialIndependence": 100,
+        "headingsIndependence": 100,
+        "accessibilityIndependence": 100
+      },
+      "items": [
+        {
+          "category": "Schema",
+          "score": 100,
+          "independenceLevel": "Fully Independent",
+          "status": "EXCELLENT",
+          "description": "Schema.org structured data independence from JavaScript execution"
+        },
+        {
+          "category": "Semantic",
+          "score": 100,
+          "independenceLevel": "Fully Independent",
+          "status": "EXCELLENT",
+          "description": "HTML5 semantic structure independence from JavaScript execution"
+        },
+        {
+          "category": "Social",
+          "score": 100,
+          "independenceLevel": "Fully Independent",
+          "status": "EXCELLENT",
+          "description": "Social media meta tags independence from JavaScript execution"
+        },
+        {
+          "category": "Headings",
+          "score": 100,
+          "independenceLevel": "Fully Independent",
+          "status": "EXCELLENT",
+          "description": "Heading content independence from JavaScript execution"
+        },
+        {
+          "category": "Accessibility",
+          "score": 100,
+          "independenceLevel": "Fully Independent",
+          "status": "EXCELLENT",
+          "description": "Accessibility features independence from JavaScript execution"
+        }
+      ]
+    },
+    "semantic_analysis": {
+      "summary": {
+        "score": 93,
+        "elementCount": 98,
+        "missingEssentialCount": 0,
+        "missingBonusCount": 4
+      },
+      "items": [
+        {
+          "type": "Missing Bonus Element",
+          "message": "Missing optional semantic element for better SEO: aside",
+          "element": "aside",
+          "lineNumber": 0,
+          "severity": "Low"
+        }
+      ]
+    },
+    "headings_analysis": {
+      "summary": {
+        "totalHeadings": 83,
+        "validHeadings": 83,
+        "invalidHeadings": 0,
+        "score": 100
+      },
+      "items": [
+        {
+          "level": 1,
+          "text": "謝明福復健科診所 三峽復健與疼痛治療",
+          "issues": "None",
+          "lineNumber": 47,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "關於我們 About Us",
+          "issues": "None",
+          "lineNumber": 54,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "醫師介紹",
+          "issues": "None",
+          "lineNumber": 65,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "謝明福 院長",
+          "issues": "None",
+          "lineNumber": 67,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "謝明福 院長",
+          "issues": "None",
+          "lineNumber": 67,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "學歷",
+          "issues": "None",
+          "lineNumber": 69,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "核心經歷",
+          "issues": "None",
+          "lineNumber": 71,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "完整資歷程",
+          "issues": "None",
+          "lineNumber": 77,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "現任",
+          "issues": "None",
+          "lineNumber": 79,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "曾任",
+          "issues": "None",
+          "lineNumber": 79,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "專業成就與媒體報導",
+          "issues": "None",
+          "lineNumber": 81,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "媒體專訪",
+          "issues": "None",
+          "lineNumber": 83,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "年代新聞台《聚焦2.0》專訪",
+          "issues": "None",
+          "lineNumber": 85,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "《良醫健康網》專訪：第一名復健科醫師的堅持",
+          "issues": "None",
+          "lineNumber": 89,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "主治項目",
+          "issues": "None",
+          "lineNumber": 95,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "頭頸",
+          "issues": "None",
+          "lineNumber": 101,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "常見困擾",
+          "issues": "None",
+          "lineNumber": 106,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "延伸閱讀",
+          "issues": "None",
+          "lineNumber": 126,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "落枕怎麼辦？復健科醫師說明成因、居家處理與就醫時機 →",
+          "issues": "None",
+          "lineNumber": 128,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "嘴巴張不開、咀嚼有「喀喀」聲？認識「顳顎關節障礙」的成因與治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 132,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "肩膀手臂痠痛伴隨手指麻木？復健科醫師解析，這不一定是頸椎問題，可能是深層的「闊背肌筋膜炎」在作祟｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 136,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "脖子硬、背部有硬塊？解析「肌筋膜疼痛症候群」的整合治療與預防｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 140,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "解救久坐上班族的肩頸惡夢：肌筋膜疼痛症候群與針極肌肉內電刺激治療解析｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 144,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "上肢",
+          "issues": "None",
+          "lineNumber": 148,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "常見困擾",
+          "issues": "None",
+          "lineNumber": 164,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "延伸閱讀",
+          "issues": "None",
+          "lineNumber": 184,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "睡覺手麻是因為頸椎長骨刺嗎？復健科醫師解析三大原因｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 186,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "網球肘(肱骨外上髁炎)治療新觀點：為何「增生療法」搭配「針極肌肉內電刺激」能突破治療瓶頸？｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 190,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "肩膀卡住、手舉不高？認識「五十肩」的病程分期與復健科整合治療 →",
+          "issues": "None",
+          "lineNumber": 194,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "抱小孩、滑手機手腕疼痛？認識「媽媽手」的診斷與專業治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 198,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "下肢",
+          "issues": "None",
+          "lineNumber": 202,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "常見困擾",
+          "issues": "None",
+          "lineNumber": 222,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "延伸閱讀",
+          "issues": "None",
+          "lineNumber": 244,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "走路膝蓋卡卡、上下樓梯痛？復健科醫師解析退化性關節炎前兆與保養｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 246,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "足底筋膜炎反覆發作怎麼辦？復健科解析腳底痛成因與震波治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 250,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "膝蓋內側痛、走路常軟腳？認識「鵝掌足滑囊炎」(鵝掌肌腱炎) 的症狀與精準治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 254,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "長輩膝蓋痛不一定是退化！認識「內側皺褶症候群」與特殊族群治療對策｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 258,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "翹二郎腿、久蹲小心變「垂足」！腓總神經損傷與針極肌肉內電刺激(NEIMS)治療解析｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 262,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "脊椎 / 骨骼",
+          "issues": "None",
+          "lineNumber": 266,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "常見困擾",
+          "issues": "None",
+          "lineNumber": 274,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "延伸閱讀",
+          "issues": "None",
+          "lineNumber": 292,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "睡覺手麻是因為頸椎長骨刺嗎？復健科醫師解析三大原因｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 294,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "嚴重坐骨神經痛只能開刀？談高齡族群的保守治療新選擇：針極肌肉內電刺激｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 298,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "趴睡20年，下場是椎間盤突出！第一名復健科醫師告訴你：睡覺時，該注意哪些事｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 302,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "對抗「骨質疏鬆」，35歲是關鍵！第一名復健科醫師教你2招增加骨密度｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 306,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "為什麼坐骨神經痛腰椎牽引沒效? 六大常見「偽裝」成因與鑑別診斷｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 310,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "全身性 / 其他",
+          "issues": "None",
+          "lineNumber": 314,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "常見困擾",
+          "issues": "None",
+          "lineNumber": 330,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "延伸閱讀",
+          "issues": "None",
+          "lineNumber": 348,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "脊椎壓迫性骨折穩定了卻仍疼痛？談高齡族群的「次發性肌筋膜疼痛」與針極肌肉內電刺激治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 350,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "難以啟齒的鼠蹊部疼痛？談大腿內收肌拉傷與慢性肌筋膜炎治療｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 354,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "嚴重腳踝扭傷久腫不消？解析多重韌帶損傷與針極肌肉內電刺激(NEIMS)治療策略｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 358,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "針極肌肉內電刺激 (NEIMS)：謝明福院長20年經驗，精準處理深層慢性疼痛根源｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 362,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 5,
+          "text": "筋骨比人軟Q卻老是痠痛扭傷？認識「關節過動症」的穩定治療與訓練｜謝明福復健科 →",
+          "issues": "None",
+          "lineNumber": 366,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "我們的治療原則：精準 與 整合",
+          "issues": "None",
+          "lineNumber": 370,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "專業診斷",
+          "issues": "None",
+          "lineNumber": 373,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "整合性治療",
+          "issues": "None",
+          "lineNumber": 380,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "特別專長",
+          "issues": "None",
+          "lineNumber": 384,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "針極肌肉內電刺激",
+          "issues": "None",
+          "lineNumber": 388,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "直線偏極光治療",
+          "issues": "None",
+          "lineNumber": 393,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "關節玻尿酸注射",
+          "issues": "None",
+          "lineNumber": 398,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "葡萄糖水增生注射",
+          "issues": "None",
+          "lineNumber": 402,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "熱門衛教與復健新知",
+          "issues": "None",
+          "lineNumber": 406,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "解救久坐上班族的肩頸惡夢：肌筋膜疼痛症候群與針極肌肉內電刺激治療解析｜謝明福復健科",
+          "issues": "None",
+          "lineNumber": 412,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "膝蓋內側痛就是退化？小心是「縫匠肌」在抗議：長者與跑者的隱形殺手｜謝明福復健科",
+          "issues": "None",
+          "lineNumber": 414,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "睡覺手麻是因為頸椎長骨刺嗎？復健科醫師解析三大原因｜謝明福復健科",
+          "issues": "None",
+          "lineNumber": 416,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 2,
+          "text": "就診資訊",
+          "issues": "None",
+          "lineNumber": 418,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "本診所一律採現場掛號，無需預約",
+          "issues": "None",
+          "lineNumber": 420,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "門診時段",
+          "issues": "None",
+          "lineNumber": 424,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "復健治療時間",
+          "issues": "None",
+          "lineNumber": 435,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "週一至週五",
+          "issues": "None",
+          "lineNumber": 439,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "週六",
+          "issues": "None",
+          "lineNumber": 447,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "交通與聯絡",
+          "issues": "None",
+          "lineNumber": 453,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "地址",
+          "issues": "None",
+          "lineNumber": 455,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "交通方式",
+          "issues": "None",
+          "lineNumber": 459,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "常見 Q&A",
+          "issues": "None",
+          "lineNumber": 466,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "Q: 初診可以預約掛號嗎?",
+          "issues": "None",
+          "lineNumber": 466,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "Q: 看診時忘了帶健保卡怎麼辦？",
+          "issues": "None",
+          "lineNumber": 466,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 4,
+          "text": "Q: 看一次門診可以做幾次復健？有期限嗎？",
+          "issues": "None",
+          "lineNumber": 466,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "謝明福復健科診所",
+          "issues": "None",
+          "lineNumber": 466,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "就診資訊",
+          "issues": "None",
+          "lineNumber": 470,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "主治項目",
+          "issues": "None",
+          "lineNumber": 480,
+          "hierarchyStatus": "Valid"
+        },
+        {
+          "level": 3,
+          "text": "特色進階治療",
+          "issues": "None",
+          "lineNumber": 482,
+          "hierarchyStatus": "Valid"
+        }
+      ]
+    },
+    "schema_org_analysis": {
+      "summary": {
+        "totalInstances": 11,
+        "validInstances": 11,
+        "invalidInstances": 0,
+        "score": 85
+      },
+      "items": [
+        {
+          "schemaType": "WebSite",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 9
+        },
+        {
+          "schemaType": "MedicalClinic",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 9
+        },
+        {
+          "schemaType": "PostalAddress",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 18
+        },
+        {
+          "schemaType": "GeoCoordinates",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 26
+        },
+        {
+          "schemaType": "FAQPage",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Question",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Answer",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Question",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Answer",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Question",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        },
+        {
+          "schemaType": "Answer",
+          "property": "Valid Schema",
+          "issue": "No issues found",
+          "element": "Schema element",
+          "lineNumber": 466
+        }
+      ]
+    },
+    "schema_analysis": {
+      "summary": {
+        "score": 49,
+        "totalIssues": 15
+      },
+      "items": [
+        {
+          "tagType": "missing_og_locale",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing OpenGraph locale tag for enhanced social sharing",
+          "element": "<meta property=\"og:locale\">"
+        },
+        {
+          "tagType": "missing_og_imageAlt",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing OpenGraph image:alt tag for enhanced social sharing",
+          "element": "<meta property=\"og:image:alt\">"
+        },
+        {
+          "tagType": "missing_twitter_card",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Twitter Card card tag for enhanced Twitter sharing",
+          "element": "<meta name=\"twitter:card\">"
+        },
+        {
+          "tagType": "missing_twitter_title",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Twitter Card title tag for enhanced Twitter sharing",
+          "element": "<meta name=\"twitter:title\">"
+        },
+        {
+          "tagType": "missing_twitter_description",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Twitter Card description tag for enhanced Twitter sharing",
+          "element": "<meta name=\"twitter:description\">"
+        },
+        {
+          "tagType": "missing_twitter_creator",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Twitter Card creator tag for enhanced Twitter sharing",
+          "element": "<meta name=\"twitter:creator\">"
+        },
+        {
+          "tagType": "missing_twitter_player",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Twitter Card player tag for enhanced Twitter sharing",
+          "element": "<meta name=\"twitter:player\">"
+        },
+        {
+          "tagType": "missing_article_author",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing LinkedIn Article author tag for enhanced professional sharing",
+          "element": "<meta property=\"article:author\">"
+        },
+        {
+          "tagType": "missing_article_publishedTime",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing LinkedIn Article published_time tag for enhanced professional sharing",
+          "element": "<meta property=\"article:published_time\">"
+        },
+        {
+          "tagType": "missing_article_section",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing LinkedIn Article section tag for enhanced professional sharing",
+          "element": "<meta property=\"article:section\">"
+        },
+        {
+          "tagType": "missing_article_tag",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing LinkedIn Article tag tag for enhanced professional sharing",
+          "element": "<meta property=\"article:tag\">"
+        },
+        {
+          "tagType": "missing_article_modifiedTime",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing LinkedIn Article modified_time tag for enhanced professional sharing",
+          "element": "<meta property=\"article:modified_time\">"
+        },
+        {
+          "tagType": "missing_pin_description",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Pinterest description tag for enhanced Pinterest sharing",
+          "element": "<meta name=\"pin:description\">"
+        },
+        {
+          "tagType": "missing_pin_media",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Pinterest media tag for enhanced Pinterest sharing",
+          "element": "<meta name=\"pin:media\">"
+        },
+        {
+          "tagType": "missing_fb_appId",
+          "property": "Property",
+          "value": "Value",
+          "issue": "Missing Facebook app_id tag for enhanced Facebook sharing",
+          "element": "<meta property=\"fb:app_id\">"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:title",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:description",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:image",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:url",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:type",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Open Graph",
+          "property": "og:site_name",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:card",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:site",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:creator",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:title",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:description",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        },
+        {
+          "tagType": "Twitter Cards",
+          "property": "twitter:image",
+          "value": "Missing",
+          "issue": "Missing recommended social tag",
+          "element": "Meta element"
+        }
+      ]
+    },
+    "accessibility_analysis": {
+      "summary": {
+        "totalIssues": 87,
+        "errorCount": 30,
+        "warningCount": 1,
+        "score": 64,
+        "categoryScores": {
+          "interactiveElements": 100,
+          "contentAccessibility": 65,
+          "userExperienceSignals": 0
+        }
+      },
+      "items": [
+        {
+          "type": "warning",
+          "description": "No skip links found for keyboard navigation",
+          "impact": "Medium",
+          "element": "document",
+          "lineNumber": 1
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/top-rehab-doctor-interview-sanxia-clinic/\" class=\"group bg-white rounded-2xl shadow-lg border border...\">",
+          "lineNumber": 87
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/stiff-neck/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 128
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/tmjd/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 132
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/pinky-numbness-latissimus-dorsi-syndrome/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 136
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/myofascial-pain-syndrome/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 140
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/chronic-myofascial-pain-neims/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 144
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/hand-numbness-when-sleeping/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 186
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/tennis-elbow-treatment-experience/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 190
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/frozen-shoulder/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 194
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/mommy-thumb-de-quervains-syndrome/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 198
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/knee-pain-osteoarthritis/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 246
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/plantar-fasciitis-heel-pain/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 250
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/pes-anserine-bursitis/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 254
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/elderly-knee-pain-plica-syndrome/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 258
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/peroneal-nerve-injury-foot-drop-neims/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 262
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/hand-numbness-when-sleeping/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 294
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims-sciatica-elderly/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 298
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/sleep-posture-disc-herniation-spine-care/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 302
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/osteoporosis-prevention-bone-density/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 306
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/sciatica-piriformis-myofascial-pain/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 310
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims-elderly-compression-fracture/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 350
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/groin-pain-myofasciitis-neims/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 354
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims-ankle-sprain/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 358
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 362
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/hypermobility-syndrome/\" class=\"group block p-3 rounded-lg hover:bg-gray-50 border...\">",
+          "lineNumber": 366
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/chronic-myofascial-pain-neims/\" class=\"block\">",
+          "lineNumber": 412
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/elderly-knee-pain-sartorius-myofascial/\" class=\"block\">",
+          "lineNumber": 414
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"/blog/hand-numbness-when-sleeping/\" class=\"block\">",
+          "lineNumber": 416
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"https://line.me/R/ti/p/@gsj9393s\" class=\"hover:-translate-y-1 transition-transform opacity-...\">",
+          "lineNumber": 470
+        },
+        {
+          "type": "error",
+          "description": "Link missing accessible text",
+          "impact": "High",
+          "element": "<a href=\"https://www.facebook.com/Top.rehabilitation.center\" class=\"hover:-translate-y-1 transition-transform opacity-...\">",
+          "lineNumber": 470
+        },
+        {
+          "type": "warning",
+          "description": "HTML element has lang attribute",
+          "impact": "Medium",
+          "element": "<html>",
+          "lineNumber": 1
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/\" class=\"logo\">",
+          "lineNumber": 39
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/drhsieh-rehab-logo.svg\" class=\"h-10 w-auto\">",
+          "lineNumber": 39
+        },
+        {
+          "type": "error",
+          "description": "Button has clear, descriptive text",
+          "impact": "High",
+          "element": "<button id=\"menu-toggle\" class=\"hamburger md:hidden\">",
+          "lineNumber": 39
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/\" class=\"drawer-logo\">",
+          "lineNumber": 44
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/logo-long.svg\">",
+          "lineNumber": 44
+        },
+        {
+          "type": "error",
+          "description": "Button has clear, descriptive text",
+          "impact": "High",
+          "element": "<button id=\"drawer-close\" class=\"drawer-close-btn\">",
+          "lineNumber": 44
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#patient-info\" class=\"nav-cta-button\"> | text=\"就診資訊\"",
+          "lineNumber": 44
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#about-us\"> | text=\"關於我們\"",
+          "lineNumber": 46
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#team\"> | text=\"醫師介紹\"",
+          "lineNumber": 46
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\" class=\"dropdown-title flex items-center gap-1\"> | text=\"主治項目 ▾\"",
+          "lineNumber": 46
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\"> | text=\"主治項目總覽\"",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\"> | text=\"針極肌肉內電刺激 (NEIMS)\"",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/superlizer/\"> | text=\"直線偏極光治療 (Superlizer)\"",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/\"> | text=\"專欄文章\"",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://line.me/R/ti/p/@gsj9393s\" class=\"social-icon\">",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/LINE_icon.svg\">",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://www.facebook.com/Top.rehabilitation.center\" class=\"social-icon\">",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/Facebook_icon.svg\">",
+          "lineNumber": 47
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"#patient-info\" class=\"cta-button primary\"> | text=\"查看就診資訊\"",
+          "lineNumber": 52
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"#services\" class=\"cta-button secondary\"> | text=\"查看常見困擾\"",
+          "lineNumber": 54
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/_astro/clinic-outside.QfrnluqP_ZGOC3T.webp\" class=\"absolute inset-0 w-full h-full object-cover transi...\">",
+          "lineNumber": 65
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/_astro/clinic-counter.DJ1jRfUF_Z1OnNEF.webp\" class=\"absolute inset-0 w-full h-full object-cover transi...\">",
+          "lineNumber": 65
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/_astro/clinic-rehab.BthO1hlY_Z17wuVk.webp\" class=\"absolute inset-0 w-full h-full object-cover transi...\">",
+          "lineNumber": 65
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/_astro/dr-hsiehmf.BBsGGcjr_1LlNRP.webp\" class=\"absolute inset-0 w-full h-full object-cover object...\">",
+          "lineNumber": 67
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\" class=\"underline decoration-2 underline-offset-2 hover:te...\"> | text=\"針極肌肉內電刺激治療 (NEIMS)\"",
+          "lineNumber": 76
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/_astro/interview-hero.BAuxYu7r_Z20qfL0.webp\" class=\"w-full h-full object-cover object-top group-hover:...\">",
+          "lineNumber": 87
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/superlizer/\" class=\"text-primary underline font-medium\"> | text=\"直線偏極光\"",
+          "lineNumber": 383
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\" class=\"text-primary underline font-medium\"> | text=\"針極肌肉內電刺激\"",
+          "lineNumber": 383
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\" class=\"inline-flex items-center text-primary font-bold te...\"> | text=\"了解更多 →\"",
+          "lineNumber": 392
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/superlizer/\" class=\"inline-flex items-center text-orange-500 font-bold...\"> | text=\"了解更多 →\"",
+          "lineNumber": 397
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/chronic-myofascial-pain-neims/\" class=\"aspect-video w-full overflow-hidden bg-gray-50 rel...\"> | text=\"}\"",
+          "lineNumber": 410
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/images/blog/chronic-myofascial-pain-neims-hero.jpg\" class=\"w-full h-full object-cover group-hover:scale-105 t...\">",
+          "lineNumber": 410
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/elderly-knee-pain-sartorius-myofascial/\" class=\"aspect-video w-full overflow-hidden bg-gray-50 rel...\"> | text=\"}\"",
+          "lineNumber": 412
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/images/blog/elderly-knee-pain-sartorius-myofascial-hero.jpg\" class=\"w-full h-full object-cover group-hover:scale-105 t...\">",
+          "lineNumber": 412
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/hand-numbness-when-sleeping/\" class=\"aspect-video w-full overflow-hidden bg-gray-50 rel...\"> | text=\"}\"",
+          "lineNumber": 414
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/\" class=\"inline-flex items-center gap-2 bg-white text-prima...\"> | text=\"閱讀更多文章\"",
+          "lineNumber": 416
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://www2.ndmctsgh.edu.tw/newwebreg/Register/Doctors?pos=5&DeptCode=311&DeptGroup=4\" class=\"text-primary hover:underline font-medium bg-blue-5...\"> | text=\"三總汀州\"",
+          "lineNumber": 428
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"tel:0226718910\" class=\"flex flex-col items-center justify-center p-6 bg-p...\"> | text=\"撥打電話 (02) 2671-8910\"",
+          "lineNumber": 455
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6\" class=\"flex flex-col items-center justify-center p-6 bg-w...\"> | text=\"Google導航前往\"",
+          "lineNumber": 455
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"tel:0226718910\" class=\"hover:text-white transition-colors\"> | text=\"(02) 2671-8910\"",
+          "lineNumber": 468
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6\" class=\"hover:text-white transition-colors leading-relaxed\"> | text=\"新北市三峽區中華路22號2樓\"",
+          "lineNumber": 468
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/LINE_icon.svg\" class=\"w-8 h-8\">",
+          "lineNumber": 470
+        },
+        {
+          "type": "error",
+          "description": "Image has descriptive, appropriate alt text",
+          "impact": "High",
+          "element": "<img src=\"/Facebook_icon.svg\" class=\"w-8 h-8\">",
+          "lineNumber": 470
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#patient-info\" class=\"inline-block mt-2 text-blue-200 hover:text-white f...\"> | text=\"👉 查看最新門診時間與掛號須知\"",
+          "lineNumber": 476
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\" class=\"hover:text-white transition-colors\"> | text=\"成人復健與疼痛治療\"",
+          "lineNumber": 482
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\" class=\"hover:text-white transition-colors\"> | text=\"運動傷害與肌筋膜炎\"",
+          "lineNumber": 482
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\" class=\"hover:text-white transition-colors\"> | text=\"骨科術後復健\"",
+          "lineNumber": 482
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#services\" class=\"hover:text-white transition-colors\"> | text=\"神經疾患復健\"",
+          "lineNumber": 482
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/neims/\" class=\"hover:text-white transition-colors flex items-star...\"> | text=\"▸ 針極肌肉內電刺激 (NEIMS)\"",
+          "lineNumber": 484
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/blog/superlizer/\" class=\"hover:text-white transition-colors flex items-star...\"> | text=\"▸ 直線偏極光治療 (SuperLizer)\"",
+          "lineNumber": 484
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/privacy/\" class=\"hover:text-white transition-colors underline under...\"> | text=\"聲明與隱私權政策\"",
+          "lineNumber": 486
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://maps.app.goo.gl/Uxc3HU9CcvCCTurx6\" class=\"flex-1 flex flex-col items-center justify-center p...\"> | text=\"導航前往\"",
+          "lineNumber": 488
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"/#patient-info\" class=\"flex-1 flex flex-col items-center justify-center p...\"> | text=\"門診時間\"",
+          "lineNumber": 488
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"tel:0226718910\" class=\"flex-1 flex flex-col items-center justify-center p...\"> | text=\"電話諮詢\"",
+          "lineNumber": 488
+        },
+        {
+          "type": "error",
+          "description": "Link has clear, descriptive text",
+          "impact": "High",
+          "element": "<a href=\"https://line.me/R/ti/p/@gsj9393s\" class=\"flex-1 flex flex-col items-center justify-center p...\"> | text=\"LINE諮詢\"",
+          "lineNumber": 488
+        }
+      ]
+    }
+  }
+}

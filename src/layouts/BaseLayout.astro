@@ -52,6 +52,18 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        <!-- Hero 圖片預載：提前告知瀏覽器抓取 LCP 圖片，改善首頁 Core Web Vitals -->
+        {
+            Astro.url.pathname === "/" && (
+                <link
+                    rel="preload"
+                    as="image"
+                    href="/images/hero-cover.jpg"
+                    fetchpriority="high"
+                />
+            )
+        }
+
         <!-- 網站結構化資料  這段 JSON-LD 有助於搜尋引擎正確顯示網站名稱 -->
         {
             Astro.url.pathname === "/" && (
@@ -78,6 +90,8 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                 "@id": "https://drhsieh-rehab.com/#clinic",
                 "url": "https://drhsieh-rehab.com/",
                 "telephone": "+886-2-2671-8910",
+                "medicalSpecialty": "PhysicalMedicine",
+                "physician": { "@id": "https://drhsieh-rehab.com/#doctor" },
                 "address": {
                     "@type": "PostalAddress",
                     "streetAddress": "中華路22號2樓",
@@ -95,6 +109,72 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                     "https://www.facebook.com/Top.rehabilitation.center",
                     "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97"
                 ]
+            }
+        </script>
+
+        <!-- 醫師個人結構化資料  讓 AI 引擎識別謝明福院長的專業資歷與權威性 -->
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Person",
+                "@id": "https://drhsieh-rehab.com/#doctor",
+                "name": "謝明福",
+                "honorificPrefix": "Dr.",
+                "jobTitle": "復健科主治醫師、院長",
+                "description": "擁有30年臨床治療經驗的復健科專科醫師，專長疼痛治療、肌筋膜炎、運動傷害、肩頸腰背疼痛診療。",
+                "worksFor": { "@id": "https://drhsieh-rehab.com/#clinic" },
+                "alumniOf": [
+                    {
+                        "@type": "EducationalOrganization",
+                        "name": "國防醫學院",
+                        "description": "醫學士"
+                    },
+                    {
+                        "@type": "EducationalOrganization",
+                        "name": "中國醫藥大學",
+                        "description": "針灸學分班"
+                    }
+                ],
+                "hasCredential": [
+                    {
+                        "@type": "EducationalOccupationalCredential",
+                        "credentialCategory": "專科醫師",
+                        "recognizedBy": {
+                            "@type": "Organization",
+                            "name": "台灣復健醫學會"
+                        }
+                    }
+                ],
+                "affiliation": [
+                    {
+                        "@type": "Organization",
+                        "name": "三軍總醫院復健部",
+                        "description": "住院醫師、總醫師、主治醫師"
+                    },
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "國防醫學院復健醫學系",
+                        "description": "臨床助理教授"
+                    },
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "University of Pennsylvania",
+                        "description": "軟組織疼痛中心臨床研究員"
+                    },
+                    {
+                        "@type": "Hospital",
+                        "name": "台大醫院復健醫學部",
+                        "description": "進修醫師"
+                    },
+                    {
+                        "@type": "Hospital",
+                        "name": "台北榮民總醫院復健醫學部",
+                        "description": "進修醫師"
+                    }
+                ],
+                "knowsAbout": ["復健醫學", "疼痛治療", "肌筋膜炎", "運動傷害", "針灸", "軟組織疼痛", "骨科術後復健", "肩頸痛", "腰背痛", "膝痛"],
+                "image": "https://drhsieh-rehab.com/images/dr-hsiehmf.jpg",
+                "url": "https://drhsieh-rehab.com/"
             }
         </script>
 
