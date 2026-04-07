@@ -122,7 +122,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                 "honorificPrefix": "Dr.",
                 "jobTitle": "復健科主治醫師、院長",
                 "description": "擁有30年臨床治療經驗的復健科專科醫師，專長疼痛治療、肌筋膜炎、運動傷害、肩頸腰背疼痛診療。",
-                "worksFor": { "@id": "https://drhsieh-rehab.com/#clinic" },
+                "worksFor": { "@type": "MedicalClinic", "@id": "https://drhsieh-rehab.com/#clinic" },
                 "alumniOf": [
                     {
                         "@type": "EducationalOrganization",
@@ -172,7 +172,18 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                         "description": "進修醫師"
                     }
                 ],
-                "knowsAbout": ["復健醫學", "疼痛治療", "肌筋膜炎", "運動傷害", "針灸", "軟組織疼痛", "骨科術後復健", "肩頸痛", "腰背痛", "膝痛"],
+                "knowsAbout": [
+                    "復健醫學",
+                    "疼痛治療",
+                    "肌筋膜炎",
+                    "運動傷害",
+                    "針灸",
+                    "軟組織疼痛",
+                    "骨科術後復健",
+                    "肩頸痛",
+                    "腰背痛",
+                    "膝痛"
+                ],
                 "image": "https://drhsieh-rehab.com/images/dr-hsiehmf.jpg",
                 "url": "https://drhsieh-rehab.com/"
             }
@@ -190,9 +201,11 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
         <meta property="og:url" content={canonicalURL.href} />
         <meta property="og:type" content="website" />
 
+        <meta property="og:locale" content="zh_TW" />
         <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={title} />
 
         <link
             rel="icon"

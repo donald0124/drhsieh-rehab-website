@@ -41,6 +41,7 @@ const displayDate =
         <a
             href={`/blog/${post.slug}/`}
             class="aspect-video w-full overflow-hidden bg-gray-50 relative block"
+            aria-label={post.data.title}
         >
             {
                 post.data.featured && (
@@ -115,7 +116,7 @@ const displayDate =
                 </div>
             </div>
 
-            <a href={`/blog/${post.slug}/`} class="block">
+            <a href={`/blog/${post.slug}/`} class="block" aria-label={post.data.title}>
                 <h2
                     class="text-lg font-bold text-heading mb-2 line-clamp-2 group-hover:text-primary transition-colors"
                 >
