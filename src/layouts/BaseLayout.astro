@@ -6,11 +6,12 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AnnouncementBanner from "../components/AnnouncementBanner.astro";
 
-// 1. (修改) 擴充 Props 介面，加入可選的 ogImage
+// 1. (修改) 擴充 Props 介面，加入可選的 ogImage 與 ogType
 export interface Props {
     title: string;
     description: string;
     ogImage?: string; // 讓 index.astro 可以傳入專屬的 OG 圖片
+    ogType?: string;  // 預設 "website"，文章頁傳入 "article"
 }
 
 // 2. (修改) 接收 Props，並為 ogImage 設定 "預設圖片"
@@ -19,6 +20,7 @@ const {
     title,
     description,
     ogImage = "/images/default-og-image-1200x630.jpg", // (重要) 請換成您預設圖的路徑
+    ogType = "website",
 } = Astro.props;
 
 // 3. (新增) 獲取標準網址 (Canonical URL)
@@ -105,6 +107,8 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                     "latitude": "24.9326845",
                     "longitude": "121.3739576"
                 },
+                "currenciesAccepted": "TWD",
+                "paymentAccepted": "現金",
                 "sameAs": [
                     "https://www.facebook.com/Top.rehabilitation.center",
                     "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97"
@@ -199,7 +203,7 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonicalURL.href} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content={ogType} />
 
         <meta property="og:locale" content="zh_TW" />
         <meta property="og:image" content={new URL(ogImage, Astro.site).href} />
@@ -229,13 +233,19 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
             rel="stylesheet"
         />
+
+        <slot name="head" />
     </head>
 
     <body>
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-lg focus:shadow-lg">
+            跳至主要內容
+        </a>
+
         <Header />
         <AnnouncementBanner />
 
-        <main>
+        <main id="main-content">
             <slot />
         </main>
 

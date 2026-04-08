@@ -1,3 +1,22 @@
 User-agent: *
 Allow: /
 Sitemap: https://drhsieh-rehab.com/sitemap-index.xml
+
+# AI Crawlers (explicit allowance for GEO visibility)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
