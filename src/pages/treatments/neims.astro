@@ -1,0 +1,476 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/treatments/neims/`,
+    },
+    "headline": "針極肌肉內電刺激 (NEIMS) 治療服務",
+    "description": "謝明福復健科診所提供針極肌肉內電刺激 (NEIMS) 治療，由謝明福院長親自評估與執行，適用於慢性疼痛、肌筋膜炎、坐骨神經痛等問題。",
+    "about": {
+        "@type": "MedicalTherapy",
+        "name": "針極肌肉內電刺激",
+        "alternateName": "NEIMS",
+        "description": "使用鐵氟龍絕緣單極針，將電刺激精準導至深層肌筋膜激痛點的物理治療方式。",
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "治療項目", item: `${siteUrl}/treatments/` },
+        { "@type": "ListItem", position: 3, name: "針極肌肉內電刺激 (NEIMS)", item: `${siteUrl}/treatments/neims/` },
+    ],
+});
+---
+
+<BaseLayout
+    title="針極肌肉內電刺激 (NEIMS) 治療服務｜謝明福復健科診所"
+    description="謝明福復健科診所提供針極肌肉內電刺激 (NEIMS) 治療，由院長親自評估與執行，針對慢性疼痛、肌筋膜炎、坐骨神經痛等問題，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/treatments/" class="hover:text-primary transition-colors">治療項目</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">針極肌肉內電刺激 (NEIMS)</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-blue-50 text-primary text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            謝明福院長特色治療
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            針極肌肉內電刺激<br class="hidden md:block" /><br>
+            <span class="text-primary">Needle Electrical Intramuscular Stimulation, NEIMS</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            使用鐵氟龍絕緣單極針，將電刺激精準導至深層肌筋膜激痛點的物理治療方式，由謝明福院長親自評估與執行。
+        </p>
+
+        <!-- 適用症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "慢性疼痛",
+                "肌筋膜炎",
+                "坐骨神經痛",
+                "頸肩腰背痛",
+                "運動傷害",
+                "術後沾黏",
+                "五十肩",
+                "網球肘",
+            ].map((tag) => (
+                <span class="bg-blue-50 text-primary-dark text-sm px-3 py-1 rounded-full border border-blue-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+
+        <!-- 衛教文章入口 -->
+        <div class="mt-8">
+            <a
+                href="/blog/neims/"
+                class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-primary transition-colors underline underline-offset-4"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                深入了解 NEIMS 的原理與臨床知識（衛教文章）
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療免責聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。治療成效因個人體質、病況與配合度而異，實際適應症與治療計畫須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 什麼是 NEIMS -->
+        <section aria-labelledby="what-is-neims">
+            <h2 id="what-is-neims" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                什麼是針極肌肉內電刺激（NEIMS）？
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 text-gray-700 leading-relaxed">
+                    <p>
+                        針極肌肉內電刺激（Needle Electrical Intra-Muscular Stimulation，NEIMS），是一種使用<strong>鐵氟龍絕緣單極針</strong>，將電刺激精準導至深層肌筋膜激痛點的物理性治療方式。
+                    </p>
+                    <p>
+                        有別於傳統表面電療，NEIMS 針具的針身以鐵氟龍全包覆絕緣，電流僅由針尖導出，能深入一般儀器無法觸及的深層激痛點。
+                    </p>
+                    <p>
+                        此技術源自美國賓州大學醫院復健科，謝明福院長於 2005 年赴美師承技術研發者 Dr. Jennifer Chu，並於 2007 年起在台發表臨床治療成果，至今累積逾 20 年實務經驗。
+                    </p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 space-y-4">
+                    <h3 class="font-bold text-gray-800 text-lg">NEIMS vs. 傳統復健</h3>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">N</span>
+                            <div>
+                                <div class="font-semibold text-gray-800">NEIMS</div>
+                                <div class="text-gray-600">電流集中於針尖，可達深層（10–15 公分），目標：精準解除激痛點</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-6 h-6 rounded-full bg-gray-300 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">傳</span>
+                            <div>
+                                <div class="font-semibold text-gray-800">傳統表面電療</div>
+                                <div class="text-gray-600">電流作用於表層，廣泛性放鬆，難以觸及深層激痛點</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 pt-2">
+                        ※ 比較內容僅供說明技術原理之差異，不代表療效優劣評比。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見適用情況 -->
+        <section aria-labelledby="indications">
+            <h2 id="indications" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見適用情況
+            </h2>
+            <p class="text-gray-500 mb-8 text-sm">
+                以下為臨床上常見的評估方向，實際是否適合接受治療，須由院長親自診斷後確認。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "慢性疼痛 / 肌筋膜炎",
+                        items: ["頸肩僵硬、膏肓痛", "慢性下背痛、腰痛", "頭痛、顳顎關節障礙"],
+                        links: [
+                            { text: "上班族肩頸肌筋膜炎解析", href: "/blog/chronic-myofascial-pain-neims/" },
+                            { text: "中西醫合併治療肌筋膜炎", href: "/blog/neims-myofascial-pain-chinese-western-medicine/" },
+                            { text: "肩臂痠痛手指麻：闊背肌筋膜炎", href: "/blog/pinky-numbness-latissimus-dorsi-syndrome/" },
+                        ],
+                    },
+                    {
+                        title: "神經壓迫問題",
+                        items: ["坐骨神經痛", "頸腰椎神經根壓迫", "椎間盤突出相關疼痛"],
+                        links: [
+                            { text: "高齡坐骨神經痛的保守治療", href: "/blog/neims-sciatica-elderly/" },
+                        ],
+                    },
+                    {
+                        title: "運動傷害 / 急慢性拉傷",
+                        items: ["落枕、急性腰扭傷", "跑者膝、跳躍膝", "腳踝韌帶扭傷腫脹"],
+                        links: [
+                            { text: "腳踝扭傷久腫不消的處理", href: "/blog/neims-ankle-sprain/" },
+                            { text: "鼠蹊部疼痛（內收肌拉傷）", href: "/blog/groin-pain-myofasciitis-neims/" },
+                        ],
+                    },
+                    {
+                        title: "骨科術後 / 關節問題",
+                        items: ["脊椎手術後肌肉痙攣", "五十肩（冰凍肩）", "人工關節術後攣縮"],
+                        links: [
+                            { text: "手術後仍背痛？術後肌筋膜沾黏", href: "/blog/post-spinal-surgery-myofascial-pain/" },
+                            { text: "骨折後次發性肌筋膜疼痛", href: "/blog/neims-elderly-compression-fracture/" },
+                            { text: "高齡長者疼痛照護日記", href: "/blog/neims-for-senior/" },
+                        ],
+                    },
+                    {
+                        title: "肌腱 / 筋膜問題",
+                        items: ["網球肘、高爾夫球肘", "足底筋膜炎", "退化性膝關節炎"],
+                        links: [
+                            { text: "網球肘：增生療法與 NEIMS 整合治療", href: "/blog/tennis-elbow-treatment-experience/" },
+                        ],
+                    },
+                    {
+                        title: "神經麻痺",
+                        items: ["垂足症、腕垂症", "顏面神經麻痺", "腓總神經損傷"],
+                        links: [
+                            { text: "腓總神經損傷垂足的治療解析", href: "/blog/peroneal-nerve-injury-foot-drop-neims/" },
+                        ],
+                    },
+                ].map((group) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm flex flex-col">
+                        <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
+                            {group.title}
+                        </h3>
+                        <ul class="space-y-1.5 text-sm text-gray-600 flex-1">
+                            {group.items.map((item) => (
+                                <li class="flex items-center gap-2">
+                                    <span class="text-gray-300">—</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                        {group.links.length > 0 && (
+                            <div class="mt-4 pt-3 border-t border-gray-50 space-y-1.5">
+                                {group.links.map((link) => (
+                                    <a
+                                        href={link.href}
+                                        class="flex items-center gap-1.5 text-xs text-primary hover:underline"
+                                    >
+                                        <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        {link.text}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <!-- 垂直時間線（桌面） -->
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-blue-100" aria-hidden="true" />
+
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長將詳細問診，了解您的症狀病史，並以觸診方式確認肌肉狀態，判斷是否適合接受 NEIMS 治療，或搭配其他復健方式。",
+                            note: "是否適合接受 NEIMS，以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "通過評估後，由院長執行 NEIMS 治療。每個激痛點治療約 3 分鐘，依需處理的點位數量，單次治療時間約 12–20 分鐘。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長評估症狀改善狀況，動態調整治療計畫。症狀緩解後可視情況拉長回診間隔。",
+                            note: "療程無固定公式，以功能恢復進展為主要依據",
+                            noteHref: null,
+                        },
+                    ].map((item, i) => (
+                        <div class="flex gap-6">
+                            <!-- 圓點（桌面） -->
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <!-- 卡片 -->
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-primary text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-blue-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-blue-600 bg-blue-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 治療前注意事項 -->
+        <section aria-labelledby="contraindications">
+            <h2 id="contraindications" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                絕對禁忌症（以下情況不適合接受 NEIMS）
+            </h2>
+            <div class="bg-red-50 border border-red-100 rounded-xl p-6">
+                <ul class="grid sm:grid-cols-2 gap-3 text-sm text-red-800">
+                    {[
+                        "裝有心臟節律器",
+                        "有出血傾向或凝血功能不佳（服用高劑量抗凝血劑）",
+                        "嚴重糖尿病（傷口癒合不佳者）",
+                        "治療部位有局部腫瘤",
+                        "治療部位有傷口或感染",
+                        "正在發燒",
+                    ].map((item) => (
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 font-bold text-base leading-none mt-0.5">×</span>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+                <p class="text-xs text-red-500 mt-4">
+                    其他相對禁忌症與詳細注意事項，請於就診時告知院長，由院長評估判斷。
+                </p>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "治療過程是什麼感覺？",
+                        a: "下針時多數患者形容如蚊子叮咬。電流開啟後，治療部位會有明顯的肌肉抽動，並伴隨痠脹感。治療過程不應出現燒灼的刺痛感。",
+                    },
+                    {
+                        q: "治療時間多長？",
+                        a: "每個激痛點的治療時間約 3 分鐘。若同時處理 4 個點位，單次治療約 12–16 分鐘。",
+                    },
+                    {
+                        q: "健保有給付嗎？",
+                        a: "NEIMS 屬自費治療項目，不在健保給付範圍內。費用請直接至診所洽詢。",
+                    },
+                    {
+                        q: "治療後有哪些注意事項？",
+                        a: "治療後 1–2 天可能出現類似運動後的痠痛感，屬正常現象，建議多補充水分與充分休息。治療部位偶有輕微出血或瘀青，通常數日內自行消退。",
+                    },
+                    {
+                        q: "我需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-sm leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-sm mb-8">謝明福院長撰寫的原理說明與臨床案例，供深入了解參考。</p>
+
+            <!-- 原理與準備 -->
+            <div class="mb-6">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">深度原理與初診準備</h3>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    {[
+                        {
+                            href: "/blog/neims/",
+                            title: "針極肌肉內電刺激（NEIMS）原理完整介紹",
+                            desc: "科學原理、123治療原則、與傳統復健的技術差異",
+                        },
+                        {
+                            href: "/blog/neims-first-visit/",
+                            title: "初診前評估指南：我適合做 NEIMS 嗎？",
+                            desc: "評估流程、就醫準備清單、治療前後注意事項",
+                        },
+                    ].map((a) => (
+                        <a
+                            href={a.href}
+                            class="flex flex-col gap-1 bg-blue-50 border border-blue-100 rounded-xl p-4 hover:bg-blue-100/60 hover:border-blue-200 transition-colors"
+                        >
+                            <span class="font-semibold text-gray-800 text-sm leading-snug">{a.title}</span>
+                            <span class="text-xs text-gray-500 leading-relaxed">{a.desc}</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- 臨床案例 -->
+            <div>
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">臨床案例與應用</h3>
+                <ul class="grid sm:grid-cols-2 gap-2">
+                    {[
+                        { href: "/blog/chronic-myofascial-pain-neims/", text: "上班族肩頸惡夢：肌筋膜疼痛症候群解析" },
+                        { href: "/blog/pinky-numbness-latissimus-dorsi-syndrome/", text: "肩臂痠痛手指麻？可能是闊背肌筋膜炎" },
+                        { href: "/blog/neims-myofascial-pain-chinese-western-medicine/", text: "中西醫合併治療肌筋膜炎" },
+                        { href: "/blog/neims-sciatica-elderly/", text: "高齡坐骨神經痛：非手術保守治療" },
+                        { href: "/blog/post-spinal-surgery-myofascial-pain/", text: "手術成功卻還背痛？術後肌筋膜沾黏" },
+                        { href: "/blog/neims-elderly-compression-fracture/", text: "骨折後腰部仍不適：次發性肌筋膜炎" },
+                        { href: "/blog/neims-for-senior/", text: "當診間平均年齡85歲：高齡長者疼痛照護" },
+                        { href: "/blog/neims-ankle-sprain/", text: "腳踝扭傷久腫不消：韌帶損傷處理" },
+                        { href: "/blog/groin-pain-myofasciitis-neims/", text: "難以啟齒的鼠蹊部疼痛：內收肌拉傷" },
+                        { href: "/blog/tennis-elbow-treatment-experience/", text: "網球肘反覆難癒：增生療法與 NEIMS 整合" },
+                        { href: "/blog/peroneal-nerve-injury-foot-drop-neims/", text: "翹二郎腿久蹲變垂足：腓總神經損傷解析" },
+                    ].map((a) => (
+                        <li>
+                            <a
+                                href={a.href}
+                                class="flex items-start gap-2 text-sm text-gray-700 hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                            >
+                                <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                {a.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <CallToAction title="想了解 NEIMS 是否適合您？" />
+
+    </main>
+</BaseLayout>
