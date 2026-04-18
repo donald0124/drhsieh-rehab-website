@@ -89,8 +89,21 @@
                         使用鐵氟龍絕緣單極針，將電刺激精準導至深層肌筋膜激痛點，由院長親自評估執行。
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-5">
-                        {["慢性疼痛", "肌筋膜炎", "坐骨神經痛", "頸肩腰背痛", "運動傷害", "術後沾黏", "五十肩", "網球肘"].map((tag) => (
-                            <span class="text-xs bg-blue-50 text-primary-dark px-2 py-0.5 rounded-full border border-blue-100">{tag}</span>
+                        {[
+                            { label: "慢性疼痛" },
+                            { label: "肌筋膜炎" },
+                            { label: "坐骨神經痛", link: "/conditions/back-pain/" },
+                            { label: "頸肩腰背痛", link: "/conditions/neck-shoulder-pain/" },
+                            { label: "運動傷害", link: "/conditions/sports-injury/" },
+                            { label: "術後沾黏" },
+                            { label: "五十肩" },
+                            { label: "網球肘" }
+                        ].map((tag) => (
+                            tag.link ? (
+                                <a href={tag.link} class="text-xs bg-blue-50 hover:bg-blue-200 text-primary-dark px-2 py-0.5 rounded-full border border-blue-200 transition-colors cursor-pointer">{tag.label}</a>
+                            ) : (
+                                <span class="text-xs bg-blue-50 text-primary-dark px-2 py-0.5 rounded-full border border-blue-100">{tag.label}</span>
+                            )
                         ))}
                     </div>
                     <a
@@ -117,8 +130,19 @@
                         近紅外線光療穿透皮下 5 公分，促進深層組織修復、緩解疼痛，亦可調節自律神經。
                     </p>
                     <div class="flex flex-wrap gap-1.5 mb-5">
-                        {["慢性疼痛", "脊椎退化", "肌腱炎", "自律神經失調", "失眠", "五十肩"].map((tag) => (
-                            <span class="text-xs bg-orange-50 text-orange-700 px-2 py-0.5 rounded-full border border-orange-100">{tag}</span>
+                        {[
+                            { label: "慢性疼痛" },
+                            { label: "脊椎退化", link: "/conditions/back-pain/" },
+                            { label: "肌腱炎" },
+                            { label: "自律神經失調" },
+                            { label: "失眠" },
+                            { label: "五十肩" }
+                        ].map((tag) => (
+                            tag.link ? (
+                                <a href={tag.link} class="text-xs bg-orange-50 hover:bg-orange-200 text-orange-700 px-2 py-0.5 rounded-full border border-orange-200 transition-colors cursor-pointer">{tag.label}</a>
+                            ) : (
+                                <span class="text-xs bg-orange-50 text-orange-700 px-2 py-0.5 rounded-full border border-orange-100">{tag.label}</span>
+                            )
                         ))}
                     </div>
                     <a
@@ -173,12 +197,19 @@
                 <ul class="space-y-3">
                     {[
                         { name: "骨科術後復健", desc: "手術後的關節活動度與肌力恢復" },
-                        { name: "神經復健", desc: "神經壓迫、麻痺後的功能訓練" },
-                        { name: "脊椎復健", desc: "脊椎相關疾患的保守治療與姿勢矯正" },
+                        { name: "神經復健", desc: "神經壓迫、麻痺後的功能訓練", link: "/conditions/back-pain/" },
+                        { name: "脊椎復健", desc: "脊椎相關疾患的保守治療與姿勢矯正", link: "/conditions/back-pain/" },
                         { name: "個別化復健治療", desc: "依患者狀況量身規劃的復健計畫" },
-                    ].map(({ name, desc }) => (
+                    ].map(({ name, desc, link }) => (
                         <li class="flex flex-col">
-                            <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            {link ? (
+                                <a href={link} class="group inline-flex items-center gap-1 font-semibold text-gray-800 text-sm hover:text-primary transition-colors">
+                                    {name}
+                                    <svg class="w-3.5 h-3.5 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            ) : (
+                                <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            )}
                             <span class="text-gray-500 text-xs mt-0.5">{desc}</span>
                         </li>
                     ))}
@@ -193,13 +224,20 @@
                 </h3>
                 <ul class="space-y-3">
                     {[
-                        { name: "肌筋膜疼痛治療", desc: "激痛點治療，緩解慢性肌肉緊繃" },
-                        { name: "肩頸痠痛治療", desc: "頸椎與肩部疼痛的評估與處置" },
-                        { name: "坐骨神經痛治療", desc: "神經根壓迫引起的臀腿疼痛" },
-                        { name: "退化性關節炎疼痛治療", desc: "關節退化的保守治療與疼痛控制" },
-                    ].map(({ name, desc }) => (
+                        { name: "肌筋膜疼痛治療", desc: "激痛點治療，緩解慢性肌肉緊繃", link: "/conditions/neck-shoulder-pain/" },
+                        { name: "肩頸痠痛治療", desc: "頸椎與肩部疼痛的評估與處置", link: "/conditions/neck-shoulder-pain/" },
+                        { name: "坐骨神經痛治療", desc: "神經根壓迫引起的臀腿疼痛", link: "/conditions/back-pain/" },
+                        { name: "退化性關節炎疼痛治療", desc: "關節退化的保守治療與疼痛控制", link: "/conditions/knee-pain/" },
+                    ].map(({ name, desc, link }) => (
                         <li class="flex flex-col">
-                            <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            {link ? (
+                                <a href={link} class="group inline-flex items-center gap-1 font-semibold text-gray-800 text-sm hover:text-primary transition-colors">
+                                    {name}
+                                    <svg class="w-3.5 h-3.5 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            ) : (
+                                <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            )}
                             <span class="text-gray-500 text-xs mt-0.5">{desc}</span>
                         </li>
                     ))}
@@ -214,13 +252,20 @@
                 </h3>
                 <ul class="space-y-3">
                     {[
-                        { name: "運動傷害治療", desc: "急慢性運動傷害的評估與復原" },
+                        { name: "運動傷害治療", desc: "急慢性運動傷害的評估與復原", link: "/conditions/sports-injury/" },
                         { name: "肌腱炎治療", desc: "板機指、媽媽手、網球肘等肌腱問題" },
-                        { name: "肌肉韌帶扭拉傷復健", desc: "扭傷、拉傷的急性處置與功能恢復" },
-                        { name: "足底筋膜炎治療", desc: "足跟疼痛的保守治療與體外震波" },
-                    ].map(({ name, desc }) => (
+                        { name: "肌肉韌帶扭拉傷復健", desc: "扭傷、拉傷的急性處置與功能恢復", link: "/conditions/sports-injury/" },
+                        { name: "足底筋膜炎治療", desc: "足跟疼痛的保守治療與體外震波", link: "/conditions/heel-pain/" },
+                    ].map(({ name, desc, link }) => (
                         <li class="flex flex-col">
-                            <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            {link ? (
+                                <a href={link} class="group inline-flex items-center gap-1 font-semibold text-gray-800 text-sm hover:text-primary transition-colors">
+                                    {name}
+                                    <svg class="w-3.5 h-3.5 opacity-0 -ml-3 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            ) : (
+                                <span class="font-semibold text-gray-800 text-sm">{name}</span>
+                            )}
                             <span class="text-gray-500 text-xs mt-0.5">{desc}</span>
                         </li>
                     ))}
