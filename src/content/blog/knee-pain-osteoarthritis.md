@@ -3,6 +3,7 @@ title: '走路膝蓋卡卡、上下樓梯痛？復健科醫師解析退化性關
 description: '上下樓梯膝蓋無力、蹲下站起常聽到「喀喀」聲？這可能是退化性關節炎的早期警訊。了解膝蓋痛的原因，以及如何透過 NEIMS、SuperLizer 與注射治療等多元復健方案，延緩關節退化。'
 pubDate: 2026-03-03
 updatedDate: 2026-04-05
+heroImage: /images/blog/knee-pain-osteoarthritis-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['復健衛教']

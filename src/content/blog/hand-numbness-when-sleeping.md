@@ -3,6 +3,7 @@ title: '睡覺手麻是因為頸椎長骨刺嗎？復健科醫師解析三大原
 description: '半夜常因為手麻醒來？睡覺手麻不一定是頸椎骨刺，也可能是腕隧道症候群或胸廓出口症候群。謝明福院長帶您了解手指發麻的真正原因，以及如何透過 NEIMS 與 SuperLizer 等特色治療精準改善。'
 pubDate: 2026-03-04
 updatedDate: 2026-04-05
+heroImage: /images/blog/hand-numbness-when-sleeping-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['復健衛教']

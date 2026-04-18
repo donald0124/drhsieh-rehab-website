@@ -2,6 +2,7 @@
 title: '星狀神經節照射 (SGI)：直線偏極光調節自律神經，改善失眠與慢性疼痛｜謝明福復健科'
 description: '長期失眠、慢性疼痛伴隨焦慮？謝明福醫師帶您了解「星狀神經節照射（SGI）」：利用 SuperLizer 直線偏極光深層穿透，以非侵入性方式輔助調節過度亢奮的交感神經。本文將探討 SGI 改善自律神經失調的原理、適應症，以及與傳統星狀神經節阻斷術（SGB）注射的差異。'
 pubDate: 2026-04-16
+heroImage: /images/blog/stellate-ganglion-irradiation-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['特色治療']

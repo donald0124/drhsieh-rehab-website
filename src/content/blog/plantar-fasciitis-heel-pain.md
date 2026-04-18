@@ -3,6 +3,7 @@ title: '足底筋膜炎反覆發作怎麼辦？復健科解析腳底痛成因與
 description: '早上一下床腳底就痛如針扎？足底筋膜炎反覆發作讓你苦不堪言？復健科醫師帶您了解足底筋膜炎成因，以及直線偏極光、NEIMS 如何從根本解決腳底痛。'
 pubDate: 2026-03-02
 updatedDate: 2026-04-18
+heroImage: /images/blog/plantar-fasciitis-heel-pain-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['復健衛教']

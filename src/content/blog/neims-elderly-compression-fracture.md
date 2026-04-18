@@ -3,7 +3,7 @@ title: '脊椎壓迫性骨折穩定了卻仍疼痛？談高齡族群的「次發
 description: '許多高齡長者在脊椎壓迫性骨折趨於穩定後，腰部與大腿仍持續痠痛。謝明福醫師解析這往往源於「次發性肌筋膜疼痛」，並探討針極肌肉內電刺激 (NEIMS) 如何在排除禁忌症後，安全協助高齡族群改善生活品質。'
 pubDate: 2025-11-30
 updatedDate: 2026-04-05
-#heroImage: '' 
+heroImage: /images/blog/neims-elderly-compression-fracture-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['特色治療', '復健衛教']

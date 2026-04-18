@@ -3,7 +3,7 @@ title: '手術成功卻還背痛？認識「術後肌筋膜疼痛症候群」與
 description: '許多銀髮族在脊椎手術後，骨頭雖已癒合，卻仍深受背痛困擾。這可能是「術後肌筋膜疼痛症候群」或組織沾黏所致。本文由院長解析成因，並介紹針極肌肉內電刺激如何協助改善術後殘餘疼痛。'
 pubDate: 2015-01-16
 updatedDate: 2026-04-05
-＃heroImage: ''
+heroImage: /images/blog/post-spinal-surgery-myofascial-pain-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['特色治療', '復健衛教']

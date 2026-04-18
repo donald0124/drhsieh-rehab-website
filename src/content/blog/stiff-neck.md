@@ -2,6 +2,7 @@
 title: '落枕怎麼辦？復健科醫師說明成因、居家處理與就醫時機'
 pubDate: 2026-02-18
 updatedDate: 2026-04-05
+heroImage: /images/blog/stiff-neck-hero.jpg
 description: '早上起床脖子卡住、轉頭就痛？這篇文章說明落枕的常見成因、居家緩解原則、三個不能做的禁忌，以及何時需要由復健科醫師評估。'
 author: '謝明福 院長'
 featured: false

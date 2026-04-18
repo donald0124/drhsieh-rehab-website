@@ -2,7 +2,7 @@
 title: '當診間平均年齡85歲：淺談高齡者脊椎壓迫性骨折後的疼痛照護'
 description: '謝明福醫師的臨床觀察日記：面對平均85歲的高齡患者，在脊椎壓迫性骨折穩定後，如何透過針極肌肉內電刺激 (NEIMS) 改善深層肌筋膜疼痛，提升長輩的生活品質。'
 pubDate: 2013-12-24
-#heroImage: ''
+heroImage: /images/blog/neims-for-senior-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['特色治療']

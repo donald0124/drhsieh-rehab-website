@@ -3,6 +3,7 @@ title: '我適合做針極肌肉內電刺激 (NEIMS) 嗎？初診前評估流程
 description: '想知道自己是否適合針極肌肉內電刺激（NEIMS）？本文整理初診評估流程、常見禁忌症、療程安排與就醫前準備重點，協助三峽與鶯歌患者做出更安心的治療決策。'
 pubDate: 2026-04-05
 updatedDate: 2026-04-05
+heroImage: /images/blog/neims-first-visit-hero.jpg
 author: '謝明福 院長'
 featured: false
 category: ['特色治療']

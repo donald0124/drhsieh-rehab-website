@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__claude_ai_Canva__search-designs",
+      "mcp__claude_ai_Canva__get-design-pages",
+      "mcp__claude_ai_Canva__get-design-content",
+      "mcp__claude_ai_Canva__start-editing-transaction",
+      "mcp__claude_ai_Canva__cancel-editing-transaction",
+      "mcp__claude_ai_Canva__perform-editing-operations",
+      "mcp__claude_ai_Canva__commit-editing-transaction",
+      "mcp__claude_ai_Canva__export-design",
+      "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0001-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T205604Z&X-Amz-Expires=77512&X-Amz-Signature=91165b51c3b70ee98405c4330a22a7c3566a670f9969f2835e6ed49151948846&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A27%3A56%20GMT\" -o hand-numbness-when-sleeping-hero.jpg)",
+      "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0002-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T183645Z&X-Amz-Expires=86300&X-Amz-Signature=9f110dbe55c62d6246eabcaa2a84a85c88c4f30cd0b89e01a7dfbc96f155883d&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A35%3A05%20GMT\" -o knee-pain-osteoarthritis-hero.jpg)",
+      "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0003-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260418%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260418T152136Z&X-Amz-Expires=10305&X-Amz-Signature=39361fff4eabbd53c4b2315fda0976546230d08d3ee2eb4c2f3d6a35ff8d05de&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A13%3A21%20GMT\" -o neims-elderly-compression-fracture-hero.jpg)",
+      "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0004-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T205505Z&X-Amz-Expires=77973&X-Amz-Signature=82470571a223c4b3be3a818a89d354002a9448b3f45eca995b5ec94e883405e6&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A34%3A38%20GMT\" -o neims-first-visit-hero.jpg)",
+      "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0005-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T215503Z&X-Amz-Expires=74565&X-Amz-Signature=5fb3c9761eb0f33938dbf4cd8fa558c84fe8a2b2a36d5a6f9da790f80eee1336&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A37%3A48%20GMT\" -o neims-for-senior-hero.jpg)"
+    ]
+  }
+}
