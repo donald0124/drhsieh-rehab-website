@@ -1,0 +1,546 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/treatments/superlizer/`,
+    },
+    "headline": "直線偏極光治療 (SuperLizer) 治療服務",
+    "description": "謝明福復健科診所提供直線偏極光治療 (SuperLizer)，非侵入性近紅外線光療，穿透皮下 5 公分，適用於慢性疼痛、脊椎退化、肌腱炎、自律神經失調等，由謝明福院長親自評估。",
+    "about": {
+        "@type": "MedicalTherapy",
+        "name": "直線偏極光治療",
+        "alternateName": "SuperLizer",
+        "description": "利用 0.6–1.6µm 近紅外線波段，將高能量直線偏極光深達皮下 5 公分，啟動光生物調節機制，達到止痛、抗炎、組織修復三重效果的非侵入性物理治療。",
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "治療項目", item: `${siteUrl}/treatments/` },
+        { "@type": "ListItem", position: 3, name: "直線偏極光治療 (Superlizer)", item: `${siteUrl}/treatments/superlizer/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "直線偏極光治療 (SuperLizer) 跟雷射有什麼不同？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "雖然同為光療，差異在於作用範圍與穿透深度。傳統雷射多以單點聚焦方式治療，範圍侷限。SuperLizer 採用 0.6–1.6µm 近紅外線波段，透過直線偏極化減少能量散失，可均勻照射並穿透皮下約 5 公分，適合深層組織的廣泛性修復。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "直線偏極光治療過程是什麼感覺？需要多長時間？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "治療為非侵入性、無痛，無需打針或開刀。照射時只會感受到一股舒適、溫暖的熱度深入身體。單次照射時間通常為 4–10 分鐘，若搭配多個部位或星狀神經節照射，總治療時間視個人狀況而定。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "直線偏極光治療健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "直線偏極光治療 (SuperLizer) 屬自費治療項目，費用請直接至診所洽詢。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "什麼是星狀神經節照射 (SGI)？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "星狀神經節照射（SGI）是 SuperLizer 的特殊應用：利用直線偏極光的深層穿透力，從皮膚表面將光能傳遞到頸部深處的星狀神經節，以非侵入性方式調節過度亢奮的交感神經，協助改善失眠、焦慮與慢性疼痛伴隨的自律神經失調。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "接受直線偏極光治療需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，由院長評估後安排治療。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="直線偏極光治療 (SuperLizer)｜謝明福復健科診所"
+    description="謝明福復健科診所引進直線偏極光治療 (SuperLizer)，非侵入性近紅外線光療穿透皮下 5 公分，適用慢性疼痛、脊椎退化、自律神經失調、失眠等。新北市三峽，院長親自評估，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/treatments/" class="hover:text-primary transition-colors">治療項目</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">直線偏極光治療 (Superlizer)</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-orange-50 text-orange-600 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            謝明福院長特色治療
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            直線偏極光治療<br class="hidden md:block" /><br>
+            <span class="text-orange-500">SuperLizer</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            非侵入性、無痛的近紅外線光療，穿透皮下 5 公分，啟動細胞自體修復，由謝明福院長親自評估與規劃療程。
+        </p>
+
+        <!-- 適用症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "慢性疼痛",
+                "脊椎退化",
+                "肌腱炎",
+                "五十肩",
+                "足底筋膜炎",
+                "自律神經失調",
+                "失眠",
+                "帶狀皰疹後神經痛",
+                "顏面神經麻痺",
+            ].map((tag) => (
+                <span class="bg-orange-50 text-orange-700 text-sm px-3 py-1 rounded-full border border-orange-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+
+        <!-- 衛教文章入口 -->
+        <div class="mt-8">
+            <a
+                href="/blog/superlizer/"
+                class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-orange-500 transition-colors underline underline-offset-4"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                深入了解 SuperLizer 的原理與光生物調節機制（衛教文章）
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療免責聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。治療成效因個人體質、病況與配合度而異，實際適應症與治療計畫須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 什麼是直線偏極光治療 -->
+        <section aria-labelledby="what-is-superlizer">
+            <h2 id="what-is-superlizer" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                什麼是直線偏極光治療（SuperLizer）？
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
+                    <p>
+                        直線偏極光治療（SuperLizer）採用 <strong>0.6–1.6µm 特殊近紅外線波段</strong>，並將光波「校準」成一致方向（直線偏極化），減少穿透皮膚時的能量散失，將高密度光能<strong>精準傳遞至皮下 5 公分</strong>的深層組織。
+                    </p>
+                    <p>
+                        這意味著能量可直達傳統儀器難以觸及的<strong>深層韌帶、椎間盤周邊、深層關節囊</strong>及<strong>神經節</strong>，產生「光生物調節（Photobiomodulation）」效應，啟動細胞自體修復機制。
+                    </p>
+                    <p>
+                        治療全程<strong>非侵入性、無需打針、無傷口</strong>，患者僅會感受到舒適溫暖的熱感滲透深處。
+                    </p>
+                </div>
+                <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 space-y-4">
+                    <h3 class="font-bold text-gray-800 text-lg">SuperLizer vs. 一般紅外線照燈</h3>
+                    <div class="space-y-3 text-base">
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-full bg-orange-500 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">S</span>
+                            <div>
+                                <div class="font-semibold text-gray-800">SuperLizer</div>
+                                <div class="text-gray-600">直線偏極近紅外線，穿透深度達皮下 5 公分，能量集中，可作用於深層韌帶、關節囊、神經節</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="w-7 h-7 rounded-full bg-gray-300 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">一</span>
+                            <div>
+                                <div class="font-semibold text-gray-800">一般紅外線照燈</div>
+                                <div class="text-gray-600">光線易散射，能量集中度低，主要作用於皮膚表層與淺層肌肉，深度有限</div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-400 pt-2">
+                        ※ 比較內容僅供說明技術原理差異，不代表療效優劣評比。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 三重修復機制 -->
+        <section aria-labelledby="mechanisms">
+            <h2 id="mechanisms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                三重修復機制
+            </h2>
+            <div class="bg-orange-50 border border-orange-100 rounded-xl p-6 space-y-4">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    SuperLizer 通過光生物調節，同時啟動<strong>止痛（Analgesia）</strong>、<strong>抗炎（Anti-inflammation）</strong>與<strong>組織修復（Tissue Regeneration）</strong>三重機制——作用於神經纖維穩定神經衝動、被血紅素吸收改善微循環、刺激粒線體增加 ATP 能量產量。
+                </p>
+                <a
+                    href="/blog/superlizer/#啟動三重修復機制不只是熱敷更是光生物調節"
+                    class="inline-flex items-center gap-2 text-base text-orange-600 hover:text-orange-700 font-medium"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    深入了解科學細節：光生物調節的細胞機制（謝明福院長衛教文章）
+                </a>
+            </div>
+        </section>
+
+        <!-- 常見適用情況 -->
+        <section aria-labelledby="indications">
+            <h2 id="indications" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見適用情況
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                以下為臨床上常見的評估方向，實際是否適合接受治療，須由院長親自診斷後確認。
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "脊椎與關節退化",
+                        items: ["頸椎病變、腰椎椎間盤突出", "退化性膝關節炎", "五十肩（深層關節囊沾黏）", "坐骨神經痛"],
+                        links: [
+                            { text: "退化性膝關節炎的保守治療", href: "/blog/knee-pain-osteoarthritis/" },
+                            { text: "梨狀肌與坐骨神經痛的鑑別與處理", href: "/blog/sciatica-piriformis-myofascial-pain/" },
+                        ],
+                    },
+                    {
+                        title: "難治性肌腱與軟組織發炎",
+                        items: ["足底筋膜炎、腳跟痛", "跑者膝、鵝足滑囊炎", "網球肘、高爾夫球肘", "腳踝扭傷後遺症"],
+                        links: [
+                            { text: "足底筋膜炎與腳跟痛的治療", href: "/blog/plantar-fasciitis-heel-pain/" },
+                            { text: "跑者膝：髂脛束症候群解析", href: "/blog/runner-knee/" },
+                            { text: "鵝足滑囊炎：膝內側疼痛", href: "/blog/pes-anserine-bursitis/" },
+                        ],
+                    },
+                    {
+                        title: "肌筋膜疼痛",
+                        items: ["慢性肌筋膜疼痛症候群", "落枕、急慢性頸肩僵硬", "顳顎關節障礙（TMJ）"],
+                        links: [
+                            { text: "肌筋膜疼痛症候群：激痛點解析", href: "/blog/myofascial-pain-syndrome/" },
+                            { text: "落枕：急性頸部疼痛的處理", href: "/blog/stiff-neck/" },
+                            { text: "顳顎關節障礙：下巴痛、咬合不正", href: "/blog/tmjd/" },
+                        ],
+                    },
+                    {
+                        title: "周邊神經病變",
+                        items: ["帶狀皰疹後神經痛", "顏面神經麻痺", "腕隧道症候群", "手術後神經沾黏疼痛"],
+                        links: [
+                            { text: "睡覺手麻：腕隧道症候群 vs. 神經壓迫", href: "/blog/hand-numbness-when-sleeping/" },
+                        ],
+                    },
+                    {
+                        title: "自律神經失調（星狀神經節照射 SGI）",
+                        items: ["長期失眠、睡眠品質不佳", "慢性疼痛伴隨焦慮、緊繃", "過敏性鼻炎、耳鳴、眩暈（與循環/神經調節相關者）"],
+                        links: [
+                            { text: "星狀神經節照射 (SGI)：非侵入性調節自律神經", href: "/blog/stellate-ganglion-irradiation/" },
+                        ],
+                    },
+                    {
+                        title: "骨折與術後照護",
+                        items: ["骨折後軟組織修復加速", "術後局部循環促進", "慢性傷口周邊組織修復"],
+                        links: [
+                            { text: "大腳趾骨折：復健期的光療輔助", href: "/blog/great-toe-fracture-superlizer/" },
+                        ],
+                    },
+                ].map((group) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm flex flex-col">
+                        <h3 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-orange-400 flex-shrink-0" />
+                            {group.title}
+                        </h3>
+                        <ul class="space-y-1.5 text-base text-gray-600 flex-1">
+                            {group.items.map((item) => (
+                                <li class="flex items-center gap-2">
+                                    <span class="text-gray-300">—</span>
+                                    {item}
+                                </li>
+                            ))}
+                        </ul>
+                        {group.links.length > 0 && (
+                            <div class="mt-4 pt-3 border-t border-gray-50 space-y-1.5">
+                                {group.links.map((link) => (
+                                    <a
+                                        href={link.href}
+                                        class="flex items-center gap-1.5 text-xs text-orange-500 hover:underline"
+                                    >
+                                        <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                        </svg>
+                                        {link.text}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <!-- 垂直時間線（桌面） -->
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-orange-100" aria-hidden="true" />
+
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長將詳細問診，了解您的症狀病史，確認是否適合接受直線偏極光治療，或搭配其他復健方式。若有失眠或自律神經相關問題，將一併評估是否適合星狀神經節照射（SGI）。",
+                            note: "是否適合接受 SuperLizer 治療，以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "通過評估後，由治療師依院長處方執行直線偏極光治療。單次照射時間約 4–10 分鐘，視治療部位數量與療程規劃而定，整體治療流程相當快速。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長評估症狀改善狀況，動態調整治療計畫。症狀緩解後可視情況拉長回診間隔。",
+                            note: "療程無固定公式，以功能恢復進展為主要依據",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <!-- 圓點（桌面） -->
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-orange-500 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <!-- 卡片 -->
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-orange-500 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-orange-600 bg-orange-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-orange-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-orange-600 bg-orange-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 禁忌症 -->
+        <section aria-labelledby="contraindications">
+            <h2 id="contraindications" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                注意事項與禁忌症
+            </h2>
+            <div class="bg-red-50 border border-red-100 rounded-xl p-6">
+                <p class="text-base font-semibold text-red-700 mb-4">以下情況應避免或需經醫師嚴格評估：</p>
+                <ul class="grid sm:grid-cols-2 gap-3 text-base text-red-800">
+                    {[
+                        "懷孕期間（尤其腹部周圍，應避免照射）",
+                        "體內有未治癒之惡性腫瘤部位",
+                        "甲狀腺功能亢進或結節（頸部照射需醫師專業判斷）",
+                        "光敏感體質或正在服用光敏感藥物",
+                        "治療部位不可直射眼睛",
+                        "植入式電子裝置（如心臟節律器）或金屬植入物（請主動告知）",
+                    ].map((item) => (
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 font-bold text-base leading-none mt-0.5">×</span>
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+                <p class="text-xs text-red-500 mt-4">
+                    其他相對禁忌症與詳細注意事項，請於就診時告知院長，由院長評估判斷。
+                </p>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "直線偏極光治療跟雷射有什麼不同？",
+                        a: "雖然同為光療，差異在於作用範圍與穿透深度。傳統雷射多以單點聚焦方式治療，範圍侷限。SuperLizer 採用 0.6–1.6µm 近紅外線波段，透過直線偏極化減少能量散失，可均勻照射並穿透皮下約 5 公分，適合深層組織的廣泛性修復。",
+                    },
+                    {
+                        q: "治療過程是什麼感覺？需要多長時間？",
+                        a: "治療為非侵入性、無痛，無需打針或開刀。照射時只會感受到一股舒適、溫暖的熱度深入身體。單次照射時間通常為 4–10 分鐘，若搭配多個部位，總治療時間視個人狀況而定。",
+                    },
+                    {
+                        q: "健保有給付嗎？",
+                        a: "直線偏極光治療 (SuperLizer) 屬自費治療項目，費用請直接至診所洽詢。",
+                    },
+                    {
+                        q: "什麼是星狀神經節照射（SGI）？",
+                        a: "星狀神經節照射（SGI）是 SuperLizer 的特殊應用：利用直線偏極光的深層穿透力，從皮膚表面將光能傳遞到頸部深處的星狀神經節，非侵入性地調節過度亢奮的交感神經，協助改善失眠、焦慮與慢性疼痛伴隨的自律神經失調。詳細說明請參考衛教文章。",
+                    },
+                    {
+                        q: "我需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，由院長評估後安排治療。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的原理說明與臨床案例，供深入了解參考。</p>
+
+            <!-- 深度原理 -->
+            <div class="mb-6">
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">深度原理與特殊應用</h3>
+                <div class="grid sm:grid-cols-2 gap-3">
+                    {[
+                        {
+                            href: "/blog/superlizer/",
+                            title: "直線偏極光治療 (SuperLizer) 原理完整介紹",
+                            desc: "光生物調節機制、近紅外線波段特性、與一般照燈的技術差異",
+                        },
+                        {
+                            href: "/blog/stellate-ganglion-irradiation/",
+                            title: "星狀神經節照射 (SGI)：非侵入性調節自律神經",
+                            desc: "星狀神經節解剖、SGI 適應症、失眠與慢性疼痛的自律神經連結",
+                        },
+                    ].map((a) => (
+                        <a
+                            href={a.href}
+                            class="flex flex-col gap-1 bg-orange-50 border border-orange-100 rounded-xl p-4 hover:bg-orange-100/60 hover:border-orange-200 transition-colors"
+                        >
+                            <span class="font-semibold text-gray-800 text-base leading-snug">{a.title}</span>
+                            <span class="text-xs text-gray-500 leading-relaxed">{a.desc}</span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
+            <!-- 臨床案例 -->
+            <div>
+                <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">臨床案例與應用</h3>
+                <ul class="grid sm:grid-cols-2 gap-2">
+                    {[
+                        { href: "/blog/knee-pain-osteoarthritis/", text: "退化性膝關節炎：保守治療的選擇" },
+                        { href: "/blog/sciatica-piriformis-myofascial-pain/", text: "梨狀肌與坐骨神經痛的鑑別" },
+                        { href: "/blog/plantar-fasciitis-heel-pain/", text: "足底筋膜炎與腳跟痛：晨起第一步的刺痛" },
+                        { href: "/blog/runner-knee/", text: "跑者膝：髂脛束症候群完整解析" },
+                        { href: "/blog/pes-anserine-bursitis/", text: "鵝足滑囊炎：膝內側疼痛的常見原因" },
+                        { href: "/blog/myofascial-pain-syndrome/", text: "肌筋膜疼痛症候群：激痛點的成因與治療" },
+                        { href: "/blog/stiff-neck/", text: "落枕：急性頸部疼痛的正確處理" },
+                        { href: "/blog/tmjd/", text: "顳顎關節障礙：下巴痛、咬合不正" },
+                        { href: "/blog/hand-numbness-when-sleeping/", text: "睡覺手麻：腕隧道症候群 vs. 神經壓迫" },
+                        { href: "/blog/great-toe-fracture-superlizer/", text: "大腳趾骨折：復健期的光療輔助" },
+                        { href: "/blog/hypermobility-syndrome/", text: "過度關節鬆弛症候群與慢性疼痛" },
+                    ].map((a) => (
+                        <li>
+                            <a
+                                href={a.href}
+                                class="flex items-start gap-2 text-base text-gray-700 hover:text-orange-500 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                            >
+                                <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                </svg>
+                                {a.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </section>
+
+        <CallToAction title="想了解直線偏極光治療是否適合您？" />
+
+    </main>
+</BaseLayout>

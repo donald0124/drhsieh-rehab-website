@@ -117,7 +117,7 @@ const breadcrumbSchema = JSON.stringify({
     <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
 
         <!-- 醫療免責聲明 -->
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm text-amber-800 leading-relaxed">
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
             <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。治療成效因個人體質、病況與配合度而異，實際適應症與治療計畫須由謝明福院長親自問診評估後決定。
         </div>
 
@@ -127,7 +127,7 @@ const breadcrumbSchema = JSON.stringify({
                 什麼是針極肌肉內電刺激（NEIMS）？
             </h2>
             <div class="grid md:grid-cols-2 gap-8 items-start">
-                <div class="space-y-4 text-gray-700 leading-relaxed">
+                <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
                     <p>
                         針極肌肉內電刺激（Needle Electrical Intra-Muscular Stimulation，NEIMS），是一種使用<strong>鐵氟龍絕緣單極針</strong>，將電刺激精準導至深層肌筋膜激痛點的物理性治療方式。
                     </p>
@@ -140,7 +140,7 @@ const breadcrumbSchema = JSON.stringify({
                 </div>
                 <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 space-y-4">
                     <h3 class="font-bold text-gray-800 text-lg">NEIMS vs. 傳統復健</h3>
-                    <div class="space-y-3 text-sm">
+                    <div class="space-y-3 text-base">
                         <div class="flex items-start gap-3">
                             <span class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">N</span>
                             <div>
@@ -168,7 +168,7 @@ const breadcrumbSchema = JSON.stringify({
             <h2 id="indications" class="text-2xl md:text-3xl font-bold text-heading mb-2">
                 常見適用情況
             </h2>
-            <p class="text-gray-500 mb-8 text-sm">
+            <p class="text-gray-500 mb-8 text-base">
                 以下為臨床上常見的評估方向，實際是否適合接受治療，須由院長親自診斷後確認。
             </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -226,7 +226,7 @@ const breadcrumbSchema = JSON.stringify({
                             <span class="w-2 h-2 rounded-full bg-primary flex-shrink-0" />
                             {group.title}
                         </h3>
-                        <ul class="space-y-1.5 text-sm text-gray-600 flex-1">
+                        <ul class="space-y-1.5 text-base text-gray-600 flex-1">
                             {group.items.map((item) => (
                                 <li class="flex items-center gap-2">
                                     <span class="text-gray-300">—</span>
@@ -309,7 +309,7 @@ const breadcrumbSchema = JSON.stringify({
                                     </span>
                                     <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
                                 </div>
-                                <p class="text-gray-600 text-sm leading-relaxed mb-3">{item.desc}</p>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
                                 {item.noteHref ? (
                                     <a
                                         href={item.noteHref}
@@ -335,7 +335,7 @@ const breadcrumbSchema = JSON.stringify({
                 絕對禁忌症（以下情況不適合接受 NEIMS）
             </h2>
             <div class="bg-red-50 border border-red-100 rounded-xl p-6">
-                <ul class="grid sm:grid-cols-2 gap-3 text-sm text-red-800">
+                <ul class="grid sm:grid-cols-2 gap-3 text-base text-red-800">
                     {[
                         "裝有心臟節律器",
                         "有出血傾向或凝血功能不佳（服用高劑量抗凝血劑）",
@@ -394,7 +394,7 @@ const breadcrumbSchema = JSON.stringify({
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </summary>
-                        <div class="px-6 pb-5 pt-2 text-gray-600 text-sm leading-relaxed border-t border-gray-50">
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
                             {item.a}
                         </div>
                     </details>
@@ -407,7 +407,7 @@ const breadcrumbSchema = JSON.stringify({
             <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
                 相關衛教文章
             </h2>
-            <p class="text-gray-500 text-sm mb-8">謝明福院長撰寫的原理說明與臨床案例，供深入了解參考。</p>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的原理說明與臨床案例，供深入了解參考。</p>
 
             <!-- 原理與準備 -->
             <div class="mb-6">
@@ -429,7 +429,7 @@ const breadcrumbSchema = JSON.stringify({
                             href={a.href}
                             class="flex flex-col gap-1 bg-blue-50 border border-blue-100 rounded-xl p-4 hover:bg-blue-100/60 hover:border-blue-200 transition-colors"
                         >
-                            <span class="font-semibold text-gray-800 text-sm leading-snug">{a.title}</span>
+                            <span class="font-semibold text-gray-800 text-base leading-snug">{a.title}</span>
                             <span class="text-xs text-gray-500 leading-relaxed">{a.desc}</span>
                         </a>
                     ))}
@@ -456,7 +456,7 @@ const breadcrumbSchema = JSON.stringify({
                         <li>
                             <a
                                 href={a.href}
-                                class="flex items-start gap-2 text-sm text-gray-700 hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                                class="flex items-start gap-2 text-base text-gray-700 hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
                             >
                                 <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
