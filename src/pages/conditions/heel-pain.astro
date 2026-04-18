@@ -1,0 +1,477 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/conditions/plantar-fasciitis/`,
+    },
+    "headline": "腳跟痛・足底筋膜炎治療｜謝明福復健科診所",
+    "description": "早上踩地腳跟劇痛、久站後足底疼痛，是足底筋膜炎的典型症狀。謝明福院長30年復健科經驗，提供直線偏極光、NEIMS 等整合性治療，協助有效緩解頑固性腳跟痛。",
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "足底筋膜炎",
+        "alternateName": ["腳跟痛", "踵痛", "足跟痛", "晨起腳痛"],
+        "description": "足底筋膜炎是足跟疼痛最常見的原因，由足底筋膜的微撕裂與慢性發炎引起，典型表現為早晨起床後踩地的劇烈腳跟疼痛。",
+        "possibleTreatment": [
+            { "@type": "MedicalTherapy", "name": "直線偏極光治療 (SuperLizer)" },
+            { "@type": "MedicalTherapy", "name": "針極肌肉內電刺激 (NEIMS)" },
+            { "@type": "MedicalTherapy", "name": "物理治療" },
+        ],
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "常見症狀", item: `${siteUrl}/#services` },
+        { "@type": "ListItem", position: 3, name: "腳跟痛・足底筋膜炎", item: `${siteUrl}/conditions/plantar-fasciitis/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "腳跟痛要看哪一科？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "腳跟痛建議就診「復健科」。復健科醫師能確認診斷、評估嚴重程度，並規劃物理治療、直線偏極光、NEIMS 等個人化療程。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "足底筋膜炎多久會好？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "大多數足底筋膜炎在積極保守治療（物理治療、光療、注射等）下，3-6 個月內可明顯改善。慢性頑固性足底筋膜炎（超過 6 個月）恢復較慢，需要較長療程。實際療程須由醫師評估，本診所不對療效做固定次數保證。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "足底筋膜炎可以打針嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "注射治療可作為選項之一。類固醇注射可短期快速緩解急性期疼痛，但不建議頻繁施打（可能造成筋膜萎縮）。葡萄糖水增生注射適用於慢性期，刺激組織修復。實際注射適應症及選擇須由醫師評估後決定，並非所有患者都需要注射。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "足底筋膜炎健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "一般物理治療在醫師處方下可申請健保給付。直線偏極光（SuperLizer）、NEIMS 屬自費項目。實際費用請直接洽詢診所。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="腳跟痛・足底筋膜炎治療｜謝明福復健科診所（三峽）"
+    description="早上起床踩地腳跟劇痛、久站後足底疼痛？謝明福院長30年復健科經驗，提供直線偏極光、NEIMS 整合治療，針對頑固性腳跟痛有效緩解。新北市三峽，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/#services" class="hover:text-primary transition-colors">常見症狀</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">腳跟痛・足底筋膜炎</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            復健科常見主訴
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            腳跟痛・足底筋膜炎
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            早上踩地的那一刻腳跟劇痛、久站後腳底灼燒感……足底筋膜炎是最常被忽視的慢性疼痛之一。謝明福院長透過整合性治療，協助您告別頑固性腳跟痛。
+        </p>
+
+        <!-- 相關症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "腳跟痛",
+                "足底筋膜炎",
+                "踵痛",
+                "晨起腳痛",
+                "足弓痛",
+                "久站腳痛",
+                "跟骨骨刺",
+                "扁平足",
+                "莫頓氏神經瘤",
+            ].map((tag) => (
+                <span class="bg-rose-50 text-rose-800 text-sm px-3 py-1 rounded-full border border-rose-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。實際病因、適應症與治療計畫，須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 您是否有以下症狀 -->
+        <section aria-labelledby="symptoms">
+            <h2 id="symptoms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                您是否有以下困擾？
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                {[
+                    "早上起床踩地的第一步，腳跟劇痛（數分鐘後稍微緩解）",
+                    "久坐後站起來，腳跟又開始疼痛",
+                    "長時間站立或行走後，足底或腳跟持續灼熱疼痛",
+                    "腳跟內側（足弓根部）有明顯壓痛點",
+                    "赤腳走在硬地上特別不舒服",
+                    "穿薄底鞋或高跟鞋後症狀加重",
+                    "腳底感覺緊繃，像橡皮筋快要斷掉",
+                    "疼痛反覆發作，休息後改善，活動後又復發",
+                ].map((symptom) => (
+                    <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                        <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                        <span class="text-base text-gray-700 leading-relaxed">{symptom}</span>
+                    </div>
+                ))}
+            </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+                若有上述症狀，建議由復健科醫師評估，確認診斷並規劃最適合的治療方向。
+            </p>
+        </section>
+
+        <!-- 常見病因 -->
+        <section aria-labelledby="causes">
+            <h2 id="causes" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見病因診斷
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                「腳跟痛」不一定就是足底筋膜炎，以下是臨床常見的病因分類。
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "足底筋膜炎",
+                        desc: "足底筋膜（從腳跟延伸至腳趾根部的厚帶狀組織）因反覆過度拉伸，在腳跟附著點產生微撕裂與慢性發炎。久站族群、長跑者、體重過重者是高風險族群。",
+                        tags: ["晨起第一步劇痛", "腳跟內側壓痛", "久站加重"],
+                    },
+                    {
+                        title: "跟骨骨刺",
+                        desc: "長期足底筋膜發炎可能在跟骨附著點形成骨刺，但骨刺本身不一定是疼痛來源，真正的疼痛通常來自周圍的軟組織發炎。",
+                        tags: ["X光可見骨刺", "不一定需要手術", "軟組織為主"],
+                    },
+                    {
+                        title: "跟腱炎（阿基里斯腱炎）",
+                        desc: "跟腱（連接小腿腓腸肌與跟骨的肌腱）發炎，疼痛位置在腳跟後方（不同於足底筋膜炎的腳跟底部），跑步、爬樓梯時加重。",
+                        tags: ["腳跟後方痛", "起跑疼痛", "跑步族群常見"],
+                    },
+                    {
+                        title: "莫頓氏神經瘤",
+                        desc: "前足趾縫間神經被夾擠增厚，造成前足底的燒灼感、麻木或刺痛感，常見於第三、四趾間，穿緊繃的鞋子時加重。",
+                        tags: ["前足底麻痛", "趾間燒灼感", "脫鞋按壓舒緩"],
+                    },
+                    {
+                        title: "扁平足・足弓塌陷",
+                        desc: "足弓結構異常導致足底筋膜承受不均勻壓力，是足底筋膜炎的重要危險因子，需同時評估鞋墊支撐與足部姿態矯正。",
+                        tags: ["足弓偏低", "足底疲勞", "長時間行走後明顯"],
+                    },
+                    {
+                        title: "足跟滑囊炎",
+                        desc: "跟骨周圍滑囊發炎，造成腳跟軟組織腫脹壓痛，可能與穿鞋摩擦或過度使用有關，需與足底筋膜炎鑑別。",
+                        tags: ["腳跟腫脹", "觸壓痛明顯", "穿鞋摩擦加重"],
+                    },
+                ].map((item) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2 text-lg">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
+                            {item.title}
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {item.tags.map((tag) => (
+                                <span class="text-xs bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full border border-rose-100">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 診所評估與治療方向 -->
+        <section aria-labelledby="treatments">
+            <h2 id="treatments" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                謝明福診所的評估與治療方向
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                院長透過理學檢查（足底壓痛點評估、足弓形態評估）確認診斷後，再決定最合適的治療組合。
+            </p>
+
+            <div class="space-y-4">
+                <!-- Superlizer -->
+                <div class="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                直線偏極光治療（SuperLizer）
+                                <span class="ml-2 text-xs font-normal bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full border border-orange-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                近紅外線光療穿透足底筋膜附著點的深層軟組織，促進慢性發炎組織的修復與再生，緩解足底筋膜炎頑固性疼痛。非侵入性、無痛，適合對注射有疑慮的患者。
+                            </p>
+                            <a
+                                href="/treatments/superlizer/"
+                                class="inline-flex items-center gap-1.5 text-sm text-orange-500 font-semibold hover:underline"
+                                aria-label="了解直線偏極光治療的方式"
+                            >
+                                了解直線偏極光治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEIMS -->
+                <div class="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                針極肌肉內電刺激（NEIMS）
+                                <span class="ml-2 text-xs font-normal bg-blue-50 text-primary px-2 py-0.5 rounded-full border border-blue-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                針對足底、小腿腓腸肌群的激痛點進行深層電刺激，緩解造成足底筋膜過度張力的肌筋膜緊繃。特別適用於合併小腿肌肉緊繃、慢性反覆性足底疼痛的患者。
+                            </p>
+                            <a
+                                href="/treatments/neims/"
+                                class="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                                aria-label="了解 NEIMS 針極肌肉內電刺激的治療方式"
+                            >
+                                了解 NEIMS 治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 物理治療 -->
+                <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">物理治療</h3>
+                            <p class="text-base text-gray-600 leading-relaxed">
+                                包含超音波、電療、熱療等儀器物理治療，搭配足底筋膜伸展指導，是足底筋膜炎保守治療的基礎。院長也會根據您的足弓狀況建議適當的鞋墊或鞋款選擇。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-rose-100" aria-hidden="true" />
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長透過問診、觸診與理學檢查（足底壓痛點定位、足弓評估、小腿柔軟度測試），確認腳跟疼痛的真正病因——是足底筋膜炎、跟腱炎、莫頓氏神經瘤還是其他問題。",
+                            note: "治療方式以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "依評估結果，院長規劃個人化治療組合：可能包含物理治療、直線偏極光、NEIMS，以及日常足底伸展指導。首次就診通常當天即可開始復健。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長再次評估症狀改善狀況，動態調整治療計畫。院長也會提供生活習慣建議（如適合的鞋款選擇、體重管理、日常伸展），以預防復發。",
+                            note: "療程以功能恢復進展為主要依據，無固定次數",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-rose-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "腳跟痛要看哪一科？",
+                        a: "建議就診「復健科」。復健科醫師能確認診斷、評估嚴重程度（是否合併骨刺、足弓問題），並規劃個人化療程，包含物理治療、直線偏極光（SuperLizer）、NEIMS 或注射治療。",
+                    },
+                    {
+                        q: "足底筋膜炎多久會好？",
+                        a: "大多數足底筋膜炎在積極保守治療下，3-6 個月內可明顯改善。慢性頑固性足底筋膜炎（超過 6 個月）恢復較慢，需要較長療程。實際療程須由醫師評估，本診所不對療效做固定次數保證。",
+                    },
+                    {
+                        q: "足底筋膜炎可以打針嗎？",
+                        a: "注射治療可作為選項之一。類固醇注射可短期快速緩解疼痛，但不建議頻繁施打。葡萄糖水增生注射適用於慢性期，促進組織修復。實際注射適應症及選擇須由醫師評估後決定，並非所有患者都需要注射。",
+                    },
+                    {
+                        q: "足底筋膜炎健保有給付嗎？",
+                        a: "一般物理治療在醫師處方下可申請健保給付。直線偏極光（SuperLizer）、NEIMS 屬自費項目。實際費用請直接洽詢診所。",
+                    },
+                    {
+                        q: "需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的衛教說明與臨床案例，供深入了解參考。</p>
+            <ul class="grid sm:grid-cols-2 gap-2">
+                {[
+                    { href: "/blog/plantar-fasciitis-heel-pain/", text: "足底筋膜炎反覆發作怎麼辦？復健科解析腳底痛成因" },
+                    { href: "/blog/great-toe-fracture-superlizer/", text: "大腳趾骨折腫痛難行？閉鎖性骨折的整合物理治療策略" },
+                    { href: "/blog/neims-ankle-sprain/", text: "嚴重腳踝扭傷久腫不消？多重韌帶損傷與 NEIMS 治療" },
+                    { href: "/blog/external-pain-relief-medication/", text: "痠痛藥膏、貼布貼了無效？正確使用外用止痛藥" },
+                ].map((a) => (
+                    <li>
+                        <a
+                            href={a.href}
+                            class="flex items-start gap-2 text-base text-gray-700 hover:text-rose-700 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                        >
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {a.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <CallToAction title="腳跟痛反覆發作？讓院長找出真正的足底問題根源。" />
+
+    </main>
+</BaseLayout>

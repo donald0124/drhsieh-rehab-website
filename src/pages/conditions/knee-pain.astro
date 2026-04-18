@@ -1,0 +1,484 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/conditions/knee-pain/`,
+    },
+    "headline": "膝蓋退化・退化性關節炎治療｜謝明福復健科診所",
+    "description": "膝蓋退化、退化性關節炎、上下樓梯疼痛是中老年族群最常見的復健科主訴。謝明福院長30年經驗，提供玻尿酸注射、直線偏極光等整合性治療。",
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "退化性膝關節炎",
+        "alternateName": ["膝蓋退化", "膝關節炎", "膝蓋痛", "關節積水", "髕骨軟化症"],
+        "description": "退化性膝關節炎是中老年族群最常見的關節疾病，以關節軟骨磨損為主要病理機制，導致膝蓋疼痛、僵硬與功能下降。",
+        "possibleTreatment": [
+            { "@type": "MedicalTherapy", "name": "關節玻尿酸注射" },
+            { "@type": "MedicalTherapy", "name": "直線偏極光治療 (SuperLizer)" },
+            { "@type": "MedicalTherapy", "name": "針極肌肉內電刺激 (NEIMS)" },
+            { "@type": "MedicalTherapy", "name": "物理治療" },
+        ],
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "常見症狀", item: `${siteUrl}/#services` },
+        { "@type": "ListItem", position: 3, name: "膝蓋退化・退化性關節炎", item: `${siteUrl}/conditions/knee-pain/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "膝蓋退化要看哪一科？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "膝蓋退化建議先就診「復健科」。復健科醫師能評估退化程度、規劃保守治療（物理治療、注射、NEIMS），並判斷是否需轉介骨科手術評估。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "退化性關節炎打玻尿酸有用嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "關節玻尿酸注射可補充關節潤滑液、緩解疼痛、改善活動度，對中度退化的患者效果較明顯。效果因個人狀況而異，通常需重複施打。實際適應症及效益須由醫師評估後決定。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "膝蓋退化一定要換人工關節嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "大多數退化性膝關節炎可透過保守治療（物理治療、注射、NEIMS、SuperLizer等）延緩退化進程並維持生活品質，不一定需要手術。手術通常是保守治療無效、退化嚴重（末期）且嚴重影響生活功能時的最後選項。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "膝蓋退化健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "一般物理治療在醫師處方下可申請健保給付。玻尿酸注射、直線偏極光（SuperLizer）、NEIMS 屬自費項目。健保對玻尿酸注射有特定給付條件，請洽詢醫師確認。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="膝蓋退化・退化性關節炎治療｜謝明福復健科診所（三峽）"
+    description="上下樓梯膝蓋痛、退化性關節炎？謝明福院長30年復健科經驗，提供玻尿酸注射、NEIMS、直線偏極光整合治療，延緩退化、改善功能。新北市三峽，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/#services" class="hover:text-primary transition-colors">常見症狀</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">膝蓋退化・退化性關節炎</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            復健科常見主訴
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            膝蓋退化・退化性關節炎
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            上下樓梯膝蓋痛、蹲下困難、關節僵硬……膝關節退化是中老年族群最常見的活動障礙。謝明福院長透過整合性治療，協助延緩退化進程、恢復日常功能。
+        </p>
+
+        <!-- 相關症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "膝蓋退化",
+                "退化性關節炎",
+                "上下樓梯痛",
+                "關節積水",
+                "髕骨軟化症",
+                "膝蓋僵硬",
+                "蹲下困難",
+                "O型腿",
+                "膝關節炎",
+            ].map((tag) => (
+                <span class="bg-rose-50 text-rose-800 text-sm px-3 py-1 rounded-full border border-rose-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。實際病因、適應症與治療計畫，須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 您是否有以下症狀 -->
+        <section aria-labelledby="symptoms">
+            <h2 id="symptoms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                您是否有以下困擾？
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                {[
+                    "上下樓梯時膝蓋疼痛，下樓尤其明顯",
+                    "長時間坐著站起來時，膝蓋僵硬、需要走幾步才比較順",
+                    "膝蓋彎曲時有摩擦聲或「喀喀」聲",
+                    "走路走多了，膝蓋疼痛加劇，需要休息才能繼續",
+                    "蹲下、跪地越來越困難，影響日常生活",
+                    "膝蓋有時腫脹、積水，或感覺有液體在裡面",
+                    "膝蓋無力，有時感覺快軟掉或「膝蓋快掉出來」",
+                    "天氣變化（濕冷）時膝蓋特別不舒服",
+                ].map((symptom) => (
+                    <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                        <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                        <span class="text-base text-gray-700 leading-relaxed">{symptom}</span>
+                    </div>
+                ))}
+            </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+                若有上述症狀，建議由復健科醫師評估，了解退化程度與最適合的治療方向。
+            </p>
+        </section>
+
+        <!-- 常見病因 -->
+        <section aria-labelledby="causes">
+            <h2 id="causes" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見病因診斷
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                「膝蓋痛」原因多元，需醫師評估才能確認是否為退化性關節炎，以及退化的程度。
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "退化性膝關節炎",
+                        desc: "關節軟骨隨年齡或長期過度使用而磨損，是最常見的膝蓋問題。輕中度可保守治療，重度才考慮手術。X光可輔助評估退化程度。",
+                        tags: ["中老年族群", "軟骨磨損", "上下樓梯痛"],
+                    },
+                    {
+                        title: "髕骨軟化症（跑者膝）",
+                        desc: "髕骨（膝蓋骨）下方軟骨損傷，上下樓梯或久坐後站起時疼痛，好發於年輕族群、跑步者或長時間屈膝工作者。",
+                        tags: ["年輕族群", "膝蓋骨痛", "久坐後加重"],
+                    },
+                    {
+                        title: "關節積水",
+                        desc: "關節腔因發炎積聚液體，造成膝蓋腫脹感、活動受限。可能是退化性關節炎、痛風或其他炎症的表現，需進一步評估。",
+                        tags: ["膝蓋腫脹", "活動受限", "需進一步評估"],
+                    },
+                    {
+                        title: "鵝掌足滑囊炎",
+                        desc: "膝關節內下方的滑囊發炎，造成膝蓋內側下方疼痛，常與退化性關節炎並存，觸診可鑑別。",
+                        tags: ["膝內側痛", "下樓梯明顯", "常合併退化"],
+                    },
+                    {
+                        title: "內側皺褶症候群",
+                        desc: "膝關節內側的黏膜皺褶增厚發炎，彎曲伸直時有雜音或夾擠感，好發於年輕活躍族群，常被誤認為半月板問題。",
+                        tags: ["彎曲有聲", "膝內側夾擠", "年輕族群"],
+                    },
+                    {
+                        title: "貝氏囊腫",
+                        desc: "膝蓋後側（膕窩）出現的囊性腫塊，由關節液外漏積聚形成，常與膝關節內部問題（退化、半月板損傷）有關。",
+                        tags: ["膝後腫塊", "蹲下不舒服", "與關節病變有關"],
+                    },
+                ].map((item) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2 text-lg">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
+                            {item.title}
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {item.tags.map((tag) => (
+                                <span class="text-xs bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full border border-rose-100">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 診所評估與治療方向 -->
+        <section aria-labelledby="treatments">
+            <h2 id="treatments" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                謝明福診所的評估與治療方向
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                院長透過理學檢查（關節活動度、肌力評估、膝關節特殊測試）找出病因後，再決定最合適的治療組合。
+            </p>
+
+            <div class="space-y-4">
+                <!-- 玻尿酸注射 -->
+                <div class="bg-white border border-teal-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-teal-50 rounded-xl flex items-center justify-center text-teal-600 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                關節玻尿酸注射
+                                <span class="ml-2 text-xs font-normal bg-teal-50 text-teal-700 px-2 py-0.5 rounded-full border border-teal-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed">
+                                補充膝關節腔內的玻尿酸，恢復關節潤滑功能，減少骨面摩擦、緩解疼痛並改善活動度。適用於中度退化性膝關節炎患者，由院長親自執行注射。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superlizer -->
+                <div class="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                直線偏極光治療（SuperLizer）
+                                <span class="ml-2 text-xs font-normal bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full border border-orange-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                近紅外線光療穿透膝關節周圍軟組織，促進消炎與修復，對膝關節滑囊炎、韌帶慢性發炎、術後組織修復有良好輔助效果。非侵入性、無痛。
+                            </p>
+                            <a
+                                href="/treatments/superlizer/"
+                                class="inline-flex items-center gap-1.5 text-sm text-orange-500 font-semibold hover:underline"
+                                aria-label="了解直線偏極光治療的方式"
+                            >
+                                了解直線偏極光治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NEIMS + 物理治療 -->
+                <div class="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                NEIMS 與物理治療
+                                <span class="ml-2 text-xs font-normal bg-blue-50 text-primary px-2 py-0.5 rounded-full border border-blue-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                NEIMS 可針對膝關節周圍肌筋膜激痛點（如股四頭肌、腿後肌群）進行深層電刺激，改善肌肉緊繃對膝關節的壓力。搭配物理治療（電療、熱療、超音波）進行整合性復健。
+                            </p>
+                            <a
+                                href="/treatments/neims/"
+                                class="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                                aria-label="了解 NEIMS 針極肌肉內電刺激的治療方式"
+                            >
+                                了解 NEIMS 治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-rose-100" aria-hidden="true" />
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長透過問診、觸診與理學檢查（關節活動度、肌力測試、膝關節特殊測試），判斷膝蓋問題的真正病因。如有需要，院長會建議適當的影像學檢查協助診斷。",
+                            note: "治療方式以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "依評估結果，院長規劃個人化治療組合：可能包含物理治療、玻尿酸注射、NEIMS、直線偏極光，或其他注射治療。首次就診通常當天即可開始復健。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長再次評估症狀改善狀況，動態調整治療計畫。院長也會提供日常保護膝蓋的衛教建議（如體重管理、正確蹲跪姿勢），以減少退化加速。",
+                            note: "療程以功能恢復進展為主要依據，無固定次數",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-rose-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "膝蓋退化要看哪一科？",
+                        a: "建議先就診「復健科」。復健科醫師能評估退化程度、規劃保守治療（物理治療、玻尿酸注射、NEIMS、SuperLizer），並在保守治療無效時協助轉介骨科評估手術適應症。",
+                    },
+                    {
+                        q: "退化性關節炎打玻尿酸有用嗎？",
+                        a: "關節玻尿酸注射可補充關節潤滑液、緩解疼痛、改善活動度，對中度退化的患者效果較明顯。效果因個人狀況（退化程度、體重、年齡）而異，通常需定期重複施打維持效果。實際適應症及預期效益須由醫師評估後決定。",
+                    },
+                    {
+                        q: "膝蓋退化一定要換人工關節嗎？",
+                        a: "大多數退化性膝關節炎可透過保守治療（物理治療、注射、NEIMS、SuperLizer等）延緩退化進程並維持生活品質，不一定需要手術。人工關節置換通常是保守治療無效、退化嚴重（末期）且嚴重影響日常功能時的選項。建議先積極嘗試保守治療。",
+                    },
+                    {
+                        q: "膝蓋退化健保有給付嗎？",
+                        a: "一般物理治療在醫師處方下可申請健保給付。玻尿酸注射、直線偏極光（SuperLizer）、NEIMS 屬自費項目。健保對玻尿酸注射有特定給付條件（需符合退化程度標準），請洽詢院長確認您是否符合條件。",
+                    },
+                    {
+                        q: "需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的衛教說明與臨床案例，供深入了解參考。</p>
+            <ul class="grid sm:grid-cols-2 gap-2">
+                {[
+                    { href: "/blog/knee-pain-osteoarthritis/", text: "走路膝蓋卡卡、上下樓梯痛？退化性關節炎前兆與保養" },
+                    { href: "/blog/elderly-knee-pain-plica-syndrome/", text: "長輩膝蓋痛不一定是退化！認識內側皺褶症候群" },
+                    { href: "/blog/elderly-knee-pain-sartorius-myofascial/", text: "膝蓋內側痛就是退化？小心是縫匠肌在抗議" },
+                    { href: "/blog/pes-anserine-bursitis/", text: "膝蓋內側痛、走路常軟腳？認識鵝掌足滑囊炎" },
+                    { href: "/blog/runner-knee/", text: "跑步膝蓋外側痛、下坡更痛？認識髂脛束摩擦症候群" },
+                ].map((a) => (
+                    <li>
+                        <a
+                            href={a.href}
+                            class="flex items-start gap-2 text-base text-gray-700 hover:text-rose-700 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                        >
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {a.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <CallToAction title="膝蓋退化影響生活品質？讓院長評估最適合的治療方案。" />
+
+    </main>
+</BaseLayout>

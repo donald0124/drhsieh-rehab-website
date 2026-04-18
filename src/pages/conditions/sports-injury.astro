@@ -1,0 +1,483 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/conditions/sports-injury/`,
+    },
+    "headline": "運動傷害・肌腱炎治療｜謝明福復健科診所",
+    "description": "網球肘、板機指、媽媽手、肌腱炎是常見運動傷害。謝明福院長30年復健科經驗，提供 NEIMS、直線偏極光等精準治療，協助快速恢復功能。",
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "運動傷害",
+        "alternateName": ["肌腱炎", "網球肘", "板機指", "媽媽手", "扭傷", "拉傷"],
+        "description": "運動傷害涵蓋肌腱炎、韌帶扭傷、肌肉拉傷等多種急慢性損傷，需依部位與嚴重程度規劃個人化復健計畫。",
+        "possibleTreatment": [
+            { "@type": "MedicalTherapy", "name": "針極肌肉內電刺激 (NEIMS)" },
+            { "@type": "MedicalTherapy", "name": "直線偏極光治療 (SuperLizer)" },
+            { "@type": "MedicalTherapy", "name": "葡萄糖水增生注射" },
+            { "@type": "MedicalTherapy", "name": "物理治療" },
+        ],
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "常見症狀", item: `${siteUrl}/#services` },
+        { "@type": "ListItem", position: 3, name: "運動傷害・肌腱炎", item: `${siteUrl}/conditions/sports-injury/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "運動傷害要看哪一科？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "運動傷害建議就診「復健科」或「運動醫學科」。復健科醫師能評估急慢性損傷程度，規劃物理治療、注射或 NEIMS 等療程，協助功能恢復並預防再傷。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "網球肘怎麼治療？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "網球肘（肱骨外上髁炎）治療包含：休息避免誘發動作、物理治療（電療、超音波）、NEIMS（針對前臂伸肌群激痛點）、直線偏極光治療、葡萄糖水增生注射等。急性期可搭配消炎，慢性期則著重修復與肌力訓練。實際治療由醫師評估後決定。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "肌腱炎多久會好？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "急性肌腱炎若積極治療，多數數週至數月可改善。慢性肌腱炎（肌腱退化性病變）恢復較慢，可能需 3-6 個月以上。療程長短因部位、嚴重程度和個人狀況而異，不做固定次數保證。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "運動傷害健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "一般物理治療在醫師處方下可申請健保給付。NEIMS、直線偏極光（SuperLizer）、葡萄糖水增生注射屬自費項目。實際費用請直接洽詢診所。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="運動傷害・肌腱炎治療｜謝明福復健科診所（三峽）"
+    description="網球肘、板機指、媽媽手、扭傷拉傷？謝明福院長30年復健科經驗，提供 NEIMS、直線偏極光、葡萄糖水增生注射整合治療，精準找出病因、快速恢復功能。新北市三峽，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/#services" class="hover:text-primary transition-colors">常見症狀</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">運動傷害・肌腱炎</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            復健科常見主訴
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            運動傷害・肌腱炎
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            扭傷、拉傷、肌腱炎……運動傷害若處理不當，容易轉為慢性疼痛。謝明福院長透過精準評估找出損傷部位與程度，規劃最適合的恢復計畫。
+        </p>
+
+        <!-- 相關症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "運動傷害",
+                "肌腱炎",
+                "網球肘",
+                "板機指",
+                "媽媽手",
+                "高爾夫球肘",
+                "扭傷",
+                "拉傷",
+                "旋轉肌損傷",
+                "肩夾擠症候群",
+            ].map((tag) => (
+                <span class="bg-rose-50 text-rose-800 text-sm px-3 py-1 rounded-full border border-rose-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。實際病因、適應症與治療計畫，須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 您是否有以下症狀 -->
+        <section aria-labelledby="symptoms">
+            <h2 id="symptoms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                您是否有以下困擾？
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                {[
+                    "手肘外側痛，擰毛巾、提水壺時更嚴重（網球肘）",
+                    "手指彎曲伸直時卡住或有彈響聲（板機指）",
+                    "手腕拇指側疼痛，抱小孩或握物時加重（媽媽手）",
+                    "肩膀手臂上舉超過某個角度就痛（肩夾擠、旋轉肌損傷）",
+                    "運動後肌肉或關節疼痛，休息無法完全緩解",
+                    "扭傷後腫痛消退，但該部位仍有慢性不穩定感",
+                    "肌腱或韌帶受傷後，長期反覆疼痛、難以根治",
+                    "骨科手術後，關節活動度受限或周圍肌肉無力",
+                ].map((symptom) => (
+                    <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                        <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                        <span class="text-base text-gray-700 leading-relaxed">{symptom}</span>
+                    </div>
+                ))}
+            </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+                若有上述症狀，建議由復健科醫師評估，找出損傷部位與最適合的恢復計畫。
+            </p>
+        </section>
+
+        <!-- 常見病因 -->
+        <section aria-labelledby="causes">
+            <h2 id="causes" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見病因診斷
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                運動傷害涵蓋多種部位與組織，以下為臨床最常見的類型。
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "肌腱炎（網球肘、高爾夫球肘）",
+                        desc: "手肘肌腱附著點因反覆過度使用或急性拉傷導致發炎。網球肘（外上髁炎）影響外側，高爾夫球肘（內上髁炎）影響內側，不限於運動員，辦公族也常見。",
+                        tags: ["手肘痛", "握力下降", "擰毛巾疼痛"],
+                    },
+                    {
+                        title: "板機指（狹窄性腱鞘炎）",
+                        desc: "手指屈肌腱鞘發炎增厚，造成肌腱在腱鞘內卡頓，表現為手指彎曲伸直時有彈響聲、卡住甚至鎖住。",
+                        tags: ["手指彈響", "晨間僵硬", "長時間握持者"],
+                    },
+                    {
+                        title: "媽媽手（狹窄性腱鞘炎 De Quervain）",
+                        desc: "手腕拇指側的伸拇短肌與外展拇長肌肌腱發炎，抱嬰兒或做家務時拇指側劇痛，Finkelstein test 陽性可鑑別。",
+                        tags: ["拇指側痛", "抱小孩加重", "新手媽媽常見"],
+                    },
+                    {
+                        title: "旋轉肌袖損傷・肩夾擠症候群",
+                        desc: "肩部旋轉肌群（棘上肌等）肌腱撕裂或肩峰下夾擠，表現為特定角度疼痛弧或肩部無力，需鑑別部分撕裂（可保守）與完全撕裂（可能需手術）。",
+                        tags: ["上舉疼痛弧", "肩部無力", "夜間痛"],
+                    },
+                    {
+                        title: "韌帶扭傷・肌肉拉傷",
+                        desc: "急性運動傷害最常見類型，依嚴重度分三級。輕中度可保守治療，重度韌帶完全斷裂可能需手術評估。急性期 RICE 原則，恢復期積極復健以恢復穩定性。",
+                        tags: ["急性腫痛", "關節不穩", "功能受限"],
+                    },
+                    {
+                        title: "骨科術後復健",
+                        desc: "十字韌帶手術、旋轉肌修補術後的關節活動度與肌力恢復是關鍵，需系統性復健計畫預防沾黏並重建功能。",
+                        tags: ["術後沾黏", "肌力流失", "功能重建"],
+                    },
+                ].map((item) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2 text-lg">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
+                            {item.title}
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {item.tags.map((tag) => (
+                                <span class="text-xs bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full border border-rose-100">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 診所評估與治療方向 -->
+        <section aria-labelledby="treatments">
+            <h2 id="treatments" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                謝明福診所的評估與治療方向
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                院長透過理學檢查（特殊肌腱測試、關節穩定度評估）找出損傷部位與程度後，再決定最合適的治療組合。
+            </p>
+
+            <div class="space-y-4">
+                <!-- NEIMS -->
+                <div class="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                針極肌肉內電刺激（NEIMS）
+                                <span class="ml-2 text-xs font-normal bg-blue-50 text-primary px-2 py-0.5 rounded-full border border-blue-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                針對運動傷害後形成的深層肌筋膜激痛點，精準導入電刺激解除痙攣與疼痛。對慢性肌腱炎、術後沾黏、肌肉緊繃引起的關節活動受限特別有效，由院長親自執行。
+                            </p>
+                            <a
+                                href="/treatments/neims/"
+                                class="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                                aria-label="了解 NEIMS 針極肌肉內電刺激的治療方式"
+                            >
+                                了解 NEIMS 治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superlizer -->
+                <div class="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                直線偏極光治療（SuperLizer）
+                                <span class="ml-2 text-xs font-normal bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full border border-orange-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                近紅外線光療穿透肌腱、韌帶附著點，促進深層組織的修復與消炎，加速受傷組織的癒合過程。對慢性肌腱炎、韌帶部分撕裂後的修復期特別有幫助。
+                            </p>
+                            <a
+                                href="/treatments/superlizer/"
+                                class="inline-flex items-center gap-1.5 text-sm text-orange-500 font-semibold hover:underline"
+                                aria-label="了解直線偏極光治療的方式"
+                            >
+                                了解直線偏極光治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 葡萄糖水增生注射 -->
+                <div class="bg-white border border-pink-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-pink-50 rounded-xl flex items-center justify-center text-pink-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">葡萄糖水增生注射</h3>
+                            <p class="text-base text-gray-600 leading-relaxed">
+                                高濃度葡萄糖水注射至受傷的韌帶、肌腱附著點，刺激局部組織再生修復。適用於慢性韌帶鬆弛、肌腱退化性病變等保守治療效果有限的情況。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-rose-100" aria-hidden="true" />
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長透過問診、觸診與理學檢查（特殊肌腱測試、關節穩定度評估），判斷運動傷害的損傷部位、類型與嚴重程度。如有需要，會建議適當的影像學輔助診斷。",
+                            note: "治療方式以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "依評估結果，院長規劃個人化治療組合：急性期以消炎止痛為主；恢復期搭配 NEIMS、直線偏極光、注射治療，促進組織修復與功能恢復。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長再次評估症狀改善狀況，動態調整治療計畫。院長也會提供傷後運動建議，協助安全回歸運動，避免再次受傷。",
+                            note: "療程以功能恢復進展為主要依據，無固定次數",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-rose-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "運動傷害要看哪一科？",
+                        a: "建議就診「復健科」或「運動醫學科」。復健科醫師能評估急慢性損傷程度，規劃物理治療、注射或 NEIMS 等療程，協助功能恢復並預防再傷。若懷疑骨折或韌帶完全斷裂，可能需轉介骨科評估手術。",
+                    },
+                    {
+                        q: "網球肘怎麼治療？",
+                        a: "網球肘（肱骨外上髁炎）治療包含：避免誘發動作、物理治療（電療、超音波）、NEIMS（針對前臂伸肌群激痛點深層電刺激）、直線偏極光治療、葡萄糖水增生注射等。急性期著重消炎，慢性期著重組織修復與肌力訓練。實際治療由院長評估後決定。",
+                    },
+                    {
+                        q: "肌腱炎多久會好？",
+                        a: "急性肌腱炎若積極治療，多數數週至數月可改善。慢性肌腱炎（肌腱退化性病變）恢復較慢，可能需 3-6 個月以上積極治療。療程長短因部位、嚴重程度和個人狀況而異，本診所不對療效做固定次數保證。",
+                    },
+                    {
+                        q: "運動傷害健保有給付嗎？",
+                        a: "一般物理治療在醫師處方下可申請健保給付。NEIMS、直線偏極光（SuperLizer）、葡萄糖水增生注射屬自費項目。實際費用請直接洽詢診所。",
+                    },
+                    {
+                        q: "需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的衛教說明與臨床案例，供深入了解參考。</p>
+            <ul class="grid sm:grid-cols-2 gap-2">
+                {[
+                    { href: "/blog/tennis-elbow-treatment-experience/", text: "網球肘治療新觀點：增生療法搭配 NEIMS 突破治療瓶頸" },
+                    { href: "/blog/mommy-thumb-de-quervains-syndrome/", text: "抱小孩、滑手機手腕疼痛？認識媽媽手的診斷與治療" },
+                    { href: "/blog/trigger-finger-3c-product-injury/", text: "3C 產品手部傷害：板機指的成因與處置" },
+                    { href: "/blog/neims-ankle-sprain/", text: "嚴重腳踝扭傷久腫不消？多重韌帶損傷與 NEIMS 治療" },
+                    { href: "/blog/frozen-shoulder/", text: "肩膀卡住、手舉不高？認識五十肩的病程分期與治療" },
+                    { href: "/blog/groin-pain-myofasciitis-neims/", text: "難以啟齒的鼠蹊部疼痛：大腿內收肌拉傷與肌筋膜炎" },
+                ].map((a) => (
+                    <li>
+                        <a
+                            href={a.href}
+                            class="flex items-start gap-2 text-base text-gray-700 hover:text-rose-700 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                        >
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {a.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <CallToAction title="運動傷害久久不癒？讓院長找出真正的損傷根源。" />
+
+    </main>
+</BaseLayout>

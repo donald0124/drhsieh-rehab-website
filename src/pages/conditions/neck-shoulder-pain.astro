@@ -1,0 +1,482 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/conditions/neck-shoulder-pain/`,
+    },
+    "headline": "肩頸痠痛・頸肩僵硬治療｜謝明福復健科診所",
+    "description": "肩頸痠痛、頸肩僵硬、落枕是最常見的復健科主訴。謝明福院長30年經驗，透過精準評估找出病因，提供 NEIMS、直線偏極光等整合性治療。",
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "肩頸痠痛",
+        "alternateName": ["頸肩僵硬", "落枕", "肌筋膜炎", "五十肩", "頸椎症候群"],
+        "description": "肩頸部位的疼痛與僵硬，可能由肌筋膜炎、頸椎病變、落枕、五十肩等多種原因引起，為復健科最常見主訴之一。",
+        "possibleTreatment": [
+            { "@type": "MedicalTherapy", "name": "針極肌肉內電刺激 (NEIMS)" },
+            { "@type": "MedicalTherapy", "name": "直線偏極光治療 (SuperLizer)" },
+            { "@type": "MedicalTherapy", "name": "物理治療" },
+            { "@type": "MedicalTherapy", "name": "頸椎牽引" },
+        ],
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "常見症狀", item: `${siteUrl}/#services` },
+        { "@type": "ListItem", position: 3, name: "肩頸痠痛・頸肩僵硬", item: `${siteUrl}/conditions/neck-shoulder-pain/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "肩頸痠痛要看哪一科？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "肩頸痠痛建議優先就診「復健科」。復健科醫師能透過理學檢查判斷病因，評估是否為肌筋膜炎、頸椎神經壓迫、五十肩或旋轉肌問題，並規劃物理治療、注射或特殊治療（如 NEIMS）。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "肩頸痠痛可以做哪些治療？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "依病因不同，治療方式包括：物理治療（熱療、電療、頸椎牽引）、針極肌肉內電刺激（NEIMS，針對深層激痛點）、直線偏極光治療（SuperLizer，促進深層修復）等。實際治療方式須由醫師評估後決定。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "肩頸痠痛健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "一般物理治療（電療、熱療、牽引等）在醫師處方下可申請健保給付。NEIMS 與直線偏極光治療（SuperLizer）屬自費項目。實際費用請直接洽詢診所。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "落枕跟肌筋膜炎有什麼不同？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "落枕通常指睡眠姿勢不良或受涼引起的急性頸部疼痛與活動受限，多數數天內可改善。肌筋膜炎則是肌肉內形成激痛點造成的慢性或反覆性疼痛。兩者可能同時存在，需由醫師觸診評估鑑別。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="肩頸痠痛・頸肩僵硬治療｜謝明福復健科診所（三峽）"
+    description="肩頸痠痛、頸肩僵硬、落枕反覆發作？謝明福院長30年復健科經驗，精準評估肌筋膜炎、頸椎壓迫、五十肩等病因，提供 NEIMS、直線偏極光、物理治療整合方案。新北市三峽，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/#services" class="hover:text-primary transition-colors">常見症狀</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">肩頸痠痛・頸肩僵硬</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            復健科常見主訴
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            肩頸痠痛・頸肩僵硬
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            長期低頭、肌肉過度使用、睡姿不良……肩頸不適是復健科最常見的主訴之一。謝明福院長透過精準評估，找出真正的根源，而非只是放鬆表面肌肉。
+        </p>
+
+        <!-- 相關症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "肩頸痠痛",
+                "頸肩僵硬",
+                "落枕",
+                "肌筋膜炎",
+                "五十肩",
+                "頸椎病變",
+                "頭痛",
+                "手臂痠麻",
+                "膏肓痛",
+            ].map((tag) => (
+                <span class="bg-rose-50 text-rose-800 text-sm px-3 py-1 rounded-full border border-rose-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。實際病因、適應症與治療計畫，須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 您是否有以下症狀 -->
+        <section aria-labelledby="symptoms">
+            <h2 id="symptoms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                您是否有以下困擾？
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                {[
+                    "早上起床，脖子卡住、轉頭就痛（落枕）",
+                    "肩頸長期僵硬，工作一久就痠脹不舒服",
+                    "低頭滑手機後，後頸緊繃、頭痛加重",
+                    "肩膀卡住，手舉不起來，半夜會痛醒",
+                    "手臂或手指感到痠麻，尤其久坐或睡覺後",
+                    "膏肓（肩胛骨內側）有深層的悶痛感",
+                    "頸部活動受限，往某一側轉頭特別困難",
+                    "肩頸按摩後短暫舒緩，但很快又復發",
+                ].map((symptom) => (
+                    <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                        <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                        <span class="text-base text-gray-700 leading-relaxed">{symptom}</span>
+                    </div>
+                ))}
+            </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+                若有上述症狀，建議由復健科醫師評估，找出真正病因再治療。
+            </p>
+        </section>
+
+        <!-- 常見病因 -->
+        <section aria-labelledby="causes">
+            <h2 id="causes" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見病因診斷
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                肩頸痠痛不等於「肌肉太緊」，以下是臨床常見的病因分類。
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "肌筋膜疼痛症候群",
+                        desc: "肌肉內形成「激痛點（Trigger Point）」，按壓時有明顯痛點並可引發遠端轉移痛。長時間維持固定姿勢（如低頭工作）是最常見誘因。",
+                        tags: ["頸肩僵硬", "膏肓痛", "頭痛"],
+                    },
+                    {
+                        title: "落枕（急性頸部扭傷）",
+                        desc: "睡姿不良或突然轉頭造成的急性頸椎小面關節或頌頸肌群損傷，多數數天內可改善，但若反覆發作則須評估底層問題。",
+                        tags: ["轉頭劇痛", "頸部活動受限"],
+                    },
+                    {
+                        title: "頸椎退化・神經根壓迫",
+                        desc: "頸椎骨刺、椎間盤突出壓迫神經根，除頸肩痠痛外，常伴隨手臂痠麻或無力，需影像學確認。",
+                        tags: ["手麻", "手臂無力", "電麻感"],
+                    },
+                    {
+                        title: "五十肩（冰凍肩）",
+                        desc: "肩關節囊發炎沾黏，造成肩部活動度大幅下降，典型表現為手舉不高、外展受限、半夜痛醒。",
+                        tags: ["手舉不高", "穿衣困難", "夜間痛"],
+                    },
+                    {
+                        title: "旋轉肌袖損傷",
+                        desc: "棘上肌等旋轉肌群撕裂或發炎，造成肩部無力感與特定角度的疼痛弧，常與五十肩混淆。",
+                        tags: ["肩部無力", "疼痛弧"],
+                    },
+                    {
+                        title: "肩夾擠症候群",
+                        desc: "手臂上舉時肩峰與旋轉肌腱之間空間不足，造成夾擠性疼痛，常見於需要反覆高舉手臂的工作者或運動員。",
+                        tags: ["上舉疼痛", "投擲動作痛"],
+                    },
+                ].map((item) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2 text-lg">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
+                            {item.title}
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {item.tags.map((tag) => (
+                                <span class="text-xs bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full border border-rose-100">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 診所評估與治療方向 -->
+        <section aria-labelledby="treatments">
+            <h2 id="treatments" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                謝明福診所的評估與治療方向
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                院長透過理學檢查（觸診、活動度評估、神經學測試）找出病因後，再決定最合適的治療組合。
+            </p>
+
+            <div class="space-y-4">
+                <!-- NEIMS -->
+                <div class="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                針極肌肉內電刺激（NEIMS）
+                                <span class="ml-2 text-xs font-normal bg-blue-50 text-primary px-2 py-0.5 rounded-full border border-blue-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                針對深層肌筋膜激痛點，將電刺激精準導至深層，直接解除造成肩頸痠痛的根源。對於肌筋膜炎、慢性頸肩僵硬、膏肓痛特別有效，由院長親自執行。
+                            </p>
+                            <a
+                                href="/treatments/neims/"
+                                class="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                                aria-label="了解 NEIMS 針極肌肉內電刺激的治療方式"
+                            >
+                                了解 NEIMS 治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superlizer -->
+                <div class="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                直線偏極光治療（SuperLizer）
+                                <span class="ml-2 text-xs font-normal bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full border border-orange-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                近紅外線光療穿透皮下 5 公分，促進深層韌帶、關節囊的修復與消炎，對五十肩（深層關節囊沾黏）、慢性頸椎退化、神經病變後疼痛有良好的輔助效果。非侵入性、無痛。
+                            </p>
+                            <a
+                                href="/treatments/superlizer/"
+                                class="inline-flex items-center gap-1.5 text-sm text-orange-500 font-semibold hover:underline"
+                                aria-label="了解直線偏極光治療的方式"
+                            >
+                                了解直線偏極光治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 一般物理治療 -->
+                <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">物理治療與頸椎牽引</h3>
+                            <p class="text-base text-gray-600 leading-relaxed">
+                                包含熱療、電療、超音波、頸椎牽引等儀器治療，依醫師評估搭配使用。頸椎牽引特別適用於頸椎椎間盤突出或神經根壓迫，可增加椎間孔空間、減輕神經壓迫。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-rose-100" aria-hidden="true" />
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長透過問診、觸診與理學檢查（活動度測試、肌力評估、神經學測試），判斷肩頸痠痛的真正病因——是肌筋膜炎、頸椎神經壓迫、五十肩還是其他問題。",
+                            note: "治療方式以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "依評估結果，院長規劃個人化治療組合：可能包含物理治療、NEIMS、直線偏極光，或搭配注射治療。首次就診通常當天即可開始復健。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長再次評估症狀改善狀況，動態調整治療計畫。肩頸問題常與姿勢習慣有關，院長會提供衛教建議以減少復發。",
+                            note: "療程以功能恢復進展為主要依據，無固定次數",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-rose-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "肩頸痠痛要看哪一科？",
+                        a: "建議優先就診「復健科」。復健科醫師能透過理學檢查判斷病因，評估是否為肌筋膜炎、頸椎神經壓迫、五十肩或旋轉肌問題，並規劃物理治療、注射或特殊治療（如 NEIMS）。若懷疑有骨折或嚴重結構性病變，可能需進一步影像學檢查。",
+                    },
+                    {
+                        q: "肩頸痠痛可以做哪些治療？",
+                        a: "依病因不同，治療方式包括：物理治療（熱療、電療、超音波、頸椎牽引）、針極肌肉內電刺激（NEIMS，針對深層激痛點）、直線偏極光治療（SuperLizer，促進深層修復）、關節注射等。實際治療方式須由醫師評估後決定。",
+                    },
+                    {
+                        q: "健保有給付肩頸復健嗎？",
+                        a: "一般物理治療（電療、熱療、牽引等）在醫師處方下可申請健保給付。NEIMS 與直線偏極光治療（SuperLizer）屬自費項目。實際費用請直接洽詢診所。",
+                    },
+                    {
+                        q: "落枕跟肌筋膜炎有什麼不同？",
+                        a: "落枕通常指睡眠姿勢不良或受涼引起的急性頸部疼痛，多數數天內可改善。肌筋膜炎則是肌肉內形成激痛點造成的慢性或反覆性疼痛，即使按摩後短暫緩解，不久後又會復發。兩者可能同時存在，需由醫師觸診評估鑑別。",
+                    },
+                    {
+                        q: "需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的衛教說明與臨床案例，供深入了解參考。</p>
+            <ul class="grid sm:grid-cols-2 gap-2">
+                {[
+                    { href: "/blog/chronic-myofascial-pain-neims/", text: "上班族肩頸惡夢：肌筋膜疼痛症候群解析" },
+                    { href: "/blog/pinky-numbness-latissimus-dorsi-syndrome/", text: "肩臂痠痛手指麻？可能是闊背肌筋膜炎" },
+                    { href: "/blog/neims-myofascial-pain-chinese-western-medicine/", text: "中西醫合併治療肌筋膜炎" },
+                    { href: "/blog/stiff-neck/", text: "落枕：急性頸部疼痛的正確處理方式" },
+                    { href: "/blog/myofascial-pain-syndrome/", text: "肌筋膜疼痛症候群：激痛點的成因與治療" },
+                    { href: "/blog/hand-numbness-when-sleeping/", text: "睡覺手麻：腕隧道症候群 vs. 頸椎神經壓迫" },
+                ].map((a) => (
+                    <li>
+                        <a
+                            href={a.href}
+                            class="flex items-start gap-2 text-base text-gray-700 hover:text-rose-700 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                        >
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {a.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <CallToAction title="肩頸困擾反覆發作？讓院長找出真正病因。" />
+
+    </main>
+</BaseLayout>

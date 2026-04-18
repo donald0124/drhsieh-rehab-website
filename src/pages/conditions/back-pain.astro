@@ -1,0 +1,483 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CallToAction from "../../components/CallToAction.astro";
+
+const siteUrl = "https://drhsieh-rehab.com";
+
+const pageSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `${siteUrl}/conditions/back-pain/`,
+    },
+    "headline": "腰背痛・坐骨神經痛治療｜謝明福復健科診所",
+    "description": "腰背痛、坐骨神經痛是復健科最常見主訴。謝明福院長30年經驗，精準評估椎間盤突出、腰椎退化等病因，提供 NEIMS、直線偏極光等整合性治療。",
+    "about": {
+        "@type": "MedicalCondition",
+        "name": "腰背痛",
+        "alternateName": ["下背痛", "坐骨神經痛", "椎間盤突出", "腰椎退化", "腰肌勞損"],
+        "description": "腰背痛是復健科最常見的主訴，可能由肌筋膜炎、椎間盤突出、腰椎退化、坐骨神經壓迫等多種原因引起。",
+        "possibleTreatment": [
+            { "@type": "MedicalTherapy", "name": "針極肌肉內電刺激 (NEIMS)" },
+            { "@type": "MedicalTherapy", "name": "直線偏極光治療 (SuperLizer)" },
+            { "@type": "MedicalTherapy", "name": "腰椎牽引" },
+            { "@type": "MedicalTherapy", "name": "物理治療" },
+        ],
+    },
+    "author": {
+        "@type": "Person",
+        "@id": `${siteUrl}/#doctor`,
+        "name": "謝明福",
+        "jobTitle": "復健科主治醫師、院長",
+    },
+    "publisher": {
+        "@type": "MedicalOrganization",
+        "name": "謝明福復健科診所",
+        "@id": `${siteUrl}/#clinic`,
+    },
+});
+
+const breadcrumbSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        { "@type": "ListItem", position: 1, name: "首頁", item: `${siteUrl}/` },
+        { "@type": "ListItem", position: 2, name: "常見症狀", item: `${siteUrl}/#services` },
+        { "@type": "ListItem", position: 3, name: "腰背痛・坐骨神經痛", item: `${siteUrl}/conditions/back-pain/` },
+    ],
+});
+
+const faqSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "腰背痛要看哪一科？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "腰背痛建議優先就診「復健科」。復健科醫師透過理學檢查判斷病因，評估是肌筋膜炎、椎間盤突出、腰椎退化還是坐骨神經壓迫，並規劃物理治療、腰椎牽引或 NEIMS 等個人化療程。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "坐骨神經痛一定要開刀嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "大多數坐骨神經痛可透過保守治療（物理治療、牽引、NEIMS、注射等）緩解，不一定需要手術。若保守治療無效、症狀持續惡化、或出現嚴重神經缺損（如肌力明顯下降、膀胱功能障礙），才需考慮手術。建議先由醫師評估。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "腰背痛復健健保有給付嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "一般物理治療（電療、熱療、腰椎牽引等）在醫師處方下可申請健保給付。NEIMS 與直線偏極光治療（SuperLizer）屬自費項目。實際費用請直接洽詢診所。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "下背痛多久會好？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "這取決於病因：急性腰扭傷通常數週內可改善；椎間盤突出引起的坐骨神經痛可能需數週至數個月的積極治療；慢性腰背痛（超過 3 個月）則需長期管理。療程長短須由醫師面對面評估後判斷。",
+            },
+        },
+        {
+            "@type": "Question",
+            "name": "需要預約嗎？",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+            },
+        },
+    ],
+});
+---
+
+<BaseLayout
+    title="腰背痛・坐骨神經痛治療｜謝明福復健科診所（三峽）"
+    description="腰背痛、坐骨神經痛反覆發作？謝明福院長30年復健科經驗，精準評估椎間盤突出、腰椎退化、肌筋膜炎等病因，提供 NEIMS、直線偏極光、腰椎牽引整合方案。新北市三峽，現場掛號即可就診。"
+    ogType="website"
+>
+    <Fragment slot="head">
+        <script type="application/ld+json" set:html={pageSchema} />
+        <script type="application/ld+json" set:html={breadcrumbSchema} />
+        <script type="application/ld+json" set:html={faqSchema} />
+    </Fragment>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <nav aria-label="Breadcrumb" class="text-sm text-gray-500">
+            <ol class="flex items-center space-x-2">
+                <li><a href="/" class="hover:text-primary transition-colors">首頁</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><a href="/#services" class="hover:text-primary transition-colors">常見症狀</a></li>
+                <li><span class="text-gray-400">/</span></li>
+                <li><span class="text-gray-800 font-medium" aria-current="page">腰背痛・坐骨神經痛</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- Hero -->
+    <header class="max-w-4xl mx-auto px-4 pt-8 pb-12 text-center">
+        <div class="inline-flex items-center gap-2 bg-rose-50 text-rose-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            復健科常見主訴
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-heading leading-tight mb-4">
+            腰背痛・坐骨神經痛
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            久坐、搬重物、姿勢不良……腰背疼痛是現代人最普遍的困擾。謝明福院長透過精準評估，找出真正病因，而非只是熱敷電療了事。
+        </p>
+
+        <!-- 相關症狀標籤 -->
+        <div class="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+                "腰背痛",
+                "下背痛",
+                "坐骨神經痛",
+                "椎間盤突出",
+                "腰椎退化",
+                "骨刺",
+                "腰肌勞損",
+                "臀部痠痛",
+                "腿部麻痛",
+                "閃到腰",
+            ].map((tag) => (
+                <span class="bg-rose-50 text-rose-800 text-sm px-3 py-1 rounded-full border border-rose-100">
+                    {tag}
+                </span>
+            ))}
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-4xl mx-auto px-4 pb-16 space-y-16">
+
+        <!-- 醫療聲明 -->
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-base text-amber-800 leading-relaxed">
+            <strong>醫療聲明：</strong>本頁內容僅供一般衛教資訊參考，不涉及任何療效保證或治癒承諾。實際病因、適應症與治療計畫，須由謝明福院長親自問診評估後決定。
+        </div>
+
+        <!-- 您是否有以下症狀 -->
+        <section aria-labelledby="symptoms">
+            <h2 id="symptoms" class="text-2xl md:text-3xl font-bold text-heading mb-6">
+                您是否有以下困擾？
+            </h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+                {[
+                    "彎腰或打噴嚏時，背部劇痛並感覺電麻到腿",
+                    "久坐辦公室後，站起來腰部僵硬、需要緩一會才能直立",
+                    "臀部深層痠痛，有時麻到大腿或小腿外側",
+                    "早上起床時腰部僵硬，需要活動幾分鐘才比較舒服",
+                    "搬重物後突然「閃到腰」，無法直立行走",
+                    "腰背痛反覆發作，按摩推拿後短暫緩解，很快又復發",
+                    "走路一段路後腿部無力或疼痛，需要坐下休息（間歇性跛行）",
+                    "腰部某個姿勢特別痛，例如坐下或站立時症狀明顯不同",
+                ].map((symptom) => (
+                    <div class="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                        <span class="w-5 h-5 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center flex-shrink-0 text-xs font-bold mt-0.5">✓</span>
+                        <span class="text-base text-gray-700 leading-relaxed">{symptom}</span>
+                    </div>
+                ))}
+            </div>
+            <p class="text-sm text-gray-500 mt-4 text-center">
+                若有上述症狀，建議由復健科醫師評估，找出真正病因再治療。
+            </p>
+        </section>
+
+        <!-- 常見病因 -->
+        <section aria-labelledby="causes">
+            <h2 id="causes" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                常見病因診斷
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                腰背痛原因多元，以下是臨床常見的病因分類，需醫師評估才能鑑別。
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4">
+                {[
+                    {
+                        title: "腰椎肌筋膜疼痛症候群",
+                        desc: "腰背部肌肉長期過勞或姿勢不良，形成激痛點（Trigger Point），造成局部或遠端轉移性疼痛。久坐族、搬運工作者最常見。",
+                        tags: ["腰背僵硬", "局部壓痛", "臀部轉移痛"],
+                    },
+                    {
+                        title: "椎間盤突出（腰椎）",
+                        desc: "腰椎椎間盤向後突出壓迫神經根，引起腰痛合併下肢放射痛（坐骨神經痛型態），特定姿勢如彎腰、久坐時症狀加重。",
+                        tags: ["彎腰加重", "腿部麻痛", "打噴嚏劇痛"],
+                    },
+                    {
+                        title: "坐骨神經痛",
+                        desc: "坐骨神經（源自 L4-S1）受壓迫或刺激，引起從臀部沿大腿後側延伸至小腿或腳的麻痛感，可由椎間盤突出、梨狀肌症候群等多種原因引起。",
+                        tags: ["臀部痠痛", "腿麻至腳", "電麻感"],
+                    },
+                    {
+                        title: "腰椎退化・骨刺",
+                        desc: "腰椎關節退化增生形成骨刺，壓迫神經或椎管狹窄，多見於中老年族群，症狀為慢性下背痛、走路後腿部沉重無力。",
+                        tags: ["中老年族群", "走路後無力", "椎管狹窄"],
+                    },
+                    {
+                        title: "急性腰扭傷（閃到腰）",
+                        desc: "突然的不當施力或扭轉造成腰部肌肉、韌帶急性損傷，疼痛劇烈、活動受限，通常數週內可改善，但若處理不當易轉為慢性。",
+                        tags: ["突發劇痛", "無法直腰", "活動受限"],
+                    },
+                    {
+                        title: "梨狀肌症候群",
+                        desc: "梨狀肌緊繃壓迫坐骨神經，引起臀部深層痠痛並可放射至腿部，症狀與椎間盤性坐骨神經痛相似，需靠觸診與特殊檢查鑑別。",
+                        tags: ["臀部深層痛", "久坐加重", "壓痛明顯"],
+                    },
+                ].map((item) => (
+                    <div class="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2 text-lg">
+                            <span class="w-2 h-2 rounded-full bg-rose-500 flex-shrink-0" />
+                            {item.title}
+                        </h3>
+                        <p class="text-base text-gray-600 leading-relaxed mb-3">{item.desc}</p>
+                        <div class="flex flex-wrap gap-1.5">
+                            {item.tags.map((tag) => (
+                                <span class="text-xs bg-rose-50 text-rose-700 px-2 py-0.5 rounded-full border border-rose-100">{tag}</span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+        <!-- 診所評估與治療方向 -->
+        <section aria-labelledby="treatments">
+            <h2 id="treatments" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                謝明福診所的評估與治療方向
+            </h2>
+            <p class="text-gray-500 mb-8 text-base">
+                院長透過理學檢查（直腿抬高測試、觸診、神經學評估）找出病因後，再決定最合適的治療組合。
+            </p>
+
+            <div class="space-y-4">
+                <!-- NEIMS -->
+                <div class="bg-white border border-blue-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                針極肌肉內電刺激（NEIMS）
+                                <span class="ml-2 text-xs font-normal bg-blue-50 text-primary px-2 py-0.5 rounded-full border border-blue-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                針對腰背深層肌筋膜激痛點，將電刺激精準導入，解除造成疼痛的根源肌群。對慢性腰肌勞損、肌筋膜炎性腰痛、臀肌激痛點引起的坐骨神經痛型疼痛特別有效，由院長親自執行。
+                            </p>
+                            <a
+                                href="/treatments/neims/"
+                                class="inline-flex items-center gap-1.5 text-sm text-primary font-semibold hover:underline"
+                                aria-label="了解 NEIMS 針極肌肉內電刺激的治療方式"
+                            >
+                                了解 NEIMS 治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Superlizer -->
+                <div class="bg-white border border-orange-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-orange-50 rounded-xl flex items-center justify-center text-orange-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">
+                                直線偏極光治療（SuperLizer）
+                                <span class="ml-2 text-xs font-normal bg-orange-50 text-orange-600 px-2 py-0.5 rounded-full border border-orange-100">院長特色治療</span>
+                            </h3>
+                            <p class="text-base text-gray-600 leading-relaxed mb-3">
+                                近紅外線光療穿透皮下 5 公分，促進深層腰椎韌帶、椎間盤周圍軟組織的修復與消炎，對椎間盤退化、腰椎關節炎、神經根發炎有良好的輔助效果。非侵入性、無痛。
+                            </p>
+                            <a
+                                href="/treatments/superlizer/"
+                                class="inline-flex items-center gap-1.5 text-sm text-orange-500 font-semibold hover:underline"
+                                aria-label="了解直線偏極光治療的方式"
+                            >
+                                了解直線偏極光治療方式 →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 腰椎牽引與物理治療 -->
+                <div class="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gray-50 rounded-xl flex items-center justify-center text-gray-500 flex-shrink-0">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800 text-lg mb-1">腰椎牽引與物理治療</h3>
+                            <p class="text-base text-gray-600 leading-relaxed">
+                                包含熱療、電療、超音波、腰椎牽引等儀器治療。腰椎牽引特別適用於椎間盤突出或椎管狹窄，透過縱向拉伸增加椎間隙、減輕神經壓迫，是腰背痛保守治療的重要環節。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 就診流程 -->
+        <section aria-labelledby="process">
+            <h2 id="process" class="text-2xl md:text-3xl font-bold text-heading mb-8">
+                在本診所的就診流程
+            </h2>
+            <div class="relative">
+                <div class="hidden md:block absolute left-8 top-8 bottom-8 w-0.5 bg-rose-100" aria-hidden="true" />
+                <div class="space-y-6">
+                    {[
+                        {
+                            step: "01",
+                            title: "現場掛號（門診）",
+                            desc: "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+                            note: "門診時間請以官網、LINE 或電話確認最新時段",
+                            noteHref: "/#patient-info",
+                        },
+                        {
+                            step: "02",
+                            title: "謝明福院長親自評估",
+                            desc: "院長透過問診、觸診與理學檢查（直腿抬高測試、神經學評估、脊椎活動度），判斷腰背痛的真正病因——是肌筋膜炎、椎間盤突出、坐骨神經壓迫還是其他問題。",
+                            note: "治療方式以院長當場評估為準",
+                            noteHref: null,
+                        },
+                        {
+                            step: "03",
+                            title: "安排復健療程",
+                            desc: "依評估結果，院長規劃個人化治療組合：可能包含腰椎牽引、物理治療、NEIMS、直線偏極光，或搭配注射治療。首次就診通常當天即可開始復健。",
+                            note: "治療頻率與療程長短依個人狀況動態調整",
+                            noteHref: null,
+                        },
+                        {
+                            step: "04",
+                            title: "追蹤與調整",
+                            desc: "複診時院長再次評估症狀改善狀況，動態調整治療計畫。腰背問題常與姿勢習慣、核心肌力有關，院長會提供衛教建議以減少復發。",
+                            note: "療程以功能恢復進展為主要依據，無固定次數",
+                            noteHref: null,
+                        },
+                    ].map((item) => (
+                        <div class="flex gap-6">
+                            <div class="hidden md:flex flex-col items-center flex-shrink-0 w-16">
+                                <div class="w-8 h-8 rounded-full bg-rose-600 text-white text-xs font-bold flex items-center justify-center z-10 relative">
+                                    {item.step}
+                                </div>
+                            </div>
+                            <div class="flex-1 bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="md:hidden text-xs font-bold bg-rose-600 text-white px-2 py-0.5 rounded-full">
+                                        {item.step}
+                                    </span>
+                                    <h3 class="font-bold text-gray-800 text-lg">{item.title}</h3>
+                                </div>
+                                <p class="text-gray-600 text-base leading-relaxed mb-3">{item.desc}</p>
+                                {item.noteHref ? (
+                                    <a
+                                        href={item.noteHref}
+                                        class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 hover:bg-rose-100 transition-colors"
+                                    >
+                                        ℹ️ {item.note} →
+                                    </a>
+                                ) : (
+                                    <p class="text-xs text-rose-700 bg-rose-50 px-3 py-1.5 rounded-lg inline-block">
+                                        ℹ️ {item.note}
+                                    </p>
+                                )}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <!-- 常見問題 -->
+        <section aria-labelledby="faq">
+            <h2 id="faq" class="text-2xl md:text-3xl font-bold text-heading mb-8">常見問題</h2>
+            <div class="space-y-4">
+                {[
+                    {
+                        q: "腰背痛要看哪一科？",
+                        a: "建議優先就診「復健科」。復健科醫師透過理學檢查判斷病因，評估是肌筋膜炎、椎間盤突出、腰椎退化還是坐骨神經壓迫，並規劃物理治療、腰椎牽引或 NEIMS 等個人化療程。若懷疑有骨折或嚴重結構性病變，可能需進一步影像學檢查。",
+                    },
+                    {
+                        q: "坐骨神經痛一定要開刀嗎？",
+                        a: "大多數坐骨神經痛可透過保守治療緩解，不一定需要手術。保守治療包含物理治療、腰椎牽引、NEIMS（針對深層肌筋膜激痛點）、注射治療等。若保守治療數月無效、症狀持續惡化，或出現嚴重神經缺損，才需考慮外科介入。建議先由醫師完整評估。",
+                    },
+                    {
+                        q: "腰背痛復健健保有給付嗎？",
+                        a: "一般物理治療（電療、熱療、腰椎牽引等）在醫師處方下可申請健保給付。NEIMS 與直線偏極光治療（SuperLizer）屬自費項目。實際費用請直接洽詢診所。",
+                    },
+                    {
+                        q: "下背痛多久會好？",
+                        a: "療程長短因病因而異。急性腰扭傷通常數週內可改善；椎間盤突出引起的神經壓迫可能需數週至數個月治療；慢性腰背痛（超過 3 個月）則需持續管理並配合姿勢調整。實際預期須由醫師面對面評估後判斷，本診所不對療效做任何保證。",
+                    },
+                    {
+                        q: "需要預約嗎？",
+                        a: "本診所一律採現場掛號，不提供預約。請於門診時間內直接至診所報到，初診請於門診結束前 20 分鐘前報到。",
+                    },
+                ].map((item) => (
+                    <details class="group bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden">
+                        <summary class="flex items-center justify-between px-6 py-4 cursor-pointer font-semibold text-gray-800 hover:bg-gray-50 transition-colors list-none">
+                            <span>{item.q}</span>
+                            <svg
+                                class="w-5 h-5 text-gray-400 flex-shrink-0 transition-transform group-open:rotate-180"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </summary>
+                        <div class="px-6 pb-5 pt-2 text-gray-600 text-base leading-relaxed border-t border-gray-50">
+                            {item.a}
+                        </div>
+                    </details>
+                ))}
+            </div>
+        </section>
+
+        <!-- 相關衛教文章 -->
+        <section aria-labelledby="related-articles">
+            <h2 id="related-articles" class="text-2xl md:text-3xl font-bold text-heading mb-2">
+                相關衛教文章
+            </h2>
+            <p class="text-gray-500 text-base mb-8">謝明福院長撰寫的衛教說明與臨床案例，供深入了解參考。</p>
+            <ul class="grid sm:grid-cols-2 gap-2">
+                {[
+                    { href: "/blog/neims-sciatica-elderly/", text: "嚴重坐骨神經痛只能開刀？談保守治療新選擇：NEIMS" },
+                    { href: "/blog/sciatica-piriformis-myofascial-pain/", text: "坐骨神經痛腰椎牽引沒效？六大偽裝成因與鑑別診斷" },
+                    { href: "/blog/sleep-posture-disc-herniation-spine-care/", text: "趴睡20年，下場是椎間盤突出！睡眠姿勢與脊椎保健" },
+                    { href: "/blog/post-spinal-surgery-myofascial-pain/", text: "手術成功卻還背痛？認識術後肌筋膜疼痛症候群" },
+                    { href: "/blog/neims-elderly-compression-fracture/", text: "脊椎壓迫性骨折穩定後仍疼痛？高齡族群的疼痛照護" },
+                    { href: "/blog/myofascial-pain-syndrome/", text: "脖子硬、背部有硬塊？肌筋膜疼痛症候群的整合治療" },
+                ].map((a) => (
+                    <li>
+                        <a
+                            href={a.href}
+                            class="flex items-start gap-2 text-base text-gray-700 hover:text-rose-700 transition-colors py-2 px-3 rounded-lg hover:bg-gray-50"
+                        >
+                            <svg class="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            {a.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </section>
+
+        <CallToAction title="腰背痛反覆發作？讓院長找出真正病因。" />
+
+    </main>
+</BaseLayout>
