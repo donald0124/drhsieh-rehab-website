@@ -217,93 +217,82 @@ const servicesData = rawServicesData.map((service) => {
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                 快速對照您的症狀，了解我們如何提供專業、整合性的解決方案。
             </p>
-            <p class="mt-3 text-sm text-gray-500 max-w-3xl mx-auto leading-relaxed">
+            <p
+                class="mt-3 text-sm text-gray-500 max-w-3xl mx-auto leading-relaxed"
+            >
                 (本區為一般衛教與延伸閱讀導覽，僅供健康資訊參考，非醫療診斷或治療指示；實際病因與療程仍需由醫師面對面評估。)
             </p>
         </div>
 
         <!-- 復健科常見主訴 -->
-        <div class="mb-10">
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 text-center">復健科常見主訴</p>
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-                <a href="/conditions/neck-shoulder-pain/"
-                    class="group flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-white border border-gray-100 hover:border-rose-200 hover:shadow-md active:scale-95 transition-all duration-200 text-center"
-                    aria-label="肩頸痠痛・落枕・頸肩僵硬深度說明頁"
+        <div class="mb-14">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <div
+                    class="h-[1px] w-8 md:w-16 bg-gradient-to-r from-transparent to-primary/30"
                 >
-                    <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-100 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 2a5 5 0 100 10 5 5 0 000-10zM6 21v-1a6 6 0 0112 0v1" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-sm leading-tight group-hover:text-rose-600 transition-colors">肩頸痠痛</p>
-                        <p class="text-xs text-gray-400 mt-0.5 leading-tight">落枕・頸肩僵硬</p>
-                    </div>
-                    <span class="text-xs text-rose-500 font-semibold">了解更多 →</span>
+                </div>
+                <h3
+                    class="text-lg md:text-xl font-bold text-primary tracking-widest text-center"
+                >
+                    復健科常見主訴
+                </h3>
+                <div
+                    class="h-[1px] w-8 md:w-16 bg-gradient-to-l from-transparent to-primary/30"
+                >
+                </div>
+            </div>
+
+            <!-- 手機版橫向滑動，電腦版 Grid -->
+            <!-- 5宮格按鈕 (專為手機與SEO最佳化) -->
+            <div class="grid grid-cols-5 gap-1.5 sm:gap-3 md:gap-4 lg:gap-6 max-w-4xl mx-auto">
+                <a href="/conditions/neck-shoulder-pain/" class="group relative flex flex-col items-center justify-center aspect-square w-full rounded-[1.125rem] sm:rounded-3xl bg-gradient-to-br from-[#419de8] to-primary hover:to-blue-800 text-white shadow-lg shadow-primary/30 active:scale-95 transition-all duration-300 overflow-hidden isolate">
+                    <div class="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none -z-10"></div>
+                    
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none mb-0.5 tracking-wide text-white group-hover:text-white">肩頸</span>
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none tracking-wide text-white group-hover:text-white">痠痛</span>
+                    
+                    <svg class="w-[10px] h-[10px] min-[370px]:w-3 min-[370px]:h-3 sm:w-4 sm:h-4 absolute bottom-1 right-1 sm:bottom-2 sm:right-2 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                    <span class="sr-only">落枕・頸肩僵硬</span>
                 </a>
 
-                <a href="/conditions/back-pain/"
-                    class="group flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-white border border-gray-100 hover:border-rose-200 hover:shadow-md active:scale-95 transition-all duration-200 text-center"
-                    aria-label="腰背痛・坐骨神經痛深度說明頁"
-                >
-                    <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-100 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M12 3v18M8 6h8M9 10h6M10 14h4M11 18h2" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-sm leading-tight group-hover:text-rose-600 transition-colors">腰背痛</p>
-                        <p class="text-xs text-gray-400 mt-0.5 leading-tight">坐骨神經痛</p>
-                    </div>
-                    <span class="text-xs text-rose-500 font-semibold">了解更多 →</span>
+                <a href="/conditions/back-pain/" class="group relative flex flex-col items-center justify-center aspect-square w-full rounded-[1.125rem] sm:rounded-3xl bg-gradient-to-br from-[#419de8] to-primary hover:to-blue-800 text-white shadow-lg shadow-primary/30 active:scale-95 transition-all duration-300 overflow-hidden isolate">
+                    <div class="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none -z-10"></div>
+                    
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none mb-0.5 tracking-wide text-white group-hover:text-white">腰背</span>
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none tracking-wide text-white group-hover:text-white">疼痛</span>
+                    
+                    <svg class="w-[10px] h-[10px] min-[370px]:w-3 min-[370px]:h-3 sm:w-4 sm:h-4 absolute bottom-1 right-1 sm:bottom-2 sm:right-2 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                    <span class="sr-only">坐骨神經痛</span>
                 </a>
 
-                <a href="/conditions/knee-pain/"
-                    class="group flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-white border border-gray-100 hover:border-rose-200 hover:shadow-md active:scale-95 transition-all duration-200 text-center"
-                    aria-label="膝蓋痛・退化性關節炎深度說明頁"
-                >
-                    <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-100 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M7 4l5 8 5-8M7 20l5-8 5 8" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-sm leading-tight group-hover:text-rose-600 transition-colors">膝蓋痛</p>
-                        <p class="text-xs text-gray-400 mt-0.5 leading-tight">退化性關節炎</p>
-                    </div>
-                    <span class="text-xs text-rose-500 font-semibold">了解更多 →</span>
+                <a href="/conditions/knee-pain/" class="group relative flex flex-col items-center justify-center aspect-square w-full rounded-[1.125rem] sm:rounded-3xl bg-gradient-to-br from-[#419de8] to-primary hover:to-blue-800 text-white shadow-lg shadow-primary/30 active:scale-95 transition-all duration-300 overflow-hidden isolate">
+                    <div class="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none -z-10"></div>
+                    
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none mb-0.5 tracking-wide text-white group-hover:text-white">膝蓋</span>
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none tracking-wide text-white group-hover:text-white">疼痛</span>
+                    
+                    <svg class="w-[10px] h-[10px] min-[370px]:w-3 min-[370px]:h-3 sm:w-4 sm:h-4 absolute bottom-1 right-1 sm:bottom-2 sm:right-2 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                    <span class="sr-only">退化性關節炎</span>
                 </a>
 
-                <a href="/conditions/sports-injury/"
-                    class="group flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-white border border-gray-100 hover:border-rose-200 hover:shadow-md active:scale-95 transition-all duration-200 text-center"
-                    aria-label="運動傷害・肌腱炎深度說明頁"
-                >
-                    <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-100 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-sm leading-tight group-hover:text-rose-600 transition-colors">運動傷害</p>
-                        <p class="text-xs text-gray-400 mt-0.5 leading-tight">肌腱炎・扭拉傷</p>
-                    </div>
-                    <span class="text-xs text-rose-500 font-semibold">了解更多 →</span>
+                <a href="/conditions/heel-pain/" class="group relative flex flex-col items-center justify-center aspect-square w-full rounded-[1.125rem] sm:rounded-3xl bg-gradient-to-br from-[#419de8] to-primary hover:to-blue-800 text-white shadow-lg shadow-primary/30 active:scale-95 transition-all duration-300 overflow-hidden isolate">
+                    <div class="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none -z-10"></div>
+                    
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none mb-0.5 tracking-wide text-white group-hover:text-white">足底</span>
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none tracking-wide text-white group-hover:text-white">疼痛</span>
+                    
+                    <svg class="w-[10px] h-[10px] min-[370px]:w-3 min-[370px]:h-3 sm:w-4 sm:h-4 absolute bottom-1 right-1 sm:bottom-2 sm:right-2 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                    <span class="sr-only">足底筋膜炎</span>
                 </a>
 
-                <a href="/conditions/heel-pain/"
-                    class="group flex flex-col items-center gap-2.5 p-4 rounded-2xl bg-white border border-gray-100 hover:border-rose-200 hover:shadow-md active:scale-95 transition-all duration-200 text-center col-span-2 sm:col-span-1"
-                    aria-label="腳跟痛・足底筋膜炎深度說明頁"
-                >
-                    <div class="w-11 h-11 rounded-xl bg-rose-50 flex items-center justify-center text-rose-500 group-hover:bg-rose-100 transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.2 4.2 0 00-.1-3.2s-1-.3-3.3 1.3a11.5 11.5 0 00-6 0C6.5 2.8 5.5 3 5.5 3a4.2 4.2 0 00-.1 3.2A4.6 4.6 0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-bold text-gray-800 text-sm leading-tight group-hover:text-rose-600 transition-colors">腳跟痛</p>
-                        <p class="text-xs text-gray-400 mt-0.5 leading-tight">足底筋膜炎</p>
-                    </div>
-                    <span class="text-xs text-rose-500 font-semibold">了解更多 →</span>
+                <a href="/conditions/sports-injury/" class="group relative flex flex-col items-center justify-center aspect-square w-full rounded-[1.125rem] sm:rounded-3xl bg-gradient-to-br from-[#419de8] to-primary hover:to-blue-800 text-white shadow-lg shadow-primary/30 active:scale-95 transition-all duration-300 overflow-hidden isolate">
+                    <div class="absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b from-white/20 to-transparent pointer-events-none -z-10"></div>
+                    
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none mb-0.5 tracking-wide text-white group-hover:text-white">運動</span>
+                    <span class="text-[16px] min-[370px]:text-[18px] sm:text-xl lg:text-[26px] font-black leading-none tracking-wide text-white group-hover:text-white">傷害</span>
+                    
+                    <svg class="w-[10px] h-[10px] min-[370px]:w-3 min-[370px]:h-3 sm:w-4 sm:h-4 absolute bottom-1 right-1 sm:bottom-2 sm:right-2 text-white/50 group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"/></svg>
+                    <span class="sr-only">肌腱炎・扭拉傷</span>
                 </a>
             </div>
         </div>
@@ -322,6 +311,5 @@ const servicesData = rawServicesData.map((service) => {
                 ))
             }
         </div>
-
     </div>
 </section>
