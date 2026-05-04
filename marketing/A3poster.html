@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>謝明福復健科診所 — 官網宣傳海報 A3</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans TC', 'Microsoft JhengHei', '微軟正黑體', sans-serif;
+      background: #dce8ed;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    /* A3 portrait: 297 × 420 mm */
+    .poster {
+      width: 297mm;
+      min-height: 420mm;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+      overflow: hidden;
+    }
+
+    /* ── Top accent bar ── */
+    .top-bar {
+      height: 7mm;
+      background: linear-gradient(90deg, #1a5f7a 0%, #2d9db8 50%, #f0a020 100%);
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #0e3d50 0%, #1a5f7a 60%, #2478a0 100%);
+      color: #fff;
+      padding: 10mm 14mm 9mm;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -5%;
+      width: 55%;
+      height: 180%;
+      background: rgba(255,255,255,0.04);
+      transform: rotate(18deg);
+      border-radius: 40%;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .clinic-name {
+      font-size: 34pt;
+      font-weight: 900;
+      letter-spacing: 3px;
+      line-height: 1.1;
+    }
+    .clinic-name-en {
+      font-size: 9.5pt;
+      font-weight: 300;
+      letter-spacing: 3px;
+      color: #90cce0;
+      margin-top: 2mm;
+    }
+
+    .award-badge {
+      background: linear-gradient(135deg, #f0a020, #f5cc45);
+      color: #3a1a00;
+      border-radius: 8px;
+      padding: 5px 11px;
+      font-size: 8.5pt;
+      font-weight: 700;
+      line-height: 1.6;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+      flex-shrink: 0;
+    }
+
+    .doctor-row {
+      margin-top: 5mm;
+      display: flex;
+      align-items: flex-end;
+      gap: 10mm;
+    }
+    .doctor-name {
+      font-size: 18pt;
+      font-weight: 800;
+      color: #d0f0ff;
+    }
+    .doctor-creds {
+      font-size: 8.5pt;
+      color: #90cce0;
+      line-height: 2;
+    }
+
+    .header-tagline {
+      margin-top: 4mm;
+      font-size: 10pt;
+      color: #c0e4f5;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+    }
+
+    /* ── Website banner ── */
+    .website-banner {
+      background: linear-gradient(90deg, #eaf6fb 0%, #ffffff 100%);
+      border-left: 7px solid #2d9db8;
+      padding: 5mm 14mm;
+    }
+    .banner-label {
+      font-size: 8.5pt;
+      color: #777;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .banner-url {
+      font-size: 22pt;
+      font-weight: 900;
+      color: #1a5f7a;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .banner-sub {
+      font-size: 8.5pt;
+      color: #999;
+      margin-top: 1mm;
+    }
+
+    /* ── Main two-column layout ── */
+    .main {
+      flex: 1;
+      padding: 6mm 14mm 5mm;
+      display: flex;
+      gap: 6mm;
+    }
+    .col-left  { flex: 1.25; display: flex; flex-direction: column; gap: 5mm; }
+    .col-right { flex: 0.75; display: flex; flex-direction: column; gap: 5mm; }
+
+    /* ── Generic card ── */
+    .card { border-radius: 8px; overflow: hidden; }
+    .card-head {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 3.5px 10px;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card-body {
+      padding: 6px 10px 8px;
+      background: #f7fbfd;
+      border: 1px solid #cce5ef;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+    }
+    .head-blue   { background: linear-gradient(135deg, #1a5f7a, #2d9db8); }
+    .head-teal   { background: linear-gradient(135deg, #0a7060, #14a888); }
+    .head-purple { background: linear-gradient(135deg, #5a2d8a, #7a4ec0); }
+    .head-amber  { background: linear-gradient(135deg, #b85820, #e07535); }
+
+    /* NEIMS highlight inside card */
+    .neims-box {
+      background: linear-gradient(135deg, #1a5f7a, #2d9db8);
+      border-radius: 7px;
+      padding: 4mm 5mm;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .neims-title { font-size: 10.5pt; font-weight: 700; margin-bottom: 1.5mm; }
+    .neims-desc  { font-size: 8pt; color: #c0e8f5; line-height: 1.7; }
+    .superlizer-row {
+      font-size: 8.5pt;
+      color: #333;
+      padding: 4px 2px 0;
+      line-height: 1.7;
+    }
+
+    /* Blog list */
+    .blog-list { list-style: none; padding: 2px 0; }
+    .blog-list li {
+      font-size: 8.5pt;
+      color: #2a2a2a;
+      line-height: 1.65;
+      padding: 1.5px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 5px;
+    }
+    .blog-list li::before { content: '▸'; color: #2d9db8; flex-shrink: 0; }
+
+    /* Condition grid */
+    .cond-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      padding: 2px 0;
+    }
+    .cond-item {
+      font-size: 8pt;
+      color: #222;
+      padding: 2px 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cond-item::before { content: '✓'; color: #14a888; font-weight: 700; font-size: 9pt; }
+
+    /* QR block */
+    .qr-block {
+      background: linear-gradient(135deg, #0e3d50, #1a5f7a);
+      border-radius: 10px;
+      padding: 7mm 5mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+    .qr-prompt {
+      font-size: 10pt;
+      font-weight: 700;
+      color: #90cce0;
+      letter-spacing: 1px;
+      margin-bottom: 4mm;
+    }
+    .qr-wrap {
+      background: #fff;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    }
+    .qr-wrap img { display: block; width: 46mm; height: 46mm; }
+    .qr-url  { margin-top: 3mm; font-size: 11pt; font-weight: 900; color: #d0f0ff; }
+    .qr-sub  { font-size: 7.5pt; color: #80bcd0; margin-top: 1mm; }
+
+    /* Why-visit list */
+    .why-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 3px 0;
+      font-size: 8.5pt;
+      color: #222;
+      line-height: 1.55;
+    }
+    .why-dot {
+      width: 17px; height: 17px;
+      border-radius: 50%;
+      background: #1a5f7a;
+      color: #fff;
+      font-size: 8pt;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Stats panel */
+    .stats-panel {
+      background: linear-gradient(135deg, #f5f0ff, #ede6fa);
+      border: 1px solid #c5a8e5;
+      border-radius: 8px;
+      padding: 5mm;
+    }
+    .stats-title { font-size: 9pt; font-weight: 700; color: #5a2d8a; margin-bottom: 3mm; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+    }
+    .stat-box {
+      background: #fff;
+      border: 1px solid #cca8e5;
+      border-radius: 6px;
+      padding: 3mm;
+      text-align: center;
+    }
+    .stat-num  { font-size: 22pt; font-weight: 900; color: #f0a020; line-height: 1; }
+    .stat-num-md { font-size: 14pt; font-weight: 900; color: #14a888; line-height: 1.2; }
+    .stat-lbl  { font-size: 7pt; color: #5a2d8a; margin-top: 1.5mm; }
+
+    /* ── Footer ── */
+    .footer {
+      background: linear-gradient(135deg, #0e3d50, #1a5f7a);
+      color: #fff;
+      padding: 5mm 14mm;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: 8mm;
+    }
+    .ft-label { font-size: 7.5pt; color: #80c5d8; font-weight: 500; margin-bottom: 1mm; }
+    .ft-value { font-size: 10pt; font-weight: 700; color: #e5f5fb; line-height: 1.5; }
+    .ft-extra { font-size: 7.5pt; color: #80c5d8; margin-top: 1mm; }
+
+    /* ── Bottom accent bar ── */
+    .bottom-bar {
+      height: 5mm;
+      background: linear-gradient(90deg, #2d9db8 0%, #f0a020 50%, #2d9db8 100%);
+    }
+
+    /* ── Print styles ── */
+    @media print {
+      body { background: none; padding: 0; margin: 0; }
+      .poster { box-shadow: none; width: 297mm; min-height: 420mm; }
+    }
+  </style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- Top bar -->
+  <div class="top-bar"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-row">
+      <div>
+        <div class="clinic-name">謝明福復健科診所</div>
+        <div class="clinic-name-en">Dr. Hsieh Ming-Fu Rehabilitation Medicine Clinic</div>
+      </div>
+      <div class="award-badge">🏆 商業周刊<br>百大良醫<br>認證</div>
+    </div>
+    <div class="doctor-row">
+      <div>
+        <div class="doctor-name">謝明福 醫師</div>
+        <div class="doctor-creds">
+          ▪ 三軍總醫院復健部 主治醫師 &nbsp;▪ 國防醫學院 臨床副教授<br>
+          ▪ 美國賓州大學 軟組織疼痛研究員 &nbsp;▪ 復健科專科醫師
+        </div>
+      </div>
+    </div>
+    <div class="header-tagline">三十年深耕三峽・鶯歌，用心治療，讓您重拾健康生活</div>
+  </div>
+
+  <!-- Website banner -->
+  <div class="website-banner">
+    <div class="banner-label">診所官方網站 · 掃描 QR Code 立即瀏覽</div>
+    <div class="banner-url">drhsieh-rehab.com</div>
+    <div class="banner-sub">37 篇深度衛教文章・特色療法介紹・常見問題 FAQ 解答</div>
+  </div>
+
+  <!-- Main content -->
+  <div class="main">
+
+    <!-- Left column -->
+    <div class="col-left">
+
+      <!-- Specialty treatments -->
+      <div class="card">
+        <div class="card-head head-blue">⚕ 院長特色治療</div>
+        <div class="card-body">
+          <div class="neims-box">
+            <div class="neims-title">NEIMS 針極肌肉內電刺激</div>
+            <div class="neims-desc">
+              結合針灸的精準定位與電刺激的深層療效，直接作用於肌筋膜激痛點。
+              謝院長執行 NEIMS 逾 20 年，為慢性頑固疼痛患者提供非藥物治療新選擇。
+              適用：慢性肌筋膜疼痛、坐骨神經痛、肩頸僵硬、運動傷害、術後沾黏。
+            </div>
+          </div>
+          <div class="superlizer-row">
+            <strong>SuperLizer 直線偏極光</strong>
+            — 近紅外線穿透皮下 5 公分，促進深層組織修復，調節自律神經，
+            改善失眠、慢性疼痛、肌腱炎、骨折癒合。
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog highlights -->
+      <div class="card">
+        <div class="card-head head-teal">📖 官網熱門衛教文章（掃碼即可閱讀）</div>
+        <div class="card-body">
+          <ul class="blog-list">
+            <li>NEIMS 針極肌肉內電刺激完整介紹——什麼是 NEIMS？適合哪些人？</li>
+            <li>初次接受 NEIMS 治療前，醫師要評估什麼？</li>
+            <li>五十肩完整解析——從急性期到復健的療程規劃</li>
+            <li>媽媽手（狄奎文氏症）怎麼治療？</li>
+            <li>手麻睡不著？3 種常見病因一次釐清</li>
+            <li>跑者膝 IT Band 髂脛束症候群的治療與預防</li>
+            <li>足底筋膜炎——腳跟痛的真正原因與治療方向</li>
+            <li>骨刺、椎間盤突出怎麼辦？睡姿影響有多大？</li>
+            <li>外用痠痛藥的正確使用方式與風險提醒</li>
+            <li>骨質疏鬆預防——35 歲就要開始存骨本</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Conditions -->
+      <div class="card">
+        <div class="card-head head-amber">🩺 可治療症狀與疾患</div>
+        <div class="card-body">
+          <div class="cond-grid">
+            <div class="cond-item">頸肩痠痛</div>
+            <div class="cond-item">五十肩</div>
+            <div class="cond-item">坐骨神經痛</div>
+            <div class="cond-item">下背痛・椎間盤突出</div>
+            <div class="cond-item">網球肘・高爾夫球肘</div>
+            <div class="cond-item">媽媽手・板機指</div>
+            <div class="cond-item">膝蓋退化性關節炎</div>
+            <div class="cond-item">跑者膝・足底筋膜炎</div>
+            <div class="cond-item">肌筋膜疼痛症候群</div>
+            <div class="cond-item">急慢性運動傷害</div>
+            <div class="cond-item">顳顎關節障礙</div>
+            <div class="cond-item">骨折・術後復健</div>
+            <div class="cond-item">神經損傷復健</div>
+            <div class="cond-item">骨質疏鬆・壓迫性骨折</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right column -->
+    <div class="col-right">
+
+      <!-- QR Code -->
+      <div class="qr-block">
+        <div class="qr-prompt">掃描進入官網</div>
+        <div class="qr-wrap">
+          <img
+            src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fdrhsieh-rehab.com&bgcolor=ffffff&color=1a5f7a&margin=2"
+            alt="drhsieh-rehab.com QR Code"
+          >
+        </div>
+        <div class="qr-url">drhsieh-rehab.com</div>
+        <div class="qr-sub">掃一掃・看文章・了解療程</div>
+      </div>
+
+      <!-- Why visit website -->
+      <div class="card">
+        <div class="card-head head-purple">💡 官網能幫助您</div>
+        <div class="card-body">
+          <div class="why-item"><div class="why-dot">✓</div>了解各種疼痛的成因與治療方向</div>
+          <div class="why-item"><div class="why-dot">✓</div>深入認識 NEIMS 與 SuperLizer 特色療法</div>
+          <div class="why-item"><div class="why-dot">✓</div>閱讀 37 篇謝院長親筆撰寫的衛教文章</div>
+          <div class="why-item"><div class="why-dot">✓</div>查看常見問題 FAQ，提前了解就診流程</div>
+          <div class="why-item"><div class="why-dot">✓</div>確認健保給付與自費項目說明</div>
+          <div class="why-item"><div class="why-dot">✓</div>取得診所聯絡方式與交通資訊</div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-panel">
+        <div class="stats-title">診所亮點</div>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-num">30</div>
+            <div class="stat-lbl">年臨床經驗</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">37</div>
+            <div class="stat-lbl">篇衛教文章</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num-md">健保<br>特約</div>
+            <div class="stat-lbl">門診給付</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num-md">免<br>預約</div>
+            <div class="stat-lbl">直接掛號</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div>
+      <div class="ft-label">📍 診所地址</div>
+      <div class="ft-value">新北市三峽區中華路 22 號 2 樓</div>
+      <div class="ft-extra">（小北百貨旁・龍門社區大樓）</div>
+    </div>
+    <div>
+      <div class="ft-label">📞 門診電話</div>
+      <div class="ft-value">(02) 2671-8910</div>
+      <div class="ft-extra">門診時間請至官網或 Facebook 確認</div>
+    </div>
+    <div>
+      <div class="ft-label">💬 LINE 官方帳號</div>
+      <div class="ft-value">@gsj9393s</div>
+      <div class="ft-extra">👍 Facebook：謝明福復健科診所</div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar"></div>
+
+</div>
+</body>
+</html>
