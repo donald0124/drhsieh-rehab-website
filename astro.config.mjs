@@ -15,7 +15,9 @@ export default defineConfig({
 
   // 啟用 sitemap 和 tailwind 整合套件
   integrations: [
-    sitemap(),
+    sitemap({
+      filter: (page) => !page.includes('/privacy'),
+    }),
     tailwind() // <--- 確保 tailwind() 在這裡被啟用
   ],
 

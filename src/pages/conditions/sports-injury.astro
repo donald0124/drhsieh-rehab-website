@@ -94,6 +94,39 @@ const faqSchema = JSON.stringify({
         },
     ],
 });
+
+const howtoSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "如何在謝明福復健科診所就診（運動傷害）",
+    "description": "謝明福復健科診所（新北市三峽）就診流程：現場掛號、院長親自評估、安排個人化復健療程、追蹤調整。",
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "現場掛號（門診）",
+            "text": "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "謝明福院長親自評估",
+            "text": "院長透過問診、觸診與理學檢查（特殊肌腱測試、關節穩定度評估），判斷運動傷害的損傷部位、類型與嚴重程度。如有需要，會建議適當的影像學輔助診斷。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "安排復健療程",
+            "text": "依評估結果，院長規劃個人化治療組合：急性期以消炎止痛為主；恢復期搭配 NEIMS、直線偏極光、注射治療，促進組織修復與功能恢復。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "追蹤與調整",
+            "text": "複診時院長再次評估症狀改善狀況，動態調整治療計畫。院長也會提供傷後運動建議，協助安全回歸運動，避免再次受傷。",
+        },
+    ],
+});
 ---
 
 <BaseLayout
@@ -105,6 +138,7 @@ const faqSchema = JSON.stringify({
         <script type="application/ld+json" set:html={pageSchema} />
         <script type="application/ld+json" set:html={breadcrumbSchema} />
         <script type="application/ld+json" set:html={faqSchema} />
+        <script type="application/ld+json" set:html={howtoSchema} />
     </Fragment>
 
     <!-- Breadcrumb -->

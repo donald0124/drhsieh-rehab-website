@@ -1,5 +1,7 @@
 ---
 // src/components/Treatments.astro
+interface Props { pageHeading?: string; }
+const { pageHeading } = Astro.props;
 ---
 
 <section
@@ -10,10 +12,17 @@
 
         <!-- 標題 -->
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-heading mb-4 relative inline-block">
-                治療項目
-                <span class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></span>
-            </h2>
+            {pageHeading ? (
+                <h1 class="text-3xl md:text-4xl font-bold text-heading mb-4 relative inline-block">
+                    {pageHeading}
+                    <span class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></span>
+                </h1>
+            ) : (
+                <h2 class="text-3xl md:text-4xl font-bold text-heading mb-4 relative inline-block">
+                    治療項目
+                    <span class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></span>
+                </h2>
+            )}
             <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
                 謝明福復健科診所提供復健科、疼痛處理、運動醫學等多元治療項目，由醫師評估後制定個人化療程。
             </p>

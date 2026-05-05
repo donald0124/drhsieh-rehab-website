@@ -14,7 +14,26 @@
       "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0003-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260418%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260418T152136Z&X-Amz-Expires=10305&X-Amz-Signature=39361fff4eabbd53c4b2315fda0976546230d08d3ee2eb4c2f3d6a35ff8d05de&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A13%3A21%20GMT\" -o neims-elderly-compression-fracture-hero.jpg)",
       "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0004-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T205505Z&X-Amz-Expires=77973&X-Amz-Signature=82470571a223c4b3be3a818a89d354002a9448b3f45eca995b5ec94e883405e6&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A34%3A38%20GMT\" -o neims-first-visit-hero.jpg)",
       "Bash(curl -sL \"https://export-download.canva.com/FOamo/DAG4MDFOamo/-1/0/0005-1280648718022961124.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUH5AO7UJ26%2F20260417%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20260417T215503Z&X-Amz-Expires=74565&X-Amz-Signature=5fb3c9761eb0f33938dbf4cd8fa558c84fe8a2b2a36d5a6f9da790f80eee1336&X-Amz-SignedHeaders=host%3Bx-amz-expected-bucket-owner&response-expires=Sat%2C%2018%20Apr%202026%2018%3A37%3A48%20GMT\" -o neims-for-senior-hero.jpg)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(grep -E \"^\\(---$|title|description\\)\")",
+      "Bash(grep -E \"\\\\.astro$\")",
+      "WebFetch(domain:drhsieh-rehab.com)",
+      "Bash(node -e \"const d = require\\('/usr/local/lib/node_modules/docx'\\); console.log\\('docx version:', d ? 'found' : 'missing'\\)\")",
+      "Bash(npm install *)",
+      "Bash(node -e \"const d = require\\('docx'\\); console.log\\('docx OK, Document:', !!d.Document\\)\")",
+      "Bash(npm root *)",
+      "Bash(NODE_PATH=$\\(npm root -g\\) node -e \"const d = require\\('docx'\\); console.log\\('docx OK:', !!d.Document\\)\")",
+      "Bash(NODE_PATH=$\\(npm root -g\\) node generate-audit-report.js)",
+      "Bash(NODE_PATH=$\\(npm root -g\\) node generate-audit-report.cjs)",
+      "Bash(python3 -c \"import pypandoc\")",
+      "Bash(python3 -c \"from docx2pdf import convert; print\\('docx2pdf available'\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(pip3 show *)",
+      "Bash(node -e \"require\\('html-pdf'\\)\")",
+      "Bash(python3 -c \"import reportlab; print\\('reportlab available'\\)\")",
+      "Bash(python3 -c \"import reportlab; print\\('reportlab:', reportlab.Version\\)\")",
+      "Bash(python3 generate-audit-pdf.py)",
+      "Bash(python3 -)"
     ]
   }
 }

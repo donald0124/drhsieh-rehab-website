@@ -93,6 +93,39 @@ const faqSchema = JSON.stringify({
         },
     ],
 });
+
+const howtoSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "如何在謝明福復健科診所就診（腳跟痛・足底筋膜炎）",
+    "description": "謝明福復健科診所（新北市三峽）就診流程：現場掛號、院長親自評估、安排個人化復健療程、追蹤調整。",
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "現場掛號（門診）",
+            "text": "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "謝明福院長親自評估",
+            "text": "院長透過問診、觸診與理學檢查（足底壓痛點定位、足弓評估、小腿柔軟度測試），確認腳跟疼痛的真正病因——是足底筋膜炎、跟腱炎、莫頓氏神經瘤還是其他問題。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "安排復健療程",
+            "text": "依評估結果，院長規劃個人化治療組合：可能包含物理治療、直線偏極光、NEIMS，以及日常足底伸展指導。首次就診通常當天即可開始復健。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "追蹤與調整",
+            "text": "複診時院長再次評估症狀改善狀況，動態調整治療計畫。院長也會提供生活習慣建議（如適合的鞋款選擇、體重管理、日常伸展），以預防復發。",
+        },
+    ],
+});
 ---
 
 <BaseLayout
@@ -104,6 +137,7 @@ const faqSchema = JSON.stringify({
         <script type="application/ld+json" set:html={pageSchema} />
         <script type="application/ld+json" set:html={breadcrumbSchema} />
         <script type="application/ld+json" set:html={faqSchema} />
+        <script type="application/ld+json" set:html={howtoSchema} />
     </Fragment>
 
     <!-- Breadcrumb -->

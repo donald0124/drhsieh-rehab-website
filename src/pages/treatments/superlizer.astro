@@ -88,6 +88,39 @@ const faqSchema = JSON.stringify({
         },
     ],
 });
+
+const howtoSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "如何在謝明福復健科診所接受直線偏極光（SuperLizer）治療",
+    "description": "謝明福復健科診所（新北市三峽）SuperLizer 就診流程：現場掛號、院長評估適應症、執行治療、追蹤調整。",
+    "step": [
+        {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "現場掛號（門診）",
+            "text": "本診所不提供預約，請於門診時間內直接至診所現場掛號。初診請於門診結束前 20 分鐘前報到。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "謝明福院長親自評估",
+            "text": "院長將詳細問診，了解您的症狀病史，確認是否適合接受直線偏極光治療，或搭配其他復健方式。若有失眠或自律神經相關問題，將一併評估是否適合星狀神經節照射（SGI）。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "執行直線偏極光治療",
+            "text": "通過評估後，由治療師依院長處方執行直線偏極光治療。單次照射時間約 4–10 分鐘，視治療部位數量與療程規劃而定，整體治療流程相當快速。",
+        },
+        {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "追蹤與調整",
+            "text": "複診時院長評估症狀改善狀況，動態調整治療計畫。症狀緩解後可視情況拉長回診間隔。",
+        },
+    ],
+});
 ---
 
 <BaseLayout
@@ -99,6 +132,7 @@ const faqSchema = JSON.stringify({
         <script type="application/ld+json" set:html={pageSchema} />
         <script type="application/ld+json" set:html={breadcrumbSchema} />
         <script type="application/ld+json" set:html={faqSchema} />
+        <script type="application/ld+json" set:html={howtoSchema} />
     </Fragment>
 
     <!-- Breadcrumb -->
