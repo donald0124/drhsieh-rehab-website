@@ -17,6 +17,8 @@ pnpm-debug.log*
 # environment variables
 .env
 .env.production
+.openai.env
+.claude/**/.env
 
 # macOS-specific files
 .DS_Store

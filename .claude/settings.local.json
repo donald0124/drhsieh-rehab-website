@@ -33,7 +33,12 @@
       "Bash(python3 -c \"import reportlab; print\\('reportlab available'\\)\")",
       "Bash(python3 -c \"import reportlab; print\\('reportlab:', reportlab.Version\\)\")",
       "Bash(python3 generate-audit-pdf.py)",
-      "Bash(python3 -)"
+      "Bash(python3 -)",
+      "Bash(pip --version)",
+      "Bash(pip install *)",
+      "Read(//c/tmp/**)",
+      "Bash(python \"C:/Users/Lee/.claude/skills/draw/draw.py\" \"一隻可愛的黑貓，扁平插畫風格\" --name test)",
+      "Bash(python .claude/skills/draw/draw.py *)"
     ]
   }
 }
