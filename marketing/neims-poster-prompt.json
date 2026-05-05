@@ -1,0 +1,122 @@
+{
+  "poster": {
+    "format": {
+      "size": "A3",
+      "orientation": "portrait",
+      "dimensions": "297 × 420 mm (print resolution)",
+      "medium": "clinic wall poster, indoor",
+      "margin": "15mm safe margin on all sides"
+    },
+    "layout_hierarchy": {
+      "1_logo_zone": {
+        "position": "top-right corner",
+        "size": "approximately 200×27px equivalent, scaled to ~60mm wide on A3",
+        "element": "placeholder for SVG logo: drhsieh-rehab-logo-brand-blue.svg",
+        "note": "logo text is horizontal, wide aspect ratio — place in top-right with padding"
+      },
+      "2_emotional_headline": {
+        "position": "upper-left, below top margin",
+        "size": "display headline, ~44pt equivalent",
+        "text": "痛了很久，卻查不出原因？",
+        "font_weight": "bold",
+        "color": "#003761"
+      },
+      "3_subheadline": {
+        "position": "left column, directly below headline",
+        "size": "body, ~18pt equivalent",
+        "text": "熱敷、電療、按摩都試過了\n好個幾天又復發\n問題可能藏在深層肌肉裡",
+        "line_height": "1.6",
+        "color": "#444444",
+        "spacing_above": "10mm"
+      },
+      "4_hero_visual": {
+        "position": "right half, vertically centered",
+        "size": "occupies ~45% of poster width, ~50% of height",
+        "content": "stylized cross-section illustration of deep muscle layer with a fine needle targeting a glowing trigger point, electrical energy lines radiating outward, anatomical but modern medical illustration style",
+        "color_tones": "deep blue background fading to light blue, warm white glow at trigger point"
+      },
+      "5_treatment_section": {
+        "position": "center, overlapping hero visual or below subheadline",
+        "background": "#f0f6fa with subtle border #005a9c 1px",
+        "padding": "15mm",
+        "treatment_name_zh": {
+          "text": "針極肌肉內電刺激",
+          "size": "~38pt, bold",
+          "color": "#003761"
+        },
+        "treatment_name_en": {
+          "text": "Needle Electrical Intra-Muscular Stimulation",
+          "size": "~11pt, light weight",
+          "color": "#005a9c",
+          "spacing": "4mm below Chinese name"
+        },
+        "acronym": {
+          "text": "NEIMS",
+          "size": "~18pt, bold, letter-spaced",
+          "color": "#005a9c"
+        }
+      },
+      "6_body_explanation": {
+        "position": "lower-left area",
+        "size": "~14pt",
+        "text": "傳統治療作用於表面，難以觸及深層激痛點\n絕緣針尖將電流 100% 集中於病灶\n精準打破「能量危機」惡性循環",
+        "line_height": "1.5",
+        "color": "#444444"
+      },
+      "7_cta_section": {
+        "position": "bottom center",
+        "background": "#ffffff",
+        "border_top": "2px solid #005a9c",
+        "padding": "12mm",
+        "layout": "horizontal — QR code left, text right",
+        "qr_code": {
+          "size": "40×40mm",
+          "position": "left side of CTA zone",
+          "target_url": "https://drhsieh-rehab.com/blog/neims/",
+          "placeholder": true,
+          "border": "1px solid #dddddd"
+        },
+        "cta_text": {
+          "primary": "掃描 QR Code",
+          "secondary": "了解完整 NEIMS 治療說明",
+          "primary_size": "16pt, bold",
+          "secondary_size": "12pt, regular",
+          "color": "#003761"
+        }
+      },
+      "8_footer": {
+        "position": "bottom-right corner, above margin",
+        "text": "謝明福復健科診所",
+        "size": "10pt",
+        "color": "#888888"
+      }
+    },
+    "color_palette": {
+      "primary_blue": "#005a9c",
+      "primary_dark": "#003761",
+      "primary_light_bg": "#f0f6fa",
+      "heading": "#222222",
+      "body_text": "#444444",
+      "border": "#dddddd",
+      "white": "#ffffff"
+    },
+    "typography": {
+      "font_family": "Noto Sans TC or equivalent clean sans-serif with Traditional Chinese support",
+      "language": "Traditional Chinese (繁體中文) primary, English accent text secondary",
+      "line_height_body": "1.5–1.6",
+      "weight_hierarchy": "bold for headlines, regular for body, light for English subtitle"
+    },
+    "style_guide": {
+      "tone": "empathetic, professional, trustworthy, solution-focused",
+      "visual_style": "modern medical illustration meets clean healthcare design",
+      "emotional_flow": "relatable pain → cause revealed → precise solution → clear action",
+      "avoid": "orange accents (not in brand), cartoonish style, stock photo aesthetic, cluttered layout"
+    },
+    "image_generation_settings": {
+      "quality": "low",
+      "aspect_ratio": "3:4 (A3 portrait)",
+      "style_keywords": "medical illustration, modern healthcare poster, clean sans-serif typography, deep blue palette, Traditional Chinese text, clinical authority, print-ready",
+      "avoid_keywords": "orange, decorative serif, blur, low contrast, dark background overall"
+    }
+  }
+}
