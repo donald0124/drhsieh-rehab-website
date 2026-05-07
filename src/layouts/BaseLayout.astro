@@ -109,6 +109,20 @@ const absoluteOgImageURL = new URL(ogImage, Astro.site).href;
                 },
                 "currenciesAccepted": "TWD",
                 "paymentAccepted": "現金",
+                "description": "謝明福復健科診所提供復健科門診與物理治療服務。醫師門診時段：上午09:00-11:30（週一至週六），下午14:30-17:00（週一、週五），晚上18:30-21:00（週一至週五，週二19:00起），週日休診。初診患者須在門診時段前來由醫師評估，不可只於復健治療時段（平日08:30-21:30，週六08:30-12:30）前來。",
+                "hasMap": "https://drhsieh-rehab.com/#patient-info",
+                "availableService": [
+                    {
+                        "@type": "MedicalTherapy",
+                        "name": "醫師門診",
+                        "description": "上午09:00-11:30（週一至週六），下午14:30-17:00（週一、週五），晚上18:30-21:00（週一至週五，週二19:00起）。初診須持健保卡現場掛號。"
+                    },
+                    {
+                        "@type": "PhysicalTherapy",
+                        "name": "復健治療",
+                        "description": "平日08:30-21:30（中午12:30-14:00休息），週六08:30-12:30。初診患者須先完成醫師門診評估方可進行，不可直接前來。"
+                    }
+                ],
                 "sameAs": [
                     "https://www.facebook.com/Top.rehabilitation.center",
                     "https://maps.app.goo.gl/Hn1g21m9DsVVTFQ97",

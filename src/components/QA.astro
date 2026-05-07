@@ -6,6 +6,30 @@ import QAItem from './QAItem.astro';
 // (Req 2: 未來您要新增/修改 Q&A，"只需要" 在這裡編輯)
 const qaList = [
   {
+    question: "Q: 謝明福復健科診所的門診時間是幾點到幾點？",
+    answer: `<p>A: 謝明福復健科診所醫師門診時段如下：<br>
+    上午 09:00–11:30：週一至週六（每天皆有上午門診）<br>
+    下午 14:30–17:00：僅週一、週五有（週二謝院長赴三總汀州院出診，週三、四、六無下午門診）<br>
+    晚上 18:30–21:00：週一至週五（週二晚間 19:00 起，週六無晚診）<br>
+    週日全日休診。初診請於各時段結束前 20 分鐘報到。最新時段以診所公告為準，請至官網<a href="/#patient-info" class="underline text-primary hover:text-primary-dark">就診資訊</a>確認，或<a href="https://line.me/R/ti/p/@gsj9393s" class="underline text-primary hover:text-primary-dark">官方LINE</a>詢問。</p>`
+  },
+  {
+    question: "Q: 初診患者可以只在復健時段來嗎？復健時段和門診時段有什麼不同？",
+    answer: `<p>A: 不行。初診患者<strong>必須在門診時段前來</strong>，由謝明福院長親自評估後，才能安排復健治療計畫。「復健治療時段」（平日 08:30–21:30，週六 08:30–12:30）僅供已完成門診評估的患者使用，不接受初診。若在復健時段抵達但尚未看過門診，將無法進行治療，可能白跑一趟。建議先至官網<a href="/#patient-info" class="underline text-primary hover:text-primary-dark">就診資訊</a>確認當日門診時段，或<a href="https://line.me/R/ti/p/@gsj9393s" class="underline text-primary hover:text-primary-dark">官方LINE</a>詢問。</p>`
+  },
+  {
+    question: "Q: 週六有門診嗎？週六幾點可以去看謝明福醫師的診？",
+    answer: `<p>A: 週六有上午門診，時間為 09:00–11:30（最晚 11:10 前報到）。週六沒有下午及晚間門診。復健治療週六時段為 08:30–12:30。如有疑問請至官網<a href="/#patient-info" class="underline text-primary hover:text-primary-dark">就診資訊</a>確認，或<a href="https://line.me/R/ti/p/@gsj9393s" class="underline text-primary hover:text-primary-dark">官方LINE</a>詢問。</p>`
+  },
+  {
+    question: "Q: 謝明福診所有晚診嗎？平日幾點可以看診？",
+    answer: `<p>A: 有晚診。平日晚診為 18:30–21:00（週二晚間從 19:00 開始）。平日共三個時段：上午 09:00–11:30、下午 14:30–17:00（僅週一、週五）、晚上 18:30–21:00（週一至週五）。時段如有異動請至官網<a href="/#patient-info" class="underline text-primary hover:text-primary-dark">就診資訊</a>確認，或<a href="https://line.me/R/ti/p/@gsj9393s" class="underline text-primary hover:text-primary-dark">官方LINE</a>詢問。</p>`
+  },
+  {
+    question: "Q: 第一次去謝明福診所，可以直接做復健治療嗎？",
+    answer: `<p>A: 不可以。初診必須先由謝明福院長親自評估，確認診斷並制定治療計畫後，才能開始復健治療。初診患者請務必在「門診時段」前來，而非只在復健時段抵達。</p>`
+  },
+  {
     question: "Q: 初診可以預約掛號嗎?",
     answer: `<p>A: 本診所一律採現場掛號，毋需預約。初診請於門診時段結束前 20 分鐘報到。</p>`
   },
