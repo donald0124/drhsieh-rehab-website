@@ -69,6 +69,7 @@ description: 部落格文章封面圖 Prompt 設計技能。讀取文章 → 分
   "article": "<文章標題>",
   "style": "clean medical editorial, light airy aesthetic, high-end health magazine cover",
   "size": "1400x788",
+  "format": "jpg",
   "background": {
     "base": "warm off-white #F7F4EF",
     "texture": "subtle paper grain, very light",
