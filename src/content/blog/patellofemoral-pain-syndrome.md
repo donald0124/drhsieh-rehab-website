@@ -1,7 +1,7 @@
 ---
 title: '髕骨股骨疼痛症候群（PFPS）：膝蓋前側痛的真正原因｜謝明福復健科'
 description: '爬樓梯、蹲下或久坐後膝蓋前側痛？這可能是髕骨股骨疼痛症候群（PFPS），包含髕骨外翻與髕骨軟化兩大問題。本文說明成因、鑑別診斷，與物理治療、NEIMS、Superlizer 的漸進治療策略。'
-pubDate: 2026-05-07
+pubDate: 2026-05-08
 heroImage: /images/blog/patellofemoral-pain-syndrome-hero.jpg
 author: '謝明福 院長'
 featured: false
