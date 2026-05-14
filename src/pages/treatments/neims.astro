@@ -127,6 +127,8 @@ const howtoSchema = JSON.stringify({
                 "術後沾黏",
                 "五十肩",
                 "網球肘",
+                "椎間盤突出",
+                "腕隧道症候群",
             ].map((tag) => (
                 <span class="bg-blue-50 text-primary-dark text-sm px-3 py-1 rounded-full border border-blue-100">
                     {tag}
@@ -169,7 +171,7 @@ const howtoSchema = JSON.stringify({
                         有別於傳統表面電療，NEIMS 針具的針身以鐵氟龍全包覆絕緣，電流僅由針尖導出，能深入一般儀器無法觸及的深層激痛點。
                     </p>
                     <p>
-                        此技術源自美國賓州大學醫院復健科，謝明福院長於 2005 年赴美師承技術研發者 Dr. Jennifer Chu，並於 2007 年起在台發表臨床治療成果，至今累積逾 20 年實務經驗。
+                        此技術源自美國賓州大學醫院復健科。謝明福院長於 2003 年師承台北榮總詹瑞棋主任，跟診學習 NEIMS 達半年，隨後於 2005 年赴美與技術研發者 Dr. Jennifer Chu 進一步深造，並於 2007 年起在台發表臨床治療成果，至今累積逾 20 年實務經驗。（詳見 <a href="/blog/neims/" class="text-primary hover:underline">NEIMS 原理完整介紹</a>）
                     </p>
                 </div>
                 <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 space-y-4">
@@ -225,7 +227,7 @@ const howtoSchema = JSON.stringify({
                     },
                     {
                         title: "運動傷害 / 急慢性拉傷",
-                        items: ["落枕、急性腰扭傷", "跑者膝、跳躍膝", "腳踝韌帶扭傷腫脹"],
+                        items: ["落枕、急性腰扭傷", "肢體肌肉挫傷拉傷", "跑者膝、跳躍膝", "腳踝韌帶扭傷腫脹"],
                         links: [
                             { text: "腳踝扭傷久腫不消的處理", href: "/blog/neims-ankle-sprain/" },
                             { text: "鼠蹊部疼痛（內收肌拉傷）", href: "/blog/groin-pain-myofasciitis-neims/" },
@@ -242,16 +244,18 @@ const howtoSchema = JSON.stringify({
                     },
                     {
                         title: "肌腱 / 筋膜問題",
-                        items: ["網球肘、高爾夫球肘", "足底筋膜炎", "退化性膝關節炎"],
+                        items: ["網球肘、高爾夫球肘", "足底筋膜炎", "退化性膝關節炎", "鵝掌足滑囊炎"],
                         links: [
                             { text: "網球肘：增生療法與 NEIMS 整合治療", href: "/blog/tennis-elbow-treatment-experience/" },
+                            { text: "鵝掌足滑囊炎：膝蓋內側痛精準治療", href: "/blog/pes-anserine-bursitis/" },
                         ],
                     },
                     {
                         title: "神經麻痺",
-                        items: ["垂足症、腕垂症", "顏面神經麻痺", "腓總神經損傷"],
+                        items: ["垂足症、腕垂症", "顏面神經麻痺", "腓總神經損傷", "腕隧道症候群"],
                         links: [
                             { text: "腓總神經損傷垂足的治療解析", href: "/blog/peroneal-nerve-injury-foot-drop-neims/" },
+                            { text: "睡覺手麻？可能是腕隧道症候群或頸椎問題", href: "/blog/hand-numbness-when-sleeping/" },
                         ],
                     },
                 ].map((group) => (
